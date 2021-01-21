@@ -10,4 +10,4 @@
 * https://www.vector.com/int/en/know-how/technologies/automotive-connectivity/automotive-ota/ - OTA service provider with telematics
 * https://www.sibros.tech/ota-updater - OTA service provider with telematics
 * https://ieeexplore.ieee.org/abstract/document/1391466 - proposes an open interoperaive platform for telematics
-* https://www.hindawi.com/journals/tswj/2014/712826/ - big data technologies, but skimming resulted in usable info
+* https://www.hindawi.com/journals/tswj/2014/712826/ - big data technologies, but skimming resulted in no usable info
