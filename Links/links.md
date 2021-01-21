@@ -11,3 +11,5 @@
 * https://www.sibros.tech/ota-updater - OTA service provider with telematics
 * https://ieeexplore.ieee.org/abstract/document/1391466 - proposes an open interoperaive platform for telematics
 * https://www.hindawi.com/journals/tswj/2014/712826/ - big data technologies, but skimming resulted in no usable info
+* https://eprint.iacr.org/2020/718.pdf Add to literature review!!!!! And read!
+* https://www.forbes.com/sites/bradtempleton/2021/12/28/robocars-2020-in-review--winter-to-spring/?sh=5f76609a59dd Summary of 2020, read
