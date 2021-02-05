@@ -13,4 +13,5 @@
 * https://www.hindawi.com/journals/tswj/2014/712826/ - big data technologies, but skimming resulted in no usable info
 * https://eprint.iacr.org/2020/718.pdf Add to literature review!!!!! And read!
 * https://www.forbes.com/sites/bradtempleton/2021/12/28/robocars-2020-in-review--winter-to-spring/?sh=5f76609a59dd Summary of 2020, read
-https://blog.apnic.net/2017/05/09/bbr-new-kid-tcp-block/ read and add BBR
+* https://blog.apnic.net/2017/05/09/bbr-new-kid-tcp-block/ read and add BBR
+* https://eprint.iacr.org/2020/043.pdf#cite.DBLP%3Ajournals/comsur/PetitSFK15 good to add in literature review
