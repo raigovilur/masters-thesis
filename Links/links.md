@@ -14,4 +14,6 @@
 * https://eprint.iacr.org/2020/718.pdf Add to literature review!!!!! And read!
 * https://www.forbes.com/sites/bradtempleton/2021/12/28/robocars-2020-in-review--winter-to-spring/?sh=5f76609a59dd Summary of 2020, read
 * https://blog.apnic.net/2017/05/09/bbr-new-kid-tcp-block/ read and add BBR
+* https://github.com/tlswg/dtls13-spec - DTLS 1.3
+* https://eprint.iacr.org/2020/1019.pdf - Google library that could be used
 * https://eprint.iacr.org/2020/043.pdf#cite.DBLP%3Ajournals/comsur/PetitSFK15 good to add in literature review
