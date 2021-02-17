@@ -19,6 +19,9 @@ https://secvi.inet.haw-hamburg.de/wp-content/uploads/2020/12/mhlsd-dsivi-20.pdf 
 https://www.hindawi.com/journals/tswj/2014/712826/ - Big Data: Survey, Technologies, Opportunities, and Challenges  
 https://www.sciencedirect.com/science/article/pii/S0165027009001575 - Large-scale electrophysiology: Acquisition, compression, encryption, and storage of big data  
 https://www.mdpi.com/2073-8994/11/2/293/htm - A Secure and Efficient Lightweight Symmetric Encryption Scheme for Transfer of Text Files between Embedded IoT Devices  
+
+ANDREW START HERE
+
 https://people.cs.clemson.edu/~johnmc/courses/cpsc875/resources/infotainment/auto.pdf - The Future of Automotive Telematics  
 https://www.inderscienceonline.com/doi/abs/10.1504/IJMC.2009.021672 - The empirical study of automotive telematics acceptance in Taiwan: comparing three Technology Acceptance Models  
 https://dl.acm.org/doi/pdf/10.1145/570705.570711 - Framework for Security and Privacy in Automotive Telematics  
@@ -42,6 +45,8 @@ https://ieeexplore.ieee.org/abstract/document/6761252 - Comparative performance 
 https://ieeexplore.ieee.org/abstract/document/8648789 - BigData Express: Toward Schedulable, Predictable, and High-Performance Data Transfer  
 https://ieeexplore.ieee.org/abstract/document/7069458 - Profiling transport performance for big data transfer over dedicated channels  
 https://ieeexplore.ieee.org/abstract/document/7410300 - Comparative analysis of big data transfer protocols in an international high-speed network  
+
+ANDREW STOP HERE
 
 # Papers for common protocols
 TCP:  
