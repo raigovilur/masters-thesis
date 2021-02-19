@@ -23,7 +23,7 @@ https://www.mdpi.com/2073-8994/11/2/293/htm - A Secure and Efficient Lightweight
 ANDREW START HERE
 
 https://people.cs.clemson.edu/~johnmc/courses/cpsc875/resources/infotainment/auto.pdf - NO GOOD
-https://www.inderscienceonline.com/doi/abs/10.1504/IJMC.2009.021672 - The empirical study of automotive telematics acceptance in Taiwan: comparing three Technology Acceptance Models  
+https://www.inderscienceonline.com/doi/abs/10.1504/IJMC.2009.021672 - NO GOOD
 https://dl.acm.org/doi/pdf/10.1145/570705.570711 - Framework for Security and Privacy in Automotive Telematics  
 https://www.esat.kuleuven.be/cosic/publications/article-3274.pdf - HERMES: Scalable, Secure, and Privacy-EnhancingVehicle Access System  
 https://www.sciencedirect.com/science/article/pii/S0140366410000022 - Vehicular telematics over heterogeneous wireless networks: A survey
