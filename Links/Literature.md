@@ -9,7 +9,7 @@ https://ieeexplore.ieee.org/abstract/document/1226022 - A UDP-based file transfe
 https://dl.acm.org/doi/abs/10.1145/570738.570740 - Protocol called Pump Slowly, Fetch Quickly (PSFQ) is proposed that is suitable for wireless sensor networks.  
 http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.91.4419&rep=rep1&type=pdf – Phatpackets protocol to transfer data  
 https://mspace.lib.umanitoba.ca/bitstream/handle/1993/20182/Huang_Efficient_bulk.pdf?sequence=1&isAllowed=y – Also describing Phatpackets protocol.  
-https://ieeexplore.ieee.org/document/1137760 - describes a UDP based protocol and library for bulk data transfer over UDP reliably.  
+https://ieeexplore.ieee.org/document/1137760 - describes a UDP based protocol and library for bulk data transfer over UDP reliably. NO GOOD FROM 2002 
 https://link.springer.com/book/10.1007/978-3-642-19786-4 - Communication Technologies for vehicles (collection of papers), from there - Secure Automotive On-Board Protocols: A Case of Over-the-Air Firmware Updates – theoretical protocol for secure transfer of critical firmware data.  
 https://ieeexplore.ieee.org/abstract/document/9035479 - Secure video transmission framework for battery-powered video devices  
 https://ieeexplore.ieee.org/abstract/document/8405710 - The Secure Vehicle-to-Vehicle and Vehicle-to-Group Communication Mechanisms in Smart City – Theoretical paper on secure communication in a smart city environment  
