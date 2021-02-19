@@ -20,7 +20,7 @@ https://www.hindawi.com/journals/tswj/2014/712826/ - Big Data: Survey, Technolog
 https://www.sciencedirect.com/science/article/pii/S0165027009001575 - Large-scale electrophysiology: Acquisition, compression, encryption, and storage of big data  
 https://www.mdpi.com/2073-8994/11/2/293/htm - A Secure and Efficient Lightweight Symmetric Encryption Scheme for Transfer of Text Files between Embedded IoT Devices  
 
-ANDREW START HERE
+ANDREW START HERE = NONE OF THESE PAPERS ARE USEFUL FOR THE THESIS, perhaps you can add in background section some of the papers with explanatory notes about vehicle telematics
 
 https://people.cs.clemson.edu/~johnmc/courses/cpsc875/resources/infotainment/auto.pdf - NO GOOD
 https://www.inderscienceonline.com/doi/abs/10.1504/IJMC.2009.021672 - NO GOOD
