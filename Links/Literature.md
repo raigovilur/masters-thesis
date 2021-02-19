@@ -24,7 +24,7 @@ ANDREW START HERE
 
 https://people.cs.clemson.edu/~johnmc/courses/cpsc875/resources/infotainment/auto.pdf - NO GOOD
 https://www.inderscienceonline.com/doi/abs/10.1504/IJMC.2009.021672 - NO GOOD
-https://dl.acm.org/doi/pdf/10.1145/570705.570711 - Framework for Security and Privacy in Automotive Telematics  
+https://dl.acm.org/doi/pdf/10.1145/570705.570711 - NO GOOD THIS PAPER IS FROM 2002  
 https://www.esat.kuleuven.be/cosic/publications/article-3274.pdf - HERMES: Scalable, Secure, and Privacy-EnhancingVehicle Access System  
 https://www.sciencedirect.com/science/article/pii/S0140366410000022 - Vehicular telematics over heterogeneous wireless networks: A survey
 https://eprints.utas.edu.au/241/ - Secure Mobile Device Integration for Automotive Telematics  
