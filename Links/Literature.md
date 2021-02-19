@@ -26,7 +26,7 @@ https://people.cs.clemson.edu/~johnmc/courses/cpsc875/resources/infotainment/aut
 https://www.inderscienceonline.com/doi/abs/10.1504/IJMC.2009.021672 - NO GOOD
 https://dl.acm.org/doi/pdf/10.1145/570705.570711 - NO GOOD THIS PAPER IS FROM 2002  
 https://www.esat.kuleuven.be/cosic/publications/article-3274.pdf - HERMES: Scalable, Secure, and Privacy-EnhancingVehicle Access System  
-https://www.sciencedirect.com/science/article/pii/S0140366410000022 - Vehicular telematics over heterogeneous wireless networks: A survey
+https://www.sciencedirect.com/science/article/pii/S0140366410000022 - Paper is 10 years old is only good for legacy vehicles
 https://eprints.utas.edu.au/241/ - Secure Mobile Device Integration for Automotive Telematics  
 https://link.springer.com/chapter/10.1007/978-981-10-5041-1_108 - A Study on Secure Protocol Techniques Supporting TCUs in a Telematics Environment - Looks interesting but I don't have acces to it  
 https://www.iqt.org/wp-content/uploads/iqt-quarterlies/IQT%20Quarterly_Summer%202014_Zero%20to%20Sixty%20-%20Accelerating%20Vehicle%20Telematics.pdf#page=4 - Magazine - ZERO TO SIXTY:ACCELERATING VEHICLE TELEMATICS  
