@@ -1,24 +1,23 @@
 # Papers
 
 I went with a very low filter for quality this time (previously I have only gathered links that are 100% relevant) 
-
-https://dl.acm.org/doi/10.1145/3098822.3098842 - The QUIC Transport Protocol: Design and Internet-Scale Deployment  
-https://dl.acm.org/doi/10.1109/CCGrid.2013.77 - Specialized file transfer service for large oil&gas datasets  
-https://ieeexplore.ieee.org/document/6504202 - Characterizing throughput bottlenecks for secure GridFTP transfers  
-https://ieeexplore.ieee.org/abstract/document/1226022 - A UDP-based file transfer protocol with flow control using fuzzy logic approach - Proposing a new algorithm  
-https://dl.acm.org/doi/abs/10.1145/570738.570740 - Protocol called Pump Slowly, Fetch Quickly (PSFQ) is proposed that is suitable for wireless sensor networks.  
-http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.91.4419&rep=rep1&type=pdf – Phatpackets protocol to transfer data  
-https://mspace.lib.umanitoba.ca/bitstream/handle/1993/20182/Huang_Efficient_bulk.pdf?sequence=1&isAllowed=y – Also describing Phatpackets protocol.  
-https://ieeexplore.ieee.org/document/1137760 - describes a UDP based protocol and library for bulk data transfer over UDP reliably. NO GOOD FROM 2002 
-https://link.springer.com/book/10.1007/978-3-642-19786-4 - Communication Technologies for vehicles (collection of papers), from there - Secure Automotive On-Board Protocols: A Case of Over-the-Air Firmware Updates – theoretical protocol for secure transfer of critical firmware data.  
-https://ieeexplore.ieee.org/abstract/document/9035479 - Secure video transmission framework for battery-powered video devices  
-https://ieeexplore.ieee.org/abstract/document/8405710 - The Secure Vehicle-to-Vehicle and Vehicle-to-Group Communication Mechanisms in Smart City – Theoretical paper on secure communication in a smart city environment  
-https://ieeexplore.ieee.org/abstract/document/8628416 - Multiple Access in Cellular V2X: Performance Analysis in Highly Congested Vehicular Networks
-https://tools.ietf.org/html/rfc998 - NETBLT: A Bulk Data Transfer Protocol  
-https://secvi.inet.haw-hamburg.de/wp-content/uploads/2020/12/mhlsd-dsivi-20.pdf - Demo: A Security Infrastructure for VehicularInformation Using SDN, Intrusion Detection, and aDefense Center in the Cloud  
-https://www.hindawi.com/journals/tswj/2014/712826/ - Big Data: Survey, Technologies, Opportunities, and Challenges  
-https://www.sciencedirect.com/science/article/pii/S0165027009001575 - Large-scale electrophysiology: Acquisition, compression, encryption, and storage of big data  
-https://www.mdpi.com/2073-8994/11/2/293/htm - A Secure and Efficient Lightweight Symmetric Encryption Scheme for Transfer of Text Files between Embedded IoT Devices  
+https://dl.acm.org/doi/10.1145/3098822.3098842 - The QUIC Transport Protocol: Design and Internet-Scale Deployment  *Ok, if we using QUIC*
+https://dl.acm.org/doi/10.1109/CCGrid.2013.77 - Specialized file transfer service for large oil&gas datasets  - *if there is no code to test, no usage for us*
+https://ieeexplore.ieee.org/document/6504202 - Characterizing throughput bottlenecks -for secure GridFTP transfers - *they have interesting metrics, but not our case*
+https://ieeexplore.ieee.org/abstract/document/1226022 - A UDP-based file transfer protocol with flow control using fuzzy logic approach - *Maybe too old? Only if code exist, obscure protocol*  
+https://dl.acm.org/doi/abs/10.1145/570738.570740 - Protocol called Pump Slowly, Fetch Quickly (PSFQ) is proposed that is suitable for wireless sensor networks. *Only if code exists*  
+http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.91.4419&rep=rep1&type=pdf – Phatpackets protocol to transfer data. *Maybe too old? Only if code exists*
+https://mspace.lib.umanitoba.ca/bitstream/handle/1993/20182/Huang_Efficient_bulk.pdf?sequence=1&isAllowed=y – Also describing Phatpackets protocol. *Yes, but how much it is used*
+https://ieeexplore.ieee.org/document/1137760 - describes a UDP based protocol and library for bulk data transfer over UDP reliably. *ONLY IF CODE EXISTS + OLD*
+https://link.springer.com/book/10.1007/978-3-642-19786-4 - Communication Technologies for vehicles (collection of papers), from there - Secure Automotive On-Board Protocols: A Case of Over-the-Air Firmware Updates – theoretical protocol for secure transfer of critical firmware data.  *Nice, but that is a lot of material you need to process + kinda old*
+https://ieeexplore.ieee.org/abstract/document/9035479 - Secure video transmission framework for battery-powered video devices  *I like this, ANDREW LOOK HERE, PLEASE*
+https://ieeexplore.ieee.org/abstract/document/8405710 - The Secure Vehicle-to-Vehicle and Vehicle-to-Group Communication Mechanisms in Smart City – Theoretical paper on secure communication in a smart city environment  *It is V2V, not our specific case*
+https://ieeexplore.ieee.org/abstract/document/8628416 - Multiple Access in Cellular V2X: Performance Analysis in Highly Congested Vehicular Networks *I like this, ANDREW LOOK HERE, PLEASE*
+https://tools.ietf.org/html/rfc998 - NETBLT: A Bulk Data Transfer Protocol *Only if code exists + IS IT EXTRA OLD*  
+https://secvi.inet.haw-hamburg.de/wp-content/uploads/2020/12/mhlsd-dsivi-20.pdf - Demo: A Security Infrastructure for VehicularInformation Using SDN, Intrusion Detection, and aDefense Center in the Cloud  *I like this, ANDREW LOOK HERE, PLEASE*
+https://www.hindawi.com/journals/tswj/2014/712826/ - Big Data: Survey, Technologies, Opportunities, and Challenges  *Put it as a nice sentence, we can't actually use it*
+https://www.sciencedirect.com/science/article/pii/S0165027009001575 - Large-scale electrophysiology: Acquisition, compression, encryption, and storage of big data *Even though it is electrophysiology, not a biggy to get some ideas from there*  
+https://www.mdpi.com/2073-8994/11/2/293/htm - A Secure and Efficient Lightweight Symmetric Encryption Scheme for Transfer of Text Files between Embedded IoT Devices *Only can be used for logs + if code exists*  
 
 ANDREW START HERE = NONE OF THESE PAPERS ARE USEFUL FOR THE THESIS, perhaps you can add in background section some of the papers with explanatory notes about vehicle telematics
 
@@ -49,15 +48,16 @@ https://ieeexplore.ieee.org/abstract/document/7410300 - Comparative analysis of 
 ANDREW STOP HERE
 
 # Papers for common protocols
+*If we use TCP - can be put as the reference*
 TCP:  
 https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=1092259 - Paper introducing TCP  
 https://www.sciencedirect.com/science/article/pii/S014036649900064X - TCP/IP security threats and attack methods  
 https://dl.acm.org/doi/pdf/10.1145/378444.378449 - Security Problems in the TCPAP Protocol Suite  
 
-UDP:  
+UDP:  *If we use UDP - can be put as the reference*
 https://tools.ietf.org/html/rfc768 - RCF introducing UDP  
 
-TLS:  
+TLS:  *In thesis explain - why TLS 1.3 is one of the approaches*
 https://ieeexplore.ieee.org/abstract/document/6938667 - Not an academic article  
 https://ieeexplore.ieee.org/abstract/document/6903455 - Benchmarking the Performance Impact of Transport Layer Security in Cloud Database Systems  
 
@@ -68,10 +68,10 @@ https://ieeexplore.ieee.org/abstract/document/7958594 - Security analysis of 1.3
 TLS 1.3 vs QUIC:  
 Secure Communication Channel Establishment: TLS 1.3 (over TCP Fast Open) vs. QUIC - Secure Communication Channel Establishment: TLS 1.3 (over TCP Fast Open) vs. QUIC  
 
-QUIC:  
+QUIC:  *In thesis explain - why QUIC is one of the approaches*
 https://ieeexplore.ieee.org/abstract/document/7997281 - Analysis of QUIC performance - QUIC: Better for what and for whom?  
 
-DTLS 1.3:  
+DTLS 1.3:  *I still would like too find some code or papers about DTLS 1.3*
 https://datatracker.ietf.org/doc/draft-ietf-tls-dtls13/ - current draft state  
 
 
@@ -79,5 +79,3 @@ Also found this, no idea if it is useful for us or not:
 https://udt.sourceforge.io/index.html  
 and  
 http://monalisa.cern.ch/FDT/  
-
-<span style="color:blue">some *This is Blue italic.* text</span>
