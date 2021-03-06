@@ -1,0 +1,8 @@
+prefix=/home/raigo/repos/masters-thesis/solution/catkin_ws/devel
+
+Name: iseauto_component
+Description: Description of iseauto_component
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
