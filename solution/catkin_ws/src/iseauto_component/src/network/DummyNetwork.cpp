@@ -16,7 +16,7 @@ bool DummyNetwork::init(std::string address)
 bool DummyNetwork::send(const sensor_msgs::PointCloud2 &msg)
 {
     uint32_t size = msg.row_step * msg.height;
-    uint32_t sizeInKb = size / 8 / 1024;
+    uint32_t sizeInKb = size / 1024;
     ROS_INFO("Message sent, size: %d MB", sizeInKb);
 }
 
