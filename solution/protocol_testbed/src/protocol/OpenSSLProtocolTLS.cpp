@@ -14,8 +14,6 @@
 #include <unistd.h>
 
 bool Protocol::OpenSSLProtocolTLS::openProtocol(std::string address, uint port) {
-    std::string addressAndPort = address + ":" + std::to_string(port);
-
     SSL_load_error_strings();
     ERR_load_crypto_strings();
 
@@ -41,6 +39,7 @@ bool Protocol::OpenSSLProtocolTLS::openProtocol(std::string address, uint port) 
     SSL_load_error_strings();
     const SSL_METHOD *meth = TLS_client_method();
     SSL_CTX *ctx = SSL_CTX_new(meth);
+    SSL_CTX_set_options(ctx, SSL_OP_NO_TLSv1_1 | SSL_OP_NO_TLSv1_2); // We are only interested in TLS1.3
     _ssl = SSL_new(ctx);
     if (!_ssl) {
         printf("Error creating SSL.\n");
@@ -70,7 +69,7 @@ bool Protocol::OpenSSLProtocolTLS::send(const char *buffer, size_t bufferSize) {
     if (len < 0) {
         int err = SSL_get_error(_ssl, len);
         switch (err) {
-            // TODO proper handling for this:
+            // TODO proper LOGGING for this:
             case SSL_ERROR_WANT_WRITE:
             case SSL_ERROR_WANT_READ:
             case SSL_ERROR_ZERO_RETURN:
@@ -108,6 +107,14 @@ bool Protocol::OpenSSLProtocolTLS::send(const char *buffer, size_t bufferSize) {
 }
 
 bool Protocol::OpenSSLProtocolTLS::closeProtocol() {
+    return cleanUp();
+}
+
+Protocol::OpenSSLProtocolTLS::~OpenSSLProtocolTLS() {
+    cleanUp();
+}
+
+bool Protocol::OpenSSLProtocolTLS::cleanUp() {
     if (_socketInitialized)
     {
         SSL_free(_ssl);
@@ -116,11 +123,13 @@ bool Protocol::OpenSSLProtocolTLS::closeProtocol() {
         _socketInitialized = false;
         OPENSSL_cleanup();
         close(_socket);
+        _ssl = nullptr;
     }
-
     return true;
 }
 
-Protocol::OpenSSLProtocolTLS::~OpenSSLProtocolTLS() {
+bool Protocol::OpenSSLProtocolTLS::openProtocolServer(uint port) {
+    std::cout << "Not yet implemented" << std::endl;
 
+    return false;
 }

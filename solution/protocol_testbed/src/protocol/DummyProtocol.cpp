@@ -41,3 +41,7 @@ bool Protocol::DummyProtocol::closeProtocol() {
     std::cout << "Closing connection via dummy interface" << std::endl;
     return true;
 }
+
+bool Protocol::DummyProtocol::openProtocolServer(uint port) {
+    return false;
+}

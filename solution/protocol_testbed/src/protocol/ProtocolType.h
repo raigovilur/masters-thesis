@@ -4,7 +4,9 @@
 namespace Protocol {
     enum ProtocolType {
         Dummy,
-        OpenSSL_TLS
+        OpenSSL_TLS,
+        OpenSSL_DTLS1_2,
+        MVFST_QUIC
     };
 }
 
