@@ -1,0 +1,4 @@
+What needs to be done:
+
+Add support for clientside timeout (configurable)
+Add support for certificate checks

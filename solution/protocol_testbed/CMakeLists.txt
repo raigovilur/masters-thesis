@@ -11,10 +11,11 @@ message("${MVFST_DIR}")
 
 
 find_package(OpenSSL)
-find_package(fmt HINTS ${MVFST_DIR}/deps/lib/cmake/fmt)
-find_package(folly HINTS ${MVFST_DIR}/deps/lib/cmake/folly)
-find_package(fizz HINTS ${MVFST_DIR}/deps/lib/cmake/fizz)
-find_package(mvfst HINTS ${MVFST_DIR}/lib/cmake/mvfst)
+find_package(fmt)
+find_package(folly)
+find_package(fizz)
+find_package(mvfst)
+find_package(gflags)
 
 add_executable(protocol_testbed_client
         ClientMain.cpp
@@ -34,12 +35,16 @@ add_executable(protocol_testbed_client
         src/protocol/MvfstProtocolQUIC.h
         )
 
+message(STATUS "${mvfst_INCLUDE_DIRS}")
+message(STATUS "${FOLLY_INCLUDE_DIR}")
 target_include_directories(protocol_testbed_client
         PUBLIC src
         ${OPENSSL_INCLUDE_DIR}
+        ${FOLLY_INCLUDE_DIR}
+        ${mvfst_INCLUDE_DIRS}
         )
 
-target_link_libraries(protocol_testbed_client ${OPENSSL_SSL_LIBRARY} ${OPENSSL_CRYPTO_LIBRARY} pthread)
+target_link_libraries(protocol_testbed_client ${OPENSSL_SSL_LIBRARY} ${OPENSSL_CRYPTO_LIBRARY} pthread mvfst::mvfst_transport mvfst::mvfst_client mvfst::mvfst_fizz_client)
 
 add_executable(protocol_testbed_server
         ServerMain.cpp
