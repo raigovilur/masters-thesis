@@ -23,10 +23,26 @@
 using namespace quic;
 class MvFstConnector : public quic::QuicSocket::ConnectionCallback,
                        public quic::QuicSocket::ReadCallback,
-                       public quic::QuicSocket::WriteCallback {
+                       public quic::QuicSocket::WriteCallback
+                       {
 public:
+    class CertificateVerifier : public fizz::CertificateVerifier {
+    public:
+        ~CertificateVerifier() override = default;
+
+        void verify(const std::vector<std::shared_ptr<const fizz::PeerCert>>&)
+        const override {
+            return;
+        }
+
+        std::vector<fizz::Extension> getCertificateRequestExtensions()
+        const override {
+            return std::vector<fizz::Extension>();
+        }
+    };
+
     MvFstConnector(std::string  host, uint16_t port)
-            : host_(std::move(host)), port_(port) {}
+            : host_(std::move(host)), port_(port), _networkThread("EchoClientThread"){}
 
     void readAvailable(quic::StreamId streamId) noexcept override {
         auto readData = quicClient_->read(streamId, 0);
@@ -54,6 +70,7 @@ public:
         // Your application should probably terminate the egress portion via
         // resetStream
         _connected = false;
+        _sendDone.post();
     }
 
     void onNewBidirectionalStream(quic::StreamId id) noexcept override {
@@ -76,12 +93,15 @@ public:
     void onConnectionEnd() noexcept override {
         LOG(INFO) << "MvFstConnector connection end";
         _connected = false;
+        _sendDone.post();
+        _shutdownDone.post();
     }
 
     void onConnectionError(
             std::pair<quic::QuicErrorCode, std::string> error) noexcept override {
         LOG(ERROR) << "MvFstConnector error: " << toString(error.first);
         startDone_.post();
+        _sendDone.post();
         _connected = false;
     }
 
@@ -94,7 +114,8 @@ public:
     override {
         LOG(INFO) << "MvFstConnector socket is write ready with maxToSend="
                   << maxToSend;
-        sendMessage(id, pendingOutput_[id]);
+        //sendMessage(id, pendingOutput_[id]);
+
     }
 
     void onStreamWriteError(
@@ -107,19 +128,18 @@ public:
     }
 
     void start() {
-        folly::ScopedEventBaseThread networkThread("EchoClientThread");
-        auto evb = networkThread.getEventBase();
+        auto evb = _networkThread.getEventBase();
         folly::SocketAddress addr(host_.c_str(), port_);
 
         evb->runInEventBaseThreadAndWait([&] {
             auto sock = std::make_unique<folly::AsyncUDPSocket>(evb);
             auto fizzClientContext =
                     FizzClientQuicHandshakeContext::Builder()
-                            //.setCertificateVerifier(test::createTestCertificateVerifier())
+                            .setCertificateVerifier(std::make_shared<CertificateVerifier>())
                             .build();
             quicClient_ = std::make_shared<quic::QuicClientTransport>(
                     evb, std::move(sock), std::move(fizzClientContext));
-            quicClient_->setHostname("echo.com");
+            //quicClient_->setHostname("print_out.com");
             quicClient_->addNewPeerAddress(addr);
 
             TransportSettings settings;
@@ -130,25 +150,23 @@ public:
 
             LOG(INFO) << "MvFstConnector connecting to " << addr.describe();
             quicClient_->start(this);
+            _connected = true;
         });
-        _connected = true;
         startDone_.wait();
-        LOG(INFO) << "MvFstConnector stopping client";
+        auto streamId = quicClient_->createBidirectionalStream().value();
+        quicClient_->setReadCallback(streamId, this);
     }
 
     ~MvFstConnector() override = default;
 
-    bool sendMessage(const char* buffer, size_t bufferSize) {
-        folly::ScopedEventBaseThread networkThread("EchoClientThread");
-        auto evb = networkThread.getEventBase();
-        evb->runInEventBaseThreadAndWait([=] {
-                // create new stream for each message
-                auto streamId = quicClient_->createBidirectionalStream().value();
-                quicClient_->setReadCallback(streamId, this);
-                pendingOutput_[streamId].append(folly::IOBuf::copyBuffer(buffer, bufferSize));
-                sendMessage(streamId, pendingOutput_[streamId]);
-        });
-        return true;
+    bool sendMessage(const char* buffer, size_t bufferSize, bool eof) {
+        return sendMessage(_streamId, *folly::IOBuf::copyBuffer(buffer, bufferSize), eof);
+    }
+
+    bool closeConnection() {
+//        quicClient_->closeTransport();
+//        quicClient_->detachEventBase();
+//        quicClient_->closeGracefully();
     }
 
     bool isConnected() const {
@@ -156,30 +174,54 @@ public:
     }
 
 private:
-    void sendMessage(quic::StreamId id, BufQueue& data) {
-        auto message = data.move();
-        auto res = quicClient_->writeChain(id, message->clone(), true);
-        if (res.hasError()) {
-            LOG(ERROR) << "MvFstConnector writeChain error=" << uint32_t(res.error());
-        } else {
-            auto str = message->moveToFbString().toStdString();
-            LOG(INFO) << "MvFstConnector wrote \"" << str << "\""
-                      << ", len=" << str.size() << " on stream=" << id;
-            // sent whole message
-            pendingOutput_.erase(id);
+    bool sendMessage(quic::StreamId id, folly::IOBuf& data, bool eof) {
+        auto evb = _networkThread.getEventBase();
+        bool isSent = false;
+        if (data.empty())
+        {
+            return false;
         }
+
+        evb->runInEventBaseThreadAndWait([&] {
+            auto res = quicClient_->writeChain(id, data.clone(), eof);
+            if (res.hasError()) {
+                LOG(ERROR) << "MvFstConnector writeChain error=" << res.error();
+                isSent = false;
+            } else {
+//                // sent whole message
+                isSent = true;
+            }
+            _sendDone.post();
+        });
+        _sendDone.wait();
+        return isSent;
     }
 
     std::string host_;
     uint16_t port_;
     std::shared_ptr<quic::QuicClientTransport> quicClient_;
-    std::map<quic::StreamId, BufQueue> pendingOutput_;
     std::map<quic::StreamId, uint64_t> recvOffsets_;
     folly::fibers::Baton startDone_;
+    folly::fibers::Baton _shutdownDone;
+    folly::fibers::Baton _sendDone;
+    folly::ScopedEventBaseThread _networkThread;
+    unsigned long _streamId;
+
     bool _connected = false;
 };
 
 bool Protocol::MvfstProtocolQUIC::openProtocol(std::string address, uint port) {
+    static bool isGoogleLoggingOpened = false;
+    if (!isGoogleLoggingOpened)
+    {
+        FLAGS_logtostderr = true;
+        FLAGS_minloglevel = 0;
+        FLAGS_stderrthreshold = 0;
+        google::InitGoogleLogging("XXX-client");
+        isGoogleLoggingOpened = true;
+    }
+
+    LOG(INFO) << "Starting MVFST";
     _mvfst = new MvFstConnector(address, port);
     _mvfst->start();
     return _mvfst->isConnected();
@@ -190,15 +232,15 @@ bool Protocol::MvfstProtocolQUIC::openProtocolServer(uint port) {
     return false;
 }
 
-bool Protocol::MvfstProtocolQUIC::send(const char *buffer, size_t bufferSize) {
+bool Protocol::MvfstProtocolQUIC::send(const char *buffer, size_t bufferSize, bool eof) {
     if (!_mvfst->isConnected()) {
         return false;
     }
-    _mvfst->sendMessage(buffer, bufferSize);
-    return _mvfst->isConnected();
+    return _mvfst->sendMessage(buffer, bufferSize, eof);
 }
 
 bool Protocol::MvfstProtocolQUIC::closeProtocol() {
+    _mvfst->closeConnection();
     delete _mvfst;
     _mvfst = nullptr;
     return true;

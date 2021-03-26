@@ -16,8 +16,8 @@ Protocol::DummyProtocol::~DummyProtocol() {
 
 }
 
-bool Protocol::DummyProtocol::send(const char *buffer, size_t bufferSize) {
-    std::cout << "Sending " << bufferSize << " bytes" << std::endl;
+bool Protocol::DummyProtocol::send(const char *buffer, size_t bufferSize, bool eof) {
+    std::cout << "Sending " << bufferSize << " bytes" << ". EOF? " << (eof? " yes " : " no ") << std::endl;
     std::this_thread::sleep_for(std::chrono::milliseconds(100));
     // Sometimes this dummy will randomly drop connection:
     if (_dropsConnection) {

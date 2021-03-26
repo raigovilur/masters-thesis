@@ -11,8 +11,7 @@
 Client::Client(Protocol::ProtocolType type, std::string address, uint port)
     : _type(type)
     , _address(std::move(address))
-    , _port(port)
-    {
+    , _port(port) {
 
 }
 
@@ -32,8 +31,7 @@ void Client::send(std::ifstream &fileStream, size_t bufferSize, uint retryCount)
 
     Protocol::ProtocolPtr protocol = Protocol::ProtocolFactory::getInstance(_type);
     auto startTime = std::chrono::system_clock::now();
-    if (!protocol->openProtocol(_address, _port))
-    {
+    if (!protocol->openProtocol(_address, _port)) {
         protocol->closeProtocol();
         return;
     }
@@ -41,7 +39,8 @@ void Client::send(std::ifstream &fileStream, size_t bufferSize, uint retryCount)
     // Sending full buffer amounts
     for (uint i = 0; i < buffersNeeded; ++i) {
         fileStream.read(buffer.get(), bufferSize);
-        if (!sendWithRetries(buffer.get(), bufferSize, retryCount, protocol)) {
+        if (!sendWithRetries(buffer.get(), bufferSize, retryCount, protocol,
+                             i == buffersNeeded - 1 && lastPacketSize == 0)) {
             std::cout << "Client: Connection failed" << std::endl;
             protocol->closeProtocol();
             _elapsedSeconds = std::chrono::system_clock::now() - startTime;
@@ -50,16 +49,18 @@ void Client::send(std::ifstream &fileStream, size_t bufferSize, uint retryCount)
     }
 
     // Sending last buffer
-    fileStream.read(buffer.get(), lastPacketSize);
-    sendWithRetries(buffer.get(), lastPacketSize, retryCount, protocol);
+    if (lastPacketSize > 0) {
+        fileStream.read(buffer.get(), lastPacketSize);
+        sendWithRetries(buffer.get(), lastPacketSize, retryCount, protocol, true);
+    }
     protocol->closeProtocol();
     _elapsedSeconds = std::chrono::system_clock::now() - startTime;
     std::cout << "File sent" << std::endl;
 }
 
-bool Client::sendWithRetries(const char *buffer, size_t bufferSize, uint retryCount, Protocol::ProtocolPtr& protocol) {
+bool Client::sendWithRetries(const char *buffer, size_t bufferSize, uint retryCount, Protocol::ProtocolPtr& protocol, bool eof) {
     for (uint retry = 0; retry < retryCount; ++retry) {
-        if (protocol->send(buffer, bufferSize)) {
+        if (protocol->send(buffer, bufferSize, eof)) {
             return true;
         } else {
             if (retry < retryCount - 1)

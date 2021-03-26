@@ -15,7 +15,7 @@ public:
     void printStatistics();
 
 private:
-    bool sendWithRetries(const char* buffer, size_t bufferSize, uint retryCount, Protocol::ProtocolPtr& protocol);
+    bool sendWithRetries(const char* buffer, size_t bufferSize, uint retryCount, Protocol::ProtocolPtr& protocol, bool eof);
 
     Protocol::ProtocolType _type;
     std::string _address;

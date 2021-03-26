@@ -60,7 +60,7 @@ bool Protocol::OpenSSLProtocolTLS::openProtocol(std::string address, uint port) 
     return true;
 }
 
-bool Protocol::OpenSSLProtocolTLS::send(const char *buffer, size_t bufferSize) {
+bool Protocol::OpenSSLProtocolTLS::send(const char *buffer, size_t bufferSize, bool eof) {
     if (!_initialized) {
         return false;
     }

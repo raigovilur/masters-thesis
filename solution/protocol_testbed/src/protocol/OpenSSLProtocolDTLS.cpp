@@ -52,7 +52,7 @@ bool Protocol::OpenSSLProtocolDTLS::openProtocol(std::string address, uint port)
         std::cout << "Unable to get context" << std::endl;
         return false;
     }
-    SSL_CTX_set_options(ctx, SSL_OP_NO_DTLSv1); // We are only interested in DTLS 1.2 //TODO or does this block v 1.xxx all?
+    SSL_CTX_set_options(ctx, SSL_OP_NO_DTLSv1); // We are only interested in DTLS 1.2
     _ssl = SSL_new(ctx);
     if (!_ssl) {
         printf("Error creating SSL.\n");
@@ -73,7 +73,7 @@ bool Protocol::OpenSSLProtocolDTLS::openProtocol(std::string address, uint port)
     return true;
 }
 
-bool Protocol::OpenSSLProtocolDTLS::send(const char *buffer, size_t bufferSize) {
+bool Protocol::OpenSSLProtocolDTLS::send(const char *buffer, size_t bufferSize, bool eof) {
     if (!_initialized) {
         return false;
     }

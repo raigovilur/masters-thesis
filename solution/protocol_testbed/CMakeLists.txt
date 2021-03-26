@@ -53,5 +53,17 @@ add_executable(protocol_testbed_server
 target_include_directories(protocol_testbed_server
         PUBLIC src
         ${OPENSSL_INCLUDE_DIR}
+        ${mvfst_INCLUDE_DIRS}
         )
-target_link_libraries(protocol_testbed_server ${OPENSSL_SSL_LIBRARY} ${OPENSSL_CRYPTO_LIBRARY} pthread)
+target_link_libraries(protocol_testbed_server
+        ${OPENSSL_SSL_LIBRARY}
+        ${OPENSSL_CRYPTO_LIBRARY}
+        pthread
+        mvfst::mvfst_transport
+        mvfst::mvfst_state_machine
+        mvfst::mvfst_server
+        mvfst::mvfst_codec_pktbuilder
+        mvfst::mvfst_codec_types
+        mvfst::mvfst_fizz_handshake
+        fizz::fizz
+        Folly::folly)
