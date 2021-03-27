@@ -11,7 +11,9 @@ public:
     Client(Protocol::ProtocolType type, std::string address, uint port);
     ~Client();
 
-    void send(std::ifstream& fileStream, size_t bufferSize, uint retryCount);
+    void setHeadersForFile(std::string filePath);
+
+    void send(const std::string& path, size_t bufferSize, uint retryCount);
     void printStatistics();
 
 private:
@@ -22,6 +24,7 @@ private:
     uint _port;
 
     std::chrono::duration<double> _elapsedSeconds{};
+    std::chrono::duration<double> _elapsedHashSeconds{};
     std::streampos _fileSize = 0;
     uint _connectionDrops = 0;
 };

@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.17)
 project(protocol_testbed)
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_VERBOSE_MAKEFILE TRUE)
 
 if(NOT DEFINED MVFST_DIR)
@@ -33,6 +33,7 @@ add_executable(protocol_testbed_client
         src/protocol/OpenSSLProtocolDTLS.h
         src/protocol/MvfstProtocolQUIC.cpp
         src/protocol/MvfstProtocolQUIC.h
+        src/protocol/FileSendHeader.h
         )
 
 message(STATUS "${mvfst_INCLUDE_DIRS}")
