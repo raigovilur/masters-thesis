@@ -21,7 +21,7 @@ add_executable(protocol_testbed_client
         ClientMain.cpp
         src/Client.cpp
         src/Client.h
-        src/protocol/ProtocolType.h
+        src/appProto/ProtocolType.h
         src/protocol/ProtocolInterface.h
         src/protocol/ProtocolFactory.cpp
         src/protocol/ProtocolFactory.h
@@ -33,7 +33,7 @@ add_executable(protocol_testbed_client
         src/protocol/OpenSSLProtocolDTLS.h
         src/protocol/MvfstProtocolQUIC.cpp
         src/protocol/MvfstProtocolQUIC.h
-        src/protocol/FileSendHeader.h
+        src/appProto/FileSendHeader.h
         )
 
 message(STATUS "${mvfst_INCLUDE_DIRS}")
@@ -49,6 +49,13 @@ target_link_libraries(protocol_testbed_client ${OPENSSL_SSL_LIBRARY} ${OPENSSL_C
 
 add_executable(protocol_testbed_server
         ServerMain.cpp
+        src/serverProtocol/ServerMvfstProtocolQUIC.cpp
+        src/serverProtocol/ServerMvfstProtocolQUIC.h
+        src/serverProtocol/ServerInterface.h
+        src/serverProtocol/ServerProtocolFactory.h
+        src/serverProtocol/ServerProtocolFactory.cpp
+        src/Server.cpp
+        src/Server.h
         )
 
 target_include_directories(protocol_testbed_server

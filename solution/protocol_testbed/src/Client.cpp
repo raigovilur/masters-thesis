@@ -6,7 +6,7 @@
 #include <vector>
 #include <filesystem>
 
-#include "protocol/FileSendHeader.h"
+#include "appProto/FileSendHeader.h"
 #include "protocol/ProtocolFactory.h"
 
 namespace {

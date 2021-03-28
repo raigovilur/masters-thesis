@@ -153,8 +153,8 @@ public:
             _connected = true;
         });
         startDone_.wait();
-        auto streamId = quicClient_->createBidirectionalStream().value();
-        quicClient_->setReadCallback(streamId, this);
+        _streamId = quicClient_->createBidirectionalStream().value();
+        quicClient_->setReadCallback(_streamId, this);
     }
 
     ~MvFstConnector() override = default;

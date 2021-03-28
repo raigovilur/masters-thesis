@@ -3,7 +3,7 @@
 
 #include <string>
 #include <protocol/ProtocolInterface.h>
-#include "protocol/ProtocolType.h"
+#include "appProto/ProtocolType.h"
 #include <chrono>
 
 class Client {

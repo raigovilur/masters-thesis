@@ -19,9 +19,9 @@
 
 #include <fizz/crypto/Utils.h>
 #include <folly/init/Init.h>
-
+/*
 // THESE are anyway test certificates/keys, so it doesn't really matter that they end up in git
-constexpr folly::StringPiece kP256Certificate = R"(
+constexpr folly::StringPiece certificate = R"(
 -----BEGIN CERTIFICATE-----
 MIIFazCCA1OgAwIBAgIUB62ZpZCtt36bbY0wK8Xc8f+MJs0wDQYJKoZIhvcNAQEL
 BQAwRTELMAkGA1UEBhMCRUUxEzARBgNVBAgMClNvbWUtU3RhdGUxITAfBgNVBAoM
@@ -55,7 +55,7 @@ o/Y3t3jZrODQQ7jUQjE/XtfuKFYKINBR5CKkrY7XQHahc/GJr2GZsrLqPF8FWu0=
 -----END CERTIFICATE-----
 )";
 
-constexpr folly::StringPiece kP256Key = R"(
+constexpr folly::StringPiece privKey = R"(
 -----BEGIN PRIVATE KEY-----
 MIIJRAIBADANBgkqhkiG9w0BAQEFAASCCS4wggkqAgEAAoICAQCjvRZy31MDYGFE
 fRWUVsCv06hyiEb3wJwbEMIooJVOjie3Xwzfx2Xatdk7Yoxl6OlFNkdr8ux8ZbTQ
@@ -147,8 +147,8 @@ namespace quic {
         }
 
         std::shared_ptr<fizz::SelfCert> readCert() {
-            auto certificate = getCert(kP256Certificate);
-            auto privKey = getPrivateKey(kP256Key);
+            auto certificate = getCert(certificate);
+            auto privKey = getPrivateKey(privKey);
             std::vector<folly::ssl::X509UniquePtr> certs;
             certs.emplace_back(std::move(certificate));
             return std::make_shared<fizz::SelfCertImpl<fizz::KeyType::RSA>>(
@@ -336,13 +336,17 @@ namespace quic {
             std::shared_ptr<quic::QuicServer> server_;
         };
     }
-}
+}*/
+
+#include "src/Server.h"
+#include "src/appProto/ProtocolType.h"
 
 int main(int argc, char *argv[]) {
     FLAGS_logtostderr = true;
     folly::Init init(&argc, &argv);
     fizz::CryptoUtils::init();
-    quic::samples::EchoServer server;
-    server.start();
+
+    Server server;
+    server.start(Protocol::MVFST_QUIC, "0.0.0.0", 12345);
 
 }
