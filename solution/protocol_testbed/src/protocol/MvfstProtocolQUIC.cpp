@@ -26,9 +26,9 @@ class MvFstConnector : public quic::QuicSocket::ConnectionCallback,
                        public quic::QuicSocket::WriteCallback
                        {
 public:
-    class CertificateVerifier : public fizz::CertificateVerifier {
+    class ClientsideCertificateVerifier : public fizz::CertificateVerifier {
     public:
-        ~CertificateVerifier() override = default;
+        ~ClientsideCertificateVerifier() override = default;
 
         void verify(const std::vector<std::shared_ptr<const fizz::PeerCert>>&)
         const override {
@@ -135,7 +135,7 @@ public:
             auto sock = std::make_unique<folly::AsyncUDPSocket>(evb);
             auto fizzClientContext =
                     FizzClientQuicHandshakeContext::Builder()
-                            .setCertificateVerifier(std::make_shared<CertificateVerifier>())
+                            .setCertificateVerifier(std::make_shared<ClientsideCertificateVerifier>())
                             .build();
             quicClient_ = std::make_shared<quic::QuicClientTransport>(
                     evb, std::move(sock), std::move(fizzClientContext));
@@ -143,6 +143,7 @@ public:
             quicClient_->addNewPeerAddress(addr);
 
             TransportSettings settings;
+            settings.idleTimeout = std::chrono::milliseconds(5000);
             quicClient_->setTransportSettings(settings);
 
 //                quicClient_->setTransportStatsCallback(
@@ -153,7 +154,14 @@ public:
             _connected = true;
         });
         startDone_.wait();
-        _streamId = quicClient_->createBidirectionalStream().value();
+        auto stream = quicClient_->createUnidirectionalStream();
+        //auto stream = quicClient_->createBidirectionalStream();
+        if (stream.hasError()) {
+            LOG(ERROR) << "Error creating a new stream: " << stream.error();
+            _connected = false;
+            return;
+        }
+        _streamId = stream.value();
         quicClient_->setReadCallback(_streamId, this);
     }
 
@@ -183,6 +191,7 @@ private:
         }
 
         evb->runInEventBaseThreadAndWait([&] {
+            std::cout << std::string(data.data(), data.data() + data.length());
             auto res = quicClient_->writeChain(id, data.clone(), eof);
             if (res.hasError()) {
                 LOG(ERROR) << "MvFstConnector writeChain error=" << res.error();

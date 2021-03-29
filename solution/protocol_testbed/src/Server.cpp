@@ -4,6 +4,19 @@
 #include <iostream>
 
 #include "serverProtocol/ServerProtocolFactory.h"
+#include "appProto/FileSendHeader.h"
+#include "appProto/utils.h"
+
+namespace {
+    uint64_t convertToUint64_t(const std::vector<unsigned char>& data, size_t dataStart, int byteLength) {
+        uint64_t output = 0;
+        for (int i = 0; i < byteLength; ++i) {
+            output = output << 8;
+            output = output | data[dataStart + i];
+        }
+        return output;
+    }
+}
 
 // THESE are anyway test certificates/keys, so it doesn't really matter that they end up in git
 constexpr folly::StringPiece certificate = R"(
@@ -95,14 +108,100 @@ Sd/H4YHoc8qOIZUOXaVW3YlTShhbeZIx
 -----END PRIVATE KEY-----
 )";
 
-bool Server::consume(char *bytes, size_t length) {
+bool Server::processDataStream(ClientData& client, unsigned char *bytes, size_t processStart, size_t packetLength) {
+    if (client.outputStream == nullptr)
+    {
+        client.outputStream = std::make_unique<std::ofstream>(client.fileName, std::ios::binary);
+        if (!client.outputStream->is_open()) {
+            std::cout << "Unable to open file stream for file: " << client.fileName << std::endl;
+            client.outputStream.reset();
+            return false;
+        }
+    }
 
-    std::cout << std::string(bytes, length) << std::endl;
+    size_t bytesToRead = packetLength - processStart;
 
-    return false;
+    // We don't want to read more than we should
+    if (bytesToRead > client.fileSize-client.receivedFileSize) {
+        bytesToRead = client.fileSize-client.receivedFileSize;
+    }
+
+    client.outputStream->write((char*) (bytes + processStart), bytesToRead);
+    client.receivedFileSize += bytesToRead;
+
+    if (client.fileReceived()) {
+        client.outputStream->close();
+    }
+    return true;
 }
 
-bool Server::start(Protocol::ProtocolType type, std::string listenAddress, ushort port) {
+
+bool Server::consume(std::string client, unsigned char *bytes, size_t packetLength) {
+    // This is just for debugging
+    std::cout << std::string((char*) bytes, packetLength) << std::endl;
+
+    // FIRST BYTES are header
+    size_t numberOfBytesProcessed = 0; // Amount we have consumed already from the packet
+    if (_clientHeaders.find(client) == _clientHeaders.end())
+    {
+        // No header has been received
+        if (packetLength >= ISE_HEADER_SIZE) {
+            auto headerBytes = std::vector<unsigned char>(bytes, bytes + ISE_HEADER_SIZE);
+            _clientHeaders.emplace(std::pair<std::string,ClientData>(client, headerBytes));
+            numberOfBytesProcessed = ISE_HEADER_SIZE;
+            processHeader(_clientHeaders.at(client));
+        } else {
+            auto headerBytes = std::vector<unsigned char>(bytes, bytes + packetLength);
+            _clientHeaders.emplace(std::pair<std::string, ClientData>(client, headerBytes));
+            // We need more bytes to complete the header, further processing not necessary
+            return true;
+        }
+    } else if (!_clientHeaders.at(client).headerProcessed) {
+        // some header has been received
+        size_t bytesNeeded = ISE_HEADER_SIZE - _clientHeaders.at(client).header.size();
+        if (bytesNeeded < 0) {
+            // Sanity check:
+            std::cout << "Error: saved header needs negative bytes" << std::endl;
+        } else if (bytesNeeded > 0){
+            // Some more bytes are needed
+            if (packetLength < bytesNeeded) {
+                std::copy(bytes, bytes + packetLength, std::back_inserter(_clientHeaders.at(client).header));
+                // We need more bytes still, cannot process further
+                return true;
+            } else {
+                numberOfBytesProcessed = bytesNeeded;
+                std::copy(bytes, bytes + packetLength, std::back_inserter(_clientHeaders.at(client).header));
+            }
+        }
+
+        // We have a complete header
+        processHeader(_clientHeaders.at(client));
+    }
+
+    if (numberOfBytesProcessed == packetLength) {
+        // The packet has been consumed entirely
+        return true;
+    }
+    if (!_clientHeaders.at(client).headerProcessed) {
+        // Sanity check
+        assert(false && "Header should be processeed by this time");
+    }
+
+    size_t bytesToProcess = packetLength - numberOfBytesProcessed;
+
+    if (!processDataStream(_clientHeaders.at(client), bytes, numberOfBytesProcessed, bytesToProcess)) {
+        _clientHeaders.erase(_clientHeaders.find(client));
+    }
+
+    if (_clientHeaders.at(client).fileReceived()) {
+        // TODO Calculate checksum, compare and then reply OK.
+        _clientHeaders.erase(_clientHeaders.find(client));
+    }
+
+    return true;
+}
+
+bool Server::start(Protocol::ProtocolType type, const std::string& listenAddress, ushort port) {
     ServerProto::ServerPtr server = ServerProto::ServerProtocolFactory::getInstance(type);
 
     server->setCallback(this);
@@ -111,6 +210,27 @@ bool Server::start(Protocol::ProtocolType type, std::string listenAddress, ushor
 
     server->listen(listenAddress, port);
 
+
+    return true;
+}
+
+bool Server::processHeader(Server::ClientData& data) {
+    assert(!data.headerProcessed);
+
+    const std::vector<unsigned char> header = data.header;
+
+    assert(Utils::compareBytes(header, ISE_PROTOCOL_OFFSET, ISE_PROTOCOL_SIZE, {0x00, 0x00}));
+    assert(Utils::compareBytes(header, ISE_PROTOCOL_VERSION_OFFSET, ISE_PROTOCOL_VERSION_SIZE, {0x00, 0x00}));
+
+    // TODO checksum
+    // data.checksum = std::copy from ISE_CHECKSUM_OFFSET to OFFSET + LEN
+    std::string name(header.begin() + ISE_FILE_NAME_OFFSET, header.begin() + ISE_FILE_NAME_OFFSET + ISE_FILE_NAME_SIZE);
+    data.fileName = name;
+
+    data.fileSize = convertToUint64_t(header, ISE_FILE_SIZE_OFFSET, ISE_FILE_SIZE);
+    std::cout << "Expected file size: " << data.fileSize << std::endl;
+
+    data.headerProcessed = true;
 
     return true;
 }

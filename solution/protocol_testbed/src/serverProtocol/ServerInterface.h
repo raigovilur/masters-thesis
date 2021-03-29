@@ -6,7 +6,7 @@
 namespace ServerProto {
     class ServerReceiveCallback {
     public:
-        virtual bool consume(char* bytes, size_t length) = 0;
+        virtual bool consume(std::string client, unsigned char* bytes, size_t length) = 0;
     };
 
     class ServerInterface {

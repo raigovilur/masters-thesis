@@ -11,8 +11,6 @@ public:
     Client(Protocol::ProtocolType type, std::string address, uint port);
     ~Client();
 
-    void setHeadersForFile(std::string filePath);
-
     void send(const std::string& path, size_t bufferSize, uint retryCount);
     void printStatistics();
 

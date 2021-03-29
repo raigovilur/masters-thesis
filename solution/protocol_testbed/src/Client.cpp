@@ -12,7 +12,7 @@
 namespace {
     bool calculateSha256(const std::string& path, unsigned char* hash)
     {
-        std::ifstream fp(path, std::ios::in | std::ios::binary);
+        std::ifstream fp(path, std::ios::binary);
 
         if (not fp.good()) {
             std::cout << "Cannot open file to checksum: \"" << path << "\": " << std::strerror(errno) << std::endl;
@@ -95,7 +95,7 @@ void Client::send(const std::string& path, size_t bufferSize, uint retryCount) {
     // SHA-256 file checksum
     writeToByteArray(header.get(), ISE_CHECKSUM_OFFSET, std::vector<char>(hash, hash + SHA256_DIGEST_LENGTH));
     // File size
-    writeToByteArray(header.get(), ISE_FILE_NAME_SIZE, convertToCharArray(_fileSize, ISE_FILE_SIZE));
+    writeToByteArray(header.get(), ISE_FILE_SIZE_OFFSET, convertToCharArray(_fileSize, ISE_FILE_SIZE));
 
     // File Name
     std::string fileName = std::filesystem::path(path).filename();
@@ -144,6 +144,7 @@ void Client::send(const std::string& path, size_t bufferSize, uint retryCount) {
     protocol->closeProtocol();
     _elapsedSeconds = std::chrono::system_clock::now() - startTime;
     std::cout << "File sent" << std::endl;
+    fileStream.close();
 }
 
 bool Client::sendWithRetries(const char *buffer, size_t bufferSize, uint retryCount, Protocol::ProtocolPtr& protocol, bool eof) {
@@ -170,10 +171,4 @@ void Client::printStatistics() {
     std::cout << " over " << _elapsedSeconds.count() << " seconds " << std::endl;
     std::cout << "Connection dropped " << _connectionDrops << " times " << std::endl;
     std::cout << "Hashing took " << _elapsedHashSeconds.count() << " seconds " << std::endl;
-}
-
-void Client::setHeadersForFile(std::string filePath) {
-
-
-
 }

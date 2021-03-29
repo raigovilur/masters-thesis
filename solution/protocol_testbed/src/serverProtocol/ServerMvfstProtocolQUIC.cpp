@@ -25,6 +25,21 @@ constexpr folly::StringPiece fizz::Sha256::BlankHash;
 
 namespace quic {
 
+    class ServersideCertificateVerifier : public fizz::CertificateVerifier {
+    public:
+        ~ServersideCertificateVerifier() override = default;
+
+        void verify(const std::vector<std::shared_ptr<const fizz::PeerCert>>&)
+        const override {
+            return;
+        }
+
+        std::vector<fizz::Extension> getCertificateRequestExtensions()
+        const override {
+            return std::vector<fizz::Extension>();
+        }
+    };
+
     folly::ssl::EvpPkeyUniquePtr getPrivateKey(const char *pKey, size_t pkLen) {
         folly::ssl::BioUniquePtr bio(BIO_new(BIO_s_mem()));
         CHECK(bio);
@@ -75,6 +90,7 @@ namespace quic {
         serverCtx->setCertManager(std::move(certManager));
         serverCtx->setOmitEarlyRecordLayer(true);
         serverCtx->setClock(std::make_shared<fizz::SystemClock>());
+        serverCtx->setClientCertVerifier(std::make_shared<ServersideCertificateVerifier>());
         return serverCtx;
     }
 
@@ -124,7 +140,7 @@ namespace quic {
                 return;
             }
             quic::Buf data = std::move(res.value().first);
-            _callback->consume((char*) data->data(), data->length());
+            _callback->consume(std::to_string(id), (unsigned char*) data->data(), data->length());
         }
 
         void readError(

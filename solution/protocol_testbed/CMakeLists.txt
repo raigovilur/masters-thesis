@@ -54,6 +54,9 @@ add_executable(protocol_testbed_server
         src/serverProtocol/ServerInterface.h
         src/serverProtocol/ServerProtocolFactory.h
         src/serverProtocol/ServerProtocolFactory.cpp
+        src/appProto/utils.h
+        src/appProto/FileSendHeader.h
+        src/appProto/ProtocolType.h
         src/Server.cpp
         src/Server.h
         )
