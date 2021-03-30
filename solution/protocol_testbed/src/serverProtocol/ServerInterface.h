@@ -11,7 +11,7 @@ namespace ServerProto {
 
     class ServerInterface {
     public:
-        virtual bool listen(const std::string &address, ushort port) = 0;
+        virtual bool serverListen(const std::string &address, ushort port) = 0;
         virtual bool setCertificate(const char* certificate, size_t len) = 0;
         virtual bool setPrivateKey(const char* pKey, size_t len) = 0;
 

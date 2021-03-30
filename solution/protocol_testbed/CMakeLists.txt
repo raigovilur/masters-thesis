@@ -59,7 +59,7 @@ add_executable(protocol_testbed_server
         src/appProto/ProtocolType.h
         src/Server.cpp
         src/Server.h
-        )
+        src/serverProtocol/ServerOpenSSLProtocolTLS.cpp src/serverProtocol/ServerOpenSSLProtocolTLS.h)
 
 target_include_directories(protocol_testbed_server
         PUBLIC src

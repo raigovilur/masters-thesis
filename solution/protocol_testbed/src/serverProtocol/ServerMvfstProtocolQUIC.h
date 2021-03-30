@@ -8,17 +8,17 @@
 namespace ServerProto {
     class ServerMvfstProtocolQUIC : public ServerInterface {
     public:
-        bool listen(const std::string &address, ushort port) override;
+        bool serverListen(const std::string &address, ushort port) override;
 
         bool setCertificate(const char *certificate, size_t len) override;
 
         bool setPrivateKey(const char *pKey, size_t len) override;
 
     private:
-        const char* _certificate;
-        size_t _certLen;
-        const char* _privKey;
-        size_t _privKeyLen;
+        const char* _certificate{};
+        size_t _certLen{};
+        const char* _privKey{};
+        size_t _privKeyLen{};
     };
 }
 

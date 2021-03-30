@@ -208,7 +208,7 @@ bool Server::start(Protocol::ProtocolType type, const std::string& listenAddress
     server->setCertificate(certificate.data(), certificate.size());
     server->setPrivateKey(privKey.data(), privKey.size());
 
-    server->listen(listenAddress, port);
+    server->serverListen(listenAddress, port);
 
 
     return true;
