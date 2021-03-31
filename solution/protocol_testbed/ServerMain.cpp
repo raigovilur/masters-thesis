@@ -19,6 +19,6 @@ int main(int argc, char *argv[]) {
     fizz::CryptoUtils::init();
 
     Server server;
-    server.start(Protocol::OpenSSL_TLS, "0.0.0.0", 12345);
+    server.start(Protocol::OpenSSL_DTLS1_2, "0.0.0.0", 12345);
 
 }

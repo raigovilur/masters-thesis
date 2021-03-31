@@ -9,6 +9,8 @@
 #include "ServerOpenSSLProtocolTLS.h"
 
 namespace {
+#define CONNECTION_POOLING_AMOUNT 10
+
     EVP_PKEY* getPrivateKey(const char *pKey, size_t pkLen) {
         folly::ssl::BioUniquePtr bio(BIO_new(BIO_s_mem()));
         CHECK(bio);
@@ -81,7 +83,7 @@ bool ServerProto::ServerOpenSSLProtocolTLS::serverListen(const std::string &addr
         perror("can't bind port");
         abort();
     }
-    if (listen(socketFd, 10) != 0 )
+    if (listen(socketFd, CONNECTION_POOLING_AMOUNT) != 0 )
     {
         perror("Can't configure listening port");
         abort();

@@ -34,7 +34,7 @@ add_executable(protocol_testbed_client
         src/protocol/MvfstProtocolQUIC.cpp
         src/protocol/MvfstProtocolQUIC.h
         src/appProto/FileSendHeader.h
-        )
+        src/dtlsCookieVault/ck_secrets_vault.c src/dtlsCookieVault/ck_secrets_vault.h)
 
 message(STATUS "${mvfst_INCLUDE_DIRS}")
 message(STATUS "${FOLLY_INCLUDE_DIR}")
@@ -59,7 +59,9 @@ add_executable(protocol_testbed_server
         src/appProto/ProtocolType.h
         src/Server.cpp
         src/Server.h
-        src/serverProtocol/ServerOpenSSLProtocolTLS.cpp src/serverProtocol/ServerOpenSSLProtocolTLS.h)
+        src/dtlsCookieVault/ck_secrets_vault.c
+        src/dtlsCookieVault/ck_secrets_vault.h
+        src/serverProtocol/ServerOpenSSLProtocolTLS.cpp src/serverProtocol/ServerOpenSSLProtocolTLS.h src/serverProtocol/ServerOpenSSLProtocolDTLS.cpp src/serverProtocol/ServerOpenSSLProtocolDTLS.h)
 
 target_include_directories(protocol_testbed_server
         PUBLIC src
