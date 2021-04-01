@@ -71,10 +71,19 @@ void Client::send(const std::string& path, size_t bufferSize, uint retryCount) {
 
     auto startTime = std::chrono::system_clock::now();
 
+    std::cout << "Calculating checksum ..." << std::endl;
+
     if (!calculateSha256(path, (unsigned char*) hash)) {
-        std::cout << "Unable to calculate has for file: " << path << std::endl;
+        std::cout << "Unable to calculate hash for file: " << path << std::endl;
         return;
     }
+    std::stringstream hashHexStrStream;
+    hashHexStrStream << std::hex;
+
+    for( int i(0) ; i < SHA256_DIGEST_LENGTH; ++i )
+        hashHexStrStream << std::setw(2) << std::setfill('0') << (int)hash[i];
+
+    std::cout << "Checksum calculated: " << hashHexStrStream.str() << std::endl;
 
     //| Protocol ID (2 bytes) | Protocol version (2 bytes) | checksum for the file (64 bytes) | file size (64 bytes) | file name (1024 bytes ending 0 bytes) | file itself... |
 
@@ -113,7 +122,7 @@ void Client::send(const std::string& path, size_t bufferSize, uint retryCount) {
         protocol->closeProtocol();
         return;
     }
-
+    std::cout << "Sending header" << std::endl;
     // Sending header
     if (!sendWithRetries(header.get(), ISE_HEADER_SIZE, retryCount, protocol,
                          buffersNeeded == 0 && lastPacketSize == 0)) {
@@ -123,9 +132,19 @@ void Client::send(const std::string& path, size_t bufferSize, uint retryCount) {
         return;
     }
 
+    std::cout << "Sending file: 0%" << std::endl;
+    double oneBufferPercentage = 1.0/(buffersNeeded) * 100;
+    int buffersNeededForOnePercent = 1 / (int) oneBufferPercentage;
+    if (buffersNeededForOnePercent <= 0) {
+        buffersNeededForOnePercent = 1;
+    }
+
     // Sending full buffer amounts
     for (uint i = 0; i < buffersNeeded; ++i) {
         fileStream.read(buffer.get(), bufferSize);
+        if ((i + 1) % buffersNeededForOnePercent == 0) {
+            std::cout << "Sending file: " << (int)((i + 1) * oneBufferPercentage) << "%" << std::endl;
+        }
         if (!sendWithRetries(buffer.get(), bufferSize, retryCount, protocol,
                              i == buffersNeeded - 1 && lastPacketSize == 0)) {
             std::cout << "Client: Connection failed" << std::endl;

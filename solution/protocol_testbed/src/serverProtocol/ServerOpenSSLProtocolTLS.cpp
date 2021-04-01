@@ -6,6 +6,8 @@
 #include <armadillo>
 #include <folly/ssl/OpenSSLCertUtils.h>
 #include <arpa/inet.h>
+#include <csignal>
+
 #include "ServerOpenSSLProtocolTLS.h"
 
 namespace {
@@ -89,6 +91,7 @@ bool ServerProto::ServerOpenSSLProtocolTLS::serverListen(const std::string &addr
         abort();
     }
 
+    signal(SIGPIPE, SIG_IGN);
     while (true)
     {
         struct sockaddr_in addr;

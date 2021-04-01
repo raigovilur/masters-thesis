@@ -37,7 +37,7 @@ bool Protocol::OpenSSLProtocolDTLS::openProtocol(std::string address, uint port)
     saiServerAddress.sin_port = htons(port);
 
     if (connect(_socket, (struct sockaddr *)&saiServerAddress, sizeof(saiServerAddress))) {
-        std::cout << "Error connecting to server" << std::endl;
+        std::cerr << "Error connecting to server " << address << std::endl;
         return false;
     }
     _socketInitialized = true;

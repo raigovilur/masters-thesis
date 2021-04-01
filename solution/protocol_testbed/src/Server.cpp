@@ -184,7 +184,7 @@ bool Server::consume(std::string client, unsigned char *bytes, size_t packetLeng
     }
     if (!_clientHeaders.at(client).headerProcessed) {
         // Sanity check
-        assert(false && "Header should be processeed by this time");
+        assert(false && "Header should be processed by this time");
     }
 
     size_t bytesToProcess = packetLength - numberOfBytesProcessed;
@@ -207,6 +207,8 @@ bool Server::start(Protocol::ProtocolType type, const std::string& listenAddress
     server->setCallback(this);
     server->setCertificate(certificate.data(), certificate.size());
     server->setPrivateKey(privKey.data(), privKey.size());
+
+    std::cout << "Server is starting." << std::endl;
 
     server->serverListen(listenAddress, port);
 

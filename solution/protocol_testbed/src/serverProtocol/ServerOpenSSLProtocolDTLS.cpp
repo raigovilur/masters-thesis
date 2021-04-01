@@ -12,6 +12,8 @@
 #include "../dtlsCookieVault/ck_secrets_vault.h"
 #include "ServerOpenSSLProtocolDTLS.h"
 
+#define COOKIE_SECRET_LENGTH 16
+
 namespace {
     EVP_PKEY* getPrivateKey(const char *pKey, size_t pkLen) {
         folly::ssl::BioUniquePtr bio(BIO_new(BIO_s_mem()));
