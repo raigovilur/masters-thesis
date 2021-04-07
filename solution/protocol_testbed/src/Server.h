@@ -20,6 +20,7 @@ private:
         bool headerProcessed = false;
         std::unique_ptr<std::ofstream> outputStream = nullptr;
         std::string fileName;
+        std::vector<unsigned char> checksum;
         uint64_t fileSize = 0;
         uint64_t receivedFileSize = 0;
 
@@ -31,6 +32,7 @@ private:
 
 public:
     bool start(Protocol::ProtocolType type, const std::string& listenAddress, ushort port);
+    bool readCertificate(const std::string& privKeyPath, const std::string& certPath);
 
     bool consume(std::string client, unsigned char *bytes, size_t packetLength) override;
 
@@ -38,6 +40,8 @@ private:
     static bool processHeader(ClientData& data) ;
     static bool processDataStream(ClientData &client, unsigned char *bytes, size_t processStart, size_t packetLength);
     std::map<std::string, ClientData> _clientHeaders;
+    std::string _cert;
+    std::string _privKey;
 
 };
 

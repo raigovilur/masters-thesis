@@ -5,36 +5,13 @@
 #include <openssl/sha.h>
 #include <vector>
 #include <filesystem>
+#include <appProto/utils.h>
 
 #include "appProto/FileSendHeader.h"
 #include "protocol/ProtocolFactory.h"
 
 namespace {
-    bool calculateSha256(const std::string& path, unsigned char* hash)
-    {
-        std::ifstream fp(path, std::ios::binary);
 
-        if (not fp.good()) {
-            std::cout << "Cannot open file to checksum: \"" << path << "\": " << std::strerror(errno) << std::endl;
-            return false;
-        }
-
-        constexpr const std::size_t bufferSize {1 << 12 };
-        char buffer[bufferSize];
-
-        SHA256_CTX ctx;
-        SHA256_Init(&ctx);
-
-        while (fp.good()) {
-            fp.read(buffer, bufferSize);
-            SHA256_Update(&ctx, buffer, fp.gcount());
-        }
-
-        SHA256_Final(hash, &ctx);
-        fp.close();
-
-        return true;
-    }
 
     void writeToByteArray(char* array, size_t offset, const std::vector<char>& whatToWrite) {
         for (size_t i = 0; i < whatToWrite.size(); ++i) {
@@ -73,7 +50,7 @@ void Client::send(const std::string& path, size_t bufferSize, uint retryCount) {
 
     std::cout << "Calculating checksum ..." << std::endl;
 
-    if (!calculateSha256(path, (unsigned char*) hash)) {
+    if (!Utils::calculateSha256(path, (unsigned char*) hash)) {
         std::cout << "Unable to calculate hash for file: " << path << std::endl;
         return;
     }

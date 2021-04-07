@@ -22,6 +22,8 @@ int main(int argc, char *argv[]) {
     std::string listenAddress;
     unsigned port;
     std::string filePath;
+    std::string pkeyPath;
+    std::string certPath;
 
     try {
         po::options_description desc("Allowed options");
@@ -31,6 +33,8 @@ int main(int argc, char *argv[]) {
                 ("address", po::value<std::string>(), "Set listen address")
                 ("port", po::value<unsigned>(), "Set listen port")
                 ("path", po::value<std::string>(), "Set destination base path")
+                ("pkey", po::value<std::string>(), "Private key path")
+                ("cert", po::value<std::string>(), "Certificate path")
                 ;
 
         po::variables_map vm;
@@ -40,6 +44,20 @@ int main(int argc, char *argv[]) {
         if (vm.count("help")) {
             std::cout << desc << std::endl;
             return 0;
+        }
+
+        if (vm.count("pkey")) {
+            pkeyPath = vm["pkey"].as<std::string>();
+        } else {
+            std::cerr << "Private key was not set." << std::endl;
+            return -1;
+        }
+
+        if (vm.count("cert")) {
+            certPath = vm["cert"].as<std::string>();
+        } else {
+            std::cerr << "Certificate was not set." << std::endl;
+            return -1;
         }
 
         if (vm.count("protocol")) {
@@ -97,6 +115,7 @@ int main(int argc, char *argv[]) {
     fizz::CryptoUtils::init();
 
     Server server;
+    server.readCertificate(pkeyPath, certPath);
     server.start(protocolType, listenAddress, port);
 
 }
