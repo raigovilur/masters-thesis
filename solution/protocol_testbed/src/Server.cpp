@@ -134,6 +134,8 @@ bool Server::consume(std::string client, unsigned char *bytes, size_t packetLeng
             for( int i(0) ; i < SHA256_DIGEST_LENGTH; ++i )
                 receivedHashHexStrStream << std::setw(2) << std::setfill('0') << (int)clientChecksum[i];
             std::cerr << "Checksums differ! Received checksum: " << receivedHashHexStrStream.str() << " calculated: "  << hashHexStrStream.str() << std::endl;
+        } else {
+            std::cout << "Checksums match." << std::endl;
         }
 
         _clientHeaders.erase(_clientHeaders.find(client));
