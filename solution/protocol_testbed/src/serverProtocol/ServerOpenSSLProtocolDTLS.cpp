@@ -2,12 +2,13 @@
 #include <openssl/bio.h>
 #include <openssl/ssl.h>
 #include <openssl/err.h>
-#include <assuan.h>
+//#include <assuan.h>
 #include <evdns.h>
-#include <armadillo>
+//#include <armadillo>
 #include <folly/ssl/OpenSSLCertUtils.h>
 #include <arpa/inet.h>
 #include <netinet/ip.h>
+#include <iostream>
 
 #include "../dtlsCookieVault/ck_secrets_vault.h"
 #include "ServerOpenSSLProtocolDTLS.h"

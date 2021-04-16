@@ -4,8 +4,9 @@
 #include <cstring>
 #include <openssl/sha.h>
 #include <vector>
-#include <filesystem>
+//#include <experimental/filesystem>
 #include <appProto/utils.h>
+#include <iomanip>
 
 #include "appProto/FileSendHeader.h"
 #include "protocol/ProtocolFactory.h"
@@ -84,7 +85,13 @@ void Client::send(const std::string& path, size_t bufferSize, uint retryCount) {
     writeToByteArray(header.get(), ISE_FILE_SIZE_OFFSET, convertToCharArray(_fileSize, ISE_FILE_SIZE));
 
     // File Name
-    std::string fileName = std::filesystem::path(path).filename();
+    //std::string fileName = std::filesystem::path(path).filename();
+    std::string fileName = path;
+    const size_t last_slash_idx = fileName.find_last_of("\\/");
+    if (std::string::npos != last_slash_idx)
+    {
+        fileName.erase(0, last_slash_idx + 1);
+    } 
     writeToByteArray(header.get(), ISE_FILE_NAME_OFFSET, std::vector<char>(fileName.begin(), fileName.end()));
 
     delete[] hash;
