@@ -12,7 +12,7 @@ int main(int argc, char *argv[]) {
     Protocol::ProtocolType protocolType;
     std::string dest;
     unsigned port;
-    unsigned bufferSize;
+    unsigned bufferSize = 1024;
     std::string filePath;
 
     try {
@@ -66,10 +66,10 @@ int main(int argc, char *argv[]) {
             port = 80;
         }
 
-        if (vm.count("bufferSize")) {
-            port = vm["bufferSize"].as<unsigned>();
+        if (vm.count("buffer-size")) {
+            bufferSize = vm["buffer-size"].as<unsigned>();
         } else {
-            std::cout << "BufferSize was not set, defaulting to 1024" << std::endl;
+            std::cout << "buffer-size was not set, defaulting to 1024" << std::endl;
             bufferSize = 1024;
         }
 

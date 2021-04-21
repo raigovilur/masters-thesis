@@ -75,7 +75,7 @@ int generateCookie(SSL *ssl, unsigned char *cookie, unsigned int *cookie_len) {
     length += sizeof(in_port_t);
     buffer = (unsigned char*) OPENSSL_malloc(length);
 
-    if (buffer == NULL)
+    if (buffer == nullptr)
     {
         printf("out of memory\n");
         return 0;
