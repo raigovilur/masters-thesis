@@ -118,7 +118,7 @@ void Client::send(const std::string& path, size_t bufferSize, uint retryCount) {
 
     std::cout << "Sending file: 0%" << std::endl;
     double oneBufferPercentage = 1.0/(buffersNeeded) * 100;
-    int buffersNeededForOnePercent = 1 / (int) oneBufferPercentage;
+    int buffersNeededForOnePercent = (int) (1.0 / oneBufferPercentage);
     if (buffersNeededForOnePercent <= 0) {
         buffersNeededForOnePercent = 1;
     }
