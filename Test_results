@@ -1,1 +1,2 @@
 1. TLS cold_weather_rosbag.bag (stopped) 16455209216 bytes over 4354.65 seconds. Speed ~3 779 331 bytes per second = 30.2mb/s (megabits per second) (server screen had debug output on)
+2. TLS 2021-04-16-10-45-50.bag (stopped) 5041579216 bytes over 4242.52 seconds via 5G indoors. Speed c.a 1 188 345,42 bytes per second = ~9.5 megabits per second
