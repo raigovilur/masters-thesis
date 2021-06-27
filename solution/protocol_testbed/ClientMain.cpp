@@ -12,6 +12,7 @@ int main(int argc, char *argv[]) {
     Protocol::ProtocolType protocolType;
     std::string dest;
     unsigned port;
+    unsigned stport;
     unsigned bufferSize = 1024;
     std::string filePath;
 
@@ -22,12 +23,13 @@ int main(int argc, char *argv[]) {
                 ("protocol", po::value<std::string>(), "Set protocol")
                 ("address", po::value<std::string>(), "Set destination address")
                 ("port", po::value<unsigned>(), "Set destination port")
+                ("stport", po::value<unsigned>(), "Set speed test port")
                 ("buffer-size", po::value<unsigned>(), "Set file reading buffer size")
                 ("file", po::value<std::string>(), "Set path to file for transfer")
                 ;
 
         po::variables_map vm;
-        po::store(po::parse_command_line(argc, argv, desc), vm);
+        po::store(po::command_line_parser(argc, argv).options(desc).allow_unregistered().run(), vm);
         po::notify(vm);
 
         if (vm.count("help")) {
@@ -66,6 +68,13 @@ int main(int argc, char *argv[]) {
             port = 80;
         }
 
+        if (vm.count("stport")) {
+            stport = vm["stport"].as<unsigned>();
+        } else {
+            std::cout << "stport was not set, defaulting to " << port + 1 << "(port + 1)" << std::endl;
+            stport = port + 1;
+        }
+
         if (vm.count("buffer-size")) {
             bufferSize = vm["buffer-size"].as<unsigned>();
         } else {
@@ -91,8 +100,9 @@ int main(int argc, char *argv[]) {
 
     Client client(protocolType, dest, port);
 
+    client.runSpeedTest(stport);
     client.send(filePath, bufferSize, 5);
-    //client.send("/home/raigo/repos/masters-thesis/solution/protocol_testbed/src/protocol/OpenSSLProtocolDTLS.cpp", 1024, 5);
+    client.runSpeedTest(stport);
 
     client.printStatistics();
 

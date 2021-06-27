@@ -175,6 +175,7 @@ public:
 //        quicClient_->closeTransport();
 //        quicClient_->detachEventBase();
 //        quicClient_->closeGracefully();
+        return true;
     }
 
     bool isConnected() const {
@@ -191,7 +192,7 @@ private:
         }
 
         evb->runInEventBaseThreadAndWait([&] {
-            std::cout << std::string(data.data(), data.data() + data.length());
+            //std::cout << std::string(data.data(), data.data() + data.length());
             auto res = quicClient_->writeChain(id, data.clone(), eof);
             if (res.hasError()) {
                 LOG(ERROR) << "MvFstConnector writeChain error=" << res.error();

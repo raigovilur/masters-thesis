@@ -2,15 +2,14 @@
 #include <openssl/bio.h>
 #include <openssl/ssl.h>
 #include <openssl/err.h>
-//#include <assuan.h>
 #include <evdns.h>
-//#include <armadillo>
 #include <folly/ssl/OpenSSLCertUtils.h>
 #include <arpa/inet.h>
 #include <netinet/ip.h>
 #include <iostream>
 
 #include "../dtlsCookieVault/ck_secrets_vault.h"
+#include "../appProto/utils.h"
 #include "ServerOpenSSLProtocolDTLS.h"
 
 #define COOKIE_SECRET_LENGTH 16
@@ -43,10 +42,6 @@ namespace {
         CHECK(x509);
         return x509;
     }
-}
-
-namespace {
-    bool cookieInitialized = false;
 }
 
 /* Certificate verification. Returns 1 if trusted, else 0 */
@@ -236,8 +231,6 @@ int verifyCookie(SSL *ssl, const unsigned char *cookie, unsigned int cookie_len)
 
         SSL_set_fd(ssl, clientFd);
 
-        //TODO BIO_ctrl(SSL_get_rbio(ssl), BIO_CTRL_DGRAM_SET_RECV_TIMEOUT, 0, &timeout);
-
 
         serviceConnection(clientFd, &clientAddr.s4, ssl);
     }
@@ -263,20 +256,37 @@ ServerProto::ServerOpenSSLProtocolDTLS::~ServerOpenSSLProtocolDTLS() {
 }
 
 bool ServerProto::ServerOpenSSLProtocolDTLS::serviceConnection(int clientFd, const sockaddr_in* addr, SSL* ssl) {
-    //BIO *clientBio = SSL_get_rbio(ssl);
-    //BIO_set_fd(clientBio, clientFd, BIO_NOCLOSE);
-    //BIO_ctrl(clientBio, BIO_CTRL_DGRAM_SET_CONNECTED, 0, &addr);
     SSL_accept(ssl);
 
-    unsigned char buf[1024] = {0};
-    int sd = 0, bytes = 0;
+    unsigned char buf[100000] = {0};
+    int sd = 0, readBytes = 0;
     if (SSL_accept(ssl) <= 0)     /* do SSL-protocol accept */
         ERR_print_errors_fp(stderr);
     else {
         while (!(SSL_get_shutdown(ssl) & SSL_RECEIVED_SHUTDOWN)) {
-            bytes = SSL_read(ssl, buf, sizeof(buf)); /* get request */
-            if ( bytes > 0 ) {
-                _callback->consume(std::string(inet_ntoa(addr->sin_addr)), buf, bytes);
+            unsigned char packetSizeBuf[2] = {0};
+            readBytes = SSL_peek(ssl, packetSizeBuf, sizeof(packetSizeBuf));
+            if (readBytes > 0) {
+                auto packetSize = Utils::convertToUnsignedTemplated<ushort>(packetSizeBuf, 0, 2);
+                readBytes = SSL_read(ssl, buf, packetSize);
+                if (readBytes > 0 ) {
+                    if (readBytes > 6) {
+                        auto seqNo = Utils::convertToUnsignedTemplated<ushort>(buf, 2, 4);
+                        //std::cout << "Received seq: " << seqNo << std::endl;
+
+                        if (readBytes >= packetSize) {
+                            char sendPacket[4] = {0};
+                            Utils::writeToByteArray(sendPacket, 0, Utils::convertToCharArray(seqNo, 4));
+
+                            SSL_write(ssl, sendPacket, sizeof(sendPacket));
+                            _callback->consume(std::string(inet_ntoa(addr->sin_addr)), buf + 6, packetSize - 6);
+                        } else {
+                            std::cerr << "Too few bytes received for seq " << seqNo << std::endl;
+                        }
+                    }
+                } else {
+                    ERR_print_errors_fp(stderr);
+                }
             } else {
                 ERR_print_errors_fp(stderr);
             }

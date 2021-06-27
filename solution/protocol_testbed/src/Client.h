@@ -12,7 +12,8 @@ public:
     ~Client();
 
     void send(const std::string& path, size_t bufferSize, uint retryCount);
-    void printStatistics();
+    void printStatistics() const;
+    void runSpeedTest(uint port) const;
 
 private:
     bool sendWithRetries(const char* buffer, size_t bufferSize, uint retryCount, Protocol::ProtocolPtr& protocol, bool eof);
@@ -25,6 +26,7 @@ private:
     std::chrono::duration<double> _elapsedHashSeconds{};
     std::streampos _fileSize = 0;
     uint _connectionDrops = 0;
+
 };
 
 

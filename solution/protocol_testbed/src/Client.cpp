@@ -11,28 +11,6 @@
 #include "appProto/FileSendHeader.h"
 #include "protocol/ProtocolFactory.h"
 
-namespace {
-
-
-    void writeToByteArray(char* array, size_t offset, const std::vector<char>& whatToWrite) {
-        for (size_t i = 0; i < whatToWrite.size(); ++i) {
-            array[offset + i] = whatToWrite[i];
-        }
-    }
-
-    std::vector<char> convertToCharArray(size_t value, ushort charArraySize) {
-        std::vector<char> output;
-        output.resize(charArraySize);
-
-        for (int i = charArraySize - 1; i >= 0; --i) {
-            output[i] = value & 0xFF;
-            value = value >> 8;
-        }
-
-        return output;
-    }
-}
-
 Client::Client(Protocol::ProtocolType type, std::string address, uint port)
     : _type(type)
     , _address(std::move(address))
@@ -41,6 +19,17 @@ Client::Client(Protocol::ProtocolType type, std::string address, uint port)
 }
 
 Client::~Client() { }
+
+void Client::runSpeedTest(uint port) const {
+    std::cout << "Running speed test (iperf)" << std::endl;
+    std::string transportType = "";
+    if (_type != Protocol::OpenSSL_TLS) {
+        transportType = "-u";
+    }
+    std::string command = "iperf -c " + _address + " -p " + std::to_string(port) + " " + transportType;
+
+    system(command.c_str());
+}
 
 
 void Client::send(const std::string& path, size_t bufferSize, uint retryCount) {
@@ -76,13 +65,13 @@ void Client::send(const std::string& path, size_t bufferSize, uint retryCount) {
 
     // Composing header
     // Protocol ID is 0
-    writeToByteArray(header.get(), ISE_PROTOCOL_OFFSET, {0x00, 0x00});
+    Utils::writeToByteArray(header.get(), ISE_PROTOCOL_OFFSET, {0x00, 0x00});
     // Version is 0
-    writeToByteArray(header.get(), ISE_PROTOCOL_VERSION_OFFSET, {0x00, 0x00});
+    Utils::writeToByteArray(header.get(), ISE_PROTOCOL_VERSION_OFFSET, {0x00, 0x00});
     // SHA-256 file checksum
-    writeToByteArray(header.get(), ISE_CHECKSUM_OFFSET, std::vector<char>(hash, hash + SHA256_DIGEST_LENGTH));
+    Utils::writeToByteArray(header.get(), ISE_CHECKSUM_OFFSET, std::vector<char>(hash, hash + SHA256_DIGEST_LENGTH));
     // File size
-    writeToByteArray(header.get(), ISE_FILE_SIZE_OFFSET, convertToCharArray(_fileSize, ISE_FILE_SIZE));
+    Utils::writeToByteArray(header.get(), ISE_FILE_SIZE_OFFSET, Utils::convertToCharArray(_fileSize, ISE_FILE_SIZE));
 
     // File Name
     //std::string fileName = std::filesystem::path(path).filename();
@@ -91,8 +80,8 @@ void Client::send(const std::string& path, size_t bufferSize, uint retryCount) {
     if (std::string::npos != last_slash_idx)
     {
         fileName.erase(0, last_slash_idx + 1);
-    } 
-    writeToByteArray(header.get(), ISE_FILE_NAME_OFFSET, std::vector<char>(fileName.begin(), fileName.end()));
+    }
+    Utils::writeToByteArray(header.get(), ISE_FILE_NAME_OFFSET, std::vector<char>(fileName.begin(), fileName.end()));
 
     delete[] hash;
 
@@ -116,18 +105,26 @@ void Client::send(const std::string& path, size_t bufferSize, uint retryCount) {
         return;
     }
 
-    std::cout << "Sending file: 0%" << std::endl;
+    std::cout << "Sending file" << std::endl;
     double oneBufferPercentage = 1.0/(buffersNeeded) * 100;
     int buffersNeededForOnePercent = (int) (1.0 / oneBufferPercentage);
     if (buffersNeededForOnePercent <= 0) {
         buffersNeededForOnePercent = 1;
     }
 
+    auto intermediateTimeStamp = std::chrono::system_clock::now();
+
     // Sending full buffer amounts
     for (uint i = 0; i < buffersNeeded; ++i) {
         fileStream.read(buffer.get(), bufferSize);
         if ((i + 1) % buffersNeededForOnePercent == 0) {
             std::cout << "Sending file: " << (int)((i + 1) * oneBufferPercentage) << "%" << std::endl;
+            uint elapsedSeconds = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now() - intermediateTimeStamp).count();
+            uint bytesSent = buffersNeededForOnePercent * bufferSize;
+            std::cout << "    Sent " << bytesSent << " bytes over "
+                <<  elapsedSeconds/1000.0 << " seconds." << std::endl;
+            std::cout << "    Speed is " << ((double) bytesSent) / elapsedSeconds / 1000 * 8 << " mb/s." << std::endl;
+            intermediateTimeStamp = std::chrono::system_clock::now();
         }
         if (!sendWithRetries(buffer.get(), bufferSize, retryCount, protocol,
                              i == buffersNeeded - 1 && lastPacketSize == 0)) {
@@ -158,7 +155,6 @@ bool Client::sendWithRetries(const char *buffer, size_t bufferSize, uint retryCo
             if (retry < retryCount - 1)
             {
                 std::cout << "Connection dropped, retrying: (" << retry + 1 << ")"  << std::endl;
-                // TODO Should have a wait time here for connection drop
                 protocol->closeProtocol();
                 protocol->openProtocol(_address, _port);
                 ++_connectionDrops;
@@ -168,10 +164,11 @@ bool Client::sendWithRetries(const char *buffer, size_t bufferSize, uint retryCo
     return false;
 }
 
-void Client::printStatistics() {
+void Client::printStatistics() const {
     std::cout << "Statistics:" << std::endl;
     std::cout << "Sent " << _fileSize << " bytes" << std::endl;
-    std::cout << " over " << _elapsedSeconds.count() << " seconds " << std::endl;
+    std::cout << "    over " << _elapsedSeconds.count() << " seconds " << std::endl;
+    std::cout << "    Average file transfer speed was " << (_fileSize / _elapsedSeconds.count()) / 1000.0 / 1000 * 8 << " mbit/s" << std::endl;
     std::cout << "Connection dropped " << _connectionDrops << " times " << std::endl;
     std::cout << "Hashing took " << _elapsedHashSeconds.count() << " seconds " << std::endl;
 }

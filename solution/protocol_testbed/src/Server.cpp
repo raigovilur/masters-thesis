@@ -9,17 +9,6 @@
 #include "appProto/FileSendHeader.h"
 #include "appProto/utils.h"
 
-namespace {
-    uint64_t convertToUint64_t(const std::vector<unsigned char>& data, size_t dataStart, int byteLength) {
-        uint64_t output = 0;
-        for (int i = 0; i < byteLength; ++i) {
-            output = output << 8;
-            output = output | data[dataStart + i];
-        }
-        return output;
-    }
-}
-
 bool Server::processDataStream(ClientData& client, unsigned char *bytes, size_t processStart, size_t packetLength) {
     if (client.outputStream == nullptr)
     {
@@ -50,7 +39,7 @@ bool Server::processDataStream(ClientData& client, unsigned char *bytes, size_t 
 
 bool Server::consume(std::string client, unsigned char *bytes, size_t packetLength) {
     // This is just for debugging
-    std::cout << std::string((char*) bytes, packetLength) << std::endl;
+    //std::cout << std::string((char*) bytes, packetLength) << std::endl;
 
     // FIRST BYTES are header
     size_t numberOfBytesProcessed = 0; // Amount we have consumed already from the packet
@@ -172,7 +161,7 @@ bool Server::processHeader(Server::ClientData& data) {
     std::string name(header.begin() + ISE_FILE_NAME_OFFSET, header.begin() + ISE_FILE_NAME_OFFSET + ISE_FILE_NAME_SIZE);
     data.fileName = name;
 
-    data.fileSize = convertToUint64_t(header, ISE_FILE_SIZE_OFFSET, ISE_FILE_SIZE);
+    data.fileSize = Utils::convertToUint64_t(header, ISE_FILE_SIZE_OFFSET, ISE_FILE_SIZE);
     std::cout << "Expected file size: " << data.fileSize << std::endl;
 
     data.headerProcessed = true;

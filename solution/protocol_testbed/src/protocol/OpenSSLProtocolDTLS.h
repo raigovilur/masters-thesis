@@ -3,6 +3,8 @@
 
 #include "ProtocolInterface.h"
 #include <openssl/ossl_typ.h>
+#include <map>
+#include <vector>
 
 namespace Protocol {
 
@@ -15,11 +17,14 @@ namespace Protocol {
         ~OpenSSLProtocolDTLS();
 
     private:
+        static uint getNextSequence();
+
         bool cleanUp();
 
     private:
         bool _initialized = false;
         bool _socketInitialized = false;
+        std::map<unsigned short, std::vector<ushort>> _waitingAck;
 
         SSL* _ssl = nullptr;
         int _socket = 0;

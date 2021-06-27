@@ -2,9 +2,11 @@
 #define PROTOCOL_TESTBED_UTILS_H
 
 #include <openssl/sha.h>
+#include <fstream>
+#include <string>
 
 namespace Utils {
-    bool compareBytes(const std::vector<unsigned char>& vector, size_t from, size_t rangeLength, const std::vector<unsigned char>& target) {
+    inline bool compareBytes(const std::vector<unsigned char>& vector, size_t from, size_t rangeLength, const std::vector<unsigned char>& target) {
 
         for (size_t i = 0; i < rangeLength; ++i) {
             if (vector.at(from + i) != target[i]) {
@@ -14,7 +16,7 @@ namespace Utils {
         return true;
     }
 
-    bool calculateSha256(const std::string& path, unsigned char* hash)
+    inline bool calculateSha256(const std::string& path, unsigned char* hash)
     {
         std::ifstream fp(path, std::ios::binary);
 
@@ -38,6 +40,53 @@ namespace Utils {
         fp.close();
 
         return true;
+    }
+
+    inline void writeToByteArray(char* array, size_t offset, const std::vector<char>& whatToWrite) {
+        for (size_t i = 0; i < whatToWrite.size(); ++i) {
+            array[offset + i] = whatToWrite[i];
+        }
+    }
+
+    inline std::vector<char> convertToCharArray(size_t value, ushort charArraySize) {
+        std::vector<char> output;
+        output.resize(charArraySize);
+
+        for (int i = charArraySize - 1; i >= 0; --i) {
+            output[i] = value & 0xFF;
+            value = value >> 8;
+        }
+
+        return output;
+    }
+
+    template<typename T>
+    inline T convertToUnsignedTemplated(const std::vector<unsigned char>& data, size_t dataStart, int byteLength) {
+        T output = 0;
+        for (int i = 0; i < byteLength; ++i) {
+            output = output << 8;
+            output = output | data[dataStart + i];
+        }
+        return output;
+    }
+
+    template<typename T>
+    inline T convertToUnsignedTemplated(const unsigned char* data, size_t dataStart, int byteLength) {
+        T output = 0;
+        for (int i = 0; i < byteLength; ++i) {
+            output = output << 8;
+            output = output | data[dataStart + i];
+        }
+        return output;
+    }
+
+    inline uint64_t convertToUint64_t(const std::vector<unsigned char>& data, size_t dataStart, int byteLength) {
+        uint64_t output = 0;
+        for (int i = 0; i < byteLength; ++i) {
+            output = output << 8;
+            output = output | data[dataStart + i];
+        }
+        return output;
     }
 }
 
