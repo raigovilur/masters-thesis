@@ -65,6 +65,7 @@ bool Protocol::OpenSSLProtocolDTLS::openProtocol(std::string address, uint port)
         return false;
     }
     SSL_CTX_set_options(ctx, SSL_OP_NO_DTLSv1); // We are only interested in DTLS 1.2
+    SSL_CTX_set_ciphersuites(ctx, "TLS_CHACHA20_POLY1305_SHA256");
     _ssl = SSL_new(ctx);
 
 

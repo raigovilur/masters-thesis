@@ -40,6 +40,7 @@ bool Protocol::OpenSSLProtocolTLS::openProtocol(std::string address, uint port) 
     const SSL_METHOD *meth = TLS_client_method();
     SSL_CTX *ctx = SSL_CTX_new(meth);
     SSL_CTX_set_options(ctx, SSL_OP_NO_TLSv1_1 | SSL_OP_NO_TLSv1_2); // We are only interested in TLS1.3
+    SSL_CTX_set_ciphersuites(ctx, "TLS_CHACHA20_POLY1305_SHA256");
     _ssl = SSL_new(ctx);
     if (!_ssl) {
         printf("Error creating SSL.\n");

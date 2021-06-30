@@ -9,6 +9,7 @@
 
 #include <folly/fibers/Baton.h>
 #include <folly/io/async/ScopedEventBaseThread.h>
+#include <fizz/client/FizzClientContext.h>
 
 #include <quic/api/QuicSocket.h>
 #include <quic/client/QuicClientTransport.h>
@@ -133,13 +134,15 @@ public:
 
         evb->runInEventBaseThreadAndWait([&] {
             auto sock = std::make_unique<folly::AsyncUDPSocket>(evb);
-            auto fizzClientContext =
+            auto fizzClientContext = std::make_shared<fizz::client::FizzClientContext>();
+            fizzClientContext->setSupportedCiphers({fizz::CipherSuite::TLS_CHACHA20_POLY1305_SHA256});
+            auto fizzClientQuicHandshakeContext =
                     FizzClientQuicHandshakeContext::Builder()
                             .setCertificateVerifier(std::make_shared<ClientsideCertificateVerifier>())
+                            .setFizzClientContext(fizzClientContext)
                             .build();
             quicClient_ = std::make_shared<quic::QuicClientTransport>(
-                    evb, std::move(sock), std::move(fizzClientContext));
-            //quicClient_->setHostname("print_out.com");
+                    evb, std::move(sock), std::move(fizzClientQuicHandshakeContext));
             quicClient_->addNewPeerAddress(addr);
 
             TransportSettings settings;
