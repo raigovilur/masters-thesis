@@ -21,7 +21,7 @@ Client::Client(Protocol::ProtocolType type, std::string address, uint port)
 Client::~Client() { }
 
 void Client::runSpeedTest(uint port) const {
-    std::cout << "Running speed test (iperf)" << std::endl;
+    std::cout << "Running speed test (iperf):" << std::endl;
     std::string transportType = "";
     if (_type != Protocol::OpenSSL_TLS) {
         transportType = "-u";
@@ -95,6 +95,8 @@ void Client::send(const std::string& path, size_t bufferSize, uint retryCount) {
         protocol->closeProtocol();
         return;
     }
+    std::cout << "Connection established. Time taken: "
+    << std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now() - startTime).count() << " milliseconds" << std::endl;
     std::cout << "Sending header" << std::endl;
     // Sending header
     if (!sendWithRetries(header.get(), ISE_HEADER_SIZE, retryCount, protocol,
