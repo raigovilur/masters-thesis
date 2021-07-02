@@ -1,3 +1,344 @@
 1. TLS cold_weather_rosbag.bag (stopped) 16455209216 bytes over 4354.65 seconds. Speed ~3 779 331 bytes per second = 30.2mb/s (megabits per second) (server screen had debug output on)
 2. TLS 2021-04-16-10-45-50.bag (stopped) 5041579216 bytes over 4242.52 seconds via 5G indoors. Speed c.a 1 188 345,42 bytes per second = ~9.5 megabits per second
 3. TLS 22.06.2021 heavy_snow.bag 8943173390 bytes over 1641.67 ~43.6mb/s
+
+02.07.21
+iseauto@iseauto-X399:~/Desktop$ ./protocol_testbed_client --protocol TLS --address 193.40.245.62 --port 8101 --buffer-size 10000 --file ~/Desktop/heavy-snow.bag --stport 8102
+Running speed test (iperf):
+------------------------------------------------------------
+Client connecting to 193.40.245.62, TCP port 8102
+TCP window size: 85.0 KByte (default)
+------------------------------------------------------------
+[  3] local 192.168.8.54 port 37454 connected with 193.40.245.62 port 8102
+[ ID] Interval       Transfer     Bandwidth
+[  3]  0.0-10.2 sec  35.9 MBytes  29.4 Mbits/sec
+Calculating checksum ...
+Checksum calculated: fffffff6ffffffb4ffffffd22e73ffffffb9fffffffefffffff2fffffff973ffffffaa74ffffffeb6bfffffff908ffffffc93dffffffb964ffffffc575ffffffff23ffffff99ffffffd4fffffff61272144b26
+Connection established. Time taken: 75 milliseconds
+Sending header
+Sending file
+Sending file: 0%
+    Sent 89430000 bytes over 26.884 seconds.
+    Speed is 26.6121 mb/s.
+Sending file: 1%
+    Sent 89430000 bytes over 24.724 seconds.
+    Speed is 28.9371 mb/s.
+Sending file: 2%
+    Sent 89430000 bytes over 27.736 seconds.
+    Speed is 25.7946 mb/s.
+Sending file: 3%
+    Sent 89430000 bytes over 25.335 seconds.
+    Speed is 28.2392 mb/s.
+Sending file: 4%
+    Sent 89430000 bytes over 26.125 seconds.
+    Speed is 27.3853 mb/s.
+Sending file: 5%
+    Sent 89430000 bytes over 26.758 seconds.
+    Speed is 26.7374 mb/s.
+Sending file: 6%
+    Sent 89430000 bytes over 27.79 seconds.
+    Speed is 25.7445 mb/s.
+Sending file: 7%
+    Sent 89430000 bytes over 23.686 seconds.
+    Speed is 30.2052 mb/s.
+Sending file: 8%
+    Sent 89430000 bytes over 25.088 seconds.
+    Speed is 28.5172 mb/s.
+Sending file: 9%
+    Sent 89430000 bytes over 26.014 seconds.
+    Speed is 27.5021 mb/s.
+Sending file: 10%
+    Sent 89430000 bytes over 24.363 seconds.
+    Speed is 29.3658 mb/s.
+Sending file: 11%
+    Sent 89430000 bytes over 23.979 seconds.
+    Speed is 29.8361 mb/s.
+Sending file: 12%
+    Sent 89430000 bytes over 24.572 seconds.
+    Speed is 29.1161 mb/s.
+Sending file: 13%
+    Sent 89430000 bytes over 23.251 seconds.
+    Speed is 30.7703 mb/s.
+Sending file: 14%
+    Sent 89430000 bytes over 24.251 seconds.
+    Speed is 29.5015 mb/s.
+Sending file: 15%
+    Sent 89430000 bytes over 24.268 seconds.
+    Speed is 29.4808 mb/s.
+Sending file: 16%
+    Sent 89430000 bytes over 24.538 seconds.
+    Speed is 29.1564 mb/s.
+Sending file: 17%
+    Sent 89430000 bytes over 26.201 seconds.
+    Speed is 27.3058 mb/s.
+Sending file: 18%
+    Sent 89430000 bytes over 29.053 seconds.
+    Speed is 24.6253 mb/s.
+Sending file: 19%
+    Sent 89430000 bytes over 24.871 seconds.
+    Speed is 28.766 mb/s.
+Sending file: 20%
+    Sent 89430000 bytes over 27.839 seconds.
+    Speed is 25.6992 mb/s.
+Sending file: 21%
+    Sent 89430000 bytes over 24.992 seconds.
+    Speed is 28.6268 mb/s.
+Sending file: 22%
+    Sent 89430000 bytes over 22.579 seconds.
+    Speed is 31.6861 mb/s.
+Sending file: 23%
+    Sent 89430000 bytes over 25.767 seconds.
+    Speed is 27.7657 mb/s.
+Sending file: 24%
+    Sent 89430000 bytes over 25.656 seconds.
+    Speed is 27.8859 mb/s.
+Sending file: 25%
+    Sent 89430000 bytes over 26.222 seconds.
+    Speed is 27.284 mb/s.
+Sending file: 26%
+    Sent 89430000 bytes over 25.642 seconds.
+    Speed is 27.9011 mb/s.
+Sending file: 27%
+    Sent 89430000 bytes over 25.352 seconds.
+    Speed is 28.2203 mb/s.
+Sending file: 28%
+    Sent 89430000 bytes over 27.452 seconds.
+    Speed is 26.0615 mb/s.
+Sending file: 29%
+    Sent 89430000 bytes over 26.952 seconds.
+    Speed is 26.545 mb/s.
+Sending file: 30%
+    Sent 89430000 bytes over 26.674 seconds.
+    Speed is 26.8216 mb/s.
+Sending file: 31%
+    Sent 89430000 bytes over 27.636 seconds.
+    Speed is 25.888 mb/s.
+Sending file: 32%
+    Sent 89430000 bytes over 26.228 seconds.
+    Speed is 27.2777 mb/s.
+Sending file: 33%
+    Sent 89430000 bytes over 25.889 seconds.
+    Speed is 27.6349 mb/s.
+Sending file: 34%
+    Sent 89430000 bytes over 25.261 seconds.
+    Speed is 28.3219 mb/s.
+Sending file: 35%
+    Sent 89430000 bytes over 22.988 seconds.
+    Speed is 31.1223 mb/s.
+Sending file: 36%
+    Sent 89430000 bytes over 23.919 seconds.
+    Speed is 29.9109 mb/s.
+Sending file: 37%
+    Sent 89430000 bytes over 23.76 seconds.
+    Speed is 30.1111 mb/s.
+Sending file: 38%
+    Sent 89430000 bytes over 25.178 seconds.
+    Speed is 28.4153 mb/s.
+Sending file: 39%
+    Sent 89430000 bytes over 24.142 seconds.
+    Speed is 29.6347 mb/s.
+Sending file: 40%
+    Sent 89430000 bytes over 24.597 seconds.
+    Speed is 29.0865 mb/s.
+Sending file: 41%
+    Sent 89430000 bytes over 24.497 seconds.
+    Speed is 29.2052 mb/s.
+Sending file: 42%
+    Sent 89430000 bytes over 23.74 seconds.
+    Speed is 30.1365 mb/s.
+Sending file: 43%
+    Sent 89430000 bytes over 21.726 seconds.
+    Speed is 32.9301 mb/s.
+Sending file: 44%
+    Sent 89430000 bytes over 24.391 seconds.
+    Speed is 29.3321 mb/s.
+Sending file: 45%
+    Sent 89430000 bytes over 24.184 seconds.
+    Speed is 29.5832 mb/s.
+Sending file: 46%
+    Sent 89430000 bytes over 25.928 seconds.
+    Speed is 27.5933 mb/s.
+Sending file: 47%
+    Sent 89430000 bytes over 26.531 seconds.
+    Speed is 26.9662 mb/s.
+Sending file: 48%
+    Sent 89430000 bytes over 27.111 seconds.
+    Speed is 26.3893 mb/s.
+Sending file: 49%
+    Sent 89430000 bytes over 25.657 seconds.
+    Speed is 27.8848 mb/s.
+Sending file: 50%
+    Sent 89430000 bytes over 24.705 seconds.
+    Speed is 28.9593 mb/s.
+Sending file: 51%
+    Sent 89430000 bytes over 22.796 seconds.
+    Speed is 31.3845 mb/s.
+Sending file: 52%
+    Sent 89430000 bytes over 26.747 seconds.
+    Speed is 26.7484 mb/s.
+Sending file: 53%
+    Sent 89430000 bytes over 26.845 seconds.
+    Speed is 26.6508 mb/s.
+Sending file: 54%
+    Sent 89430000 bytes over 25.852 seconds.
+    Speed is 27.6745 mb/s.
+Sending file: 55%
+    Sent 89430000 bytes over 24.762 seconds.
+    Speed is 28.8927 mb/s.
+Sending file: 56%
+    Sent 89430000 bytes over 23.381 seconds.
+    Speed is 30.5992 mb/s.
+Sending file: 57%
+    Sent 89430000 bytes over 24.345 seconds.
+    Speed is 29.3876 mb/s.
+Sending file: 58%
+    Sent 89430000 bytes over 23.618 seconds.
+    Speed is 30.2922 mb/s.
+Sending file: 59%
+    Sent 89430000 bytes over 24.093 seconds.
+    Speed is 29.6949 mb/s.
+Sending file: 60%
+    Sent 89430000 bytes over 23.354 seconds.
+    Speed is 30.6346 mb/s.
+Sending file: 61%
+    Sent 89430000 bytes over 24.573 seconds.
+    Speed is 29.1149 mb/s.
+Sending file: 62%
+    Sent 89430000 bytes over 26.759 seconds.
+    Speed is 26.7364 mb/s.
+Sending file: 63%
+    Sent 89430000 bytes over 26.117 seconds.
+    Speed is 27.3937 mb/s.
+Sending file: 64%
+    Sent 89430000 bytes over 25.587 seconds.
+    Speed is 27.9611 mb/s.
+Sending file: 65%
+    Sent 89430000 bytes over 25.199 seconds.
+    Speed is 28.3916 mb/s.
+Sending file: 66%
+    Sent 89430000 bytes over 23.127 seconds.
+    Speed is 30.9353 mb/s.
+Sending file: 67%
+    Sent 89430000 bytes over 24.54 seconds.
+    Speed is 29.154 mb/s.
+Sending file: 68%
+    Sent 89430000 bytes over 25.419 seconds.
+    Speed is 28.1459 mb/s.
+Sending file: 69%
+    Sent 89430000 bytes over 24.057 seconds.
+    Speed is 29.7394 mb/s.
+Sending file: 70%
+    Sent 89430000 bytes over 23.305 seconds.
+    Speed is 30.699 mb/s.
+Sending file: 71%
+    Sent 89430000 bytes over 23.095 seconds.
+    Speed is 30.9781 mb/s.
+Sending file: 72%
+    Sent 89430000 bytes over 24.418 seconds.
+    Speed is 29.2997 mb/s.
+Sending file: 73%
+    Sent 89430000 bytes over 23.83 seconds.
+    Speed is 30.0227 mb/s.
+Sending file: 74%
+    Sent 89430000 bytes over 24.63 seconds.
+    Speed is 29.0475 mb/s.
+Sending file: 75%
+    Sent 89430000 bytes over 24.375 seconds.
+    Speed is 29.3514 mb/s.
+Sending file: 76%
+    Sent 89430000 bytes over 25.218 seconds.
+    Speed is 28.3702 mb/s.
+Sending file: 77%
+    Sent 89430000 bytes over 25.057 seconds.
+    Speed is 28.5525 mb/s.
+Sending file: 78%
+    Sent 89430000 bytes over 25.966 seconds.
+    Speed is 27.553 mb/s.
+Sending file: 79%
+    Sent 89430000 bytes over 24.348 seconds.
+    Speed is 29.3839 mb/s.
+Sending file: 80%
+    Sent 89430000 bytes over 26.364 seconds.
+    Speed is 27.137 mb/s.
+Sending file: 81%
+    Sent 89430000 bytes over 25.442 seconds.
+    Speed is 28.1204 mb/s.
+Sending file: 82%
+    Sent 89430000 bytes over 25.594 seconds.
+    Speed is 27.9534 mb/s.
+Sending file: 83%
+    Sent 89430000 bytes over 26.106 seconds.
+    Speed is 27.4052 mb/s.
+Sending file: 84%
+    Sent 89430000 bytes over 24.53 seconds.
+    Speed is 29.1659 mb/s.
+Sending file: 85%
+    Sent 89430000 bytes over 25.237 seconds.
+    Speed is 28.3489 mb/s.
+Sending file: 86%
+    Sent 89430000 bytes over 25.64 seconds.
+    Speed is 27.9033 mb/s.
+Sending file: 87%
+    Sent 89430000 bytes over 22.913 seconds.
+    Speed is 31.2242 mb/s.
+Sending file: 88%
+    Sent 89430000 bytes over 23.016 seconds.
+    Speed is 31.0845 mb/s.
+Sending file: 89%
+    Sent 89430000 bytes over 22.6 seconds.
+    Speed is 31.6566 mb/s.
+Sending file: 90%
+    Sent 89430000 bytes over 22.76 seconds.
+    Speed is 31.4341 mb/s.
+Sending file: 91%
+    Sent 89430000 bytes over 22.669 seconds.
+    Speed is 31.5603 mb/s.
+Sending file: 92%
+    Sent 89430000 bytes over 23.478 seconds.
+    Speed is 30.4728 mb/s.
+Sending file: 93%
+    Sent 89430000 bytes over 25.578 seconds.
+    Speed is 27.9709 mb/s.
+Sending file: 94%
+    Sent 89430000 bytes over 24.878 seconds.
+    Speed is 28.7579 mb/s.
+Sending file: 95%
+    Sent 89430000 bytes over 20.166 seconds.
+    Speed is 35.4775 mb/s.
+Sending file: 96%
+    Sent 89430000 bytes over 22.775 seconds.
+    Speed is 31.4134 mb/s.
+Sending file: 97%
+    Sent 89430000 bytes over 23.671 seconds.
+    Speed is 30.2243 mb/s.
+Sending file: 98%
+    Sent 89430000 bytes over 26.129 seconds.
+    Speed is 27.3811 mb/s.
+Sending file: 99%
+    Sent 89430000 bytes over 25.119 seconds.
+    Speed is 28.482 mb/s.
+File sent
+Running speed test (iperf):
+------------------------------------------------------------
+Client connecting to 193.40.245.62, TCP port 8102
+TCP window size: 85.0 KByte (default)
+------------------------------------------------------------
+[  3] local 192.168.8.54 port 37476 connected with 193.40.245.62 port 8102
+[ ID] Interval       Transfer     Bandwidth
+[  3]  0.0-10.0 sec  26.8 MBytes  22.4 Mbits/sec
+Statistics:
+Sent 8943173390 bytes
+    over 2492.89 seconds 
+    Average file transfer speed was 28.6998 mbit/s
+Connection dropped 0 times 
+Hashing took 7.49912 seconds
+
+server@server-desktop:~/Desktop/release/build/thesis-build$ ./protocol_testbed_server --protocol TLS --port 8101 --pkey key.pem --cert cert.pem
+Listen address was not set. Defaulting to 0.0.0.0
+File path was not set. Defaulting to local directory
+Server is starting.
+Connection: 37.157.70.163:54806
+Expected file size: 8943173390
+Calculating checksum ...
+Checksum calculated: fffffff6ffffffb4ffffffd22e73ffffffb9fffffffefffffff2fffffff973ffffffaa74ffffffeb6bfffffff908ffffffc93dffffffb964ffffffc575ffffffff23ffffff99ffffffd4fffffff61272144b26
+Checksums match.
