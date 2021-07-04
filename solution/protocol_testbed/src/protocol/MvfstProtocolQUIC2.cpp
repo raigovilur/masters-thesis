@@ -1,4 +1,4 @@
-#include "MvfstProtocolQUIC.h"
+#include "MvfstProtocolQUIC2.h"
 
 
 #include <iostream>
@@ -24,9 +24,8 @@
 using namespace quic;
 class MvFstConnector : public quic::QuicSocket::ConnectionCallback,
                        public quic::QuicSocket::ReadCallback,
-                       public quic::QuicSocket::WriteCallback,
-                       public quic::QuicSocket::DeliveryCallback
-                       {
+                       public quic::QuicSocket::WriteCallback
+{
 public:
     class ClientsideCertificateVerifier : public fizz::CertificateVerifier {
     public:
@@ -44,85 +43,66 @@ public:
     };
 
     MvFstConnector(std::string  host, uint16_t port)
-            : host_(std::move(host)), port_(port), _networkThread("EchoClientThread"){}
+            : host_(std::move(host)), port_(port), _networkThread("MVFSTConnectorThread"){}
+            
 
-    void readAvailable(quic::StreamId streamId) noexcept override {
-        auto readData = quicClient_->read(streamId, 0);
-        if (readData.hasError()) {
-            LOG(ERROR) << "MvFstConnector failed read from stream=" << streamId
-                       << ", error=" << (uint32_t)readData.error();
-        }
-        auto copy = readData->first->clone();
-        if (recvOffsets_.find(streamId) == recvOffsets_.end()) {
-            recvOffsets_[streamId] = copy->length();
-        } else {
-            recvOffsets_[streamId] += copy->length();
-        }
-        LOG(INFO) << "Client received data=" << copy->moveToFbString().toStdString()
-                  << " on stream=" << streamId;
-    }
+    void readAvailable(quic::StreamId streamId) noexcept override {  }
 
     void readError(
             quic::StreamId streamId,
             std::pair<quic::QuicErrorCode, folly::Optional<folly::StringPiece>>
             error) noexcept override {
-        LOG(ERROR) << "MvFstConnector failed read from stream=" << streamId
+        LOG(ERROR) << "MVFSTConnector failed read from stream=" << streamId
                    << ", error=" << toString(error);
         // A read error only terminates the ingress portion of the stream state.
         // Your application should probably terminate the egress portion via
         // resetStream
-        _connected = false;
     }
 
     void onNewBidirectionalStream(quic::StreamId id) noexcept override {
-        LOG(INFO) << "MvFstConnector: new bidirectional stream=" << id;
+        LOG(INFO) << "MVFSTConnector: new bidirectional stream=" << id;
         quicClient_->setReadCallback(id, this);
     }
 
     void onNewUnidirectionalStream(quic::StreamId id) noexcept override {
-        LOG(INFO) << "MvFstConnector: new unidirectional stream=" << id;
+        LOG(INFO) << "MVFSTConnector: new unidirectional stream=" << id;
         quicClient_->setReadCallback(id, this);
     }
 
     void onStopSending(
             quic::StreamId id,
             quic::ApplicationErrorCode /*error*/) noexcept override {
-        VLOG(10) << "MvFstConnector got StopSending stream id=" << id;
-        _connected = false;
+        VLOG(10) << "MVFSTConnector got StopSending stream id=" << id;
     }
 
     void onConnectionEnd() noexcept override {
-        LOG(INFO) << "MvFstConnector connection end";
-        _connected = false;
+        LOG(INFO) << "MVFSTConnector connection end";
     }
 
     void onConnectionError(
             std::pair<quic::QuicErrorCode, std::string> error) noexcept override {
-        LOG(ERROR) << "MvFstConnector error: " << toString(error.first);
+        LOG(ERROR) << "MVFSTConnector error: " << toString(error.first)
+                   << "; errStr=" << error.second;
         startDone_.post();
-        _connected = false;
     }
 
     void onTransportReady() noexcept override {
         startDone_.post();
-        _connected = true;
     }
 
     void onStreamWriteReady(quic::StreamId id, uint64_t maxToSend) noexcept
     override {
-        LOG(INFO) << "MvFstConnector socket is write ready with maxToSend="
+        LOG(INFO) << "MVFSTConnector socket is write ready with maxToSend="
                   << maxToSend;
-        //sendMessage(id, pendingOutput_[id]);
-
+        sendMessage(id, pendingOutput_, maxToSend);
     }
 
     void onStreamWriteError(
             quic::StreamId id,
             std::pair<quic::QuicErrorCode, folly::Optional<folly::StringPiece>>
             error) noexcept override {
-        LOG(ERROR) << "MvFstConnector write error with stream=" << id
+        LOG(ERROR) << "MVFSTConnector write error with stream=" << id
                    << " error=" << toString(error);
-        _connected = false;
     }
 
     void start() {
@@ -145,10 +125,9 @@ public:
                     std::make_shared<DefaultCongestionControllerFactory>());
 
             TransportSettings settings;
-            settings.idleTimeout = std::chrono::milliseconds(3000);
+            settings.idleTimeout = std::chrono::milliseconds(1000);
             settings.connectUDP = true;
-            settings.defaultCongestionController = quic::CongestionControlType::Copa2;
-            //settings.advertisedInitialUniStreamWindowSize = 20971520;
+            settings.defaultCongestionController = quic::CongestionControlType::BBR;
             quicClient_->setTransportSettings(settings);
 
 //                quicClient_->setTransportStatsCallback(
@@ -170,22 +149,31 @@ public:
         quicClient_->setReadCallback(_streamId, this);
     }
 
-    void onDeliveryAck(StreamId id, uint64_t offset, std::chrono::microseconds rtt) override {
-        if (id != _streamId) {
-            LOG(ERROR) << "Delivery ACK id's don't match: saved: " << _streamId << " got: " << id;
-        }
-        _pendingAck--;
-        std::cout << "Ack callback: " << _pendingAck << " offset: " << offset << std::endl;
-    }
-
-    void onCanceled(StreamId id, uint64_t offset) override {
-
-    }
-
     ~MvFstConnector() override = default;
 
     bool sendMessage(const char* buffer, size_t bufferSize, bool eof) {
-        return sendMessage(_streamId, *folly::IOBuf::copyBuffer(buffer, bufferSize), eof);
+        auto evb = _networkThread.getEventBase();
+        _eof = eof;
+        evb->runInEventBaseThreadAndWait([=] {
+            pendingOutput_.append(folly::IOBuf::copyBuffer(buffer, bufferSize));
+            //sendMessage(_streamId, pendingOutput_, bufferSize);
+            notifySend();
+        });
+
+        return true;
+    }
+
+    void notifySend() {
+        _networkThread.getEventBase()->runInEventBaseThread([&]() {
+            if (!quicClient_) {
+                VLOG(5) << "notifyDataForStream(" << _streamId << "): socket is closed.";
+                return;
+            }
+            auto res = quicClient_->notifyPendingWriteOnStream(_streamId, this);
+            if (res.hasError()) {
+                LOG(FATAL) << quic::toString(res.error());
+            }
+        });
     }
 
     bool closeConnection() {
@@ -200,55 +188,30 @@ public:
     }
 
     bool isAllAcked() {
-        static uint lastCheckedAck = _pendingAck;
-        if (_pendingAck != lastCheckedAck) {
-             //std::cout << "Pending acks: " << _pendingAck << std::endl;
-             lastCheckedAck = _pendingAck;
-        }
-
-        bool queueEmpty = quicClient_->getState()->outstandings.packets.empty();
-        if (queueEmpty && _pendingAck != 0) {
-            std::cout << "MVFST packet queue is empty, but _pendingAck is not 0 (" << _pendingAck << ")" << std::endl;
-        }
-
-        return queueEmpty;
+        return quicClient_->getState()->outstandings.packets.empty();
     }
 
 private:
-    bool sendMessage(quic::StreamId id, folly::IOBuf& data, bool eof) {
-        auto evb = _networkThread.getEventBase();
-        bool isSent = false;
-        if (data.empty())
-        {
-            return false;
+    void sendMessage(quic::StreamId id, BufQueue& data, uint64_t maxToSend) {
+        uint64_t canBeSent = std::min(maxToSend, data.chainLength());
+        auto message = ;
+        auto res = quicClient_->writeChain(id, message->clone(), true);
+        if (res.hasError()) {
+            LOG(ERROR) << "MVFSTConnector writeChain error=" << uint32_t(res.error());
+        } else {
+            pendingOutput_.erase(id);
         }
-
-        evb->runInEventBaseThreadAndWait([&] {
-            //std::cout << std::string(data.data(), data.data() + data.length());
-            _pendingAck++;
-            auto res = quicClient_->writeChain(id, data.clone(), eof, this);
-            if (res.hasError()) {
-                LOG(ERROR) << "MvFstConnector writeChain error=" << res.error();
-                isSent = false;
-            } else {
-//                // sent whole message
-                isSent = true;
-            }
-            _sendDone.post();
-        });
-        _sendDone.wait();
-        return isSent;
     }
 
+    bool _eof = false;
     std::string host_;
     uint16_t port_;
     std::shared_ptr<quic::QuicClientTransport> quicClient_;
-    std::map<quic::StreamId, uint64_t> recvOffsets_;
+    BufQueue pendingOutput_;
     folly::fibers::Baton startDone_;
     folly::fibers::Baton _sendDone;
     folly::ScopedEventBaseThread _networkThread;
     unsigned long _streamId;
-    unsigned long _pendingAck = 0;
 
     bool _connected = false;
 };

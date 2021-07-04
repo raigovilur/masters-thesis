@@ -15,6 +15,7 @@ namespace Protocol {
         virtual bool openProtocol(std::string address, uint port) = 0;
         virtual bool openProtocolServer(uint port) = 0;
         virtual bool send(const char *buffer, size_t bufferSize, bool eof = false) = 0;
+        virtual bool isAllSent() {return true;};
         virtual bool closeProtocol() = 0;
     };
 

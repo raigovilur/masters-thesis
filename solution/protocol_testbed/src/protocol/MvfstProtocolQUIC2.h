@@ -1,5 +1,5 @@
-#ifndef PROTOCOL_TESTBED_SERVERMVFSTPROTOCOLQUIC_H
-#define PROTOCOL_TESTBED_MVFSTPROTOCOLQUIC_H
+#ifndef PROTOCOL_TESTBED_MVFSTPROTOCOLQUIC2_H
+#define PROTOCOL_TESTBED_MVFSTPROTOCOLQUIC2_H
 
 #include <map>
 #include "ProtocolInterface.h"
@@ -20,10 +20,10 @@ namespace Protocol {
         bool isAllSent() override;
 
     private:
-        MvFstConnector* _mvfst;
+        MvFstConnector* _mvfst{};
     };
 }
 
 
 
-#endif //PROTOCOL_TESTBED_SERVERMVFSTPROTOCOLQUIC_H
+#endif //PROTOCOL_TESTBED_MVFSTPROTOCOLQUIC2_H

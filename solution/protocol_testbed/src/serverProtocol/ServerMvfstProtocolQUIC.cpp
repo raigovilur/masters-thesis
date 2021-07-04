@@ -140,7 +140,7 @@ namespace quic {
                 return;
             }
             quic::Buf data = std::move(res.value().first);
-            _callback->consume(std::to_string(id), (unsigned char*) data->data(), data->length());
+            _callback->consume("client", (unsigned char*) data->data(), data->length());
         }
 
         void readError(
@@ -229,6 +229,12 @@ namespace quic {
 //            server_->setTransportStatsCallbackFactory(
 //                    std::make_unique<LogQuicStatsFactory>());
             auto serverCtx = createServerCtx(certificate, certLen, pKey, pkLen);
+            TransportSettings settings;
+            //settings.idleTimeout = std::chrono::milliseconds(1000);
+            settings.connectUDP = true;
+            settings.defaultCongestionController = quic::CongestionControlType::Copa2;
+            //settings.advertisedInitialUniStreamWindowSize = 20971520;
+            server_->setTransportSettings(settings);
             server_->setFizzContext(serverCtx);
         }
 

@@ -21,14 +21,14 @@ Client::Client(Protocol::ProtocolType type, std::string address, uint port)
 Client::~Client() { }
 
 void Client::runSpeedTest(uint port) const {
-    std::cout << "Running speed test (iperf):" << std::endl;
-    std::string transportType = "";
-    if (_type != Protocol::OpenSSL_TLS) {
-        transportType = "-u";
-    }
-    std::string command = "iperf -c " + _address + " -p " + std::to_string(port) + " " + transportType;
+    std::cout << "Running speed test (iperf3):" << std::endl;
+    std::string udpFlag = " -u";
+    std::string baseCommand = "iperf3 -c " + _address + " -p " + std::to_string(port);
+    std::string tcpCommand = baseCommand;
+    std::string udpCommand = baseCommand + " -u -l 1000 -b 100M";
+    system(tcpCommand.c_str());
+    system(udpCommand.c_str());
 
-    system(command.c_str());
 }
 
 
@@ -120,6 +120,7 @@ void Client::send(const std::string& path, size_t bufferSize, uint retryCount) {
     for (uint i = 0; i < buffersNeeded; ++i) {
         fileStream.read(buffer.get(), bufferSize);
         if ((i + 1) % buffersNeededForOnePercent == 0) {
+            protocol->isAllSent(); //If there's items that haven't been sent to the server yet, wait here.
             std::cout << "Sending file: " << (int)((i + 1) * oneBufferPercentage) << "%" << std::endl;
             uint elapsedSeconds = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now() - intermediateTimeStamp).count();
             uint bytesSent = buffersNeededForOnePercent * bufferSize;
@@ -142,6 +143,8 @@ void Client::send(const std::string& path, size_t bufferSize, uint retryCount) {
         fileStream.read(buffer.get(), lastPacketSize);
         sendWithRetries(buffer.get(), lastPacketSize, retryCount, protocol, true);
     }
+
+    protocol->isAllSent();
 
     protocol->closeProtocol();
     _elapsedSeconds = std::chrono::system_clock::now() - startTime;
