@@ -175,7 +175,7 @@ public:
             LOG(ERROR) << "Delivery ACK id's don't match: saved: " << _streamId << " got: " << id;
         }
         _pendingAck--;
-        std::cout << "Ack callback: " << _pendingAck << " offset: " << offset << std::endl;
+        //std::cout << "Ack callback: " << _pendingAck << " offset: " << offset << std::endl;
     }
 
     void onCanceled(StreamId id, uint64_t offset) override {
