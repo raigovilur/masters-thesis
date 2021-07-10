@@ -13,7 +13,9 @@ int main(int argc, char *argv[]) {
     std::string dest;
     unsigned port;
     unsigned stport;
+    std::string stportBandwidth = "40M";
     unsigned bufferSize = 1024;
+    unsigned udpTarget = 30;
     std::string filePath;
 
     try {
@@ -24,6 +26,9 @@ int main(int argc, char *argv[]) {
                 ("address", po::value<std::string>(), "Set destination address")
                 ("port", po::value<unsigned>(), "Set destination port")
                 ("stport", po::value<unsigned>(), "Set speed test port")
+                ("udpTarget", po::value<unsigned>(), "Set UDP transfer target speed (Megabytes per second)")
+                ("stportBW", po::value<std::string>(), "Set speed test bandwidth (UDP ONLY). M for megabytes")
+
                 ("buffer-size", po::value<unsigned>(), "Set file reading buffer size")
                 ("file", po::value<std::string>(), "Set path to file for transfer")
                 ;
@@ -68,11 +73,18 @@ int main(int argc, char *argv[]) {
             port = 80;
         }
 
+        if (vm.count("udpTarget")) {
+            udpTarget = vm["udpTarget"].as<unsigned>();
+        }
+
         if (vm.count("stport")) {
             stport = vm["stport"].as<unsigned>();
         } else {
             std::cout << "stport was not set, defaulting to " << port + 1 << "(port + 1)" << std::endl;
             stport = port + 1;
+        }
+        if (vm.count("stportBW")) {
+            stportBandwidth = vm["stportBW"].as<std::string>();
         }
 
         if (vm.count("buffer-size")) {
@@ -98,11 +110,14 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    Client client(protocolType, dest, port);
+    Protocol::Options options;
+    options.UDPtarget = udpTarget;
 
-    client.runSpeedTest(stport);
+    Client client(protocolType, dest, port, options);
+
+    client.runSpeedTest(stport, stportBandwidth);
     client.send(filePath, bufferSize, 5);
-    client.runSpeedTest(stport);
+    client.runSpeedTest(stport, stportBandwidth);
 
     client.printStatistics();
 

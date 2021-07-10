@@ -13,7 +13,7 @@
 #include <cstring>
 #include <unistd.h>
 
-bool Protocol::OpenSSLProtocolTLS::openProtocol(std::string address, uint port) {
+bool Protocol::OpenSSLProtocolTLS::openProtocol(std::string address, uint port, Options) {
     SSL_load_error_strings();
     ERR_load_crypto_strings();
 

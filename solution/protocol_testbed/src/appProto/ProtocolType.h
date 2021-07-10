@@ -7,6 +7,11 @@ namespace Protocol {
         OpenSSL_DTLS1_2,
         MVFST_QUIC
     };
+
+    class Options {
+    public:
+        unsigned int UDPtarget = 30; //Megabits per second
+    };
 }
 
 #endif //PROTOCOL_TESTBED_PROTOCOLTYPE_H

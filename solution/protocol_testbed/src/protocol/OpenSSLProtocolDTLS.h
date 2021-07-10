@@ -5,12 +5,13 @@
 #include <openssl/ossl_typ.h>
 #include <map>
 #include <vector>
+#include <chrono>
 
 namespace Protocol {
 
     class OpenSSLProtocolDTLS : public ProtocolInterface {
     public:
-        bool openProtocol(std::string address, uint port) override;
+        bool openProtocol(std::string address, uint port, Options) override;
         bool openProtocolServer(uint port) override;
         bool send(const char *buffer, size_t bufferSize, bool eof) override;
         bool closeProtocol() override;
@@ -18,6 +19,13 @@ namespace Protocol {
 
     private:
         static uint getNextSequence();
+        void getAcks();
+        void cleanStaleAcks();
+
+    public:
+        bool isAllSent() override;
+
+    private:
 
         bool cleanUp();
 
@@ -29,6 +37,13 @@ namespace Protocol {
         SSL* _ssl = nullptr;
         int _socket = 0;
         int _sockFd = 0;
+
+        std::vector<ushort> _notAckedPackets;
+        std::map<ushort, std::chrono::time_point<std::chrono::system_clock>> _timeStamps;
+
+        bool _firstPacket = true;
+        std::chrono::time_point<std::chrono::system_clock> _lastSendTimestamp;
+        Options _options;
     };
 };
 

@@ -11,21 +11,22 @@
 #include "appProto/FileSendHeader.h"
 #include "protocol/ProtocolFactory.h"
 
-Client::Client(Protocol::ProtocolType type, std::string address, uint port)
+Client::Client(Protocol::ProtocolType type, std::string address, uint port, Protocol::Options options)
     : _type(type)
     , _address(std::move(address))
-    , _port(port) {
+    , _port(port)
+    , _options(options) {
 
 }
 
 Client::~Client() { }
 
-void Client::runSpeedTest(uint port) const {
+void Client::runSpeedTest(uint port, std::string bandwidth) const {
     std::cout << "Running speed test (iperf3):" << std::endl;
     std::string udpFlag = " -u";
     std::string baseCommand = "iperf3 -c " + _address + " -p " + std::to_string(port);
     std::string tcpCommand = baseCommand;
-    std::string udpCommand = baseCommand + " -u -l 1000 -b 100M";
+    std::string udpCommand = baseCommand + " -u -l 1000 -b " + bandwidth;
     system(tcpCommand.c_str());
     system(udpCommand.c_str());
 
@@ -91,7 +92,7 @@ void Client::send(const std::string& path, size_t bufferSize, uint retryCount) {
 
     Protocol::ProtocolPtr protocol = Protocol::ProtocolFactory::getInstance(_type);
     startTime = std::chrono::system_clock::now();
-    if (!protocol->openProtocol(_address, _port)) {
+    if (!protocol->openProtocol(_address, _port, _options)) {
         protocol->closeProtocol();
         return;
     }
@@ -120,7 +121,8 @@ void Client::send(const std::string& path, size_t bufferSize, uint retryCount) {
     for (uint i = 0; i < buffersNeeded; ++i) {
         fileStream.read(buffer.get(), bufferSize);
         if ((i + 1) % buffersNeededForOnePercent == 0) {
-            protocol->isAllSent(); //If there's items that haven't been sent to the server yet, wait here.
+            if (_type == Protocol::MVFST_QUIC)
+                protocol->isAllSent(); //If there's items that haven't been sent to the server yet, wait here.
             std::cout << "Sending file: " << (int)((i + 1) * oneBufferPercentage) << "%" << std::endl;
             uint elapsedSeconds = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now() - intermediateTimeStamp).count();
             uint bytesSent = buffersNeededForOnePercent * bufferSize;
@@ -161,7 +163,7 @@ bool Client::sendWithRetries(const char *buffer, size_t bufferSize, uint retryCo
             {
                 std::cout << "Connection dropped, retrying: (" << retry + 1 << ")"  << std::endl;
                 protocol->closeProtocol();
-                protocol->openProtocol(_address, _port);
+                protocol->openProtocol(_address, _port, _options);
                 ++_connectionDrops;
             }
         }

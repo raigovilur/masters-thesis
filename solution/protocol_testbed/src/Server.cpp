@@ -30,6 +30,7 @@ bool Server::processDataStream(ClientData& client, unsigned char *bytes, size_t 
     client.outputStream->write((char*) (bytes + processStart), bytesToRead);
     client.receivedFileSize += bytesToRead;
 
+    client.printPercentageStatsIfFullPercent();
     if (client.fileReceived()) {
         client.outputStream->close();
     }
@@ -165,6 +166,9 @@ bool Server::processHeader(Server::ClientData& data) {
     std::cout << "Expected file size: " << data.fileSize << std::endl;
 
     data.headerProcessed = true;
+    data.onePercentBytes = data.fileSize / 100;
+    data.startTime = std::chrono::system_clock::now();
+    data.lastPercentStartTime = data.startTime;
 
     return true;
 }

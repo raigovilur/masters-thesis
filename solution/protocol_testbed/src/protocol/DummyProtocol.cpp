@@ -32,7 +32,7 @@ bool Protocol::DummyProtocol::send(const char *buffer, size_t bufferSize, bool e
     return true;
 }
 
-bool Protocol::DummyProtocol::openProtocol(std::string address, uint port) {
+bool Protocol::DummyProtocol::openProtocol(std::string address, uint port, Options) {
     std::cout << "Connecting to " << address << ":" << port << " via dummy interface" << std::endl;
     return true;
 }

@@ -7,12 +7,13 @@
  * library and protocol
  */
 #include <memory>
+#include "../appProto/ProtocolType.h"
 
 namespace Protocol {
     class ProtocolInterface {
 
     public:
-        virtual bool openProtocol(std::string address, uint port) = 0;
+        virtual bool openProtocol(std::string address, uint port, Options) = 0;
         virtual bool openProtocolServer(uint port) = 0;
         virtual bool send(const char *buffer, size_t bufferSize, bool eof = false) = 0;
         virtual bool isAllSent() {return true;};

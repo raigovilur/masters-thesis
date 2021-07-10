@@ -10,7 +10,7 @@ namespace Protocol {
         DummyProtocol();
         ~DummyProtocol();
 
-        bool openProtocol(std::string address, uint port) override;
+        bool openProtocol(std::string address, uint port, Options) override;
         bool openProtocolServer(uint port) override;
 
         bool send(const char *buffer, size_t bufferSize, bool eof) override;

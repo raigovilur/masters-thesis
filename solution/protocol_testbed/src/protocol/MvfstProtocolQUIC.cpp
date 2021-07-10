@@ -253,7 +253,7 @@ private:
     bool _connected = false;
 };
 
-bool Protocol::MvfstProtocolQUIC::openProtocol(std::string address, uint port) {
+bool Protocol::MvfstProtocolQUIC::openProtocol(std::string address, uint port, Options) {
     static bool isGoogleLoggingOpened = false;
     if (!isGoogleLoggingOpened)
     {

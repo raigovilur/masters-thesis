@@ -8,6 +8,8 @@
 #include <resolv.h>
 #include <cstring>
 #include <unistd.h>
+#include <algorithm>
+#include <thread>
 
 #include <sys/types.h>
 #include <sys/socket.h>
@@ -21,13 +23,15 @@
 #include <openssl/err.h>
 #include <openssl/rand.h>
 #include <fcntl.h>
+#include <chrono>
 
 #include "../appProto/utils.h"
 
 #define PACKET_SIZE_LEN 2
 #define SEQ_NO_LEN 4
 
-bool Protocol::OpenSSLProtocolDTLS::openProtocol(std::string address, uint port) {
+bool Protocol::OpenSSLProtocolDTLS::openProtocol(std::string address, uint port, Options options) {
+    _options = options;
     SSL_load_error_strings();
     ERR_load_crypto_strings();
 
@@ -36,8 +40,14 @@ bool Protocol::OpenSSLProtocolDTLS::openProtocol(std::string address, uint port)
 
     _socket = socket(AF_INET, SOCK_DGRAM, 0);
 
-    int flags = fcntl(_socket,F_GETFL);
-    flags |= O_NONBLOCK;
+    int flags = fcntl(_socket, F_GETFL, 0);
+    flags = flags|O_NONBLOCK;
+    fcntl(_socket, F_SETFL, flags);
+
+    struct timeval read_timeout{};
+    read_timeout.tv_sec = 0;
+    read_timeout.tv_usec = 10;
+    setsockopt(_socket, SOL_SOCKET, SO_RCVTIMEO, &read_timeout, sizeof read_timeout);
 
     sockaddr_in saiServerAddress{};
     memset(&saiServerAddress, 0, sizeof(saiServerAddress));
@@ -80,13 +90,32 @@ bool Protocol::OpenSSLProtocolDTLS::openProtocol(std::string address, uint port)
     }
     _sockFd = SSL_get_fd(_ssl);
     SSL_set_fd(_ssl, _socket);
-    int err = SSL_connect(_ssl);
-    if (err <= 0) {
-        std::cout << "Error creating SSL connection.  err=" << err << std::endl;
-        fflush(stdout);
-        return -1;
+    bool isConnected = false;
+    while (!isConnected) {
+        int err = SSL_connect(_ssl);
+        if (err <= 0) {
+            int errorReturned;
+            switch (SSL_get_error(_ssl, err)) {
+                case SSL_ERROR_NONE:
+                    isConnected = true;
+                    break;
+                case SSL_ERROR_WANT_READ:
+                    //std::cout << "Want more read on connect  err=" << err << std::endl;
+                    break;
+                case SSL_ERROR_WANT_X509_LOOKUP:
+                case SSL_ERROR_WANT_WRITE:
+                case SSL_ERROR_ZERO_RETURN:
+                case SSL_ERROR_SSL:
+                case SSL_ERROR_SYSCALL:
+                    std::cout << "Error creating SSL connection.  err=" << err << std::endl;
+                    fflush(stdout);
+                    return -1;
+            }
+        }
+        else {
+            isConnected = true;
+        }
     }
-    //fcntl(_socket, F_SETFL, flags);
 
     _initialized = true;
     return true;
@@ -103,8 +132,44 @@ bool Protocol::OpenSSLProtocolDTLS::send(const char *buffer, size_t bufferSize, 
     }
     sizeWarningDisplayed = true;
 
+//    if (_notAckedPackets.size() > 15) {
+//        static const int maxTime = 1000;
+//        auto waitingTime = std::chrono::system_clock::now();
+//        while (_notAckedPackets.size() > 5) {
+//            getAcks();
+//            if (std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now() - waitingTime).count() > maxTime) {
+//                std::cout << "Waited for "<< maxTime <<" milliseconds. Acks still here:  " << _notAckedPackets.size() << std::endl;
+//                break;
+//            }
+//        }
+//    }
+
+    //Flow control:
+    // We are trying to keep to 30 mb/s speed, because that's the maximum our link can handle
+    // So don't send out more than that
+    double target = _options.UDPtarget;
+    uint millisNeededForTarget = ((double) bufferSize * 8) / 1000 / target;
+
+    if (!_firstPacket) {
+        // do congestion control
+        uint millisecondsTakenToGetHere = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now() - _lastSendTimestamp).count();
+        int diff = millisNeededForTarget - millisecondsTakenToGetHere;
+        if (diff > 0) {
+            std::this_thread::sleep_for(std::chrono::milliseconds(diff));
+        }
+    } else {
+        _firstPacket = false;
+    }
+
+    _lastSendTimestamp = std::chrono::system_clock::now();
+
     ushort sequenceNo = getNextSequence();
     size_t sendPacketSize = PACKET_SIZE_LEN + SEQ_NO_LEN + bufferSize;
+//    _notAckedPackets.push_back(sequenceNo);
+//    _timeStamps.emplace(
+//            std::pair<ushort, std::chrono::time_point<std::chrono::system_clock>>(
+//                    sequenceNo, std::chrono::system_clock::now()
+//                    ));
 
     char* sendPacket = new char[sendPacketSize];
 
@@ -116,53 +181,61 @@ bool Protocol::OpenSSLProtocolDTLS::send(const char *buffer, size_t bufferSize, 
 
     std::vector<unsigned char> rawBytes((unsigned char*)sendPacket,(unsigned char*) (sendPacket + bufferSize));
 
-    int len = SSL_write(_ssl, sendPacket, sendPacketSize);
-    if (len < 0) {
-        int err = SSL_get_error(_ssl, len);
-        switch (err) {
-            // TODO proper LOGGING for this:
-            case SSL_ERROR_WANT_WRITE:
-            case SSL_ERROR_WANT_READ:
-            case SSL_ERROR_ZERO_RETURN:
-            case SSL_ERROR_SYSCALL:
-            case SSL_ERROR_SSL:
-            default:
-                return false;
+    while (true) {
+        int len = SSL_write(_ssl, sendPacket, sendPacketSize);
+        if (len < 0) {
+            int err = SSL_get_error(_ssl, len);
+            switch (err) {
+                // TODO proper LOGGING for this:
+                case SSL_ERROR_WANT_WRITE:
+                    break;
+                case SSL_ERROR_WANT_READ:
+                case SSL_ERROR_ZERO_RETURN:
+                case SSL_ERROR_SYSCALL:
+                case SSL_ERROR_SSL:
+                default:
+                    return false;
+            }
+        } else {
+            break;
         }
     }
 
+    getAcks();
     // Receiving reply from server:
     // Check if there's anything in the pipe
-    unsigned char buf[100];
-    len = SSL_read(_ssl, buf, 100);
-    if (len < 0) {
-        int err = SSL_get_error(_ssl, len);
-        switch (err) {
-            case SSL_ERROR_WANT_READ:
-            case SSL_ERROR_WANT_WRITE:
-            case SSL_ERROR_ZERO_RETURN:
-            case SSL_ERROR_SYSCALL:
-            case SSL_ERROR_SSL:
-            default:
-                return false;
-        }
-    }
-    bool matchingSeq = false;
-    uint ackSeq;
-    if (len > 0) {
-        std::vector<unsigned char> ackStream(buf, buf + 100);
-        // Response is two byte pairs of ACKed packet seq numbers
-        for (uint i = 0; i < len; i += SEQ_NO_LEN) {
-            ackSeq = Utils::convertToUnsignedTemplated<ushort>(ackStream, i, SEQ_NO_LEN);
-            //std::cout << "Got ack for " << ackSeq << std::endl;
-            matchingSeq |= (ackSeq == sequenceNo);
-        }
-    }
-
-    if (!matchingSeq) {
-        std::cerr << "No matching seq no got for " << matchingSeq << ". Last seq arrived: " << ackSeq << std::endl;
-        return false;
-    }
+//    unsigned char buf[100];
+//    len = SSL_read(_ssl, buf, 100);
+//    if (len < 0) {
+//        int err = SSL_get_error(_ssl, len);
+//        switch (err) {
+//            case SSL_ERROR_WANT_READ:
+//                // Nothing to read.
+//                return true;
+//            case SSL_ERROR_WANT_WRITE:
+//            case SSL_ERROR_ZERO_RETURN:
+//            case SSL_ERROR_SYSCALL:
+//            case SSL_ERROR_SSL:
+//            default:
+//                return true;
+//        }
+//    }
+//    bool matchingSeq = false;
+//    uint ackSeq;
+//    if (len > 0) {
+//        std::vector<unsigned char> ackStream(buf, buf + 100);
+//        // Response is two byte pairs of ACKed packet seq numbers
+//        for (uint i = 0; i < len; i += SEQ_NO_LEN) {
+//            ackSeq = Utils::convertToUnsignedTemplated<ushort>(ackStream, i, SEQ_NO_LEN);
+//            //std::cout << "Got ack for " << ackSeq << std::endl;
+//            matchingSeq |= (ackSeq == sequenceNo);
+//        }
+//    }
+//
+//    if (!matchingSeq) {
+//        std::cerr << "No matching seq no got for " << matchingSeq << ". Last seq arrived: " << ackSeq << std::endl;
+//        return false;
+//    }
 
     delete[] sendPacket;
     return true;
@@ -199,4 +272,77 @@ uint Protocol::OpenSSLProtocolDTLS::getNextSequence() {
     ++sequence;
 
     return sequence % (1L << (8 * SEQ_NO_LEN)); // Security measure in case unsigned is more than four bytes
+}
+
+void Protocol::OpenSSLProtocolDTLS::getAcks() {
+    return;
+    // Receiving reply from server:
+    // Check if there's anything in the pipe
+    while(true) {
+        unsigned char buf[20];
+        int len = SSL_read(_ssl, buf, 20);
+        if (len <= 0) {
+            int err = SSL_get_error(_ssl, len);
+            cleanStaleAcks();
+            switch (err) {
+                case SSL_ERROR_WANT_READ:
+                    //std::cout << "Nothing to read " << std::endl;
+                    // Nothing to read.
+                    return;
+                case SSL_ERROR_WANT_WRITE:
+                case SSL_ERROR_ZERO_RETURN:
+                case SSL_ERROR_SYSCALL:
+                case SSL_ERROR_SSL:
+                default:
+                    return;
+            }
+        }
+        if (len > 0) {
+            std::vector<unsigned char> ackStream(buf, buf + 20);
+            // Response is four byte sets of ACKed packet seq numbers
+            ushort ackSeq;
+            for (uint i = 0; i < len; i += SEQ_NO_LEN) {
+                ackSeq = Utils::convertToUnsignedTemplated<ushort>(ackStream, i, SEQ_NO_LEN);
+                std::cout << "Got ack for " << ackSeq << ". Currently waiting acks for: " << _notAckedPackets.size()
+                          << std::endl;
+                auto it = std::find(_notAckedPackets.begin(), _notAckedPackets.end(), ackSeq);
+                if (it == _notAckedPackets.end()) {
+                    std::cout << "Error: sequence " << ackSeq << " not in list of sequences sent out" << std::endl;
+                } else {
+                    _notAckedPackets.erase(it);
+                    _timeStamps.erase(ackSeq);
+                }
+            }
+        }
+    }
+}
+
+bool Protocol::OpenSSLProtocolDTLS::isAllSent() {
+    return true;
+    static const int maxTime = 2;
+    auto waitingTime = std::chrono::system_clock::now();
+    while (!_notAckedPackets.empty()) {
+        getAcks();
+        if (std::chrono::duration_cast<std::chrono::seconds>(std::chrono::system_clock::now() - waitingTime).count() > maxTime) {
+            std::cout << "Waited for "<< maxTime <<" seconds. Acks still here:  " << _notAckedPackets.size() << std::endl;
+            break;
+        }
+    }
+    return true;
+}
+
+void Protocol::OpenSSLProtocolDTLS::cleanStaleAcks() {
+    static const int ttlSeconds = 3;
+    for (auto element : _timeStamps) {
+        if (std::chrono::duration_cast<std::chrono::seconds>(std::chrono::system_clock::now() - element.second).count() > ttlSeconds) {
+            std::cout << "Packet: " << element.first << " has outlived it's max waiting time of " << ttlSeconds << " seconds. " << std::endl;
+            auto it = std::find(_notAckedPackets.begin(), _notAckedPackets.end(), element.first);
+            if (it == _notAckedPackets.end()) {
+                std::cout << "Error cleaning stale packets: sequence " << element.first << " not in list of sequences sent out" << std::endl;
+            } else {
+                _notAckedPackets.erase(it);
+                _timeStamps.erase(element.first);
+            }
+        }
+    }
 }

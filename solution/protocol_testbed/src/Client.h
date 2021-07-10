@@ -8,12 +8,12 @@
 
 class Client {
 public:
-    Client(Protocol::ProtocolType type, std::string address, uint port);
+    Client(Protocol::ProtocolType type, std::string address, uint port, Protocol::Options options);
     ~Client();
 
     void send(const std::string& path, size_t bufferSize, uint retryCount);
     void printStatistics() const;
-    void runSpeedTest(uint port) const;
+    void runSpeedTest(uint port, std::string bandwidth) const;
 
 private:
     bool sendWithRetries(const char* buffer, size_t bufferSize, uint retryCount, Protocol::ProtocolPtr& protocol, bool eof);
@@ -21,6 +21,7 @@ private:
     Protocol::ProtocolType _type;
     std::string _address;
     uint _port;
+    Protocol::Options _options;
 
     std::chrono::duration<double> _elapsedSeconds{};
     std::chrono::duration<double> _elapsedHashSeconds{};

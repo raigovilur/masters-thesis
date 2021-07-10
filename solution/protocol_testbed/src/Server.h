@@ -9,6 +9,8 @@
 #include "appProto/ProtocolType.h"
 #include <fstream>
 #include <cassert>
+#include <chrono>
+#include <iostream>
 
 class Server : public ServerProto::ServerReceiveCallback {
 private:
@@ -23,10 +25,31 @@ private:
         std::vector<unsigned char> checksum;
         uint64_t fileSize = 0;
         uint64_t receivedFileSize = 0;
+        uint64_t onePercentBytes = 0;
+        ushort percentageReceived = 0;
+        uint64_t lastPercentageFileSize = 0;
+        std::chrono::time_point<std::chrono::system_clock> startTime;
+        std::chrono::time_point<std::chrono::system_clock> lastPercentStartTime;
 
         bool fileReceived() const {
             assert(receivedFileSize <= fileSize); // We should never receive more than the file size
-            return receivedFileSize >= fileSize ;
+            return receivedFileSize >= fileSize;
+        }
+
+        void printPercentageStatsIfFullPercent() {
+            ushort currentPercentage = receivedFileSize / onePercentBytes;
+            if (currentPercentage > percentageReceived) {
+                uint64_t sentBytes = receivedFileSize - lastPercentageFileSize;
+                auto currentTime = std::chrono::system_clock::now();
+
+                auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(currentTime - lastPercentStartTime);
+                std::cout << "File transfer: " << currentPercentage << "%. Sent " << sentBytes << " over " << duration.count() << " milliseconds" << std::endl;
+                std::cout << "    Speed is " << ((double) sentBytes) / duration.count() / 1000 * 8 << " mb/s." << std::endl;
+                percentageReceived = currentPercentage;
+                lastPercentageFileSize = receivedFileSize;
+                lastPercentStartTime = currentTime;
+            }
+
         }
     };
 
