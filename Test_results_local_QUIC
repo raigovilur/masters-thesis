@@ -1,1 +1,1028 @@
+Copa 2 congestion control algorithm
+/home/raigo/repos/masters-thesis/solution/protocol_testbed/cmake-build-debug/protocol_testbed_client --filea /home/raigo/repos/snow_problem.bag --fileb /home/raigo/repos/cert.pem --file /home/raigo/repos/masters-thesis/solution/protocol_testbed/Views-7.0-linux-x64-installer.run --protocol QUIC --address 10.151.41.5 --port 12345 --buffer-size 10000 --stport 8888
+Running speed test (iperf3):
+iperf3: error - unable to connect to server: Connection refused
+iperf3: error - unable to connect to server: Connection refused
+Measuring latency 
+PING 10.151.41.5 (10.151.41.5) 56(84) bytes of data.
+64 bytes from 10.151.41.5: icmp_seq=1 ttl=61 time=129 ms
+64 bytes from 10.151.41.5: icmp_seq=2 ttl=61 time=129 ms
+64 bytes from 10.151.41.5: icmp_seq=3 ttl=61 time=130 ms
+64 bytes from 10.151.41.5: icmp_seq=4 ttl=61 time=130 ms
+64 bytes from 10.151.41.5: icmp_seq=5 ttl=61 time=129 ms
+64 bytes from 10.151.41.5: icmp_seq=6 ttl=61 time=129 ms
+64 bytes from 10.151.41.5: icmp_seq=7 ttl=61 time=130 ms
+64 bytes from 10.151.41.5: icmp_seq=8 ttl=61 time=130 ms
+64 bytes from 10.151.41.5: icmp_seq=9 ttl=61 time=130 ms
+64 bytes from 10.151.41.5: icmp_seq=10 ttl=61 time=129 ms
 
+--- 10.151.41.5 ping statistics ---
+10 packets transmitted, 10 received, 0% packet loss, time 9049ms
+rtt min/avg/max/mdev = 129.219/129.674/130.187/0.366 ms
+Calculating checksum ...
+Checksum calculated: ffffff84305dffffffe2ffffffde6e7917ffffffc8ffffffa414ffffffda4810ffffffcb6cffffff8affffffa4ffffffbe6046ffffff89ffffff8372ffffff8dfffffff90e2e0e34ffffff9931
+I0715 19:54:19.889762 32482 MvfstProtocolQUIC.cpp:267] Starting MVFST
+I0715 19:54:19.896700 32493 MvfstProtocolQUIC.cpp:157] MvFstConnector connecting to 10.151.41.5:12345
+Connection established. Time taken: 161 milliseconds
+Sending header
+Sending file
+Waited for acks: 6281 ms
+Sending file: 1%
+    Sent 2760000 bytes over 6.311 seconds.
+    Speed is 3.49865 mb/s.
+Waited for acks: 6250 ms
+Sending file: 2%
+    Sent 2760000 bytes over 6.261 seconds.
+    Speed is 3.52659 mb/s.
+Waited for acks: 6101 ms
+Sending file: 3%
+    Sent 2760000 bytes over 6.109 seconds.
+    Speed is 3.61434 mb/s.
+Waited for acks: 5601 ms
+Sending file: 4%
+    Sent 2760000 bytes over 5.633 seconds.
+    Speed is 3.91976 mb/s.
+Waited for acks: 6127 ms
+Sending file: 5%
+    Sent 2760000 bytes over 6.161 seconds.
+    Speed is 3.58383 mb/s.
+Waited for acks: 6078 ms
+Sending file: 6%
+    Sent 2760000 bytes over 6.111 seconds.
+    Speed is 3.61316 mb/s.
+Waited for acks: 5635 ms
+Sending file: 7%
+    Sent 2760000 bytes over 5.662 seconds.
+    Speed is 3.89968 mb/s.
+Waited for acks: 5674 ms
+Sending file: 8%
+    Sent 2760000 bytes over 5.711 seconds.
+    Speed is 3.86622 mb/s.
+Waited for acks: 5901 ms
+Sending file: 9%
+    Sent 2760000 bytes over 5.935 seconds.
+    Speed is 3.7203 mb/s.
+Waited for acks: 5715 ms
+Sending file: 10%
+    Sent 2760000 bytes over 5.723 seconds.
+    Speed is 3.85812 mb/s.
+Waited for acks: 6060 ms
+Sending file: 11%
+    Sent 2760000 bytes over 6.068 seconds.
+    Speed is 3.63876 mb/s.
+Waited for acks: 5729 ms
+Sending file: 12%
+    Sent 2760000 bytes over 5.768 seconds.
+    Speed is 3.82802 mb/s.
+Waited for acks: 6365 ms
+Sending file: 13%
+    Sent 2760000 bytes over 6.392 seconds.
+    Speed is 3.45432 mb/s.
+Waited for acks: 5900 ms
+Sending file: 14%
+    Sent 2760000 bytes over 5.928 seconds.
+    Speed is 3.7247 mb/s.
+Waited for acks: 5867 ms
+Sending file: 15%
+    Sent 2760000 bytes over 5.895 seconds.
+    Speed is 3.74555 mb/s.
+Waited for acks: 5788 ms
+Sending file: 16%
+    Sent 2760000 bytes over 5.819 seconds.
+    Speed is 3.79447 mb/s.
+Waited for acks: 5708 ms
+Sending file: 17%
+    Sent 2760000 bytes over 5.716 seconds.
+    Speed is 3.86284 mb/s.
+Waited for acks: 5939 ms
+Sending file: 18%
+    Sent 2760000 bytes over 5.98 seconds.
+    Speed is 3.69231 mb/s.
+Waited for acks: 5947 ms
+Sending file: 19%
+    Sent 2760000 bytes over 5.98 seconds.
+    Speed is 3.69231 mb/s.
+Waited for acks: 5902 ms
+Sending file: 20%
+    Sent 2760000 bytes over 5.934 seconds.
+    Speed is 3.72093 mb/s.
+Waited for acks: 5663 ms
+Sending file: 21%
+    Sent 2760000 bytes over 5.704 seconds.
+    Speed is 3.87097 mb/s.
+Waited for acks: 5966 ms
+Sending file: 22%
+    Sent 2760000 bytes over 6.006 seconds.
+    Speed is 3.67632 mb/s.
+Waited for acks: 5932 ms
+Sending file: 23%
+    Sent 2760000 bytes over 5.962 seconds.
+    Speed is 3.70346 mb/s.
+Waited for acks: 5882 ms
+Sending file: 24%
+    Sent 2760000 bytes over 5.91 seconds.
+    Speed is 3.73604 mb/s.
+Waited for acks: 5757 ms
+Sending file: 25%
+    Sent 2760000 bytes over 5.787 seconds.
+    Speed is 3.81545 mb/s.
+Waited for acks: 5683 ms
+Sending file: 26%
+    Sent 2760000 bytes over 5.712 seconds.
+    Speed is 3.86555 mb/s.
+Waited for acks: 6150 ms
+Sending file: 27%
+    Sent 2760000 bytes over 6.185 seconds.
+    Speed is 3.56993 mb/s.
+Waited for acks: 5670 ms
+Sending file: 28%
+    Sent 2760000 bytes over 5.679 seconds.
+    Speed is 3.88801 mb/s.
+Waited for acks: 5923 ms
+Sending file: 29%
+    Sent 2760000 bytes over 5.952 seconds.
+    Speed is 3.70968 mb/s.
+Waited for acks: 5840 ms
+Sending file: 30%
+    Sent 2760000 bytes over 5.871 seconds.
+    Speed is 3.76086 mb/s.
+Waited for acks: 5946 ms
+Sending file: 31%
+    Sent 2760000 bytes over 5.974 seconds.
+    Speed is 3.69602 mb/s.
+Waited for acks: 6060 ms
+Sending file: 32%
+    Sent 2760000 bytes over 6.1 seconds.
+    Speed is 3.61967 mb/s.
+Waited for acks: 5947 ms
+Sending file: 33%
+    Sent 2760000 bytes over 5.975 seconds.
+    Speed is 3.6954 mb/s.
+Waited for acks: 6081 ms
+Sending file: 34%
+    Sent 2760000 bytes over 6.09 seconds.
+    Speed is 3.62562 mb/s.
+Waited for acks: 6035 ms
+Sending file: 35%
+    Sent 2760000 bytes over 6.067 seconds.
+    Speed is 3.63936 mb/s.
+Waited for acks: 5854 ms
+Sending file: 36%
+    Sent 2760000 bytes over 5.89 seconds.
+    Speed is 3.74873 mb/s.
+Waited for acks: 5973 ms
+Sending file: 37%
+    Sent 2760000 bytes over 6.004 seconds.
+    Speed is 3.67755 mb/s.
+Waited for acks: 5978 ms
+Sending file: 38%
+    Sent 2760000 bytes over 6.012 seconds.
+    Speed is 3.67265 mb/s.
+Waited for acks: 5684 ms
+Sending file: 39%
+    Sent 2760000 bytes over 5.692 seconds.
+    Speed is 3.87913 mb/s.
+Waited for acks: 5787 ms
+Sending file: 40%
+    Sent 2760000 bytes over 5.824 seconds.
+    Speed is 3.79121 mb/s.
+Waited for acks: 6072 ms
+Sending file: 41%
+    Sent 2760000 bytes over 6.079 seconds.
+    Speed is 3.63218 mb/s.
+Waited for acks: 5936 ms
+Sending file: 42%
+    Sent 2760000 bytes over 5.954 seconds.
+    Speed is 3.70843 mb/s.
+Waited for acks: 6129 ms
+Sending file: 43%
+    Sent 2760000 bytes over 6.137 seconds.
+    Speed is 3.59785 mb/s.
+Waited for acks: 6263 ms
+Sending file: 44%
+    Sent 2760000 bytes over 6.272 seconds.
+    Speed is 3.52041 mb/s.
+Waited for acks: 5897 ms
+Sending file: 45%
+    Sent 2760000 bytes over 5.928 seconds.
+    Speed is 3.7247 mb/s.
+Waited for acks: 5654 ms
+Sending file: 46%
+    Sent 2760000 bytes over 5.686 seconds.
+    Speed is 3.88322 mb/s.
+Waited for acks: 5626 ms
+Sending file: 47%
+    Sent 2760000 bytes over 5.673 seconds.
+    Speed is 3.89212 mb/s.
+Waited for acks: 5790 ms
+Sending file: 48%
+    Sent 2760000 bytes over 5.823 seconds.
+    Speed is 3.79186 mb/s.
+Waited for acks: 5598 ms
+Sending file: 49%
+    Sent 2760000 bytes over 5.626 seconds.
+    Speed is 3.92464 mb/s.
+Waited for acks: 5791 ms
+Sending file: 50%
+    Sent 2760000 bytes over 5.82 seconds.
+    Speed is 3.79381 mb/s.
+Waited for acks: 5811 ms
+Sending file: 51%
+    Sent 2760000 bytes over 5.82 seconds.
+    Speed is 3.79381 mb/s.
+Waited for acks: 5971 ms
+Sending file: 52%
+    Sent 2760000 bytes over 5.999 seconds.
+    Speed is 3.68061 mb/s.
+Waited for acks: 6094 ms
+Sending file: 53%
+    Sent 2760000 bytes over 6.121 seconds.
+    Speed is 3.60725 mb/s.
+Waited for acks: 5938 ms
+Sending file: 54%
+    Sent 2760000 bytes over 5.967 seconds.
+    Speed is 3.70035 mb/s.
+Waited for acks: 5934 ms
+Sending file: 55%
+    Sent 2760000 bytes over 5.943 seconds.
+    Speed is 3.7153 mb/s.
+Waited for acks: 5693 ms
+Sending file: 56%
+    Sent 2760000 bytes over 5.722 seconds.
+    Speed is 3.85879 mb/s.
+Waited for acks: 6028 ms
+Sending file: 57%
+    Sent 2760000 bytes over 6.067 seconds.
+    Speed is 3.63936 mb/s.
+Waited for acks: 6049 ms
+Sending file: 58%
+    Sent 2760000 bytes over 6.058 seconds.
+    Speed is 3.64477 mb/s.
+Waited for acks: 5902 ms
+Sending file: 59%
+    Sent 2760000 bytes over 5.934 seconds.
+    Speed is 3.72093 mb/s.
+Waited for acks: 5710 ms
+Sending file: 60%
+    Sent 2760000 bytes over 5.719 seconds.
+    Speed is 3.86081 mb/s.
+Waited for acks: 6011 ms
+Sending file: 61%
+    Sent 2760000 bytes over 6.048 seconds.
+    Speed is 3.65079 mb/s.
+Waited for acks: 5982 ms
+Sending file: 62%
+    Sent 2760000 bytes over 6.014 seconds.
+    Speed is 3.67143 mb/s.
+Waited for acks: 6235 ms
+Sending file: 63%
+    Sent 2760000 bytes over 6.244 seconds.
+    Speed is 3.53619 mb/s.
+Waited for acks: 5684 ms
+Sending file: 64%
+    Sent 2760000 bytes over 5.693 seconds.
+    Speed is 3.87845 mb/s.
+Waited for acks: 5661 ms
+Sending file: 65%
+    Sent 2760000 bytes over 5.688 seconds.
+    Speed is 3.88186 mb/s.
+Waited for acks: 5876 ms
+Sending file: 66%
+    Sent 2760000 bytes over 5.904 seconds.
+    Speed is 3.73984 mb/s.
+Waited for acks: 5626 ms
+Sending file: 67%
+    Sent 2760000 bytes over 5.656 seconds.
+    Speed is 3.90382 mb/s.
+Waited for acks: 5686 ms
+Sending file: 68%
+    Sent 2760000 bytes over 5.725 seconds.
+    Speed is 3.85677 mb/s.
+Waited for acks: 6124 ms
+Sending file: 69%
+    Sent 2760000 bytes over 6.155 seconds.
+    Speed is 3.58733 mb/s.
+Waited for acks: 5969 ms
+Sending file: 70%
+    Sent 2760000 bytes over 5.999 seconds.
+    Speed is 3.68061 mb/s.
+Waited for acks: 5688 ms
+Sending file: 71%
+    Sent 2760000 bytes over 5.696 seconds.
+    Speed is 3.8764 mb/s.
+Waited for acks: 5588 ms
+Sending file: 72%
+    Sent 2760000 bytes over 5.624 seconds.
+    Speed is 3.92603 mb/s.
+Waited for acks: 6045 ms
+Sending file: 73%
+    Sent 2760000 bytes over 6.076 seconds.
+    Speed is 3.63397 mb/s.
+Waited for acks: 5937 ms
+Sending file: 74%
+    Sent 2760000 bytes over 5.968 seconds.
+    Speed is 3.69973 mb/s.
+Waited for acks: 5785 ms
+Sending file: 75%
+    Sent 2760000 bytes over 5.795 seconds.
+    Speed is 3.81018 mb/s.
+Waited for acks: 5916 ms
+Sending file: 76%
+    Sent 2760000 bytes over 5.945 seconds.
+    Speed is 3.71405 mb/s.
+Waited for acks: 5983 ms
+Sending file: 77%
+    Sent 2760000 bytes over 5.997 seconds.
+    Speed is 3.68184 mb/s.
+Waited for acks: 5886 ms
+Sending file: 78%
+    Sent 2760000 bytes over 5.914 seconds.
+    Speed is 3.73351 mb/s.
+Waited for acks: 5787 ms
+Sending file: 79%
+    Sent 2760000 bytes over 5.824 seconds.
+    Speed is 3.79121 mb/s.
+Waited for acks: 5959 ms
+Sending file: 80%
+    Sent 2760000 bytes over 5.993 seconds.
+    Speed is 3.6843 mb/s.
+Waited for acks: 6009 ms
+Sending file: 81%
+    Sent 2760000 bytes over 6.018 seconds.
+    Speed is 3.66899 mb/s.
+Waited for acks: 5616 ms
+Sending file: 82%
+    Sent 2760000 bytes over 5.647 seconds.
+    Speed is 3.91004 mb/s.
+Waited for acks: 6153 ms
+Sending file: 83%
+    Sent 2760000 bytes over 6.188 seconds.
+    Speed is 3.5682 mb/s.
+Waited for acks: 6079 ms
+Sending file: 84%
+    Sent 2760000 bytes over 6.088 seconds.
+    Speed is 3.62681 mb/s.
+Waited for acks: 5929 ms
+Sending file: 85%
+    Sent 2760000 bytes over 5.937 seconds.
+    Speed is 3.71905 mb/s.
+Waited for acks: 5736 ms
+Sending file: 86%
+    Sent 2760000 bytes over 5.769 seconds.
+    Speed is 3.82735 mb/s.
+Waited for acks: 5629 ms
+Sending file: 87%
+    Sent 2760000 bytes over 5.661 seconds.
+    Speed is 3.90037 mb/s.
+Waited for acks: 5969 ms
+Sending file: 88%
+    Sent 2760000 bytes over 5.995 seconds.
+    Speed is 3.68307 mb/s.
+Waited for acks: 5818 ms
+Sending file: 89%
+    Sent 2760000 bytes over 5.854 seconds.
+    Speed is 3.77178 mb/s.
+Waited for acks: 6014 ms
+Sending file: 90%
+    Sent 2760000 bytes over 6.046 seconds.
+    Speed is 3.652 mb/s.
+Waited for acks: 5597 ms
+Sending file: 91%
+    Sent 2760000 bytes over 5.63 seconds.
+    Speed is 3.92185 mb/s.
+Waited for acks: 5716 ms
+Sending file: 92%
+    Sent 2760000 bytes over 5.749 seconds.
+    Speed is 3.84067 mb/s.
+Waited for acks: 5606 ms
+Sending file: 93%
+    Sent 2760000 bytes over 5.634 seconds.
+    Speed is 3.91906 mb/s.
+Waited for acks: 5836 ms
+Sending file: 94%
+    Sent 2760000 bytes over 5.844 seconds.
+    Speed is 3.77823 mb/s.
+Waited for acks: 5705 ms
+Sending file: 95%
+    Sent 2760000 bytes over 5.715 seconds.
+    Speed is 3.86352 mb/s.
+Waited for acks: 5703 ms
+Sending file: 96%
+    Sent 2760000 bytes over 5.723 seconds.
+    Speed is 3.85812 mb/s.
+Waited for acks: 5945 ms
+Sending file: 97%
+    Sent 2760000 bytes over 5.953 seconds.
+    Speed is 3.70905 mb/s.
+Waited for acks: 5928 ms
+Sending file: 98%
+    Sent 2760000 bytes over 5.937 seconds.
+    Speed is 3.71905 mb/s.
+Waited for acks: 6290 ms
+Sending file: 99%
+    Sent 2760000 bytes over 6.325 seconds.
+    Speed is 3.49091 mb/s.
+Waited for acks: 5980 ms
+Sending file: 100%
+    Sent 2760000 bytes over 5.988 seconds.
+    Speed is 3.68737 mb/s.
+I0715 20:04:14.966985 32493 MvfstProtocolQUIC.cpp:95] MvFstConnector connection end
+MVFST packet queue is empty, but _pendingAck is not 0 (1)
+Waited for acks: 3421 ms
+File sent
+Running speed test (iperf3):
+E0715 20:04:15.021963 32493 EventHandler.cpp:90] EventBase: failed to register event handler for fd 8: Resource temporarily unavailable
+Connecting to host 10.151.41.5, port 8888
+[  5] local 10.0.2.15 port 33328 connected to 10.151.41.5 port 8888
+[ ID] Interval           Transfer     Bitrate         Retr  Cwnd
+[  5]   0.00-1.00   sec  1.05 MBytes  8.81 Mbits/sec    0   95.5 KBytes       
+[  5]   1.00-2.00   sec   439 KBytes  3.59 Mbits/sec    0   95.5 KBytes       
+[  5]   2.00-3.00   sec   659 KBytes  5.40 Mbits/sec    0   95.5 KBytes       
+[  5]   3.00-4.00   sec   721 KBytes  5.91 Mbits/sec    0   95.5 KBytes       
+[  5]   4.00-5.00   sec   690 KBytes  5.65 Mbits/sec    0   95.5 KBytes       
+[  5]   5.00-6.00   sec   659 KBytes  5.39 Mbits/sec    0   95.5 KBytes       
+[  5]   6.00-7.00   sec   659 KBytes  5.41 Mbits/sec    0   95.5 KBytes       
+[  5]   7.00-8.00   sec   439 KBytes  3.60 Mbits/sec    0   95.5 KBytes       
+[  5]   8.00-9.00   sec   627 KBytes  5.14 Mbits/sec    0   95.5 KBytes       
+[  5]   9.00-10.00  sec   502 KBytes  4.11 Mbits/sec    0   95.5 KBytes       
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Retr
+[  5]   0.00-10.00  sec  6.32 MBytes  5.30 Mbits/sec    0             sender
+[  5]   0.00-10.13  sec  5.90 MBytes  4.88 Mbits/sec                  receiver
+
+iperf Done.
+Connecting to host 10.151.41.5, port 8888
+[  5] local 10.0.2.15 port 34290 connected to 10.151.41.5 port 8888
+[ ID] Interval           Transfer     Bitrate         Total Datagrams
+[  5]   0.00-1.00   sec  4.77 MBytes  40.0 Mbits/sec  4997  
+[  5]   1.00-2.00   sec  4.77 MBytes  40.0 Mbits/sec  5001  
+[  5]   2.00-3.00   sec  4.77 MBytes  40.0 Mbits/sec  5000  
+[  5]   3.00-4.01   sec  4.73 MBytes  39.3 Mbits/sec  4961  
+[  5]   4.01-5.00   sec  4.80 MBytes  40.6 Mbits/sec  5037  
+[  5]   5.00-6.01   sec  4.76 MBytes  39.6 Mbits/sec  4993  
+[  5]   6.01-7.00   sec  4.78 MBytes  40.5 Mbits/sec  5010  
+[  5]   7.00-8.00   sec  4.77 MBytes  40.0 Mbits/sec  4998  
+[  5]   8.00-9.00   sec  4.75 MBytes  39.8 Mbits/sec  4982  
+[  5]   9.00-10.00  sec  4.79 MBytes  40.2 Mbits/sec  5019  
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total Datagrams
+[  5]   0.00-10.00  sec  47.7 MBytes  40.0 Mbits/sec  0.000 ms  0/49998 (0%)  sender
+[  5]   0.00-10.17  sec  47.1 MBytes  38.9 Mbits/sec  0.297 ms  618/49998 (1.2%)  receiver
+
+iperf Done.
+Measuring latency 
+PING 10.151.41.5 (10.151.41.5) 56(84) bytes of data.
+64 bytes from 10.151.41.5: icmp_seq=1 ttl=61 time=131 ms
+64 bytes from 10.151.41.5: icmp_seq=2 ttl=61 time=129 ms
+64 bytes from 10.151.41.5: icmp_seq=3 ttl=61 time=130 ms
+64 bytes from 10.151.41.5: icmp_seq=4 ttl=61 time=130 ms
+64 bytes from 10.151.41.5: icmp_seq=5 ttl=61 time=130 ms
+64 bytes from 10.151.41.5: icmp_seq=6 ttl=61 time=130 ms
+64 bytes from 10.151.41.5: icmp_seq=7 ttl=61 time=129 ms
+64 bytes from 10.151.41.5: icmp_seq=8 ttl=61 time=132 ms
+64 bytes from 10.151.41.5: icmp_seq=9 ttl=61 time=130 ms
+64 bytes from 10.151.41.5: icmp_seq=10 ttl=61 time=130 ms
+
+--- 10.151.41.5 ping statistics ---
+10 packets transmitted, 10 received, 0% packet loss, time 9059ms
+rtt min/avg/max/mdev = 129.292/130.102/132.033/0.829 ms
+Statistics:
+Sent 276003327 bytes
+    over 595.132 seconds 
+    Average file transfer speed was 3.71014 mbit/s
+Connection dropped 0 times 
+Hashing took 0.986029 seconds 
+
+Process finished with exit code 0
+New reno:
+/home/raigo/repos/masters-thesis/solution/protocol_testbed/cmake-build-debug/protocol_testbed_client --filea /home/raigo/repos/snow_problem.bag --fileb /home/raigo/repos/cert.pem --file /home/raigo/repos/masters-thesis/solution/protocol_testbed/Views-7.0-linux-x64-installer.run --protocol QUIC --address 10.151.41.5 --port 12345 --buffer-size 10000 --stport 8888
+Running speed test (iperf3):
+Connecting to host 10.151.41.5, port 8888
+[  5] local 10.0.2.15 port 33510 connected to 10.151.41.5 port 8888
+[ ID] Interval           Transfer     Bitrate         Retr  Cwnd
+[  5]   0.00-1.00   sec   950 KBytes  7.78 Mbits/sec    0    108 KBytes       
+[  5]   1.00-2.00   sec   533 KBytes  4.37 Mbits/sec    0    108 KBytes       
+[  5]   2.00-3.00   sec   690 KBytes  5.65 Mbits/sec    0    108 KBytes       
+[  5]   3.00-4.00   sec   502 KBytes  4.11 Mbits/sec    0    108 KBytes       
+[  5]   4.00-5.00   sec   721 KBytes  5.91 Mbits/sec    0    108 KBytes       
+[  5]   5.00-6.00   sec   502 KBytes  4.11 Mbits/sec    0    108 KBytes       
+[  5]   6.00-7.00   sec   784 KBytes  6.42 Mbits/sec    0    108 KBytes       
+[  5]   7.00-8.00   sec   753 KBytes  6.17 Mbits/sec    0    108 KBytes       
+[  5]   8.00-9.00   sec   471 KBytes  3.85 Mbits/sec    0    108 KBytes       
+[  5]   9.00-10.01  sec   784 KBytes  6.38 Mbits/sec    0    108 KBytes       
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Retr
+[  5]   0.00-10.01  sec  6.53 MBytes  5.48 Mbits/sec    0             sender
+[  5]   0.00-10.14  sec  5.96 MBytes  4.93 Mbits/sec                  receiver
+
+iperf Done.
+Connecting to host 10.151.41.5, port 8888
+[  5] local 10.0.2.15 port 40876 connected to 10.151.41.5 port 8888
+[ ID] Interval           Transfer     Bitrate         Total Datagrams
+[  5]   0.00-1.02   sec  4.77 MBytes  39.1 Mbits/sec  4997  
+[  5]   1.02-2.00   sec  4.68 MBytes  40.0 Mbits/sec  4909  
+[  5]   2.00-3.00   sec  4.85 MBytes  40.8 Mbits/sec  5090  
+[  5]   3.00-4.00   sec  4.77 MBytes  40.0 Mbits/sec  5003  
+[  5]   4.00-5.00   sec  4.77 MBytes  40.0 Mbits/sec  4997  
+[  5]   5.00-6.01   sec  4.75 MBytes  39.3 Mbits/sec  4980  
+[  5]   6.01-7.02   sec  4.76 MBytes  39.9 Mbits/sec  4995  
+[  5]   7.02-8.00   sec  4.79 MBytes  40.9 Mbits/sec  5026  
+[  5]   8.00-9.00   sec  4.77 MBytes  40.0 Mbits/sec  4999  
+[  5]   9.00-10.00  sec  4.77 MBytes  40.0 Mbits/sec  5001  
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total Datagrams
+[  5]   0.00-10.00  sec  47.7 MBytes  40.0 Mbits/sec  0.000 ms  0/49997 (0%)  sender
+[  5]   0.00-10.17  sec  47.0 MBytes  38.8 Mbits/sec  0.368 ms  673/49995 (1.3%)  receiver
+
+iperf Done.
+Measuring latency 
+PING 10.151.41.5 (10.151.41.5) 56(84) bytes of data.
+64 bytes from 10.151.41.5: icmp_seq=1 ttl=61 time=130 ms
+64 bytes from 10.151.41.5: icmp_seq=2 ttl=61 time=130 ms
+64 bytes from 10.151.41.5: icmp_seq=3 ttl=61 time=130 ms
+64 bytes from 10.151.41.5: icmp_seq=4 ttl=61 time=130 ms
+64 bytes from 10.151.41.5: icmp_seq=5 ttl=61 time=131 ms
+64 bytes from 10.151.41.5: icmp_seq=6 ttl=61 time=130 ms
+64 bytes from 10.151.41.5: icmp_seq=7 ttl=61 time=130 ms
+64 bytes from 10.151.41.5: icmp_seq=8 ttl=61 time=130 ms
+64 bytes from 10.151.41.5: icmp_seq=9 ttl=61 time=130 ms
+64 bytes from 10.151.41.5: icmp_seq=10 ttl=61 time=130 ms
+
+--- 10.151.41.5 ping statistics ---
+10 packets transmitted, 10 received, 0% packet loss, time 9054ms
+rtt min/avg/max/mdev = 129.635/130.157/131.087/0.375 ms
+Calculating checksum ...
+Checksum calculated: ffffff84305dffffffe2ffffffde6e7917ffffffc8ffffffa414ffffffda4810ffffffcb6cffffff8affffffa4ffffffbe6046ffffff89ffffff8372ffffff8dfffffff90e2e0e34ffffff9931
+I0715 20:28:08.252981 33610 MvfstProtocolQUIC.cpp:267] Starting MVFST
+I0715 20:28:08.254083 33620 MvfstProtocolQUIC.cpp:157] MvFstConnector connecting to 10.151.41.5:12345
+Connection established. Time taken: 157 milliseconds
+Sending header
+Sending file
+Waited for acks: 5832 ms
+Sending file: 1%
+    Sent 2760000 bytes over 5.857 seconds.
+    Speed is 3.76985 mb/s.
+Waited for acks: 5604 ms
+Sending file: 2%
+    Sent 2760000 bytes over 5.639 seconds.
+    Speed is 3.91559 mb/s.
+Waited for acks: 5678 ms
+Sending file: 3%
+    Sent 2760000 bytes over 5.687 seconds.
+    Speed is 3.88254 mb/s.
+Waited for acks: 5667 ms
+Sending file: 4%
+    Sent 2760000 bytes over 5.698 seconds.
+    Speed is 3.87504 mb/s.
+Waited for acks: 5586 ms
+Sending file: 5%
+    Sent 2760000 bytes over 5.614 seconds.
+    Speed is 3.93302 mb/s.
+Waited for acks: 5609 ms
+Sending file: 6%
+    Sent 2760000 bytes over 5.644 seconds.
+    Speed is 3.91212 mb/s.
+Waited for acks: 5902 ms
+Sending file: 7%
+    Sent 2760000 bytes over 5.932 seconds.
+    Speed is 3.72218 mb/s.
+Waited for acks: 5676 ms
+Sending file: 8%
+    Sent 2760000 bytes over 5.705 seconds.
+    Speed is 3.87029 mb/s.
+Waited for acks: 5633 ms
+Sending file: 9%
+    Sent 2760000 bytes over 5.641 seconds.
+    Speed is 3.9142 mb/s.
+Waited for acks: 5617 ms
+Sending file: 10%
+    Sent 2760000 bytes over 5.671 seconds.
+    Speed is 3.89349 mb/s.
+Waited for acks: 5599 ms
+Sending file: 11%
+    Sent 2760000 bytes over 5.632 seconds.
+    Speed is 3.92045 mb/s.
+Waited for acks: 5876 ms
+Sending file: 12%
+    Sent 2760000 bytes over 5.886 seconds.
+    Speed is 3.75127 mb/s.
+Waited for acks: 5629 ms
+Sending file: 13%
+    Sent 2760000 bytes over 5.661 seconds.
+    Speed is 3.90037 mb/s.
+Waited for acks: 5652 ms
+Sending file: 14%
+    Sent 2760000 bytes over 5.682 seconds.
+    Speed is 3.88596 mb/s.
+Waited for acks: 5720 ms
+Sending file: 15%
+    Sent 2760000 bytes over 5.728 seconds.
+    Speed is 3.85475 mb/s.
+Waited for acks: 5703 ms
+Sending file: 16%
+    Sent 2760000 bytes over 5.735 seconds.
+    Speed is 3.85004 mb/s.
+Waited for acks: 5610 ms
+Sending file: 17%
+    Sent 2760000 bytes over 5.618 seconds.
+    Speed is 3.93022 mb/s.
+Waited for acks: 5846 ms
+Sending file: 18%
+    Sent 2760000 bytes over 5.854 seconds.
+    Speed is 3.77178 mb/s.
+Waited for acks: 5640 ms
+Sending file: 19%
+    Sent 2760000 bytes over 5.672 seconds.
+    Speed is 3.89281 mb/s.
+Waited for acks: 5720 ms
+Sending file: 20%
+    Sent 2760000 bytes over 5.73 seconds.
+    Speed is 3.8534 mb/s.
+Waited for acks: 5623 ms
+Sending file: 21%
+    Sent 2760000 bytes over 5.655 seconds.
+    Speed is 3.90451 mb/s.
+Waited for acks: 5629 ms
+Sending file: 22%
+    Sent 2760000 bytes over 5.659 seconds.
+    Speed is 3.90175 mb/s.
+Waited for acks: 5749 ms
+Sending file: 23%
+    Sent 2760000 bytes over 5.777 seconds.
+    Speed is 3.82205 mb/s.
+Waited for acks: 5709 ms
+Sending file: 24%
+    Sent 2760000 bytes over 5.717 seconds.
+    Speed is 3.86217 mb/s.
+Waited for acks: 5693 ms
+Sending file: 25%
+    Sent 2760000 bytes over 5.724 seconds.
+    Speed is 3.85744 mb/s.
+Waited for acks: 5732 ms
+Sending file: 26%
+    Sent 2760000 bytes over 5.763 seconds.
+    Speed is 3.83134 mb/s.
+Waited for acks: 5683 ms
+Sending file: 27%
+    Sent 2760000 bytes over 5.691 seconds.
+    Speed is 3.87981 mb/s.
+Waited for acks: 5797 ms
+Sending file: 28%
+    Sent 2760000 bytes over 5.832 seconds.
+    Speed is 3.78601 mb/s.
+Waited for acks: 5663 ms
+Sending file: 29%
+    Sent 2760000 bytes over 5.696 seconds.
+    Speed is 3.8764 mb/s.
+Waited for acks: 5652 ms
+Sending file: 30%
+    Sent 2760000 bytes over 5.691 seconds.
+    Speed is 3.87981 mb/s.
+Waited for acks: 5600 ms
+Sending file: 31%
+    Sent 2760000 bytes over 5.633 seconds.
+    Speed is 3.91976 mb/s.
+Waited for acks: 5706 ms
+Sending file: 32%
+    Sent 2760000 bytes over 5.715 seconds.
+    Speed is 3.86352 mb/s.
+Waited for acks: 5661 ms
+Sending file: 33%
+    Sent 2760000 bytes over 5.669 seconds.
+    Speed is 3.89487 mb/s.
+Waited for acks: 5844 ms
+Sending file: 34%
+    Sent 2760000 bytes over 5.871 seconds.
+    Speed is 3.76086 mb/s.
+Waited for acks: 5630 ms
+Sending file: 35%
+    Sent 2760000 bytes over 5.661 seconds.
+    Speed is 3.90037 mb/s.
+Waited for acks: 5656 ms
+Sending file: 36%
+    Sent 2760000 bytes over 5.684 seconds.
+    Speed is 3.88459 mb/s.
+Waited for acks: 5570 ms
+Sending file: 37%
+    Sent 2760000 bytes over 5.601 seconds.
+    Speed is 3.94215 mb/s.
+Waited for acks: 5705 ms
+Sending file: 38%
+    Sent 2760000 bytes over 5.735 seconds.
+    Speed is 3.85004 mb/s.
+Waited for acks: 5804 ms
+Sending file: 39%
+    Sent 2760000 bytes over 5.836 seconds.
+    Speed is 3.78341 mb/s.
+Waited for acks: 5702 ms
+Sending file: 40%
+    Sent 2760000 bytes over 5.71 seconds.
+    Speed is 3.8669 mb/s.
+Waited for acks: 5545 ms
+Sending file: 41%
+    Sent 2760000 bytes over 5.578 seconds.
+    Speed is 3.95841 mb/s.
+Waited for acks: 5729 ms
+Sending file: 42%
+    Sent 2760000 bytes over 5.758 seconds.
+    Speed is 3.83466 mb/s.
+Waited for acks: 5684 ms
+Sending file: 43%
+    Sent 2760000 bytes over 5.728 seconds.
+    Speed is 3.85475 mb/s.
+Waited for acks: 5717 ms
+Sending file: 44%
+    Sent 2760000 bytes over 5.751 seconds.
+    Speed is 3.83933 mb/s.
+Waited for acks: 5656 ms
+Sending file: 45%
+    Sent 2760000 bytes over 5.689 seconds.
+    Speed is 3.88117 mb/s.
+Waited for acks: 5713 ms
+Sending file: 46%
+    Sent 2760000 bytes over 5.744 seconds.
+    Speed is 3.84401 mb/s.
+Waited for acks: 5625 ms
+Sending file: 47%
+    Sent 2760000 bytes over 5.657 seconds.
+    Speed is 3.90313 mb/s.
+Waited for acks: 5747 ms
+Sending file: 48%
+    Sent 2760000 bytes over 5.757 seconds.
+    Speed is 3.83533 mb/s.
+Waited for acks: 5669 ms
+Sending file: 49%
+    Sent 2760000 bytes over 5.689 seconds.
+    Speed is 3.88117 mb/s.
+Waited for acks: 5785 ms
+Sending file: 50%
+    Sent 2760000 bytes over 5.793 seconds.
+    Speed is 3.8115 mb/s.
+Waited for acks: 5694 ms
+Sending file: 51%
+    Sent 2760000 bytes over 5.702 seconds.
+    Speed is 3.87233 mb/s.
+Waited for acks: 5655 ms
+Sending file: 52%
+    Sent 2760000 bytes over 5.686 seconds.
+    Speed is 3.88322 mb/s.
+Waited for acks: 5667 ms
+Sending file: 53%
+    Sent 2760000 bytes over 5.694 seconds.
+    Speed is 3.87777 mb/s.
+Waited for acks: 5776 ms
+Sending file: 54%
+    Sent 2760000 bytes over 5.785 seconds.
+    Speed is 3.81677 mb/s.
+Waited for acks: 5685 ms
+Sending file: 55%
+    Sent 2760000 bytes over 5.695 seconds.
+    Speed is 3.87709 mb/s.
+Waited for acks: 5646 ms
+Sending file: 56%
+    Sent 2760000 bytes over 5.655 seconds.
+    Speed is 3.90451 mb/s.
+Waited for acks: 6034 ms
+Sending file: 57%
+    Sent 2760000 bytes over 6.069 seconds.
+    Speed is 3.63816 mb/s.
+Waited for acks: 5701 ms
+Sending file: 58%
+    Sent 2760000 bytes over 5.71 seconds.
+    Speed is 3.8669 mb/s.
+Waited for acks: 5602 ms
+Sending file: 59%
+    Sent 2760000 bytes over 5.636 seconds.
+    Speed is 3.91767 mb/s.
+Waited for acks: 5888 ms
+Sending file: 60%
+    Sent 2760000 bytes over 5.922 seconds.
+    Speed is 3.72847 mb/s.
+Waited for acks: 5664 ms
+Sending file: 61%
+    Sent 2760000 bytes over 5.677 seconds.
+    Speed is 3.88938 mb/s.
+Waited for acks: 5692 ms
+Sending file: 62%
+    Sent 2760000 bytes over 5.725 seconds.
+    Speed is 3.85677 mb/s.
+Waited for acks: 5688 ms
+Sending file: 63%
+    Sent 2760000 bytes over 5.718 seconds.
+    Speed is 3.86149 mb/s.
+Waited for acks: 5626 ms
+Sending file: 64%
+    Sent 2760000 bytes over 5.634 seconds.
+    Speed is 3.91906 mb/s.
+Waited for acks: 5768 ms
+Sending file: 65%
+    Sent 2760000 bytes over 5.796 seconds.
+    Speed is 3.80952 mb/s.
+Waited for acks: 5650 ms
+Sending file: 66%
+    Sent 2760000 bytes over 5.679 seconds.
+    Speed is 3.88801 mb/s.
+Waited for acks: 5647 ms
+Sending file: 67%
+    Sent 2760000 bytes over 5.656 seconds.
+    Speed is 3.90382 mb/s.
+Waited for acks: 5638 ms
+Sending file: 68%
+    Sent 2760000 bytes over 5.672 seconds.
+    Speed is 3.89281 mb/s.
+Waited for acks: 5879 ms
+Sending file: 69%
+    Sent 2760000 bytes over 5.911 seconds.
+    Speed is 3.73541 mb/s.
+Waited for acks: 5639 ms
+Sending file: 70%
+    Sent 2760000 bytes over 5.668 seconds.
+    Speed is 3.89555 mb/s.
+Waited for acks: 5634 ms
+Sending file: 71%
+    Sent 2760000 bytes over 5.666 seconds.
+    Speed is 3.89693 mb/s.
+Waited for acks: 5721 ms
+Sending file: 72%
+    Sent 2760000 bytes over 5.753 seconds.
+    Speed is 3.838 mb/s.
+Waited for acks: 5690 ms
+Sending file: 73%
+    Sent 2760000 bytes over 5.724 seconds.
+    Speed is 3.85744 mb/s.
+Waited for acks: 5634 ms
+Sending file: 74%
+    Sent 2760000 bytes over 5.65 seconds.
+    Speed is 3.90796 mb/s.
+Waited for acks: 5804 ms
+Sending file: 75%
+    Sent 2760000 bytes over 5.812 seconds.
+    Speed is 3.79904 mb/s.
+Waited for acks: 5686 ms
+Sending file: 76%
+    Sent 2760000 bytes over 5.72 seconds.
+    Speed is 3.86014 mb/s.
+Waited for acks: 5676 ms
+Sending file: 77%
+    Sent 2760000 bytes over 5.709 seconds.
+    Speed is 3.86758 mb/s.
+Waited for acks: 5663 ms
+Sending file: 78%
+    Sent 2760000 bytes over 5.697 seconds.
+    Speed is 3.87572 mb/s.
+Waited for acks: 5586 ms
+Sending file: 79%
+    Sent 2760000 bytes over 5.623 seconds.
+    Speed is 3.92673 mb/s.
+Waited for acks: 5884 ms
+Sending file: 80%
+    Sent 2760000 bytes over 5.919 seconds.
+    Speed is 3.73036 mb/s.
+Waited for acks: 5593 ms
+Sending file: 81%
+    Sent 2760000 bytes over 5.63 seconds.
+    Speed is 3.92185 mb/s.
+Waited for acks: 5589 ms
+Sending file: 82%
+    Sent 2760000 bytes over 5.621 seconds.
+    Speed is 3.92813 mb/s.
+Waited for acks: 5642 ms
+Sending file: 83%
+    Sent 2760000 bytes over 5.674 seconds.
+    Speed is 3.89143 mb/s.
+Waited for acks: 5620 ms
+Sending file: 84%
+    Sent 2760000 bytes over 5.65 seconds.
+    Speed is 3.90796 mb/s.
+Waited for acks: 5653 ms
+Sending file: 85%
+    Sent 2760000 bytes over 5.661 seconds.
+    Speed is 3.90037 mb/s.
+Waited for acks: 5946 ms
+Sending file: 86%
+    Sent 2760000 bytes over 5.955 seconds.
+    Speed is 3.70781 mb/s.
+Waited for acks: 5631 ms
+Sending file: 87%
+    Sent 2760000 bytes over 5.659 seconds.
+    Speed is 3.90175 mb/s.
+Waited for acks: 5578 ms
+Sending file: 88%
+    Sent 2760000 bytes over 5.604 seconds.
+    Speed is 3.94004 mb/s.
+Waited for acks: 5637 ms
+Sending file: 89%
+    Sent 2760000 bytes over 5.646 seconds.
+    Speed is 3.91073 mb/s.
+Waited for acks: 5636 ms
+Sending file: 90%
+    Sent 2760000 bytes over 5.666 seconds.
+    Speed is 3.89693 mb/s.
+Waited for acks: 5778 ms
+Sending file: 91%
+    Sent 2760000 bytes over 5.787 seconds.
+    Speed is 3.81545 mb/s.
+Waited for acks: 5620 ms
+Sending file: 92%
+    Sent 2760000 bytes over 5.658 seconds.
+    Speed is 3.90244 mb/s.
+Waited for acks: 5656 ms
+Sending file: 93%
+    Sent 2760000 bytes over 5.667 seconds.
+    Speed is 3.89624 mb/s.
+Waited for acks: 5644 ms
+Sending file: 94%
+    Sent 2760000 bytes over 5.675 seconds.
+    Speed is 3.89075 mb/s.
+Waited for acks: 5613 ms
+Sending file: 95%
+    Sent 2760000 bytes over 5.656 seconds.
+    Speed is 3.90382 mb/s.
+Waited for acks: 5797 ms
+Sending file: 96%
+    Sent 2760000 bytes over 5.824 seconds.
+    Speed is 3.79121 mb/s.
+Waited for acks: 5654 ms
+Sending file: 97%
+    Sent 2760000 bytes over 5.682 seconds.
+    Speed is 3.88596 mb/s.
+Waited for acks: 5620 ms
+Sending file: 98%
+    Sent 2760000 bytes over 5.662 seconds.
+    Speed is 3.89968 mb/s.
+Waited for acks: 5564 ms
+Sending file: 99%
+    Sent 2760000 bytes over 5.607 seconds.
+    Speed is 3.93793 mb/s.
+Waited for acks: 5627 ms
+Sending file: 100%
+    Sent 2760000 bytes over 5.636 seconds.
+    Speed is 3.91767 mb/s.
+I0715 20:37:43.172539 33620 MvfstProtocolQUIC.cpp:95] MvFstConnector connection end
+MVFST packet queue is empty, but _pendingAck is not 0 (1)
+Waited for acks: 3413 ms
+File sent
+Running speed test (iperf3):
+E0715 20:37:43.215045 33620 EventHandler.cpp:90] EventBase: failed to register event handler for fd 8: Resource temporarily unavailable
+Connecting to host 10.151.41.5, port 8888
+[  5] local 10.0.2.15 port 33520 connected to 10.151.41.5 port 8888
+[ ID] Interval           Transfer     Bitrate         Retr  Cwnd
+[  5]   0.00-1.00   sec   793 KBytes  6.49 Mbits/sec    0   71.3 KBytes       
+[  5]   1.00-2.00   sec   533 KBytes  4.36 Mbits/sec    0   71.3 KBytes       
+[  5]   2.00-3.00   sec   502 KBytes  4.11 Mbits/sec    0   71.3 KBytes       
+[  5]   3.00-4.00   sec   721 KBytes  5.91 Mbits/sec    0   71.3 KBytes       
+[  5]   4.00-5.00   sec   502 KBytes  4.11 Mbits/sec    0   71.3 KBytes       
+[  5]   5.00-6.00   sec   690 KBytes  5.66 Mbits/sec    0   71.3 KBytes       
+[  5]   6.00-7.00   sec   659 KBytes  5.40 Mbits/sec    0   71.3 KBytes       
+[  5]   7.00-8.00   sec   721 KBytes  5.91 Mbits/sec    0   71.3 KBytes       
+[  5]   8.00-9.00   sec   565 KBytes  4.63 Mbits/sec    0   71.3 KBytes       
+[  5]   9.00-10.00  sec   690 KBytes  5.65 Mbits/sec    0   71.3 KBytes       
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Retr
+[  5]   0.00-10.00  sec  6.23 MBytes  5.22 Mbits/sec    0             sender
+[  5]   0.00-10.13  sec  5.84 MBytes  4.83 Mbits/sec                  receiver
+
+iperf Done.
+Connecting to host 10.151.41.5, port 8888
+[  5] local 10.0.2.15 port 60442 connected to 10.151.41.5 port 8888
+[ ID] Interval           Transfer     Bitrate         Total Datagrams
+[  5]   0.00-1.00   sec  4.77 MBytes  40.0 Mbits/sec  4999  
+[  5]   1.00-2.00   sec  4.77 MBytes  40.0 Mbits/sec  5001  
+[  5]   2.00-3.00   sec  4.75 MBytes  39.8 Mbits/sec  4978  
+[  5]   3.00-4.00   sec  4.79 MBytes  40.1 Mbits/sec  5020  
+[  5]   4.00-5.00   sec  4.77 MBytes  40.0 Mbits/sec  4998  
+[  5]   5.00-6.00   sec  4.77 MBytes  40.0 Mbits/sec  5001  
+[  5]   6.00-7.00   sec  4.77 MBytes  40.0 Mbits/sec  4999  
+[  5]   7.00-8.00   sec  4.77 MBytes  40.0 Mbits/sec  5002  
+[  5]   8.00-9.00   sec  4.77 MBytes  40.0 Mbits/sec  4998  
+[  5]   9.00-10.00  sec  4.77 MBytes  40.0 Mbits/sec  4999  
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total Datagrams
+[  5]   0.00-10.00  sec  47.7 MBytes  40.0 Mbits/sec  0.000 ms  0/49995 (0%)  sender
+[  5]   0.00-10.18  sec  47.4 MBytes  39.0 Mbits/sec  0.264 ms  315/49993 (0.63%)  receiver
+
+iperf Done.
+Measuring latency 
+PING 10.151.41.5 (10.151.41.5) 56(84) bytes of data.
+64 bytes from 10.151.41.5: icmp_seq=1 ttl=61 time=129 ms
+64 bytes from 10.151.41.5: icmp_seq=2 ttl=61 time=130 ms
+64 bytes from 10.151.41.5: icmp_seq=3 ttl=61 time=131 ms
+64 bytes from 10.151.41.5: icmp_seq=4 ttl=61 time=130 ms
+64 bytes from 10.151.41.5: icmp_seq=5 ttl=61 time=131 ms
+64 bytes from 10.151.41.5: icmp_seq=6 ttl=61 time=130 ms
+64 bytes from 10.151.41.5: icmp_seq=7 ttl=61 time=130 ms
+64 bytes from 10.151.41.5: icmp_seq=8 ttl=61 time=130 ms
+64 bytes from 10.151.41.5: icmp_seq=9 ttl=61 time=131 ms
+64 bytes from 10.151.41.5: icmp_seq=10 ttl=61 time=130 ms
+
+--- 10.151.41.5 ping statistics ---
+10 packets transmitted, 10 received, 0% packet loss, time 9088ms
+rtt min/avg/max/mdev = 129.299/130.197/131.292/0.579 ms
+Statistics:
+Sent 276003327 bytes
+    over 574.962 seconds 
+    Average file transfer speed was 3.8403 mbit/s
+Connection dropped 0 times 
+Hashing took 1.017 seconds 
+
+Process finished with exit code 0
