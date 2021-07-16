@@ -505,3 +505,500 @@ Expected file size: 8943173390
 E0708 12:43:13.349565 19115 ServerMvfstProtocolQUIC.cpp:131] Socket error=Internal Error
 ^C
 </pre>
+
+./protocol_testbed_client --protocol QUIC --address 193.40.245.62 --port 8101 --buffer-size 10000 --file ~/Desktop/heavy-snow.bag --stport 8102
+Running speed test (iperf3):
+Connecting to host 193.40.245.62, port 8102
+[  4] local 192.168.8.54 port 40752 connected to 193.40.245.62 port 8102
+[ ID] Interval           Transfer     Bandwidth       Retr  Cwnd
+[  4]   0.00-1.00   sec  4.94 MBytes  41.4 Mbits/sec    9    218 KBytes       
+[  4]   1.00-2.00   sec  4.41 MBytes  37.0 Mbits/sec    0    232 KBytes       
+[  4]   2.00-3.00   sec  4.72 MBytes  39.6 Mbits/sec    0    247 KBytes       
+[  4]   3.00-4.00   sec  4.85 MBytes  40.7 Mbits/sec    1    260 KBytes       
+[  4]   4.00-5.00   sec  4.91 MBytes  41.2 Mbits/sec    0    274 KBytes       
+[  4]   5.00-6.00   sec  5.10 MBytes  42.7 Mbits/sec    0    288 KBytes       
+[  4]   6.00-7.00   sec  4.97 MBytes  41.7 Mbits/sec    0    301 KBytes       
+[  4]   7.00-8.00   sec  5.22 MBytes  43.8 Mbits/sec    0    314 KBytes       
+[  4]   8.00-9.00   sec  4.85 MBytes  40.7 Mbits/sec    0    354 KBytes       
+[  4]   9.00-10.00  sec  4.78 MBytes  40.1 Mbits/sec    0    417 KBytes       
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bandwidth       Retr
+[  4]   0.00-10.00  sec  48.7 MBytes  40.9 Mbits/sec   10             sender
+[  4]   0.00-10.00  sec  46.8 MBytes  39.3 Mbits/sec                  receiver
+
+iperf Done.
+Connecting to host 193.40.245.62, port 8102
+[  4] local 192.168.8.54 port 39380 connected to 193.40.245.62 port 8102
+[ ID] Interval           Transfer     Bandwidth       Total Datagrams
+[  4]   0.00-1.00   sec  10.9 MBytes  91.0 Mbits/sec  11381  
+[  4]   1.00-2.00   sec  11.9 MBytes   100 Mbits/sec  12500  
+[  4]   2.00-3.00   sec  11.9 MBytes   100 Mbits/sec  12500  
+[  4]   3.00-4.00   sec  11.9 MBytes   100 Mbits/sec  12500  
+[  4]   4.00-5.00   sec  11.9 MBytes   100 Mbits/sec  12500  
+[  4]   5.00-6.00   sec  11.9 MBytes   100 Mbits/sec  12500  
+[  4]   6.00-7.00   sec  11.9 MBytes   100 Mbits/sec  12500  
+[  4]   7.00-8.00   sec  11.9 MBytes   100 Mbits/sec  12501  
+[  4]   8.00-9.00   sec  11.9 MBytes   100 Mbits/sec  12499  
+[  4]   9.00-10.00  sec  11.9 MBytes   100 Mbits/sec  12500  
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bandwidth       Jitter    Lost/Total Datagrams
+[  4]   0.00-10.00  sec   118 MBytes  99.1 Mbits/sec  0.154 ms  2088/4087 (51%)  
+[  4] Sent 4087 datagrams
+
+iperf Done.
+Calculating checksum ...
+Checksum calculated: fffffff6ffffffb4ffffffd22e73ffffffb9fffffffefffffff2fffffff973ffffffaa74ffffffeb6bfffffff908ffffffc93dffffffb964ffffffc575ffffffff23ffffff99ffffffd4fffffff61272144b26
+I0709 11:17:48.860980  9684 MvfstProtocolQUIC.cpp:267] Starting MVFST
+I0709 11:17:48.877913  9718 MvfstProtocolQUIC.cpp:157] MvFstConnector connecting to 193.40.245.62:8101
+Connection established. Time taken: 73 milliseconds
+Sending header
+Sending file
+Waited for acks: 58642 ms
+Sending file: 0%
+    Sent 89430000 bytes over 58.832 seconds.
+    Speed is 12.1607 mb/s.
+Waited for acks: 59744 ms
+Sending file: 1%
+    Sent 89430000 bytes over 59.943 seconds.
+    Speed is 11.9353 mb/s.
+Waited for acks: 59742 ms
+Sending file: 2%
+    Sent 89430000 bytes over 59.86 seconds.
+    Speed is 11.9519 mb/s.
+Waited for acks: 60344 ms
+Sending file: 3%
+    Sent 89430000 bytes over 60.551 seconds.
+    Speed is 11.8155 mb/s.
+Waited for acks: 57740 ms
+Sending file: 4%
+    Sent 89430000 bytes over 57.942 seconds.
+    Speed is 12.3475 mb/s.
+Waited for acks: 59543 ms
+Sending file: 5%
+    Sent 89430000 bytes over 59.739 seconds.
+    Speed is 11.9761 mb/s.
+Waited for acks: 60439 ms
+Sending file: 6%
+    Sent 89430000 bytes over 60.633 seconds.
+    Speed is 11.7995 mb/s.
+Waited for acks: 60943 ms
+Sending file: 7%
+    Sent 89430000 bytes over 61.063 seconds.
+    Speed is 11.7164 mb/s.
+Waited for acks: 60058 ms
+Sending file: 8%
+    Sent 89430000 bytes over 60.252 seconds.
+    Speed is 11.8741 mb/s.
+Waited for acks: 60357 ms
+Sending file: 9%
+    Sent 89430000 bytes over 60.47 seconds.
+    Speed is 11.8313 mb/s.
+Waited for acks: 60164 ms
+Sending file: 10%
+    Sent 89430000 bytes over 60.364 seconds.
+    Speed is 11.8521 mb/s.
+Waited for acks: 60463 ms
+Sending file: 11%
+    Sent 89430000 bytes over 60.641 seconds.
+    Speed is 11.798 mb/s.
+Waited for acks: 59369 ms
+Sending file: 12%
+    Sent 89430000 bytes over 59.48 seconds.
+    Speed is 12.0282 mb/s.
+Waited for acks: 60667 ms
+Sending file: 13%
+    Sent 89430000 bytes over 60.776 seconds.
+    Speed is 11.7718 mb/s.
+Waited for acks: 63746 ms
+Sending file: 14%
+    Sent 89430000 bytes over 63.941 seconds.
+    Speed is 11.1891 mb/s.
+Waited for acks: 61142 ms
+Sending file: 15%
+    Sent 89430000 bytes over 61.351 seconds.
+    Speed is 11.6614 mb/s.
+Waited for acks: 62540 ms
+Sending file: 16%
+    Sent 89430000 bytes over 62.736 seconds.
+    Speed is 11.404 mb/s.
+Waited for acks: 61741 ms
+Sending file: 17%
+    Sent 89430000 bytes over 61.865 seconds.
+    Speed is 11.5645 mb/s.
+Waited for acks: 56943 ms
+Sending file: 18%
+    Sent 89430000 bytes over 57.149 seconds.
+    Speed is 12.5189 mb/s.
+Waited for acks: 61045 ms
+Sending file: 19%
+    Sent 89430000 bytes over 61.244 seconds.
+    Speed is 11.6818 mb/s.
+Waited for acks: 60040 ms
+Sending file: 20%
+    Sent 89430000 bytes over 60.16 seconds.
+    Speed is 11.8923 mb/s.
+Waited for acks: 60341 ms
+Sending file: 21%
+    Sent 89430000 bytes over 60.55 seconds.
+    Speed is 11.8157 mb/s.
+Waited for acks: 60944 ms
+Sending file: 22%
+    Sent 89430000 bytes over 61.134 seconds.
+    Speed is 11.7028 mb/s.
+Waited for acks: 62739 ms
+Sending file: 23%
+    Sent 89430000 bytes over 62.861 seconds.
+    Speed is 11.3813 mb/s.
+Waited for acks: 62339 ms
+Sending file: 24%
+    Sent 89430000 bytes over 62.459 seconds.
+    Speed is 11.4546 mb/s.
+Waited for acks: 62442 ms
+Sending file: 25%
+    Sent 89430000 bytes over 62.644 seconds.
+    Speed is 11.4207 mb/s.
+Waited for acks: 59239 ms
+Sending file: 26%
+    Sent 89430000 bytes over 59.434 seconds.
+    Speed is 12.0376 mb/s.
+Waited for acks: 60261 ms
+Sending file: 27%
+    Sent 89430000 bytes over 60.456 seconds.
+    Speed is 11.8341 mb/s.
+Waited for acks: 61067 ms
+Sending file: 28%
+    Sent 89430000 bytes over 61.267 seconds.
+    Speed is 11.6774 mb/s.
+Waited for acks: 61269 ms
+Sending file: 29%
+    Sent 89430000 bytes over 61.384 seconds.
+    Speed is 11.6552 mb/s.
+Waited for acks: 59360 ms
+Sending file: 30%
+    Sent 89430000 bytes over 59.57 seconds.
+    Speed is 12.0101 mb/s.
+Waited for acks: 60641 ms
+Sending file: 31%
+    Sent 89430000 bytes over 60.762 seconds.
+    Speed is 11.7745 mb/s.
+Waited for acks: 61241 ms
+Sending file: 32%
+    Sent 89430000 bytes over 61.365 seconds.
+    Speed is 11.6588 mb/s.
+Waited for acks: 62543 ms
+Sending file: 33%
+    Sent 89430000 bytes over 62.67 seconds.
+    Speed is 11.416 mb/s.
+Waited for acks: 60438 ms
+Sending file: 34%
+    Sent 89430000 bytes over 60.644 seconds.
+    Speed is 11.7974 mb/s.
+Waited for acks: 62038 ms
+Sending file: 35%
+    Sent 89430000 bytes over 62.164 seconds.
+    Speed is 11.5089 mb/s.
+Waited for acks: 59939 ms
+Sending file: 36%
+    Sent 89430000 bytes over 60.128 seconds.
+    Speed is 11.8986 mb/s.
+Waited for acks: 59760 ms
+Sending file: 37%
+    Sent 89430000 bytes over 59.966 seconds.
+    Speed is 11.9308 mb/s.
+Waited for acks: 60565 ms
+Sending file: 38%
+    Sent 89430000 bytes over 60.776 seconds.
+    Speed is 11.7718 mb/s.
+Waited for acks: 61551 ms
+Sending file: 39%
+    Sent 89430000 bytes over 61.741 seconds.
+    Speed is 11.5878 mb/s.
+Waited for acks: 62243 ms
+Sending file: 40%
+    Sent 89430000 bytes over 62.436 seconds.
+    Speed is 11.4588 mb/s.
+Waited for acks: 63561 ms
+Sending file: 41%
+    Sent 89430000 bytes over 63.718 seconds.
+    Speed is 11.2282 mb/s.
+Waited for acks: 60654 ms
+Sending file: 42%
+    Sent 89430000 bytes over 60.769 seconds.
+    Speed is 11.7731 mb/s.
+Waited for acks: 60856 ms
+Sending file: 43%
+    Sent 89430000 bytes over 61.039 seconds.
+    Speed is 11.721 mb/s.
+Waited for acks: 60250 ms
+Sending file: 44%
+    Sent 89430000 bytes over 60.377 seconds.
+    Speed is 11.8495 mb/s.
+Waited for acks: 60938 ms
+Sending file: 45%
+    Sent 89430000 bytes over 61.112 seconds.
+    Speed is 11.707 mb/s.
+Waited for acks: 60742 ms
+Sending file: 46%
+    Sent 89430000 bytes over 60.934 seconds.
+    Speed is 11.7412 mb/s.
+Waited for acks: 61044 ms
+Sending file: 47%
+    Sent 89430000 bytes over 61.174 seconds.
+    Speed is 11.6952 mb/s.
+Waited for acks: 61050 ms
+Sending file: 48%
+    Sent 89430000 bytes over 61.256 seconds.
+    Speed is 11.6795 mb/s.
+Waited for acks: 61865 ms
+Sending file: 49%
+    Sent 89430000 bytes over 62.065 seconds.
+    Speed is 11.5273 mb/s.
+Waited for acks: 61369 ms
+Sending file: 50%
+    Sent 89430000 bytes over 61.579 seconds.
+    Speed is 11.6182 mb/s.
+Waited for acks: 60946 ms
+Sending file: 51%
+    Sent 89430000 bytes over 61.154 seconds.
+    Speed is 11.699 mb/s.
+Waited for acks: 61950 ms
+Sending file: 52%
+    Sent 89430000 bytes over 62.152 seconds.
+    Speed is 11.5111 mb/s.
+Waited for acks: 61045 ms
+Sending file: 53%
+    Sent 89430000 bytes over 61.25 seconds.
+    Speed is 11.6807 mb/s.
+Waited for acks: 62049 ms
+Sending file: 54%
+    Sent 89430000 bytes over 62.17 seconds.
+    Speed is 11.5078 mb/s.
+Waited for acks: 61046 ms
+Sending file: 55%
+    Sent 89430000 bytes over 61.252 seconds.
+    Speed is 11.6803 mb/s.
+Waited for acks: 60853 ms
+Sending file: 56%
+    Sent 89430000 bytes over 61.062 seconds.
+    Speed is 11.7166 mb/s.
+Waited for acks: 57263 ms
+Sending file: 57%
+    Sent 89430000 bytes over 57.469 seconds.
+    Speed is 12.4491 mb/s.
+Waited for acks: 58662 ms
+Sending file: 58%
+    Sent 89430000 bytes over 58.852 seconds.
+    Speed is 12.1566 mb/s.
+Waited for acks: 58166 ms
+Sending file: 59%
+    Sent 89430000 bytes over 58.37 seconds.
+    Speed is 12.257 mb/s.
+Waited for acks: 59173 ms
+Sending file: 60%
+    Sent 89430000 bytes over 59.367 seconds.
+    Speed is 12.0511 mb/s.
+Waited for acks: 57751 ms
+Sending file: 61%
+    Sent 89430000 bytes over 57.953 seconds.
+    Speed is 12.3452 mb/s.
+Waited for acks: 57948 ms
+Sending file: 62%
+    Sent 89430000 bytes over 58.077 seconds.
+    Speed is 12.3188 mb/s.
+Waited for acks: 55839 ms
+Sending file: 63%
+    Sent 89430000 bytes over 55.977 seconds.
+    Speed is 12.781 mb/s.
+Waited for acks: 56854 ms
+Sending file: 64%
+    Sent 89430000 bytes over 56.99 seconds.
+    Speed is 12.5538 mb/s.
+Waited for acks: 59458 ms
+Sending file: 65%
+    Sent 89430000 bytes over 59.649 seconds.
+    Speed is 11.9942 mb/s.
+Waited for acks: 56358 ms
+Sending file: 66%
+    Sent 89430000 bytes over 56.475 seconds.
+    Speed is 12.6683 mb/s.
+Waited for acks: 56868 ms
+Sending file: 67%
+    Sent 89430000 bytes over 57.067 seconds.
+    Speed is 12.5368 mb/s.
+Waited for acks: 57566 ms
+Sending file: 68%
+    Sent 89430000 bytes over 57.748 seconds.
+    Speed is 12.389 mb/s.
+Waited for acks: 58670 ms
+Sending file: 69%
+    Sent 89430000 bytes over 58.875 seconds.
+    Speed is 12.1518 mb/s.
+Waited for acks: 57842 ms
+Sending file: 70%
+    Sent 89430000 bytes over 58.057 seconds.
+    Speed is 12.3231 mb/s.
+Waited for acks: 58953 ms
+Sending file: 71%
+    Sent 89430000 bytes over 59.148 seconds.
+    Speed is 12.0958 mb/s.
+Waited for acks: 58661 ms
+Sending file: 72%
+    Sent 89430000 bytes over 58.854 seconds.
+    Speed is 12.1562 mb/s.
+Waited for acks: 57058 ms
+Sending file: 73%
+    Sent 89430000 bytes over 57.236 seconds.
+    Speed is 12.4998 mb/s.
+Waited for acks: 56757 ms
+Sending file: 74%
+    Sent 89430000 bytes over 56.96 seconds.
+    Speed is 12.5604 mb/s.
+Waited for acks: 55654 ms
+Sending file: 75%
+    Sent 89430000 bytes over 55.779 seconds.
+    Speed is 12.8263 mb/s.
+Waited for acks: 55554 ms
+Sending file: 76%
+    Sent 89430000 bytes over 55.766 seconds.
+    Speed is 12.8293 mb/s.
+Waited for acks: 58464 ms
+Sending file: 77%
+    Sent 89430000 bytes over 58.68 seconds.
+    Speed is 12.1922 mb/s.
+Waited for acks: 59336 ms
+Sending file: 78%
+    Sent 89430000 bytes over 59.512 seconds.
+    Speed is 12.0218 mb/s.
+Waited for acks: 54935 ms
+Sending file: 79%
+    Sent 89430000 bytes over 55.143 seconds.
+    Speed is 12.9743 mb/s.
+Waited for acks: 55740 ms
+Sending file: 80%
+    Sent 89430000 bytes over 55.868 seconds.
+    Speed is 12.8059 mb/s.
+Waited for acks: 57434 ms
+Sending file: 81%
+    Sent 89430000 bytes over 57.64 seconds.
+    Speed is 12.4122 mb/s.
+Waited for acks: 58038 ms
+Sending file: 82%
+    Sent 89430000 bytes over 58.167 seconds.
+    Speed is 12.2998 mb/s.
+Waited for acks: 56033 ms
+Sending file: 83%
+    Sent 89430000 bytes over 56.157 seconds.
+    Speed is 12.74 mb/s.
+Waited for acks: 58636 ms
+Sending file: 84%
+    Sent 89430000 bytes over 58.837 seconds.
+    Speed is 12.1597 mb/s.
+Waited for acks: 57837 ms
+Sending file: 85%
+    Sent 89430000 bytes over 57.957 seconds.
+    Speed is 12.3443 mb/s.
+Waited for acks: 55334 ms
+Sending file: 86%
+    Sent 89430000 bytes over 55.535 seconds.
+    Speed is 12.8827 mb/s.
+Waited for acks: 56239 ms
+Sending file: 87%
+    Sent 89430000 bytes over 56.36 seconds.
+    Speed is 12.6941 mb/s.
+Waited for acks: 58236 ms
+Sending file: 88%
+    Sent 89430000 bytes over 58.361 seconds.
+    Speed is 12.2589 mb/s.
+Waited for acks: 55938 ms
+Sending file: 89%
+    Sent 89430000 bytes over 56.126 seconds.
+    Speed is 12.747 mb/s.
+Waited for acks: 57835 ms
+Sending file: 90%
+    Sent 89430000 bytes over 57.964 seconds.
+    Speed is 12.3428 mb/s.
+Waited for acks: 59442 ms
+Sending file: 91%
+    Sent 89430000 bytes over 59.638 seconds.
+    Speed is 11.9964 mb/s.
+Waited for acks: 60363 ms
+Sending file: 92%
+    Sent 89430000 bytes over 60.556 seconds.
+    Speed is 11.8145 mb/s.
+Waited for acks: 63043 ms
+Sending file: 93%
+    Sent 89430000 bytes over 63.256 seconds.
+    Speed is 11.3102 mb/s.
+Waited for acks: 62446 ms
+Sending file: 94%
+    Sent 89430000 bytes over 62.651 seconds.
+    Speed is 11.4195 mb/s.
+Waited for acks: 58941 ms
+Sending file: 95%
+    Sent 89430000 bytes over 59.064 seconds.
+    Speed is 12.113 mb/s.
+Waited for acks: 59271 ms
+Sending file: 96%
+    Sent 89430000 bytes over 59.397 seconds.
+    Speed is 12.0451 mb/s.
+Waited for acks: 59563 ms
+Sending file: 97%
+    Sent 89430000 bytes over 59.757 seconds.
+    Speed is 11.9725 mb/s.
+Waited for acks: 60641 ms
+Sending file: 98%
+    Sent 89430000 bytes over 60.832 seconds.
+    Speed is 11.7609 mb/s.
+Waited for acks: 61145 ms
+Sending file: 99%
+    Sent 89430000 bytes over 61.353 seconds.
+    Speed is 11.661 mb/s.
+Waited for acks: 200 ms
+I0709 12:57:29.134142  9718 MvfstProtocolQUIC.cpp:95] MvFstConnector connection end
+E0709 12:57:29.134196  9718 EventHandler.cpp:90] EventBase: failed to register event handler for fd 8: Resource temporarily unavailable
+File sent
+Running speed test (iperf3):
+Connecting to host 193.40.245.62, port 8102
+[  4] local 192.168.8.54 port 41564 connected to 193.40.245.62 port 8102
+[ ID] Interval           Transfer     Bandwidth       Retr  Cwnd
+[  4]   0.00-1.00   sec  1.50 MBytes  12.6 Mbits/sec    2   53.7 KBytes       
+[  4]   1.00-2.00   sec  1.99 MBytes  16.7 Mbits/sec    2   73.5 KBytes       
+[  4]   2.00-3.00   sec  2.36 MBytes  19.8 Mbits/sec    0   93.3 KBytes       
+[  4]   3.00-4.00   sec  2.67 MBytes  22.4 Mbits/sec    1    112 KBytes       
+[  4]   4.00-5.00   sec  3.17 MBytes  26.6 Mbits/sec    0    132 KBytes       
+[  4]   5.00-6.00   sec  3.67 MBytes  30.7 Mbits/sec    0    151 KBytes       
+[  4]   6.00-7.00   sec  3.54 MBytes  29.7 Mbits/sec    1    165 KBytes       
+[  4]   7.00-8.00   sec  4.10 MBytes  34.4 Mbits/sec    0    182 KBytes       
+[  4]   8.00-9.00   sec  3.98 MBytes  33.4 Mbits/sec    0    198 KBytes       
+[  4]   9.00-10.00  sec  3.98 MBytes  33.4 Mbits/sec    0    214 KBytes       
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bandwidth       Retr
+[  4]   0.00-10.00  sec  31.0 MBytes  26.0 Mbits/sec    6             sender
+[  4]   0.00-10.00  sec  30.0 MBytes  25.2 Mbits/sec                  receiver
+
+iperf Done.
+Connecting to host 193.40.245.62, port 8102
+[  4] local 192.168.8.54 port 47720 connected to 193.40.245.62 port 8102
+[ ID] Interval           Transfer     Bandwidth       Total Datagrams
+[  4]   0.00-1.00   sec  10.9 MBytes  91.0 Mbits/sec  11382  
+[  4]   1.00-2.00   sec  11.9 MBytes   100 Mbits/sec  12500  
+[  4]   2.00-3.00   sec  11.9 MBytes   100 Mbits/sec  12499  
+[  4]   3.00-4.00   sec  11.9 MBytes   100 Mbits/sec  12500  
+[  4]   4.00-5.00   sec  11.9 MBytes   100 Mbits/sec  12500  
+[  4]   5.00-6.00   sec  11.9 MBytes   100 Mbits/sec  12500  
+[  4]   6.00-7.00   sec  11.9 MBytes   100 Mbits/sec  12500  
+[  4]   7.00-8.00   sec  11.9 MBytes   100 Mbits/sec  12500  
+[  4]   8.00-9.00   sec  11.9 MBytes   100 Mbits/sec  12500  
+[  4]   9.00-10.00  sec  11.9 MBytes   100 Mbits/sec  12500  
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bandwidth       Jitter    Lost/Total Datagrams
+[  4]   0.00-10.00  sec   118 MBytes  99.1 Mbits/sec  0.094 ms  2070/4069 (51%)  
+[  4] Sent 4069 datagrams
+
+iperf Done.
+Statistics:
+Sent 8943173390 bytes
+    over 5980.27 seconds 
+    Average file transfer speed was 11.9636 mbit/s
+Connection dropped 0 times 
+Hashing took 6.49687 seconds 
