@@ -13,7 +13,7 @@ public:
 
     void send(const std::string& path, size_t bufferSize, uint retryCount);
     void printStatistics() const;
-    void runSpeedTest(uint port, std::string bandwidth) const;
+    void runSpeedTest(uint port, const std::string& bandwidth) const;
 
 private:
     bool sendWithRetries(const char* buffer, size_t bufferSize, uint retryCount, Protocol::ProtocolPtr& protocol, bool eof);

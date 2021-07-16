@@ -21,7 +21,7 @@ Client::Client(Protocol::ProtocolType type, std::string address, uint port, Prot
 
 Client::~Client() { }
 
-void Client::runSpeedTest(uint port, std::string bandwidth) const {
+void Client::runSpeedTest(uint port, const std::string& bandwidth) const {
     std::cout << "Running speed test (iperf3):" << std::endl;
     std::string udpFlag = " -u";
     std::string baseCommand = "iperf3 -c " + _address + " -p " + std::to_string(port);
@@ -29,7 +29,8 @@ void Client::runSpeedTest(uint port, std::string bandwidth) const {
     std::string udpCommand = baseCommand + " -u -l 1000 -b " + bandwidth;
     system(tcpCommand.c_str());
     system(udpCommand.c_str());
-
+    std::cout << "Measuring latency " << std::endl;
+    system(("ping -c 10 " + _address).c_str());
 }
 
 

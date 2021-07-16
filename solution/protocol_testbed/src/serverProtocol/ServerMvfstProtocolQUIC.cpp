@@ -232,7 +232,8 @@ namespace quic {
             TransportSettings settings;
             //settings.idleTimeout = std::chrono::milliseconds(1000);
             settings.connectUDP = true;
-            settings.defaultCongestionController = quic::CongestionControlType::Copa2;
+            settings.defaultCongestionController = quic::CongestionControlType::Cubic;
+            settings.flowControlWindowFrequency = 5;
             //settings.advertisedInitialUniStreamWindowSize = 20971520;
             server_->setTransportSettings(settings);
             server_->setFizzContext(serverCtx);

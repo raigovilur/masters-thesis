@@ -43,7 +43,7 @@ private:
                 auto currentTime = std::chrono::system_clock::now();
 
                 auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(currentTime - lastPercentStartTime);
-                std::cout << "File transfer: " << currentPercentage << "%. Sent " << sentBytes << " over " << duration.count() << " milliseconds" << std::endl;
+                std::cout << "File transfer: " << currentPercentage << "% (Total: "<< receivedFileSize << " received out of " << fileSize << " bytes. " <<"). Sent " << sentBytes << " over " << duration.count() << " milliseconds" << std::endl;
                 std::cout << "    Speed is " << ((double) sentBytes) / duration.count() / 1000 * 8 << " mb/s." << std::endl;
                 percentageReceived = currentPercentage;
                 lastPercentageFileSize = receivedFileSize;

@@ -147,7 +147,8 @@ public:
             TransportSettings settings;
             settings.idleTimeout = std::chrono::milliseconds(3000);
             settings.connectUDP = true;
-            settings.defaultCongestionController = quic::CongestionControlType::Copa2;
+            settings.defaultCongestionController = quic::CongestionControlType::Cubic;
+            settings.flowControlWindowFrequency = 5;
             //settings.advertisedInitialUniStreamWindowSize = 20971520;
             quicClient_->setTransportSettings(settings);
 
