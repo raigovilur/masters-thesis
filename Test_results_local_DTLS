@@ -365,4 +365,922 @@ File transfer: 98% (Total: 270489600 received out of 276003327 bytes. ). Sent 27
     Speed is 7.74183 mb/s.
 File transfer: 99% (Total: 273244160 received out of 276003327 bytes. ). Sent 2754560 over 2908 milliseconds
     Speed is 7.57788 mb/s.
+/home/raigo/repos/masters-thesis/solution/protocol_testbed/cmake-build-debug/protocol_testbed_client --filea /home/raigo/repos/snow_problem.bag --fileb /home/raigo/repos/cert.pem --file /home/raigo/repos/masters-thesis/solution/protocol_testbed/Views-7.0-linux-x64-installer.run --protocol DTLS --address 10.151.41.5 --port 12345 --buffer-size 10240 --stport 8888 --udpTarget 20
+Running speed test (iperf3):
+Connecting to host 10.151.41.5, port 8888
+[  5] local 10.0.2.15 port 34024 connected to 10.151.41.5 port 8888
+[ ID] Interval           Transfer     Bitrate         Retr  Cwnd
+[  5]   0.00-1.01   sec  2.24 MBytes  18.7 Mbits/sec    0    103 KBytes       
+[  5]   1.01-2.00   sec  11.9 MBytes   100 Mbits/sec    0    103 KBytes       
+[  5]   2.00-3.00   sec  9.25 MBytes  77.9 Mbits/sec    0    103 KBytes       
+[  5]   3.00-4.00   sec  9.53 MBytes  79.9 Mbits/sec    0    103 KBytes       
+[  5]   4.00-5.00   sec  5.88 MBytes  49.3 Mbits/sec    0    103 KBytes       
+[  5]   5.00-6.00   sec  6.40 MBytes  53.7 Mbits/sec    0    103 KBytes       
+[  5]   6.00-7.00   sec  6.25 MBytes  52.5 Mbits/sec    0    103 KBytes       
+[  5]   7.00-8.00   sec  6.80 MBytes  57.0 Mbits/sec    0    103 KBytes       
+[  5]   8.00-9.00   sec  6.65 MBytes  55.8 Mbits/sec    0    103 KBytes       
+[  5]   9.00-10.00  sec  7.29 MBytes  61.2 Mbits/sec    0    103 KBytes       
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Retr
+[  5]   0.00-10.00  sec  72.2 MBytes  60.5 Mbits/sec    0             sender
+[  5]   0.00-10.13  sec  68.6 MBytes  56.9 Mbits/sec                  receiver
 
+iperf Done.
+Connecting to host 10.151.41.5, port 8888
+[  5] local 10.0.2.15 port 59463 connected to 10.151.41.5 port 8888
+[ ID] Interval           Transfer     Bitrate         Total Datagrams
+[  5]   0.00-1.01   sec  4.73 MBytes  39.4 Mbits/sec  4961  
+[  5]   1.01-2.00   sec  4.80 MBytes  40.5 Mbits/sec  5035  
+[  5]   2.00-3.00   sec  4.73 MBytes  39.6 Mbits/sec  4960  
+[  5]   3.00-4.00   sec  4.81 MBytes  40.4 Mbits/sec  5042  
+[  5]   4.00-5.00   sec  4.77 MBytes  40.0 Mbits/sec  5001  
+[  5]   5.00-6.01   sec  4.75 MBytes  39.7 Mbits/sec  4982  
+[  5]   6.01-7.00   sec  4.77 MBytes  40.1 Mbits/sec  5003  
+[  5]   7.00-8.00   sec  4.78 MBytes  40.3 Mbits/sec  5012  
+[  5]   8.00-9.00   sec  4.77 MBytes  40.0 Mbits/sec  5004  
+[  5]   9.00-10.00  sec  4.77 MBytes  40.0 Mbits/sec  4997  
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total Datagrams
+[  5]   0.00-10.00  sec  47.7 MBytes  40.0 Mbits/sec  0.000 ms  0/49997 (0%)  sender
+[  5]   0.00-10.22  sec  47.6 MBytes  39.1 Mbits/sec  0.216 ms  75/49990 (0.15%)  receiver
+
+iperf Done.
+Measuring latency 
+PING 10.151.41.5 (10.151.41.5) 56(84) bytes of data.
+64 bytes from 10.151.41.5: icmp_seq=1 ttl=62 time=127 ms
+64 bytes from 10.151.41.5: icmp_seq=2 ttl=62 time=128 ms
+64 bytes from 10.151.41.5: icmp_seq=3 ttl=62 time=128 ms
+64 bytes from 10.151.41.5: icmp_seq=4 ttl=62 time=127 ms
+64 bytes from 10.151.41.5: icmp_seq=5 ttl=62 time=128 ms
+64 bytes from 10.151.41.5: icmp_seq=6 ttl=62 time=128 ms
+64 bytes from 10.151.41.5: icmp_seq=7 ttl=62 time=129 ms
+64 bytes from 10.151.41.5: icmp_seq=8 ttl=62 time=128 ms
+64 bytes from 10.151.41.5: icmp_seq=9 ttl=62 time=127 ms
+64 bytes from 10.151.41.5: icmp_seq=10 ttl=62 time=128 ms
+
+--- 10.151.41.5 ping statistics ---
+10 packets transmitted, 10 received, 0% packet loss, time 9032ms
+rtt min/avg/max/mdev = 126.970/127.735/128.711/0.470 ms
+Calculating checksum ...
+Checksum calculated: ffffff84305dffffffe2ffffffde6e7917ffffffc8ffffffa414ffffffda4810ffffffcb6cffffff8affffffa4ffffffbe6046ffffff89ffffff8372ffffff8dfffffff90e2e0e34ffffff9931
+Connection established. Time taken: 394 milliseconds
+Sending header
+Sending file
+Sending file: 1.99978%
+    Sent 5519360 bytes over 2.98 seconds.
+    Speed is 14.8171 mb/s.
+Sending file: 3.99955%
+    Sent 5519360 bytes over 2.833 seconds.
+    Speed is 15.5859 mb/s.
+Sending file: 5.99933%
+    Sent 5519360 bytes over 3.422 seconds.
+    Speed is 12.9032 mb/s.
+Sending file: 7.99911%
+    Sent 5519360 bytes over 3.196 seconds.
+    Speed is 13.8157 mb/s.
+Sending file: 9.99889%
+    Sent 5519360 bytes over 3.42 seconds.
+    Speed is 12.9108 mb/s.
+Sending file: 11.9987%
+    Sent 5519360 bytes over 3.06 seconds.
+    Speed is 14.4297 mb/s.
+Sending file: 13.9984%
+    Sent 5519360 bytes over 2.863 seconds.
+    Speed is 15.4226 mb/s.
+Sending file: 15.9982%
+    Sent 5519360 bytes over 3.41 seconds.
+    Speed is 12.9486 mb/s.
+Sending file: 17.998%
+    Sent 5519360 bytes over 3.052 seconds.
+    Speed is 14.4675 mb/s.
+Sending file: 19.9978%
+    Sent 5519360 bytes over 3.215 seconds.
+    Speed is 13.734 mb/s.
+Sending file: 21.9976%
+    Sent 5519360 bytes over 3.236 seconds.
+    Speed is 13.6449 mb/s.
+Sending file: 23.9973%
+    Sent 5519360 bytes over 3.261 seconds.
+    Speed is 13.5403 mb/s.
+Sending file: 25.9971%
+    Sent 5519360 bytes over 3.266 seconds.
+    Speed is 13.5196 mb/s.
+Sending file: 27.9969%
+    Sent 5519360 bytes over 3.379 seconds.
+    Speed is 13.0674 mb/s.
+Sending file: 29.9967%
+    Sent 5519360 bytes over 3.265 seconds.
+    Speed is 13.5237 mb/s.
+Sending file: 31.9964%
+    Sent 5519360 bytes over 3.668 seconds.
+    Speed is 12.0379 mb/s.
+Sending file: 33.9962%
+    Sent 5519360 bytes over 2.91 seconds.
+    Speed is 15.1735 mb/s.
+Sending file: 35.996%
+    Sent 5519360 bytes over 3.389 seconds.
+    Speed is 13.0289 mb/s.
+Sending file: 37.9958%
+    Sent 5519360 bytes over 2.816 seconds.
+    Speed is 15.68 mb/s.
+Sending file: 39.9955%
+    Sent 5519360 bytes over 2.597 seconds.
+    Speed is 17.0023 mb/s.
+Sending file: 41.9953%
+    Sent 5519360 bytes over 2.899 seconds.
+    Speed is 15.2311 mb/s.
+Sending file: 43.9951%
+    Sent 5519360 bytes over 2.692 seconds.
+    Speed is 16.4023 mb/s.
+Sending file: 45.9949%
+    Sent 5519360 bytes over 3.23 seconds.
+    Speed is 13.6702 mb/s.
+Sending file: 47.9947%
+    Sent 5519360 bytes over 3.084 seconds.
+    Speed is 14.3174 mb/s.
+Sending file: 49.9944%
+    Sent 5519360 bytes over 3.083 seconds.
+    Speed is 14.322 mb/s.
+Sending file: 51.9942%
+    Sent 5519360 bytes over 3.36 seconds.
+    Speed is 13.1413 mb/s.
+Sending file: 53.994%
+    Sent 5519360 bytes over 3.216 seconds.
+    Speed is 13.7298 mb/s.
+Sending file: 55.9938%
+    Sent 5519360 bytes over 2.917 seconds.
+    Speed is 15.1371 mb/s.
+Sending file: 57.9935%
+    Sent 5519360 bytes over 3.1 seconds.
+    Speed is 14.2435 mb/s.
+Sending file: 59.9933%
+    Sent 5519360 bytes over 3.35 seconds.
+    Speed is 13.1806 mb/s.
+Sending file: 61.9931%
+    Sent 5519360 bytes over 3.31 seconds.
+    Speed is 13.3398 mb/s.
+Sending file: 63.9929%
+    Sent 5519360 bytes over 3.054 seconds.
+    Speed is 14.458 mb/s.
+Sending file: 65.9927%
+    Sent 5519360 bytes over 3.322 seconds.
+    Speed is 13.2917 mb/s.
+Sending file: 67.9924%
+    Sent 5519360 bytes over 3.009 seconds.
+    Speed is 14.6743 mb/s.
+Sending file: 69.9922%
+    Sent 5519360 bytes over 3.238 seconds.
+    Speed is 13.6365 mb/s.
+Sending file: 71.992%
+    Sent 5519360 bytes over 2.689 seconds.
+    Speed is 16.4206 mb/s.
+Sending file: 73.9918%
+    Sent 5519360 bytes over 3.138 seconds.
+    Speed is 14.071 mb/s.
+Sending file: 75.9915%
+    Sent 5519360 bytes over 3.258 seconds.
+    Speed is 13.5528 mb/s.
+Sending file: 77.9913%
+    Sent 5519360 bytes over 3.375 seconds.
+    Speed is 13.0829 mb/s.
+Sending file: 79.9911%
+    Sent 5519360 bytes over 3.484 seconds.
+    Speed is 12.6736 mb/s.
+Sending file: 81.9909%
+    Sent 5519360 bytes over 3.327 seconds.
+    Speed is 13.2717 mb/s.
+Sending file: 83.9907%
+    Sent 5519360 bytes over 3.198 seconds.
+    Speed is 13.807 mb/s.
+Sending file: 85.9904%
+    Sent 5519360 bytes over 3.331 seconds.
+    Speed is 13.2557 mb/s.
+Sending file: 87.9902%
+    Sent 5519360 bytes over 3.097 seconds.
+    Speed is 14.2573 mb/s.
+Sending file: 89.99%
+    Sent 5519360 bytes over 2.894 seconds.
+    Speed is 15.2574 mb/s.
+Sending file: 91.9898%
+    Sent 5519360 bytes over 3.217 seconds.
+    Speed is 13.7255 mb/s.
+Sending file: 93.9895%
+    Sent 5519360 bytes over 2.741 seconds.
+    Speed is 16.109 mb/s.
+Sending file: 95.9893%
+    Sent 5519360 bytes over 3.085 seconds.
+    Speed is 14.3128 mb/s.
+Sending file: 97.9891%
+    Sent 5519360 bytes over 2.712 seconds.
+    Speed is 16.2813 mb/s.
+Sending file: 99.9889%
+    Sent 5519360 bytes over 3.331 seconds.
+    Speed is 13.2557 mb/s.
+File sent
+Running speed test (iperf3):
+Connecting to host 10.151.41.5, port 8888
+[  5] local 10.0.2.15 port 34032 connected to 10.151.41.5 port 8888
+[ ID] Interval           Transfer     Bitrate         Retr  Cwnd
+[  5]   0.00-1.00   sec  2.31 MBytes  19.3 Mbits/sec    0    107 KBytes       
+[  5]   1.00-2.00   sec  12.0 MBytes   100 Mbits/sec    0    107 KBytes       
+[  5]   2.00-3.00   sec   251 KBytes  2.05 Mbits/sec    0   34.2 KBytes       
+[  5]   3.00-4.01   sec  4.53 MBytes  37.8 Mbits/sec    0    106 KBytes       
+[  5]   4.01-5.00   sec  10.1 MBytes  85.4 Mbits/sec    0    106 KBytes       
+[  5]   5.00-6.00   sec  10.2 MBytes  85.3 Mbits/sec    0    106 KBytes       
+[  5]   6.00-7.00   sec  10.1 MBytes  85.0 Mbits/sec    0    106 KBytes       
+[  5]   7.00-8.00   sec  10.3 MBytes  86.4 Mbits/sec    0    106 KBytes       
+[  5]   8.00-9.00   sec  10.5 MBytes  88.3 Mbits/sec    0    106 KBytes       
+[  5]   9.00-10.00  sec  10.4 MBytes  86.5 Mbits/sec    0    106 KBytes       
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Retr
+[  5]   0.00-10.00  sec  80.7 MBytes  67.6 Mbits/sec    0             sender
+[  5]   0.00-10.15  sec  77.6 MBytes  64.2 Mbits/sec                  receiver
+
+iperf Done.
+Connecting to host 10.151.41.5, port 8888
+[  5] local 10.0.2.15 port 51484 connected to 10.151.41.5 port 8888
+[ ID] Interval           Transfer     Bitrate         Total Datagrams
+[  5]   0.00-1.00   sec  4.76 MBytes  40.0 Mbits/sec  4996  
+[  5]   1.00-2.00   sec  4.76 MBytes  39.9 Mbits/sec  4995  
+[  5]   2.00-3.00   sec  4.77 MBytes  40.1 Mbits/sec  5000  
+[  5]   3.00-4.00   sec  4.77 MBytes  40.0 Mbits/sec  5006  
+[  5]   4.00-5.00   sec  4.77 MBytes  40.0 Mbits/sec  4999  
+[  5]   5.00-6.00   sec  4.77 MBytes  40.0 Mbits/sec  5001  
+[  5]   6.00-7.00   sec  4.77 MBytes  40.0 Mbits/sec  5000  
+[  5]   7.00-8.00   sec  4.77 MBytes  40.0 Mbits/sec  5001  
+[  5]   8.00-9.00   sec  4.77 MBytes  40.0 Mbits/sec  5002  
+[  5]   9.00-10.00  sec  4.77 MBytes  40.0 Mbits/sec  4997  
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total Datagrams
+[  5]   0.00-10.00  sec  47.7 MBytes  40.0 Mbits/sec  0.000 ms  0/49997 (0%)  sender
+[  5]   0.00-10.17  sec  46.5 MBytes  38.3 Mbits/sec  0.248 ms  1278/49997 (2.6%)  receiver
+
+iperf Done.
+Measuring latency 
+PING 10.151.41.5 (10.151.41.5) 56(84) bytes of data.
+64 bytes from 10.151.41.5: icmp_seq=1 ttl=62 time=126 ms
+64 bytes from 10.151.41.5: icmp_seq=2 ttl=62 time=127 ms
+64 bytes from 10.151.41.5: icmp_seq=3 ttl=62 time=128 ms
+64 bytes from 10.151.41.5: icmp_seq=4 ttl=62 time=128 ms
+64 bytes from 10.151.41.5: icmp_seq=5 ttl=62 time=127 ms
+64 bytes from 10.151.41.5: icmp_seq=6 ttl=62 time=128 ms
+64 bytes from 10.151.41.5: icmp_seq=7 ttl=62 time=127 ms
+64 bytes from 10.151.41.5: icmp_seq=8 ttl=62 time=135 ms
+64 bytes from 10.151.41.5: icmp_seq=9 ttl=62 time=127 ms
+64 bytes from 10.151.41.5: icmp_seq=10 ttl=62 time=128 ms
+
+--- 10.151.41.5 ping statistics ---
+10 packets transmitted, 10 received, 0% packet loss, time 9050ms
+rtt min/avg/max/mdev = 126.187/128.278/135.191/2.381 ms
+Statistics:
+Sent 276003327 bytes
+    over 157.421 seconds 
+    Average file transfer speed was 14.0262 mbit/s
+Connection dropped 0 times 
+Hashing took 1.00942 seconds 
+
+Process finished with exit code 0
+
+rvilur@visu-ubu2004-01:~/thesis$ ./protocol_testbed_server --port 12345 --protocol DTLS --pkey key.pem --cert cert.pem
+Listen address was not set. Defaulting to 0.0.0.0
+File path was not set. Defaulting to local directory
+Server is starting.
+Connection: 192.168.120.19:54314
+Expected file size: 276003327
+File transfer: 1% (Total: 2764800 received out of 276003327 bytes. ). Sent 2764800 over 1678 milliseconds
+    Speed is 13.1814 mb/s.
+File transfer: 2% (Total: 5529600 received out of 276003327 bytes. ). Sent 2764800 over 1322 milliseconds
+    Speed is 16.731 mb/s.
+File transfer: 3% (Total: 8284160 received out of 276003327 bytes. ). Sent 2754560 over 1338 milliseconds
+    Speed is 16.4697 mb/s.
+File transfer: 4% (Total: 11048960 received out of 276003327 bytes. ). Sent 2764800 over 1489 milliseconds
+    Speed is 14.8545 mb/s.
+File transfer: 5% (Total: 13803520 received out of 276003327 bytes. ). Sent 2754560 over 1574 milliseconds
+    Speed is 14.0003 mb/s.
+File transfer: 6% (Total: 16568320 received out of 276003327 bytes. ). Sent 2764800 over 1862 milliseconds
+    Speed is 11.8788 mb/s.
+File transfer: 7% (Total: 19322880 received out of 276003327 bytes. ). Sent 2754560 over 1512 milliseconds
+    Speed is 14.5744 mb/s.
+File transfer: 8% (Total: 22087680 received out of 276003327 bytes. ). Sent 2764800 over 1673 milliseconds
+    Speed is 13.2208 mb/s.
+File transfer: 9% (Total: 24842240 received out of 276003327 bytes. ). Sent 2754560 over 1543 milliseconds
+    Speed is 14.2816 mb/s.
+File transfer: 10% (Total: 27607040 received out of 276003327 bytes. ). Sent 2764800 over 2439 milliseconds
+    Speed is 9.06863 mb/s.
+File transfer: 11% (Total: 30361600 received out of 276003327 bytes. ). Sent 2754560 over 1467 milliseconds
+    Speed is 15.0215 mb/s.
+File transfer: 12% (Total: 33126400 received out of 276003327 bytes. ). Sent 2764800 over 1606 milliseconds
+    Speed is 13.7724 mb/s.
+File transfer: 13% (Total: 35880960 received out of 276003327 bytes. ). Sent 2754560 over 1317 milliseconds
+    Speed is 16.7323 mb/s.
+File transfer: 14% (Total: 38645760 received out of 276003327 bytes. ). Sent 2764800 over 1551 milliseconds
+    Speed is 14.2607 mb/s.
+File transfer: 15% (Total: 41410560 received out of 276003327 bytes. ). Sent 2764800 over 1851 milliseconds
+    Speed is 11.9494 mb/s.
+File transfer: 16% (Total: 44165120 received out of 276003327 bytes. ). Sent 2754560 over 1556 milliseconds
+    Speed is 14.1623 mb/s.
+File transfer: 17% (Total: 46929920 received out of 276003327 bytes. ). Sent 2764800 over 1642 milliseconds
+    Speed is 13.4704 mb/s.
+File transfer: 18% (Total: 49684480 received out of 276003327 bytes. ). Sent 2754560 over 1357 milliseconds
+    Speed is 16.2391 mb/s.
+File transfer: 19% (Total: 52449280 received out of 276003327 bytes. ). Sent 2764800 over 1637 milliseconds
+    Speed is 13.5115 mb/s.
+File transfer: 20% (Total: 55203840 received out of 276003327 bytes. ). Sent 2754560 over 1727 milliseconds
+    Speed is 12.76 mb/s.
+File transfer: 21% (Total: 57968640 received out of 276003327 bytes. ). Sent 2764800 over 1662 milliseconds
+    Speed is 13.3083 mb/s.
+File transfer: 22% (Total: 60723200 received out of 276003327 bytes. ). Sent 2754560 over 1607 milliseconds
+    Speed is 13.7128 mb/s.
+File transfer: 23% (Total: 63488000 received out of 276003327 bytes. ). Sent 2764800 over 1627 milliseconds
+    Speed is 13.5946 mb/s.
+File transfer: 24% (Total: 66242560 received out of 276003327 bytes. ). Sent 2754560 over 1653 milliseconds
+    Speed is 13.3312 mb/s.
+File transfer: 25% (Total: 69007360 received out of 276003327 bytes. ). Sent 2764800 over 1685 milliseconds
+    Speed is 13.1266 mb/s.
+File transfer: 26% (Total: 71761920 received out of 276003327 bytes. ). Sent 2754560 over 1638 milliseconds
+    Speed is 13.4533 mb/s.
+File transfer: 27% (Total: 74526720 received out of 276003327 bytes. ). Sent 2764800 over 1773 milliseconds
+    Speed is 12.4751 mb/s.
+File transfer: 28% (Total: 77281280 received out of 276003327 bytes. ). Sent 2754560 over 2035 milliseconds
+    Speed is 10.8287 mb/s.
+File transfer: 29% (Total: 80046080 received out of 276003327 bytes. ). Sent 2764800 over 2881 milliseconds
+    Speed is 7.67733 mb/s.
+File transfer: 30% (Total: 82810880 received out of 276003327 bytes. ). Sent 2764800 over 2187 milliseconds
+    Speed is 10.1136 mb/s.
+File transfer: 31% (Total: 85565440 received out of 276003327 bytes. ). Sent 2754560 over 1448 milliseconds
+    Speed is 15.2186 mb/s.
+File transfer: 32% (Total: 88330240 received out of 276003327 bytes. ). Sent 2764800 over 1406 milliseconds
+    Speed is 15.7314 mb/s.
+File transfer: 33% (Total: 91084800 received out of 276003327 bytes. ). Sent 2754560 over 1648 milliseconds
+    Speed is 13.3717 mb/s.
+File transfer: 34% (Total: 93849600 received out of 276003327 bytes. ). Sent 2764800 over 1769 milliseconds
+    Speed is 12.5033 mb/s.
+File transfer: 35% (Total: 96604160 received out of 276003327 bytes. ). Sent 2754560 over 1620 milliseconds
+    Speed is 13.6028 mb/s.
+File transfer: 36% (Total: 99368960 received out of 276003327 bytes. ). Sent 2764800 over 1332 milliseconds
+    Speed is 16.6054 mb/s.
+File transfer: 37% (Total: 102123520 received out of 276003327 bytes. ). Sent 2754560 over 1291 milliseconds
+    Speed is 17.0693 mb/s.
+File transfer: 38% (Total: 104888320 received out of 276003327 bytes. ). Sent 2764800 over 1297 milliseconds
+    Speed is 17.0535 mb/s.
+File transfer: 39% (Total: 107642880 received out of 276003327 bytes. ). Sent 2754560 over 1398 milliseconds
+    Speed is 15.7629 mb/s.
+File transfer: 40% (Total: 110407680 received out of 276003327 bytes. ). Sent 2764800 over 1471 milliseconds
+    Speed is 15.0363 mb/s.
+File transfer: 41% (Total: 113162240 received out of 276003327 bytes. ). Sent 2754560 over 1356 milliseconds
+    Speed is 16.2511 mb/s.
+File transfer: 42% (Total: 115927040 received out of 276003327 bytes. ). Sent 2764800 over 1286 milliseconds
+    Speed is 17.1994 mb/s.
+File transfer: 43% (Total: 118681600 received out of 276003327 bytes. ). Sent 2754560 over 1505 milliseconds
+    Speed is 14.6422 mb/s.
+File transfer: 44% (Total: 121446400 received out of 276003327 bytes. ). Sent 2764800 over 1765 milliseconds
+    Speed is 12.5317 mb/s.
+File transfer: 45% (Total: 124211200 received out of 276003327 bytes. ). Sent 2764800 over 1449 milliseconds
+    Speed is 15.2646 mb/s.
+File transfer: 46% (Total: 126965760 received out of 276003327 bytes. ). Sent 2754560 over 1587 milliseconds
+    Speed is 13.8856 mb/s.
+File transfer: 47% (Total: 129730560 received out of 276003327 bytes. ). Sent 2764800 over 1531 milliseconds
+    Speed is 14.447 mb/s.
+File transfer: 48% (Total: 132485120 received out of 276003327 bytes. ). Sent 2754560 over 1560 milliseconds
+    Speed is 14.1259 mb/s.
+File transfer: 49% (Total: 135249920 received out of 276003327 bytes. ). Sent 2764800 over 1649 milliseconds
+    Speed is 13.4132 mb/s.
+File transfer: 50% (Total: 138004480 received out of 276003327 bytes. ). Sent 2754560 over 1660 milliseconds
+    Speed is 13.275 mb/s.
+File transfer: 51% (Total: 140769280 received out of 276003327 bytes. ). Sent 2764800 over 1598 milliseconds
+    Speed is 13.8413 mb/s.
+File transfer: 52% (Total: 143523840 received out of 276003327 bytes. ). Sent 2754560 over 1656 milliseconds
+    Speed is 13.3071 mb/s.
+File transfer: 53% (Total: 146288640 received out of 276003327 bytes. ). Sent 2764800 over 1519 milliseconds
+    Speed is 14.5612 mb/s.
+File transfer: 54% (Total: 149043200 received out of 276003327 bytes. ). Sent 2754560 over 1479 milliseconds
+    Speed is 14.8996 mb/s.
+File transfer: 55% (Total: 151808000 received out of 276003327 bytes. ). Sent 2764800 over 1373 milliseconds
+    Speed is 16.1095 mb/s.
+File transfer: 56% (Total: 154562560 received out of 276003327 bytes. ). Sent 2754560 over 1626 milliseconds
+    Speed is 13.5526 mb/s.
+File transfer: 57% (Total: 157327360 received out of 276003327 bytes. ). Sent 2764800 over 1506 milliseconds
+    Speed is 14.6869 mb/s.
+File transfer: 58% (Total: 160081920 received out of 276003327 bytes. ). Sent 2754560 over 2272 milliseconds
+    Speed is 9.69915 mb/s.
+File transfer: 59% (Total: 162846720 received out of 276003327 bytes. ). Sent 2764800 over 1638 milliseconds
+    Speed is 13.5033 mb/s.
+File transfer: 60% (Total: 165611520 received out of 276003327 bytes. ). Sent 2764800 over 1684 milliseconds
+    Speed is 13.1344 mb/s.
+File transfer: 61% (Total: 168366080 received out of 276003327 bytes. ). Sent 2754560 over 1481 milliseconds
+    Speed is 14.8795 mb/s.
+File transfer: 62% (Total: 171130880 received out of 276003327 bytes. ). Sent 2764800 over 1580 milliseconds
+    Speed is 13.999 mb/s.
+File transfer: 63% (Total: 173885440 received out of 276003327 bytes. ). Sent 2754560 over 1572 milliseconds
+    Speed is 14.0181 mb/s.
+File transfer: 64% (Total: 176650240 received out of 276003327 bytes. ). Sent 2764800 over 1739 milliseconds
+    Speed is 12.719 mb/s.
+File transfer: 65% (Total: 179404800 received out of 276003327 bytes. ). Sent 2754560 over 1449 milliseconds
+    Speed is 15.2081 mb/s.
+File transfer: 66% (Total: 182169600 received out of 276003327 bytes. ). Sent 2764800 over 1591 milliseconds
+    Speed is 13.9022 mb/s.
+File transfer: 67% (Total: 184924160 received out of 276003327 bytes. ). Sent 2754560 over 1578 milliseconds
+    Speed is 13.9648 mb/s.
+File transfer: 68% (Total: 187688960 received out of 276003327 bytes. ). Sent 2764800 over 1648 milliseconds
+    Speed is 13.4214 mb/s.
+File transfer: 69% (Total: 190443520 received out of 276003327 bytes. ). Sent 2754560 over 1403 milliseconds
+    Speed is 15.7067 mb/s.
+File transfer: 70% (Total: 193208320 received out of 276003327 bytes. ). Sent 2764800 over 2082 milliseconds
+    Speed is 10.6236 mb/s.
+File transfer: 71% (Total: 195962880 received out of 276003327 bytes. ). Sent 2754560 over 1563 milliseconds
+    Speed is 14.0988 mb/s.
+File transfer: 72% (Total: 198727680 received out of 276003327 bytes. ). Sent 2764800 over 1692 milliseconds
+    Speed is 13.0723 mb/s.
+File transfer: 73% (Total: 201492480 received out of 276003327 bytes. ). Sent 2764800 over 1590 milliseconds
+    Speed is 13.9109 mb/s.
+File transfer: 74% (Total: 204247040 received out of 276003327 bytes. ). Sent 2754560 over 1552 milliseconds
+    Speed is 14.1988 mb/s.
+File transfer: 75% (Total: 207011840 received out of 276003327 bytes. ). Sent 2764800 over 1763 milliseconds
+    Speed is 12.5459 mb/s.
+File transfer: 76% (Total: 209766400 received out of 276003327 bytes. ). Sent 2754560 over 2511 milliseconds
+    Speed is 8.77598 mb/s.
+File transfer: 77% (Total: 212531200 received out of 276003327 bytes. ). Sent 2764800 over 1640 milliseconds
+    Speed is 13.4868 mb/s.
+File transfer: 78% (Total: 215285760 received out of 276003327 bytes. ). Sent 2754560 over 1619 milliseconds
+    Speed is 13.6112 mb/s.
+File transfer: 79% (Total: 218050560 received out of 276003327 bytes. ). Sent 2764800 over 1701 milliseconds
+    Speed is 13.0032 mb/s.
+File transfer: 80% (Total: 220805120 received out of 276003327 bytes. ). Sent 2754560 over 1616 milliseconds
+    Speed is 13.6364 mb/s.
+File transfer: 81% (Total: 223569920 received out of 276003327 bytes. ). Sent 2764800 over 1616 milliseconds
+    Speed is 13.6871 mb/s.
+File transfer: 82% (Total: 226324480 received out of 276003327 bytes. ). Sent 2754560 over 1537 milliseconds
+    Speed is 14.3373 mb/s.
+File transfer: 83% (Total: 229089280 received out of 276003327 bytes. ). Sent 2764800 over 1763 milliseconds
+    Speed is 12.5459 mb/s.
+File transfer: 84% (Total: 231843840 received out of 276003327 bytes. ). Sent 2754560 over 1553 milliseconds
+    Speed is 14.1896 mb/s.
+File transfer: 85% (Total: 234608640 received out of 276003327 bytes. ). Sent 2764800 over 1517 milliseconds
+    Speed is 14.5804 mb/s.
+File transfer: 86% (Total: 237363200 received out of 276003327 bytes. ). Sent 2754560 over 1660 milliseconds
+    Speed is 13.275 mb/s.
+File transfer: 87% (Total: 240128000 received out of 276003327 bytes. ). Sent 2764800 over 1295 milliseconds
+    Speed is 17.0798 mb/s.
+File transfer: 88% (Total: 242892800 received out of 276003327 bytes. ). Sent 2764800 over 1593 milliseconds
+    Speed is 13.8847 mb/s.
+File transfer: 89% (Total: 245647360 received out of 276003327 bytes. ). Sent 2754560 over 1593 milliseconds
+    Speed is 13.8333 mb/s.
+File transfer: 90% (Total: 248412160 received out of 276003327 bytes. ). Sent 2764800 over 1486 milliseconds
+    Speed is 14.8845 mb/s.
+File transfer: 91% (Total: 251166720 received out of 276003327 bytes. ). Sent 2754560 over 1303 milliseconds
+    Speed is 16.9121 mb/s.
+File transfer: 92% (Total: 253931520 received out of 276003327 bytes. ). Sent 2764800 over 1514 milliseconds
+    Speed is 14.6092 mb/s.
+File transfer: 93% (Total: 256686080 received out of 276003327 bytes. ). Sent 2754560 over 1540 milliseconds
+    Speed is 14.3094 mb/s.
+File transfer: 94% (Total: 259450880 received out of 276003327 bytes. ). Sent 2764800 over 1343 milliseconds
+    Speed is 16.4694 mb/s.
+File transfer: 95% (Total: 262205440 received out of 276003327 bytes. ). Sent 2754560 over 1382 milliseconds
+    Speed is 15.9454 mb/s.
+File transfer: 96% (Total: 264970240 received out of 276003327 bytes. ). Sent 2764800 over 2386 milliseconds
+    Speed is 9.27008 mb/s.
+    
+/home/raigo/repos/masters-thesis/solution/protocol_testbed/cmake-build-debug/protocol_testbed_client --filea /home/raigo/repos/snow_problem.bag --fileb /home/raigo/repos/cert.pem --file /home/raigo/repos/masters-thesis/solution/protocol_testbed/Views-7.0-linux-x64-installer.run --protocol DTLS --address 10.151.41.5 --port 12345 --buffer-size 10240 --stport 8888 --udpTarget 30 --stportBW 60
+Running speed test (iperf3):
+Connecting to host 10.151.41.5, port 8888
+[  5] local 10.0.2.15 port 34062 connected to 10.151.41.5 port 8888
+[ ID] Interval           Transfer     Bitrate         Retr  Cwnd
+[  5]   0.00-1.00   sec  1.91 MBytes  16.0 Mbits/sec    0   68.4 KBytes       
+[  5]   1.00-2.00   sec  7.84 MBytes  65.7 Mbits/sec    0   68.4 KBytes       
+[  5]   2.00-3.00   sec  9.89 MBytes  83.2 Mbits/sec    0   68.4 KBytes       
+[  5]   3.00-4.00   sec  8.15 MBytes  68.4 Mbits/sec    0   68.4 KBytes       
+[  5]   4.00-5.00   sec  6.25 MBytes  52.4 Mbits/sec    0   67.0 KBytes       
+[  5]   5.00-6.00   sec  7.99 MBytes  67.1 Mbits/sec    0   67.0 KBytes       
+[  5]   6.00-7.00   sec  7.35 MBytes  61.7 Mbits/sec    0   67.0 KBytes       
+[  5]   7.00-8.00   sec  6.92 MBytes  57.9 Mbits/sec    0   67.0 KBytes       
+[  5]   8.00-9.01   sec  7.93 MBytes  66.4 Mbits/sec    0   67.0 KBytes       
+[  5]   9.01-10.00  sec  8.27 MBytes  69.7 Mbits/sec    0   67.0 KBytes       
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Retr
+[  5]   0.00-10.00  sec  72.5 MBytes  60.8 Mbits/sec    0             sender
+[  5]   0.00-10.33  sec  70.9 MBytes  57.6 Mbits/sec                  receiver
+
+iperf Done.
+Connecting to host 10.151.41.5, port 8888
+[  5] local 10.0.2.15 port 40358 connected to 10.151.41.5 port 8888
+[ ID] Interval           Transfer     Bitrate         Total Datagrams
+[  5]   0.00-1.01   sec  1000 Bytes  7.94 Kbits/sec  1  
+[  5]   1.01-2.00   sec  0.00 Bytes  0.00 bits/sec  0  
+[  5]   2.00-3.00   sec  0.00 Bytes  0.00 bits/sec  0  
+[  5]   3.00-4.01   sec  0.00 Bytes  0.00 bits/sec  0  
+[  5]   4.01-5.01   sec  0.00 Bytes  0.00 bits/sec  0  
+[  5]   5.01-6.00   sec  0.00 Bytes  0.00 bits/sec  0  
+[  5]   6.00-7.01   sec  0.00 Bytes  0.00 bits/sec  0  
+[  5]   7.01-8.00   sec  0.00 Bytes  0.00 bits/sec  0  
+[  5]   8.00-9.00   sec  0.00 Bytes  0.00 bits/sec  0  
+[  5]   9.00-10.00  sec  0.00 Bytes  0.00 bits/sec  0  
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total Datagrams
+[  5]   0.00-10.00  sec  1000 Bytes   800 bits/sec  0.000 ms  0/1 (0%)  sender
+[  5]   0.00-10.17  sec  1000 Bytes   786 bits/sec  1175145196.083 ms  0/1 (0%)  receiver
+
+iperf Done.
+Measuring latency 
+PING 10.151.41.5 (10.151.41.5) 56(84) bytes of data.
+64 bytes from 10.151.41.5: icmp_seq=1 ttl=62 time=128 ms
+64 bytes from 10.151.41.5: icmp_seq=2 ttl=62 time=128 ms
+64 bytes from 10.151.41.5: icmp_seq=3 ttl=62 time=128 ms
+64 bytes from 10.151.41.5: icmp_seq=4 ttl=62 time=127 ms
+64 bytes from 10.151.41.5: icmp_seq=5 ttl=62 time=128 ms
+64 bytes from 10.151.41.5: icmp_seq=6 ttl=62 time=128 ms
+64 bytes from 10.151.41.5: icmp_seq=7 ttl=62 time=127 ms
+64 bytes from 10.151.41.5: icmp_seq=8 ttl=62 time=129 ms
+64 bytes from 10.151.41.5: icmp_seq=9 ttl=62 time=128 ms
+64 bytes from 10.151.41.5: icmp_seq=10 ttl=62 time=129 ms
+
+--- 10.151.41.5 ping statistics ---
+10 packets transmitted, 10 received, 0% packet loss, time 9035ms
+rtt min/avg/max/mdev = 127.212/128.037/128.949/0.579 ms
+Calculating checksum ...
+Checksum calculated: ffffff84305dffffffe2ffffffde6e7917ffffffc8ffffffa414ffffffda4810ffffffcb6cffffff8affffffa4ffffffbe6046ffffff89ffffff8372ffffff8dfffffff90e2e0e34ffffff9931
+Connection established. Time taken: 393 milliseconds
+Sending header
+Sending file
+Sending file: 1.99978%
+    Sent 5519360 bytes over 1.779 seconds.
+    Speed is 24.8201 mb/s.
+Sending file: 3.99955%
+    Sent 5519360 bytes over 1.644 seconds.
+    Speed is 26.8582 mb/s.
+Sending file: 5.99933%
+    Sent 5519360 bytes over 1.595 seconds.
+    Speed is 27.6833 mb/s.
+Sending file: 7.99911%
+    Sent 5519360 bytes over 1.618 seconds.
+    Speed is 27.2898 mb/s.
+Sending file: 9.99889%
+    Sent 5519360 bytes over 1.664 seconds.
+    Speed is 26.5354 mb/s.
+Sending file: 11.9987%
+    Sent 5519360 bytes over 1.542 seconds.
+    Speed is 28.6348 mb/s.
+Sending file: 13.9984%
+    Sent 5519360 bytes over 2.622 seconds.
+    Speed is 16.8402 mb/s.
+Sending file: 15.9982%
+    Sent 5519360 bytes over 1.514 seconds.
+    Speed is 29.1644 mb/s.
+Sending file: 17.998%
+    Sent 5519360 bytes over 1.671 seconds.
+    Speed is 26.4242 mb/s.
+Sending file: 19.9978%
+    Sent 5519360 bytes over 1.569 seconds.
+    Speed is 28.1421 mb/s.
+Sending file: 21.9976%
+    Sent 5519360 bytes over 1.481 seconds.
+    Speed is 29.8142 mb/s.
+Sending file: 23.9973%
+    Sent 5519360 bytes over 1.673 seconds.
+    Speed is 26.3926 mb/s.
+Sending file: 25.9971%
+    Sent 5519360 bytes over 2.418 seconds.
+    Speed is 18.2609 mb/s.
+Sending file: 27.9969%
+    Sent 5519360 bytes over 1.692 seconds.
+    Speed is 26.0963 mb/s.
+Sending file: 29.9967%
+    Sent 5519360 bytes over 1.599 seconds.
+    Speed is 27.6141 mb/s.
+Sending file: 31.9964%
+    Sent 5519360 bytes over 1.779 seconds.
+    Speed is 24.8201 mb/s.
+Sending file: 33.9962%
+    Sent 5519360 bytes over 1.517 seconds.
+    Speed is 29.1067 mb/s.
+Sending file: 35.996%
+    Sent 5519360 bytes over 1.584 seconds.
+    Speed is 27.8756 mb/s.
+Sending file: 37.9958%
+    Sent 5519360 bytes over 2.314 seconds.
+    Speed is 19.0816 mb/s.
+Sending file: 39.9955%
+    Sent 5519360 bytes over 1.546 seconds.
+    Speed is 28.5607 mb/s.
+Sending file: 41.9953%
+    Sent 5519360 bytes over 1.426 seconds.
+    Speed is 30.9642 mb/s.
+Sending file: 43.9951%
+    Sent 5519360 bytes over 1.469 seconds.
+    Speed is 30.0578 mb/s.
+Sending file: 45.9949%
+    Sent 5519360 bytes over 1.436 seconds.
+    Speed is 30.7485 mb/s.
+Sending file: 47.9947%
+    Sent 5519360 bytes over 1.89 seconds.
+    Speed is 23.3624 mb/s.
+Sending file: 49.9944%
+    Sent 5519360 bytes over 2.444 seconds.
+    Speed is 18.0666 mb/s.
+Sending file: 51.9942%
+    Sent 5519360 bytes over 2.316 seconds.
+    Speed is 19.0651 mb/s.
+Sending file: 53.994%
+    Sent 5519360 bytes over 1.679 seconds.
+    Speed is 26.2983 mb/s.
+Sending file: 55.9938%
+    Sent 5519360 bytes over 1.449 seconds.
+    Speed is 30.4727 mb/s.
+Sending file: 57.9935%
+    Sent 5519360 bytes over 1.677 seconds.
+    Speed is 26.3297 mb/s.
+Sending file: 59.9933%
+    Sent 5519360 bytes over 1.567 seconds.
+    Speed is 28.178 mb/s.
+Sending file: 61.9931%
+    Sent 5519360 bytes over 2.198 seconds.
+    Speed is 20.0887 mb/s.
+Sending file: 63.9929%
+    Sent 5519360 bytes over 1.977 seconds.
+    Speed is 22.3343 mb/s.
+Sending file: 65.9927%
+    Sent 5519360 bytes over 1.824 seconds.
+    Speed is 24.2077 mb/s.
+Sending file: 67.9924%
+    Sent 5519360 bytes over 1.512 seconds.
+    Speed is 29.203 mb/s.
+Sending file: 69.9922%
+    Sent 5519360 bytes over 1.707 seconds.
+    Speed is 25.8669 mb/s.
+Sending file: 71.992%
+    Sent 5519360 bytes over 2.598 seconds.
+    Speed is 16.9957 mb/s.
+Sending file: 73.9918%
+    Sent 5519360 bytes over 2.039 seconds.
+    Speed is 21.6552 mb/s.
+Sending file: 75.9915%
+    Sent 5519360 bytes over 1.482 seconds.
+    Speed is 29.7941 mb/s.
+Sending file: 77.9913%
+    Sent 5519360 bytes over 1.92 seconds.
+    Speed is 22.9973 mb/s.
+Sending file: 79.9911%
+    Sent 5519360 bytes over 1.566 seconds.
+    Speed is 28.196 mb/s.
+Sending file: 81.9909%
+    Sent 5519360 bytes over 1.525 seconds.
+    Speed is 28.954 mb/s.
+Sending file: 83.9907%
+    Sent 5519360 bytes over 1.477 seconds.
+    Speed is 29.895 mb/s.
+Sending file: 85.9904%
+    Sent 5519360 bytes over 2.544 seconds.
+    Speed is 17.3565 mb/s.
+Sending file: 87.9902%
+    Sent 5519360 bytes over 2.034 seconds.
+    Speed is 21.7084 mb/s.
+Sending file: 89.99%
+    Sent 5519360 bytes over 1.504 seconds.
+    Speed is 29.3583 mb/s.
+Sending file: 91.9898%
+    Sent 5519360 bytes over 1.698 seconds.
+    Speed is 26.0041 mb/s.
+Sending file: 93.9895%
+    Sent 5519360 bytes over 1.948 seconds.
+    Speed is 22.6668 mb/s.
+Sending file: 95.9893%
+    Sent 5519360 bytes over 1.464 seconds.
+    Speed is 30.1604 mb/s.
+Sending file: 97.9891%
+    Sent 5519360 bytes over 2.484 seconds.
+    Speed is 17.7757 mb/s.
+Sending file: 99.9889%
+    Sent 5519360 bytes over 1.446 seconds.
+    Speed is 30.5359 mb/s.
+File sent
+Running speed test (iperf3):
+Connecting to host 10.151.41.5, port 8888
+[  5] local 10.0.2.15 port 34068 connected to 10.151.41.5 port 8888
+[ ID] Interval           Transfer     Bitrate         Retr  Cwnd
+[  5]   0.00-1.00   sec  1.39 MBytes  11.6 Mbits/sec    0    127 KBytes       
+[  5]   1.00-2.00   sec  3.03 MBytes  25.5 Mbits/sec    0    127 KBytes       
+[  5]   2.00-3.00   sec  5.30 MBytes  44.5 Mbits/sec    0    127 KBytes       
+[  5]   3.00-4.00   sec  7.29 MBytes  61.1 Mbits/sec    0    127 KBytes       
+[  5]   4.00-5.00   sec  9.59 MBytes  80.3 Mbits/sec    0    127 KBytes       
+[  5]   5.00-6.00   sec  10.4 MBytes  87.8 Mbits/sec    0    127 KBytes       
+[  5]   6.00-7.00   sec  9.89 MBytes  83.0 Mbits/sec    0    127 KBytes       
+[  5]   7.00-8.00   sec  9.89 MBytes  83.0 Mbits/sec    0    127 KBytes       
+[  5]   8.00-9.00   sec  9.25 MBytes  77.5 Mbits/sec    0    127 KBytes       
+[  5]   9.00-10.00  sec  10.3 MBytes  86.4 Mbits/sec    0    127 KBytes       
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Retr
+[  5]   0.00-10.00  sec  76.4 MBytes  64.1 Mbits/sec    0             sender
+[  5]   0.00-10.16  sec  75.5 MBytes  62.3 Mbits/sec                  receiver
+
+iperf Done.
+Connecting to host 10.151.41.5, port 8888
+[  5] local 10.0.2.15 port 50822 connected to 10.151.41.5 port 8888
+[ ID] Interval           Transfer     Bitrate         Total Datagrams
+[  5]   0.00-1.00   sec  1000 Bytes  7.99 Kbits/sec  1  
+[  5]   1.00-2.00   sec  0.00 Bytes  0.00 bits/sec  0  
+[  5]   2.00-3.00   sec  0.00 Bytes  0.00 bits/sec  0  
+[  5]   3.00-4.00   sec  0.00 Bytes  0.00 bits/sec  0  
+[  5]   4.00-5.02   sec  0.00 Bytes  0.00 bits/sec  0  
+[  5]   5.02-6.00   sec  0.00 Bytes  0.00 bits/sec  0  
+[  5]   6.00-7.00   sec  0.00 Bytes  0.00 bits/sec  0  
+[  5]   7.00-8.00   sec  0.00 Bytes  0.00 bits/sec  0  
+[  5]   8.00-9.00   sec  0.00 Bytes  0.00 bits/sec  0  
+[  5]   9.00-10.02  sec  0.00 Bytes  0.00 bits/sec  0  
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total Datagrams
+[  5]   0.00-10.02  sec  1000 Bytes   799 bits/sec  0.000 ms  0/1 (0%)  sender
+[  5]   0.00-10.18  sec  1000 Bytes   786 bits/sec  1175145197.749 ms  0/1 (0%)  receiver
+
+iperf Done.
+Measuring latency 
+PING 10.151.41.5 (10.151.41.5) 56(84) bytes of data.
+64 bytes from 10.151.41.5: icmp_seq=1 ttl=62 time=128 ms
+64 bytes from 10.151.41.5: icmp_seq=2 ttl=62 time=128 ms
+64 bytes from 10.151.41.5: icmp_seq=3 ttl=62 time=127 ms
+64 bytes from 10.151.41.5: icmp_seq=4 ttl=62 time=128 ms
+64 bytes from 10.151.41.5: icmp_seq=5 ttl=62 time=128 ms
+64 bytes from 10.151.41.5: icmp_seq=6 ttl=62 time=128 ms
+64 bytes from 10.151.41.5: icmp_seq=7 ttl=62 time=128 ms
+64 bytes from 10.151.41.5: icmp_seq=8 ttl=62 time=127 ms
+64 bytes from 10.151.41.5: icmp_seq=9 ttl=62 time=128 ms
+64 bytes from 10.151.41.5: icmp_seq=10 ttl=62 time=128 ms
+
+--- 10.151.41.5 ping statistics ---
+10 packets transmitted, 10 received, 0% packet loss, time 9073ms
+rtt min/avg/max/mdev = 127.471/127.871/128.439/0.339 ms
+Statistics:
+Sent 276003327 bytes
+    over 89.5549 seconds 
+    Average file transfer speed was 24.6556 mbit/s
+Connection dropped 0 times 
+Hashing took 0.962761 seconds 
+
+Process finished with exit code 0
+
+rvilur@visu-ubu2004-01:~/thesis$ ./protocol_testbed_server --port 12345 --protocol DTLS --pkey key.pem --cert cert.pem
+Listen address was not set. Defaulting to 0.0.0.0
+File path was not set. Defaulting to local directory
+Server is starting.
+Connection: 192.168.120.19:60910
+Expected file size: 276003327
+File transfer: 1% (Total: 2764800 received out of 276003327 bytes. ). Sent 2764800 over 992 milliseconds
+    Speed is 22.2968 mb/s.
+File transfer: 2% (Total: 5529600 received out of 276003327 bytes. ). Sent 2764800 over 795 milliseconds
+    Speed is 27.8219 mb/s.
+File transfer: 3% (Total: 8284160 received out of 276003327 bytes. ). Sent 2754560 over 790 milliseconds
+    Speed is 27.8943 mb/s.
+File transfer: 4% (Total: 11048960 received out of 276003327 bytes. ). Sent 2764800 over 852 milliseconds
+    Speed is 25.9606 mb/s.
+File transfer: 5% (Total: 13803520 received out of 276003327 bytes. ). Sent 2754560 over 797 milliseconds
+    Speed is 27.6493 mb/s.
+File transfer: 6% (Total: 16568320 received out of 276003327 bytes. ). Sent 2764800 over 799 milliseconds
+    Speed is 27.6826 mb/s.
+File transfer: 7% (Total: 19322880 received out of 276003327 bytes. ). Sent 2754560 over 835 milliseconds
+    Speed is 26.391 mb/s.
+File transfer: 8% (Total: 22087680 received out of 276003327 bytes. ). Sent 2764800 over 783 milliseconds
+    Speed is 28.2483 mb/s.
+File transfer: 9% (Total: 24842240 received out of 276003327 bytes. ). Sent 2754560 over 853 milliseconds
+    Speed is 25.8341 mb/s.
+File transfer: 10% (Total: 27607040 received out of 276003327 bytes. ). Sent 2764800 over 817 milliseconds
+    Speed is 27.0727 mb/s.
+File transfer: 11% (Total: 30361600 received out of 276003327 bytes. ). Sent 2754560 over 712 milliseconds
+    Speed is 30.9501 mb/s.
+File transfer: 12% (Total: 33126400 received out of 276003327 bytes. ). Sent 2764800 over 850 milliseconds
+    Speed is 26.0216 mb/s.
+File transfer: 13% (Total: 35880960 received out of 276003327 bytes. ). Sent 2754560 over 2829 milliseconds
+    Speed is 7.78949 mb/s.
+File transfer: 14% (Total: 38645760 received out of 276003327 bytes. ). Sent 2764800 over 831 milliseconds
+    Speed is 26.6166 mb/s.
+File transfer: 15% (Total: 41410560 received out of 276003327 bytes. ). Sent 2764800 over 704 milliseconds
+    Speed is 31.4182 mb/s.
+File transfer: 16% (Total: 44165120 received out of 276003327 bytes. ). Sent 2754560 over 819 milliseconds
+    Speed is 26.9066 mb/s.
+File transfer: 17% (Total: 46929920 received out of 276003327 bytes. ). Sent 2764800 over 1156 milliseconds
+    Speed is 19.1336 mb/s.
+File transfer: 18% (Total: 49684480 received out of 276003327 bytes. ). Sent 2754560 over 767 milliseconds
+    Speed is 28.7307 mb/s.
+File transfer: 19% (Total: 52449280 received out of 276003327 bytes. ). Sent 2764800 over 764 milliseconds
+    Speed is 28.9508 mb/s.
+File transfer: 20% (Total: 55203840 received out of 276003327 bytes. ). Sent 2754560 over 735 milliseconds
+    Speed is 29.9816 mb/s.
+File transfer: 21% (Total: 57968640 received out of 276003327 bytes. ). Sent 2764800 over 787 milliseconds
+    Speed is 28.1047 mb/s.
+File transfer: 22% (Total: 60723200 received out of 276003327 bytes. ). Sent 2754560 over 1022 milliseconds
+    Speed is 21.5621 mb/s.
+File transfer: 23% (Total: 63488000 received out of 276003327 bytes. ). Sent 2764800 over 2266 milliseconds
+    Speed is 9.76099 mb/s.
+File transfer: 24% (Total: 66242560 received out of 276003327 bytes. ). Sent 2754560 over 947 milliseconds
+    Speed is 23.2698 mb/s.
+File transfer: 25% (Total: 69007360 received out of 276003327 bytes. ). Sent 2764800 over 883 milliseconds
+    Speed is 25.0492 mb/s.
+File transfer: 26% (Total: 71761920 received out of 276003327 bytes. ). Sent 2754560 over 785 milliseconds
+    Speed is 28.0719 mb/s.
+File transfer: 27% (Total: 74526720 received out of 276003327 bytes. ). Sent 2764800 over 809 milliseconds
+    Speed is 27.3404 mb/s.
+File transfer: 28% (Total: 77281280 received out of 276003327 bytes. ). Sent 2754560 over 823 milliseconds
+    Speed is 26.7758 mb/s.
+File transfer: 29% (Total: 80046080 received out of 276003327 bytes. ). Sent 2764800 over 2205 milliseconds
+    Speed is 10.031 mb/s.
+File transfer: 30% (Total: 82810880 received out of 276003327 bytes. ). Sent 2764800 over 758 milliseconds
+    Speed is 29.1799 mb/s.
+File transfer: 31% (Total: 85565440 received out of 276003327 bytes. ). Sent 2754560 over 827 milliseconds
+    Speed is 26.6463 mb/s.
+File transfer: 32% (Total: 88330240 received out of 276003327 bytes. ). Sent 2764800 over 2099 milliseconds
+    Speed is 10.5376 mb/s.
+File transfer: 33% (Total: 91084800 received out of 276003327 bytes. ). Sent 2754560 over 755 milliseconds
+    Speed is 29.1874 mb/s.
+File transfer: 34% (Total: 93849600 received out of 276003327 bytes. ). Sent 2764800 over 817 milliseconds
+    Speed is 27.0727 mb/s.
+File transfer: 35% (Total: 96604160 received out of 276003327 bytes. ). Sent 2754560 over 724 milliseconds
+    Speed is 30.4371 mb/s.
+File transfer: 36% (Total: 99368960 received out of 276003327 bytes. ). Sent 2764800 over 715 milliseconds
+    Speed is 30.9348 mb/s.
+File transfer: 37% (Total: 102123520 received out of 276003327 bytes. ). Sent 2754560 over 909 milliseconds
+    Speed is 24.2426 mb/s.
+File transfer: 38% (Total: 104888320 received out of 276003327 bytes. ). Sent 2764800 over 757 milliseconds
+    Speed is 29.2185 mb/s.
+File transfer: 39% (Total: 107642880 received out of 276003327 bytes. ). Sent 2754560 over 723 milliseconds
+    Speed is 30.4792 mb/s.
+File transfer: 40% (Total: 110407680 received out of 276003327 bytes. ). Sent 2764800 over 714 milliseconds
+    Speed is 30.9782 mb/s.
+File transfer: 41% (Total: 113162240 received out of 276003327 bytes. ). Sent 2754560 over 730 milliseconds
+    Speed is 30.187 mb/s.
+File transfer: 42% (Total: 115927040 received out of 276003327 bytes. ). Sent 2764800 over 1338 milliseconds
+    Speed is 16.5309 mb/s.
+File transfer: 43% (Total: 118681600 received out of 276003327 bytes. ). Sent 2754560 over 1817 milliseconds
+    Speed is 12.1279 mb/s.
+File transfer: 44% (Total: 121446400 received out of 276003327 bytes. ). Sent 2764800 over 2470 milliseconds
+    Speed is 8.95482 mb/s.
+File transfer: 45% (Total: 124211200 received out of 276003327 bytes. ). Sent 2764800 over 795 milliseconds
+    Speed is 27.8219 mb/s.
+File transfer: 46% (Total: 126965760 received out of 276003327 bytes. ). Sent 2754560 over 1743 milliseconds
+    Speed is 12.6428 mb/s.
+File transfer: 47% (Total: 129730560 received out of 276003327 bytes. ). Sent 2764800 over 925 milliseconds
+    Speed is 23.9118 mb/s.
+File transfer: 48% (Total: 132485120 received out of 276003327 bytes. ). Sent 2754560 over 854 milliseconds
+    Speed is 25.8038 mb/s.
+File transfer: 49% (Total: 135249920 received out of 276003327 bytes. ). Sent 2764800 over 999 milliseconds
+    Speed is 22.1405 mb/s.
+File transfer: 50% (Total: 138004480 received out of 276003327 bytes. ). Sent 2754560 over 1183 milliseconds
+    Speed is 18.6276 mb/s.
+File transfer: 51% (Total: 140769280 received out of 276003327 bytes. ). Sent 2764800 over 821 milliseconds
+    Speed is 26.9408 mb/s.
+File transfer: 52% (Total: 143523840 received out of 276003327 bytes. ). Sent 2754560 over 2137 milliseconds
+    Speed is 10.3119 mb/s.
+File transfer: 53% (Total: 146288640 received out of 276003327 bytes. ). Sent 2764800 over 1247 milliseconds
+    Speed is 17.7373 mb/s.
+File transfer: 54% (Total: 149043200 received out of 276003327 bytes. ). Sent 2754560 over 1103 milliseconds
+    Speed is 19.9787 mb/s.
+File transfer: 55% (Total: 151808000 received out of 276003327 bytes. ). Sent 2764800 over 922 milliseconds
+    Speed is 23.9896 mb/s.
+File transfer: 56% (Total: 154562560 received out of 276003327 bytes. ). Sent 2754560 over 828 milliseconds
+    Speed is 26.6141 mb/s.
+File transfer: 57% (Total: 157327360 received out of 276003327 bytes. ). Sent 2764800 over 736 milliseconds
+    Speed is 30.0522 mb/s.
+File transfer: 58% (Total: 160081920 received out of 276003327 bytes. ). Sent 2754560 over 2147 milliseconds
+    Speed is 10.2638 mb/s.
+File transfer: 59% (Total: 162846720 received out of 276003327 bytes. ). Sent 2764800 over 2481 milliseconds
+    Speed is 8.91511 mb/s.
+File transfer: 60% (Total: 165611520 received out of 276003327 bytes. ). Sent 2764800 over 1667 milliseconds
+    Speed is 13.2684 mb/s.
+File transfer: 61% (Total: 168366080 received out of 276003327 bytes. ). Sent 2754560 over 861 milliseconds
+    Speed is 25.5941 mb/s.
+File transfer: 62% (Total: 171130880 received out of 276003327 bytes. ). Sent 2764800 over 765 milliseconds
+    Speed is 28.9129 mb/s.
+File transfer: 63% (Total: 173885440 received out of 276003327 bytes. ). Sent 2754560 over 837 milliseconds
+    Speed is 26.3279 mb/s.
+File transfer: 64% (Total: 176650240 received out of 276003327 bytes. ). Sent 2764800 over 1303 milliseconds
+    Speed is 16.975 mb/s.
+File transfer: 65% (Total: 179404800 received out of 276003327 bytes. ). Sent 2754560 over 785 milliseconds
+    Speed is 28.0719 mb/s.
+File transfer: 66% (Total: 182169600 received out of 276003327 bytes. ). Sent 2764800 over 786 milliseconds
+    Speed is 28.1405 mb/s.
+File transfer: 67% (Total: 184924160 received out of 276003327 bytes. ). Sent 2754560 over 775 milliseconds
+    Speed is 28.4342 mb/s.
+File transfer: 68% (Total: 187688960 received out of 276003327 bytes. ). Sent 2764800 over 815 milliseconds
+    Speed is 27.1391 mb/s.
+File transfer: 69% (Total: 190443520 received out of 276003327 bytes. ). Sent 2754560 over 897 milliseconds
+    Speed is 24.5669 mb/s.
+File transfer: 70% (Total: 193208320 received out of 276003327 bytes. ). Sent 2764800 over 1969 milliseconds
+    Speed is 11.2333 mb/s.
+File transfer: 71% (Total: 195962880 received out of 276003327 bytes. ). Sent 2754560 over 2214 milliseconds
+    Speed is 9.95324 mb/s.
+File transfer: 72% (Total: 198727680 received out of 276003327 bytes. ). Sent 2764800 over 770 milliseconds
+    Speed is 28.7252 mb/s.
+File transfer: 73% (Total: 201492480 received out of 276003327 bytes. ). Sent 2764800 over 767 milliseconds
+    Speed is 28.8375 mb/s.
+File transfer: 74% (Total: 204247040 received out of 276003327 bytes. ). Sent 2754560 over 754 milliseconds
+    Speed is 29.2261 mb/s.
+File transfer: 75% (Total: 207011840 received out of 276003327 bytes. ). Sent 2764800 over 811 milliseconds
+    Speed is 27.273 mb/s.
+File transfer: 76% (Total: 209766400 received out of 276003327 bytes. ). Sent 2754560 over 1002 milliseconds
+    Speed is 21.9925 mb/s.
+File transfer: 77% (Total: 212531200 received out of 276003327 bytes. ). Sent 2764800 over 1482 milliseconds
+    Speed is 14.9247 mb/s.
+File transfer: 78% (Total: 215285760 received out of 276003327 bytes. ). Sent 2754560 over 743 milliseconds
+    Speed is 29.6588 mb/s.
+File transfer: 79% (Total: 218050560 received out of 276003327 bytes. ). Sent 2764800 over 1714 milliseconds
+    Speed is 12.9046 mb/s.
+File transfer: 80% (Total: 220805120 received out of 276003327 bytes. ). Sent 2754560 over 1823 milliseconds
+    Speed is 12.088 mb/s.
+File transfer: 81% (Total: 223569920 received out of 276003327 bytes. ). Sent 2764800 over 850 milliseconds
+    Speed is 26.0216 mb/s.
