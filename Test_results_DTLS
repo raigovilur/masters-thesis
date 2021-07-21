@@ -1,4 +1,4 @@
-// Ehsan said that this makes the iseauto computer network too slow to work with
+// Ehsan said that this makes the iseauto computer network too slow to work with. Default udp target of 30M
 iseauto@iseauto-X399:~/Desktop$ ./protocol_testbed_client --protocol DTLS --address 193.40.245.62 --port 8101 --buffer-size 10000 --file ~/Desktop/heavy-snow.bag --stport 8102 --stportBW 30M
 Calculating checksum ...
 Checksum calculated: fffffff6ffffffb4ffffffd22e73ffffffb9fffffffefffffff2fffffff973ffffffaa74ffffffeb6bfffffff908ffffffc93dffffffb964ffffffc575ffffffff23ffffff99ffffffd4fffffff61272144b26
