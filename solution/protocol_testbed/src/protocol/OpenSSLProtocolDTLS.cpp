@@ -75,7 +75,8 @@ bool Protocol::OpenSSLProtocolDTLS::openProtocol(std::string address, uint port,
         return false;
     }
     SSL_CTX_set_options(ctx, SSL_OP_NO_DTLSv1); // We are only interested in DTLS 1.2
-    SSL_CTX_set_ciphersuites(ctx, "TLS_CHACHA20_POLY1305_SHA256");
+    //SSL_CTX_set_ciphersuites(ctx, "TLS_CHACHA20_POLY1305_SHA256");
+    //SSL_CTX_set_ciphersuites(ctx, "TLS_CHACHA20_POLY1305_SHA256");
     _ssl = SSL_new(ctx);
 
 
@@ -163,26 +164,26 @@ bool Protocol::OpenSSLProtocolDTLS::send(const char *buffer, size_t bufferSize, 
 
     _lastSendTimestamp = std::chrono::system_clock::now();
 
-    ushort sequenceNo = getNextSequence();
-    size_t sendPacketSize = PACKET_SIZE_LEN + SEQ_NO_LEN + bufferSize;
+    //ushort sequenceNo = getNextSequence();
+    //size_t sendPacketSize = PACKET_SIZE_LEN + SEQ_NO_LEN + bufferSize;
 //    _notAckedPackets.push_back(sequenceNo);
 //    _timeStamps.emplace(
 //            std::pair<ushort, std::chrono::time_point<std::chrono::system_clock>>(
 //                    sequenceNo, std::chrono::system_clock::now()
 //                    ));
 
-    char* sendPacket = new char[sendPacketSize];
+    //char* sendPacket = new char[sendPacketSize];
 
     //std::cout << "Sending seq no: " << sequenceNo << std::endl;
 
-    Utils::writeToByteArray(sendPacket, 0, Utils::convertToCharArray(sendPacketSize, PACKET_SIZE_LEN));
-    Utils::writeToByteArray(sendPacket, PACKET_SIZE_LEN, Utils::convertToCharArray(sequenceNo, SEQ_NO_LEN));
-    memcpy(sendPacket + PACKET_SIZE_LEN + SEQ_NO_LEN, buffer, bufferSize);
+    //Utils::writeToByteArray(sendPacket, 0, Utils::convertToCharArray(sendPacketSize, PACKET_SIZE_LEN));
+    //Utils::writeToByteArray(sendPacket, PACKET_SIZE_LEN, Utils::convertToCharArray(sequenceNo, SEQ_NO_LEN));
+    //memcpy(sendPacket + PACKET_SIZE_LEN + SEQ_NO_LEN, buffer, bufferSize);
 
-    std::vector<unsigned char> rawBytes((unsigned char*)sendPacket,(unsigned char*) (sendPacket + bufferSize));
+    //std::vector<unsigned char> rawBytes((unsigned char*)sendPacket,(unsigned char*) (sendPacket + bufferSize));
 
     while (true) {
-        int len = SSL_write(_ssl, sendPacket, sendPacketSize);
+        int len = SSL_write(_ssl, buffer, bufferSize);
         if (len < 0) {
             int err = SSL_get_error(_ssl, len);
             switch (err) {
@@ -237,7 +238,7 @@ bool Protocol::OpenSSLProtocolDTLS::send(const char *buffer, size_t bufferSize, 
 //        return false;
 //    }
 
-    delete[] sendPacket;
+    //delete[] sendPacket;
     return true;
 }
 
@@ -252,6 +253,7 @@ Protocol::OpenSSLProtocolDTLS::~OpenSSLProtocolDTLS() {
 
 bool Protocol::OpenSSLProtocolDTLS::cleanUp() {
     if (_socketInitialized) {
+        sleep(5);
         SSL_free(_ssl);
         _initialized = false;
 

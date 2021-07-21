@@ -3,6 +3,8 @@
 #include "OpenSSLProtocolTLS.h"
 #include "OpenSSLProtocolDTLS.h"
 #include "MvfstProtocolQUIC.h"
+#include "OSProtocolTCP.h"
+#include "OSProtocolUDP.h"
 
 Protocol::ProtocolPtr Protocol::ProtocolFactory::getInstance(Protocol::ProtocolType type) {
     switch (type) {
@@ -14,6 +16,10 @@ Protocol::ProtocolPtr Protocol::ProtocolFactory::getInstance(Protocol::ProtocolT
             return std::make_shared<OpenSSLProtocolDTLS>();
         case ProtocolType::MVFST_QUIC:
             return std::make_shared<MvfstProtocolQUIC>();
+        case ProtocolType::TCP:
+            return std::make_shared<OSProtocolTCP>();
+        case ProtocolType::UDP:
+            return std::make_shared<OSProtocolUDP>();
         default:
             return nullptr;
     }

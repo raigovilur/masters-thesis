@@ -140,7 +140,7 @@ namespace quic {
                 return;
             }
             quic::Buf data = std::move(res.value().first);
-            _callback->consume("client", (unsigned char*) data->data(), data->length());
+            _callback->consume("client", (const unsigned char*) data->data(), data->length());
         }
 
         void readError(
@@ -203,6 +203,7 @@ namespace quic {
                 std::shared_ptr<const fizz::server::FizzServerContext> ctx) noexcept
         override {
             CHECK_EQ(evb, sock->getEventBase());
+            sock->setRcvBuf(100000);
             auto requestHandler = std::make_unique<RequestHandler>(evb, _callback);
             auto transport = quic::QuicServerTransport::make(
                     evb, std::move(sock), *requestHandler, ctx);
@@ -232,8 +233,15 @@ namespace quic {
             TransportSettings settings;
             //settings.idleTimeout = std::chrono::milliseconds(1000);
             settings.connectUDP = true;
-            settings.defaultCongestionController = quic::CongestionControlType::Cubic;
-            settings.flowControlWindowFrequency = 5;
+            settings.defaultCongestionController = quic::CongestionControlType::NewReno;
+            settings.maxCwndInMss = 1000000;
+            //settings.advertisedInitialUniStreamWindowSize = 20971520;
+            settings.shouldRecvBatch = true;
+            settings.maxRecvBatchSize = 64;
+            settings.batchingMode = quic::QuicBatchingMode::BATCHING_MODE_GSO;
+            settings.maxPacketsToBuffer = 1000;
+            settings.shouldUseRecvmmsgForBatchRecv = true;
+
             //settings.advertisedInitialUniStreamWindowSize = 20971520;
             server_->setTransportSettings(settings);
             server_->setFizzContext(serverCtx);

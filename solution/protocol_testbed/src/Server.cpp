@@ -8,8 +8,9 @@
 #include "serverProtocol/ServerProtocolFactory.h"
 #include "appProto/FileSendHeader.h"
 #include "appProto/utils.h"
+#include <thread>
 
-bool Server::processDataStream(ClientData& client, unsigned char *bytes, size_t processStart, size_t packetLength) {
+bool Server::processDataStream(ClientData& client, const unsigned char *bytes, size_t processStart, size_t packetLength) {
     if (client.outputStream == nullptr)
     {
         client.outputStream = std::make_unique<std::ofstream>(client.fileName, std::ios::binary);
@@ -36,9 +37,11 @@ bool Server::processDataStream(ClientData& client, unsigned char *bytes, size_t 
     }
     return true;
 }
+bool Server::consume(std::string client, const unsigned char *bytes, size_t packetLength) {
+    return consumeInternal(client, bytes, packetLength);
+}
 
-
-bool Server::consume(std::string client, unsigned char *bytes, size_t packetLength) {
+bool Server::consumeInternal(const std::string& client, const unsigned char *bytes, size_t packetLength) {
     // This is just for debugging
     //std::cout << std::string((char*) bytes, packetLength) << std::endl;
 

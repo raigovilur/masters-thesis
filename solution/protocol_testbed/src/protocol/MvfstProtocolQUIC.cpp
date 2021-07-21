@@ -131,6 +131,7 @@ public:
 
         evb->runInEventBaseThreadAndWait([&] {
             auto sock = std::make_unique<folly::AsyncUDPSocket>(evb);
+            sock->setRcvBuf(100000);
             auto fizzClientContext = std::make_shared<fizz::client::FizzClientContext>();
             fizzClientContext->setSupportedCiphers({fizz::CipherSuite::TLS_CHACHA20_POLY1305_SHA256});
             auto fizzClientQuicHandshakeContext =
@@ -146,9 +147,18 @@ public:
 
             TransportSettings settings;
             settings.idleTimeout = std::chrono::milliseconds(3000);
+            //settings.connectUDP = true;
             settings.connectUDP = true;
-            settings.defaultCongestionController = quic::CongestionControlType::Cubic;
-            settings.flowControlWindowFrequency = 5;
+            settings.defaultCongestionController = quic::CongestionControlType::NewReno;
+            settings.maxCwndInMss = quic::kLargeMaxCwndInMss;
+            //settings.advertisedInitialUniStreamWindowSize = 20971520;
+            settings.shouldRecvBatch = true;
+            settings.maxRecvBatchSize = 64;
+            settings.maxBatchSize = 64;
+            settings.batchingMode = quic::QuicBatchingMode::BATCHING_MODE_GSO;
+            settings.maxPacketsToBuffer = 1000;
+            settings.shouldUseRecvmmsgForBatchRecv = true;
+            //settings.flowControlWindowFrequency = 5;
             //settings.advertisedInitialUniStreamWindowSize = 20971520;
             quicClient_->setTransportSettings(settings);
 
@@ -201,12 +211,6 @@ public:
     }
 
     bool isAllAcked() {
-        static uint lastCheckedAck = _pendingAck;
-        if (_pendingAck != lastCheckedAck) {
-             //std::cout << "Pending acks: " << _pendingAck << std::endl;
-             lastCheckedAck = _pendingAck;
-        }
-
         bool queueEmpty = quicClient_->getState()->outstandings.packets.empty();
         if (queueEmpty && _pendingAck != 0) {
             std::cout << "MVFST packet queue is empty, but _pendingAck is not 0 (" << _pendingAck << ")" << std::endl;
@@ -254,7 +258,8 @@ private:
     bool _connected = false;
 };
 
-bool Protocol::MvfstProtocolQUIC::openProtocol(std::string address, uint port, Options) {
+bool Protocol::MvfstProtocolQUIC::openProtocol(std::string address, uint port, Options options) {
+    _options = options;
     static bool isGoogleLoggingOpened = false;
     if (!isGoogleLoggingOpened)
     {
@@ -277,6 +282,29 @@ bool Protocol::MvfstProtocolQUIC::openProtocolServer(uint port) {
 }
 
 bool Protocol::MvfstProtocolQUIC::send(const char *buffer, size_t bufferSize, bool eof) {
+
+    //Flow control:
+    // We are trying to keep to 30 mb/s speed, because that's the maximum our link can handle
+    // So don't send out more than that
+    //double target = _options.UDPtarget;
+//    double target = _options.UDPtarget;
+//
+//    uint millisNeededForTarget = ((double) bufferSize * 8) / 1000 / target;
+//
+//    if (!_firstPacket) {
+//        // do flow control
+//        uint millisecondsTakenToGetHere = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now() - _lastSendTimestamp).count();
+//        int diff = millisNeededForTarget - millisecondsTakenToGetHere;
+//        if (diff > 0) {
+//            //std::cout << "Sleeping for milliseconds: " << diff << std::endl;
+//            std::this_thread::sleep_for(std::chrono::milliseconds(diff));
+//        }
+//    } else {
+//        _firstPacket = false;
+//    }
+
+  //  _lastSendTimestamp = std::chrono::system_clock::now();
+
     if (!_mvfst->isConnected()) {
         return false;
     }
@@ -297,7 +325,7 @@ Protocol::MvfstProtocolQUIC::~MvfstProtocolQUIC() {
 bool Protocol::MvfstProtocolQUIC::isAllSent() {
     auto waitingTime = std::chrono::system_clock::now();
     while (!_mvfst->isAllAcked()) {
-        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        std::this_thread::sleep_for(std::chrono::milliseconds(10));
     }
     std::cout << "Waited for acks: " << std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now() - waitingTime).count() << " ms" << std::endl;
     return true;

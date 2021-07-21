@@ -5,7 +5,9 @@ namespace Protocol {
         Dummy,
         OpenSSL_TLS,
         OpenSSL_DTLS1_2,
-        MVFST_QUIC
+        MVFST_QUIC,
+        TCP,
+        UDP
     };
 
     class Options {

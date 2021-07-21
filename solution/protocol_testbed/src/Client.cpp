@@ -111,7 +111,7 @@ void Client::send(const std::string& path, size_t bufferSize, uint retryCount) {
 
     std::cout << "Sending file" << std::endl;
     double oneBufferPercentage = 1.0/(buffersNeeded) * 100;
-    int buffersNeededForOnePercent = (int) (1.0 / oneBufferPercentage);
+    int buffersNeededForOnePercent = (int) (2.0 / oneBufferPercentage);
     if (buffersNeededForOnePercent <= 0) {
         buffersNeededForOnePercent = 1;
     }
@@ -124,7 +124,7 @@ void Client::send(const std::string& path, size_t bufferSize, uint retryCount) {
         if ((i + 1) % buffersNeededForOnePercent == 0) {
             if (_type == Protocol::MVFST_QUIC)
                 protocol->isAllSent(); //If there's items that haven't been sent to the server yet, wait here.
-            std::cout << "Sending file: " << (int)((i + 1) * oneBufferPercentage) << "%" << std::endl;
+            std::cout << "Sending file: " << (double)((i + 1) * oneBufferPercentage) << "%" << std::endl;
             uint elapsedSeconds = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now() - intermediateTimeStamp).count();
             uint bytesSent = buffersNeededForOnePercent * bufferSize;
             std::cout << "    Sent " << bytesSent << " bytes over "

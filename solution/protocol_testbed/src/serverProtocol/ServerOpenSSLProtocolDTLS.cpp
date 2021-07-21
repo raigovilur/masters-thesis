@@ -172,6 +172,16 @@ int verifyCookie(SSL *ssl, const unsigned char *cookie, unsigned int cookie_len)
     if (setsockopt(serverFd, SOL_SOCKET, SO_REUSEADDR, &reuse, sizeof(reuse)) < 0) {
         perror("setsockopt(SO_REUSEADDR) failed");
     }
+
+    int a = 0;
+    uint m = sizeof(a);
+    getsockopt(serverFd, SOL_SOCKET, SO_RCVBUF, (void *) &a, &m);
+    std::cout << "Socket receive buffer size " << a << std::endl;
+    long sockSize = 100000000;
+    setsockopt(serverFd, SOL_SOCKET, SO_RCVBUF, (const void *) &sockSize, sizeof(sockSize));
+    getsockopt(serverFd, SOL_SOCKET, SO_RCVBUF, (void *) &a, &m);
+    std::cout << "Socket receive buffer size " << a << std::endl;
+
     bzero(&serverAddr, sizeof(serverAddr));
     serverAddr.sin_family = AF_INET;
     serverAddr.sin_port = htons(port);
@@ -258,38 +268,38 @@ ServerProto::ServerOpenSSLProtocolDTLS::~ServerOpenSSLProtocolDTLS() {
 bool ServerProto::ServerOpenSSLProtocolDTLS::serviceConnection(int clientFd, const sockaddr_in* addr, SSL* ssl) {
     SSL_accept(ssl);
 
-    unsigned char buf[100000] = {0};
+    unsigned char buf[1000000] = {0};
     int sd = 0, readBytes = 0;
     if (SSL_accept(ssl) <= 0)     /* do SSL-protocol accept */
         ERR_print_errors_fp(stderr);
     else {
         while (!(SSL_get_shutdown(ssl) & SSL_RECEIVED_SHUTDOWN)) {
-            unsigned char packetSizeBuf[2] = {0};
-            readBytes = SSL_peek(ssl, packetSizeBuf, sizeof(packetSizeBuf));
-            if (readBytes > 0) {
-                auto packetSize = Utils::convertToUnsignedTemplated<ushort>(packetSizeBuf, 0, 2);
-                readBytes = SSL_read(ssl, buf, packetSize);
+            //unsigned char packetSizeBuf[2] = {0};
+            //readBytes = SSL_peek(ssl, packetSizeBuf, sizeof(packetSizeBuf));
+            //if (readBytes > 0) {
+                //auto packetSize = Utils::convertToUnsignedTemplated<ushort>(packetSizeBuf, 0, 2);
+                readBytes = SSL_read(ssl, buf, sizeof(buf));
                 if (readBytes > 0 ) {
-                    if (readBytes > 6) {
-                        auto seqNo = Utils::convertToUnsignedTemplated<ushort>(buf, 2, 4);
+                    //if (readBytes > 6) {
+                        //auto seqNo = Utils::convertToUnsignedTemplated<ushort>(buf, 2, 4);
                         //std::cout << "Received seq: " << seqNo << std::endl;
 
-                        if (readBytes >= packetSize) {
-                            char sendPacket[4] = {0};
-                            Utils::writeToByteArray(sendPacket, 0, Utils::convertToCharArray(seqNo, 4));
+                       // if (readBytes >= packetSize) {
+                            //char sendPacket[4] = {0};
+                            //Utils::writeToByteArray(sendPacket, 0, Utils::convertToCharArray(seqNo, 4));
 
-                            SSL_write(ssl, sendPacket, sizeof(sendPacket));
-                            _callback->consume(std::string(inet_ntoa(addr->sin_addr)), buf + 6, packetSize - 6);
-                        } else {
-                            std::cerr << "Too few bytes received for seq " << seqNo << std::endl;
-                        }
-                    }
+                            //SSL_write(ssl, sendPacket, sizeof(sendPacket));
+                            _callback->consume(std::string(inet_ntoa(addr->sin_addr)), buf, readBytes);
+//                        } else {
+//                            std::cerr << "Too few bytes received for seq " << seqNo << std::endl;
+//                        }
+                    //}
                 } else {
                     ERR_print_errors_fp(stderr);
                 }
-            } else {
-                ERR_print_errors_fp(stderr);
-            }
+//            } else {
+//                ERR_print_errors_fp(stderr);
+//            }
         }
     }
     sd = SSL_get_fd(ssl);

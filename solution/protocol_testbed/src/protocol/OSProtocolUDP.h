@@ -1,33 +1,28 @@
-#ifndef PROTOCOL_TESTBED_SERVERMVFSTPROTOCOLQUIC_H
-#define PROTOCOL_TESTBED_MVFSTPROTOCOLQUIC_H
+#ifndef PROTOCOL_TESTBED_OSPROTOCOLUDP_H
+#define PROTOCOL_TESTBED_OSPROTOCOLUDP_H
 
-#include <map>
+
 #include <chrono>
 #include "ProtocolInterface.h"
-
-class MvFstConnector;
+#include <netinet/in.h>
 
 namespace Protocol {
-    class MvfstProtocolQUIC : public ProtocolInterface {
+    class OSProtocolUDP : public ProtocolInterface {
     public:
-        ~MvfstProtocolQUIC();
-
         bool openProtocol(std::string address, uint port, Options) override;
         bool openProtocolServer(uint port) override;
-
         bool send(const char *buffer, size_t bufferSize, bool eof) override;
         bool closeProtocol() override;
+        ~OSProtocolUDP();
 
-        bool isAllSent() override;
 
     private:
-        MvFstConnector* _mvfst;
+        sockaddr_in saiServerAddress{};
         Options _options;
         bool _firstPacket = true;
         std::chrono::time_point<std::chrono::system_clock> _lastSendTimestamp;
+        int _socket = 0;
     };
 }
 
-
-
-#endif //PROTOCOL_TESTBED_SERVERMVFSTPROTOCOLQUIC_H
+#endif //PROTOCOL_TESTBED_OSPROTOCOLUDP_H

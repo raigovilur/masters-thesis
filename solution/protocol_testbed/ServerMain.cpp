@@ -68,6 +68,10 @@ int main(int argc, char *argv[]) {
                 protocolType = Protocol::OpenSSL_TLS;
             } else if (protoArgValue == "QUIC") {
                 protocolType = Protocol::MVFST_QUIC;
+            } else if (protoArgValue == "TCP") {
+                protocolType = Protocol::TCP;
+            } else if (protoArgValue == "UDP") {
+                protocolType = Protocol::UDP;
             } else {
                 std::cerr << "Invalid protocol specified: " << protoArgValue << std::endl;
                 return -1;

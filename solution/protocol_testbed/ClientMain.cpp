@@ -50,6 +50,10 @@ int main(int argc, char *argv[]) {
                 protocolType = Protocol::OpenSSL_TLS;
             } else if (protoArgValue == "QUIC") {
                 protocolType = Protocol::MVFST_QUIC;
+            } else if (protoArgValue == "TCP") {
+                protocolType = Protocol::TCP;
+            } else if (protoArgValue == "UDP") {
+                protocolType = Protocol::UDP;
             } else {
                 std::cerr << "Invalid protocol specified: " << protoArgValue << std::endl;
                 return -1;
@@ -115,9 +119,9 @@ int main(int argc, char *argv[]) {
 
     Client client(protocolType, dest, port, options);
 
-    client.runSpeedTest(stport, stportBandwidth);
+    //client.runSpeedTest(stport, stportBandwidth);
     client.send(filePath, bufferSize, 5);
-    client.runSpeedTest(stport, stportBandwidth);
+    //client.runSpeedTest(stport, stportBandwidth);
 
     client.printStatistics();
 

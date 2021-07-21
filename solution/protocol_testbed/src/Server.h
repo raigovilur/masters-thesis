@@ -11,6 +11,7 @@
 #include <cassert>
 #include <chrono>
 #include <iostream>
+#include <thread>
 
 class Server : public ServerProto::ServerReceiveCallback {
 private:
@@ -38,11 +39,12 @@ private:
 
         void printPercentageStatsIfFullPercent() {
             ushort currentPercentage = receivedFileSize / onePercentBytes;
-            if (currentPercentage > percentageReceived) {
+            // Print when enough time has passed too (30) seconds!
+            auto currentTime = std::chrono::system_clock::now();
+            auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(currentTime - lastPercentStartTime);
+            if (currentPercentage > percentageReceived || duration.count() > 60000) {
                 uint64_t sentBytes = receivedFileSize - lastPercentageFileSize;
-                auto currentTime = std::chrono::system_clock::now();
 
-                auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(currentTime - lastPercentStartTime);
                 std::cout << "File transfer: " << currentPercentage << "% (Total: "<< receivedFileSize << " received out of " << fileSize << " bytes. " <<"). Sent " << sentBytes << " over " << duration.count() << " milliseconds" << std::endl;
                 std::cout << "    Speed is " << ((double) sentBytes) / duration.count() / 1000 * 8 << " mb/s." << std::endl;
                 percentageReceived = currentPercentage;
@@ -57,14 +59,17 @@ public:
     bool start(Protocol::ProtocolType type, const std::string& listenAddress, ushort port);
     bool readCertificate(const std::string& privKeyPath, const std::string& certPath);
 
-    bool consume(std::string client, unsigned char *bytes, size_t packetLength) override;
+    bool consume(std::string client, const unsigned char *bytes, size_t packetLength) override;
+    bool consumeInternal(const std::string& client, const unsigned char *bytes, size_t packetLength);
 
 private:
     static bool processHeader(ClientData& data) ;
-    static bool processDataStream(ClientData &client, unsigned char *bytes, size_t processStart, size_t packetLength);
+    static bool processDataStream(ClientData &client, const unsigned char *bytes, size_t processStart, size_t packetLength);
     std::map<std::string, ClientData> _clientHeaders;
     std::string _cert;
     std::string _privKey;
+
+    std::unique_ptr<std::thread> _t1;
 
 };
 
