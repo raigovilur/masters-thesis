@@ -1664,6 +1664,344 @@ E0716 12:10:04.805922 10418 EventHandler.cpp:90] EventBase: failed to register e
 I0716 12:10:04.806123 10359 MvfstProtocolQUIC.cpp:268] Starting MVFST
 I0716 12:10:04.806396 16039 MvfstProtocolQUIC.cpp:158] MvFstConnector connecting to 193.40.245.62:8101
 One after another
+iseauto@iseauto-X399:~/Desktop$ ./protocol_testbed_client --protocol QUIC --address 193.40.245.62 --port 8101 --buffer-size 10000 --file ~/Desktop/heavy-snow.bag --stport 8102 --stportBW 30M
+Running speed test (iperf3):
+Connecting to host 193.40.245.62, port 8102
+[  4] local 192.168.8.54 port 37202 connected to 193.40.245.62 port 8102
+[ ID] Interval           Transfer     Bandwidth       Retr  Cwnd
+[  4]   0.00-1.00   sec  1.63 MBytes  13.6 Mbits/sec    4   58.0 KBytes       
+[  4]   1.00-2.00   sec  1.93 MBytes  16.2 Mbits/sec    0   79.2 KBytes       
+[  4]   2.00-3.00   sec  2.24 MBytes  18.8 Mbits/sec    1   96.2 KBytes       
+[  4]   3.00-4.00   sec  2.42 MBytes  20.3 Mbits/sec    0    113 KBytes       
+[  4]   4.00-5.00   sec  2.42 MBytes  20.3 Mbits/sec    3    127 KBytes       
+[  4]   5.00-6.00   sec  3.17 MBytes  26.6 Mbits/sec    0    144 KBytes       
+[  4]   6.00-7.00   sec  3.23 MBytes  27.1 Mbits/sec    0    161 KBytes       
+[  4]   7.00-8.00   sec  3.04 MBytes  25.5 Mbits/sec    0    174 KBytes       
+[  4]   8.00-9.00   sec  3.60 MBytes  30.2 Mbits/sec    4    189 KBytes       
+[  4]   9.00-10.00  sec  3.11 MBytes  26.1 Mbits/sec    0    201 KBytes       
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bandwidth       Retr
+[  4]   0.00-10.00  sec  26.8 MBytes  22.5 Mbits/sec   12             sender
+[  4]   0.00-10.00  sec  25.8 MBytes  21.7 Mbits/sec                  receiver
+
+iperf Done.
+Connecting to host 193.40.245.62, port 8102
+[  4] local 192.168.8.54 port 54156 connected to 193.40.245.62 port 8102
+[ ID] Interval           Transfer     Bandwidth       Total Datagrams
+[  4]   0.00-1.00   sec  3.23 MBytes  27.1 Mbits/sec  3387  
+[  4]   1.00-2.00   sec  3.58 MBytes  30.0 Mbits/sec  3751  
+[  4]   2.00-3.00   sec  3.58 MBytes  30.0 Mbits/sec  3750  
+[  4]   3.00-4.00   sec  3.58 MBytes  30.0 Mbits/sec  3749  
+[  4]   4.00-5.00   sec  3.58 MBytes  30.0 Mbits/sec  3751  
+[  4]   5.00-6.00   sec  3.58 MBytes  30.0 Mbits/sec  3750  
+[  4]   6.00-7.00   sec  3.58 MBytes  30.0 Mbits/sec  3749  
+[  4]   7.00-8.00   sec  3.58 MBytes  30.0 Mbits/sec  3751  
+[  4]   8.00-9.00   sec  3.58 MBytes  30.0 Mbits/sec  3750  
+[  4]   9.00-10.00  sec  3.58 MBytes  30.0 Mbits/sec  3749  
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bandwidth       Jitter    Lost/Total Datagrams
+[  4]   0.00-10.00  sec  35.4 MBytes  29.7 Mbits/sec  0.114 ms  37/2036 (1.8%)  
+[  4] Sent 2036 datagrams
+
+iperf Done.
+Measuring latency 
+PING 193.40.245.62 (193.40.245.62) 56(84) bytes of data.
+64 bytes from 193.40.245.62: icmp_seq=1 ttl=56 time=33.3 ms
+64 bytes from 193.40.245.62: icmp_seq=2 ttl=56 time=19.7 ms
+64 bytes from 193.40.245.62: icmp_seq=3 ttl=56 time=18.2 ms
+64 bytes from 193.40.245.62: icmp_seq=4 ttl=56 time=25.5 ms
+64 bytes from 193.40.245.62: icmp_seq=5 ttl=56 time=15.3 ms
+64 bytes from 193.40.245.62: icmp_seq=6 ttl=56 time=18.3 ms
+64 bytes from 193.40.245.62: icmp_seq=7 ttl=56 time=16.4 ms
+64 bytes from 193.40.245.62: icmp_seq=8 ttl=56 time=23.6 ms
+64 bytes from 193.40.245.62: icmp_seq=9 ttl=56 time=22.8 ms
+64 bytes from 193.40.245.62: icmp_seq=10 ttl=56 time=17.3 ms
+
+--- 193.40.245.62 ping statistics ---
+10 packets transmitted, 10 received, 0% packet loss, time 9014ms
+rtt min/avg/max/mdev = 15.335/21.073/33.348/5.156 ms
+Calculating checksum ...
+Checksum calculated: fffffff6ffffffb4ffffffd22e73ffffffb9fffffffefffffff2fffffff973ffffffaa74ffffffeb6bfffffff908ffffffc93dffffffb964ffffffc575ffffffff23ffffff99ffffffd4fffffff61272144b26
+I0723 10:52:01.254527  9646 MvfstProtocolQUIC.cpp:273] Starting MVFST
+I0723 10:52:01.272294  9687 MvfstProtocolQUIC.cpp:168] MvFstConnector connecting to 193.40.245.62:8101
+Connection established. Time taken: 65 milliseconds
+Sending header
+Sending file
+Waited for acks: 121768 ms
+Sending file: 1.99996%
+    Sent 178860000 bytes over 122.151 seconds.
+    Speed is 11.714 mb/s.
+Waited for acks: 120784 ms
+Sending file: 3.99992%
+    Sent 178860000 bytes over 121.198 seconds.
+    Speed is 11.8061 mb/s.
+Waited for acks: 121439 ms
+Sending file: 5.99989%
+    Sent 178860000 bytes over 121.811 seconds.
+    Speed is 11.7467 mb/s.
+Waited for acks: 121109 ms
+Sending file: 7.99985%
+    Sent 178860000 bytes over 121.51 seconds.
+    Speed is 11.7758 mb/s.
+Waited for acks: 120704 ms
+Sending file: 9.99981%
+    Sent 178860000 bytes over 121.111 seconds.
+    Speed is 11.8146 mb/s.
+Waited for acks: 122625 ms
+Sending file: 11.9998%
+    Sent 178860000 bytes over 123.011 seconds.
+    Speed is 11.6321 mb/s.
+Waited for acks: 121293 ms
+Sending file: 13.9997%
+    Sent 178860000 bytes over 121.53 seconds.
+    Speed is 11.7739 mb/s.
+MVFST packet queue is empty, but _pendingAck is not 0 (3359)
+Waited for acks: 98687 ms
+Sending file: 15.9997%
+    Sent 178860000 bytes over 99.092 seconds.
+    Speed is 14.4399 mb/s.
+Waited for acks: 143204 ms
+Sending file: 17.9997%
+    Sent 178860000 bytes over 143.59 seconds.
+    Speed is 9.96504 mb/s.
+Waited for acks: 120764 ms
+Sending file: 19.9996%
+    Sent 178860000 bytes over 121.072 seconds.
+    Speed is 11.8184 mb/s.
+MVFST packet queue is empty, but _pendingAck is not 0 (9463)
+Waited for acks: 57974 ms
+Sending file: 21.9996%
+    Sent 178860000 bytes over 58.353 seconds.
+    Speed is 24.5211 mb/s.
+Waited for acks: 185637 ms
+Sending file: 23.9995%
+    Sent 178860000 bytes over 186.043 seconds.
+    Speed is 7.69113 mb/s.
+MVFST packet queue is empty, but _pendingAck is not 0 (11829)
+Waited for acks: 41007 ms
+Sending file: 25.9995%
+    Sent 178860000 bytes over 41.255 seconds.
+    Speed is 34.6838 mb/s.
+Waited for acks: 202610 ms
+Sending file: 27.9995%
+    Sent 178860000 bytes over 202.84 seconds.
+    Speed is 7.05423 mb/s.
+Waited for acks: 120679 ms
+Sending file: 29.9994%
+    Sent 178860000 bytes over 120.918 seconds.
+    Speed is 11.8335 mb/s.
+Waited for acks: 122130 ms
+Sending file: 31.9994%
+    Sent 178860000 bytes over 122.555 seconds.
+    Speed is 11.6754 mb/s.
+Waited for acks: 121104 ms
+Sending file: 33.9994%
+    Sent 178860000 bytes over 121.371 seconds.
+    Speed is 11.7893 mb/s.
+Waited for acks: 121718 ms
+Sending file: 35.9993%
+    Sent 178860000 bytes over 121.971 seconds.
+    Speed is 11.7313 mb/s.
+Waited for acks: 122164 ms
+Sending file: 37.9993%
+    Sent 178860000 bytes over 122.58 seconds.
+    Speed is 11.673 mb/s.
+Waited for acks: 122878 ms
+Sending file: 39.9992%
+    Sent 178860000 bytes over 123.313 seconds.
+    Speed is 11.6036 mb/s.
+Waited for acks: 118862 ms
+Sending file: 41.9992%
+    Sent 178860000 bytes over 119.294 seconds.
+    Speed is 11.9946 mb/s.
+Waited for acks: 122647 ms
+Sending file: 43.9992%
+    Sent 178860000 bytes over 122.86 seconds.
+    Speed is 11.6464 mb/s.
+Waited for acks: 121747 ms
+Sending file: 45.9991%
+    Sent 178860000 bytes over 122.16 seconds.
+    Speed is 11.7132 mb/s.
+Waited for acks: 123616 ms
+Sending file: 47.9991%
+    Sent 178860000 bytes over 124.006 seconds.
+    Speed is 11.5388 mb/s.
+Waited for acks: 122907 ms
+Sending file: 49.999%
+    Sent 178860000 bytes over 123.136 seconds.
+    Speed is 11.6203 mb/s.
+Waited for acks: 121501 ms
+Sending file: 51.999%
+    Sent 178860000 bytes over 121.89 seconds.
+    Speed is 11.7391 mb/s.
+Waited for acks: 124238 ms
+Sending file: 53.999%
+    Sent 178860000 bytes over 124.459 seconds.
+    Speed is 11.4968 mb/s.
+Waited for acks: 122811 ms
+Sending file: 55.9989%
+    Sent 178860000 bytes over 123.239 seconds.
+    Speed is 11.6106 mb/s.
+Waited for acks: 122019 ms
+Sending file: 57.9989%
+    Sent 178860000 bytes over 122.265 seconds.
+    Speed is 11.7031 mb/s.
+MVFST packet queue is empty, but _pendingAck is not 0 (15466)
+Waited for acks: 16481 ms
+Sending file: 59.9989%
+    Sent 178860000 bytes over 16.911 seconds.
+    Speed is 84.6124 mb/s.
+MVFST packet queue is empty, but _pendingAck is not 0 (29724)
+Waited for acks: 24213 ms
+Sending file: 61.9988%
+    Sent 178860000 bytes over 24.434 seconds.
+    Speed is 58.561 mb/s.
+Waited for acks: 327219 ms
+Sending file: 63.9988%
+    Sent 178860000 bytes over 327.607 seconds.
+    Speed is 4.36767 mb/s.
+Waited for acks: 124392 ms
+Sending file: 65.9987%
+    Sent 178860000 bytes over 124.819 seconds.
+    Speed is 11.4636 mb/s.
+Waited for acks: 122512 ms
+Sending file: 67.9987%
+    Sent 178860000 bytes over 122.912 seconds.
+    Speed is 11.6415 mb/s.
+Waited for acks: 123121 ms
+Sending file: 69.9987%
+    Sent 178860000 bytes over 123.354 seconds.
+    Speed is 11.5998 mb/s.
+Waited for acks: 121669 ms
+Sending file: 71.9986%
+    Sent 178860000 bytes over 121.908 seconds.
+    Speed is 11.7374 mb/s.
+MVFST packet queue is empty, but _pendingAck is not 0 (2783)
+Waited for acks: 103104 ms
+Sending file: 73.9986%
+    Sent 178860000 bytes over 103.509 seconds.
+    Speed is 13.8237 mb/s.
+Waited for acks: 141451 ms
+Sending file: 75.9986%
+    Sent 178860000 bytes over 141.658 seconds.
+    Speed is 10.1009 mb/s.
+MVFST packet queue is empty, but _pendingAck is not 0 (11466)
+Waited for acks: 44120 ms
+Sending file: 77.9985%
+    Sent 178860000 bytes over 44.529 seconds.
+    Speed is 32.1337 mb/s.
+Waited for acks: 201180 ms
+Sending file: 79.9985%
+    Sent 178860000 bytes over 201.451 seconds.
+    Speed is 7.10287 mb/s.
+Waited for acks: 123867 ms
+Sending file: 81.9984%
+    Sent 178860000 bytes over 124.258 seconds.
+    Speed is 11.5154 mb/s.
+Waited for acks: 122680 ms
+Sending file: 83.9984%
+    Sent 178860000 bytes over 123.002 seconds.
+    Speed is 11.633 mb/s.
+Waited for acks: 121444 ms
+Sending file: 85.9984%
+    Sent 178860000 bytes over 121.693 seconds.
+    Speed is 11.7581 mb/s.
+Waited for acks: 125275 ms
+Sending file: 87.9983%
+    Sent 178860000 bytes over 125.703 seconds.
+    Speed is 11.383 mb/s.
+Waited for acks: 123609 ms
+Sending file: 89.9983%
+    Sent 178860000 bytes over 124.008 seconds.
+    Speed is 11.5386 mb/s.
+Waited for acks: 125053 ms
+Sending file: 91.9983%
+    Sent 178860000 bytes over 125.459 seconds.
+    Speed is 11.4052 mb/s.
+Waited for acks: 124092 ms
+Sending file: 93.9982%
+    Sent 178860000 bytes over 124.338 seconds.
+    Speed is 11.508 mb/s.
+Waited for acks: 125642 ms
+Sending file: 95.9982%
+    Sent 178860000 bytes over 126.073 seconds.
+    Speed is 11.3496 mb/s.
+Waited for acks: 123210 ms
+Sending file: 97.9981%
+    Sent 178860000 bytes over 123.604 seconds.
+    Speed is 11.5763 mb/s.
+Waited for acks: 121571 ms
+Sending file: 99.9981%
+    Sent 178860000 bytes over 121.961 seconds.
+    Speed is 11.7323 mb/s.
+I0723 12:34:18.315954  9687 MvfstProtocolQUIC.cpp:95] MvFstConnector connection end
+MVFST packet queue is empty, but _pendingAck is not 0 (2)
+Waited for acks: 3199 ms
+E0723 12:34:18.320592  9687 EventHandler.cpp:90] EventBase: failed to register event handler for fd 8: Resource temporarily unavailable
+File sent
+Running speed test (iperf3):
+Connecting to host 193.40.245.62, port 8102
+[  4] local 192.168.8.54 port 37876 connected to 193.40.245.62 port 8102
+[ ID] Interval           Transfer     Bandwidth       Retr  Cwnd
+[  4]   0.00-1.00   sec  5.17 MBytes  43.4 Mbits/sec    3    247 KBytes       
+[  4]   1.00-2.00   sec  4.72 MBytes  39.6 Mbits/sec    0    262 KBytes       
+[  4]   2.00-3.00   sec  4.54 MBytes  38.1 Mbits/sec    0    274 KBytes       
+[  4]   3.00-4.00   sec  4.16 MBytes  34.9 Mbits/sec    0    286 KBytes       
+[  4]   4.00-5.00   sec  3.36 MBytes  28.1 Mbits/sec    0    294 KBytes       
+[  4]   5.00-6.00   sec  3.73 MBytes  31.3 Mbits/sec    0    334 KBytes       
+[  4]   6.00-7.00   sec  4.54 MBytes  38.1 Mbits/sec    0    395 KBytes       
+[  4]   7.00-8.00   sec  3.98 MBytes  33.4 Mbits/sec    0    474 KBytes       
+[  4]   8.00-9.00   sec  3.67 MBytes  30.8 Mbits/sec   12    376 KBytes       
+[  4]   9.00-10.00  sec  3.17 MBytes  26.6 Mbits/sec    0    426 KBytes       
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bandwidth       Retr
+[  4]   0.00-10.00  sec  41.0 MBytes  34.4 Mbits/sec   15             sender
+[  4]   0.00-10.00  sec  38.7 MBytes  32.5 Mbits/sec                  receiver
+
+iperf Done.
+Connecting to host 193.40.245.62, port 8102
+[  4] local 192.168.8.54 port 50596 connected to 193.40.245.62 port 8102
+[ ID] Interval           Transfer     Bandwidth       Total Datagrams
+[  4]   0.00-1.00   sec  3.23 MBytes  27.1 Mbits/sec  3388  
+[  4]   1.00-2.00   sec  3.58 MBytes  30.0 Mbits/sec  3750  
+[  4]   2.00-3.00   sec  3.58 MBytes  30.0 Mbits/sec  3749  
+[  4]   3.00-4.00   sec  3.58 MBytes  30.0 Mbits/sec  3751  
+[  4]   4.00-5.00   sec  3.58 MBytes  30.0 Mbits/sec  3750  
+[  4]   5.00-6.00   sec  3.58 MBytes  30.0 Mbits/sec  3750  
+[  4]   6.00-7.00   sec  3.58 MBytes  30.0 Mbits/sec  3750  
+[  4]   7.00-8.00   sec  3.58 MBytes  30.0 Mbits/sec  3750  
+[  4]   8.00-9.00   sec  3.58 MBytes  30.0 Mbits/sec  3749  
+[  4]   9.00-10.00  sec  3.58 MBytes  30.0 Mbits/sec  3751  
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bandwidth       Jitter    Lost/Total Datagrams
+[  4]   0.00-10.00  sec  35.4 MBytes  29.7 Mbits/sec  0.239 ms  55/2054 (2.7%)  
+[  4] Sent 2054 datagrams
+
+iperf Done.
+Measuring latency 
+PING 193.40.245.62 (193.40.245.62) 56(84) bytes of data.
+64 bytes from 193.40.245.62: icmp_seq=1 ttl=56 time=19.8 ms
+64 bytes from 193.40.245.62: icmp_seq=2 ttl=56 time=30.8 ms
+64 bytes from 193.40.245.62: icmp_seq=3 ttl=56 time=15.2 ms
+64 bytes from 193.40.245.62: icmp_seq=4 ttl=56 time=19.6 ms
+64 bytes from 193.40.245.62: icmp_seq=5 ttl=56 time=21.7 ms
+64 bytes from 193.40.245.62: icmp_seq=6 ttl=56 time=15.5 ms
+64 bytes from 193.40.245.62: icmp_seq=7 ttl=56 time=18.7 ms
+64 bytes from 193.40.245.62: icmp_seq=8 ttl=56 time=17.5 ms
+64 bytes from 193.40.245.62: icmp_seq=9 ttl=56 time=16.1 ms
+64 bytes from 193.40.245.62: icmp_seq=10 ttl=56 time=18.9 ms
+
+--- 193.40.245.62 ping statistics ---
+10 packets transmitted, 10 received, 0% packet loss, time 9014ms
+rtt min/avg/max/mdev = 15.266/19.439/30.866/4.286 ms
+Statistics:
+Sent 8943173390 bytes
+    over 6137.07 seconds 
+    Average file transfer speed was 11.6579 mbit/s
+Connection dropped 0 times 
+Hashing took 6.08166 seconds 
+
+
 server@server-desktop:~/Desktop/release/build/thesis-build$ ./protocol_testbed_server --protocol QUIC --port 8101 --pkey key.pem --cert cert.pem
 Listen address was not set. Defaulting to 0.0.0.0
 File path was not set. Defaulting to local directory
