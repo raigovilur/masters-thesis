@@ -119,9 +119,9 @@ int main(int argc, char *argv[]) {
 
     Client client(protocolType, dest, port, options);
 
-    //client.runSpeedTest(stport, stportBandwidth);
+    client.runSpeedTest(stport, stportBandwidth);
     client.send(filePath, bufferSize, 5);
-    //client.runSpeedTest(stport, stportBandwidth);
+    client.runSpeedTest(stport, stportBandwidth);
 
     client.printStatistics();
 
