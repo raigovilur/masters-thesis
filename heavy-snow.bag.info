@@ -1,0 +1,438 @@
+➜  repos rosbag info heavy-snow.bag 
+path:        heavy-snow.bag
+version:     2.0
+duration:    20.3s
+start:       Apr 06 2021 12:57:31.25 (1617703051.25)
+end:         Apr 06 2021 12:57:51.59 (1617703071.59)
+size:        8.3 GB
+messages:    57184
+compression: none [3275/3275 chunks]
+types:       actionlib_msgs/GoalStatusArray           [8b2b82f13216d0a8ea88bd3af735e619]
+             autoware_config_msgs/ConfigLaneSelect    [68a997e92b2cc13c26ae68a329dd0433]
+             autoware_config_msgs/ConfigNDT           [0cbb0e4cacb81e2b6991a89a4ad992e8]
+             autoware_config_msgs/ConfigVelocitySet   [8ff27cdafa62bc9e7b03bb94912cfaf3]
+             autoware_msgs/BrakeCmd                   [5705431e779f450d71c11d56d5a2d8ed]
+             autoware_msgs/Centroids                  [2199cac4695ce1fc0f346db535dda30d]
+             autoware_msgs/CloudClusterArray          [5bdd7c958335da845b88351aab5141d4]
+             autoware_msgs/ControlCommandStamped      [cf8b01a8273bedcf082c4a0007472482]
+             autoware_msgs/DetectedObjectArray        [c16aecef51c24c6808480a0295e47806]
+             autoware_msgs/Lane                       [40bde126fe5f348ef74699a32398ac74]
+             autoware_msgs/LaneArray                  [23abb100bdfa4ee58530bb628c974c2a]
+             autoware_msgs/NDTStat                    [3c701a222db65bce735c83faea43bd03]
+             autoware_msgs/PointsImage                [15d4a81152c2787f78cf14a957d8135e]
+             autoware_msgs/ProjectionMatrix           [383fdce8566145c0d8ee5731cf4d6531]
+             autoware_msgs/SteerCmd                   [a78f3e86a2d39111b18378b6ff89a1a1]
+             autoware_system_msgs/NodeStatus          [24ee03c6afba01e301b566add8485af9]
+             bond/Status                              [eacc84bf5d65b6777d4c50f463dfb9c8]
+             diagnostic_msgs/DiagnosticArray          [60810da900de1dd6ddd437c3503511da]
+             dynamic_reconfigure/Config               [958f16a05573709014982821e6822580]
+             dynamic_reconfigure/ConfigDescription    [757ce9d44ba8ddd801bb30bc456f946f]
+             geometry_msgs/PoseStamped                [d3812c3cbc69362b77dc0b19b345f8f5]
+             geometry_msgs/PoseWithCovarianceStamped  [953b798c0f514ff060a53a3498ce6246]
+             geometry_msgs/Transform                  [ac9eff44abf714214112b05d54a3cf9b]
+             geometry_msgs/TwistStamped               [98d34b0043a2093cf9d9345ab6eef12e]
+             geometry_msgs/Vector3Stamped             [7b324c7325e683bf02a9b14b01090ec7]
+             iseauto_msgs/TurningLights               [688d1144232f273a54019444c876e36b]
+             iseauto_msgs/UInt8ArrayStamped           [8903b686ebe5db3477e83c6d0bb149f8]
+             nav_msgs/Odometry                        [cd5e73d190d741a2f92e81eda573aca7]
+             nav_msgs/Path                            [6227e2b7e9cce15051f669a5e197bbf7]
+             nmea_msgs/Sentence                       [9f221efc5f4b3bac7ce4af102b32308b]
+             points_downsampler/PointsDownsamplerInfo [a6fc8411fcff551ab66c7910e08a8d14]
+             rosgraph_msgs/Log                        [acffd30cd6b6de30f120938c17c593fb]
+             sensor_msgs/CameraInfo                   [c9a58c1b0b154e0e6da7578cb991d214]
+             sensor_msgs/CompressedImage              [8f7a12909da2c9d3332d540a0977563f]
+             sensor_msgs/FluidPressure                [804dc5cea1c5306d6a2eb80b9833befe]
+             sensor_msgs/Image                        [060021388200f6f0f447d0fcd9c64743]
+             sensor_msgs/Imu                          [6a62c6daae103f4ff57a132d6f95cec2]
+             sensor_msgs/LaserScan                    [90c7ef2dc6895d81024acba2ac42f369]
+             sensor_msgs/MagneticField                [2f3b0b43eed0c9501de0fa3ff89a45aa]
+             sensor_msgs/NavSatFix                    [2d3a8cd499b9b4a0249fb98fd05cfa48]
+             sensor_msgs/PointCloud2                  [1158d486dd51d683ce2f1be655c3c181]
+             sensor_msgs/Temperature                  [ff71b307acdbe7c871a5a6d7ed359100]
+             std_msgs/Bool                            [8b94c1b53db61fb6aed406028ad6332a]
+             std_msgs/Float32                         [73fcbf46b49191e672908e50842a83d4]
+             std_msgs/Int32                           [da5909fbe378aeaf85e547e830cc1bb7]
+             std_msgs/Int8                            [27ffa0c9c4b8fb8492252bcad9e5c57b]
+             std_msgs/String                          [992ce8a1687cec8c8bd883ec73ca41d1]
+             stereo_msgs/DisparityImage               [04a177815f75271039fa21f16acad8c9]
+             tf2_msgs/TFMessage                       [94810edda583a504dfda3829e70d7eec]
+             theora_image_transport/Packet            [33ac4e14a7cff32e7e0d65f18bb410f3]
+             vector_map_msgs/AreaArray                [223cd253a302f0a10bd4777ad36382f4]
+             vector_map_msgs/CrossWalkArray           [c460ff5cf77634cc053a5aaa54a21b69]
+             vector_map_msgs/CurbArray                [1b0774f4d8c3e462b12fe5e7abc27196]
+             vector_map_msgs/LaneArray                [9054adf44b848db15248073ff3682cea]
+             vector_map_msgs/LineArray                [886b2a053932f53e15057521290f372f]
+             vector_map_msgs/NodeArray                [77073c90205106235cda21d84d1bdd61]
+             vector_map_msgs/PointArray               [6d79425254a86e33112d6737776efb2b]
+             vector_map_msgs/PoleArray                [ebc91e9b0e01bb59b5c48874d3df14df]
+             vector_map_msgs/RoadEdgeArray            [c3d42730e39beb0eefa7bf92f9214be3]
+             vector_map_msgs/RoadPoleArray            [1930cf86bc2cca23bf3f3c5fe07d0733]
+             vector_map_msgs/SignalArray              [cd65cbdb6961dbf360a042a35a319bd1]
+             vector_map_msgs/UtilityPoleArray         [1930cf86bc2cca23bf3f3c5fe07d0733]
+             vector_map_msgs/WhiteLineArray           [cdb9026eb5ddd8e7d2a029638d5057e2]
+             velodyne_msgs/VelodyneScan               [50804fc9533a0e579e6322c04ae70566]
+             visualization_msgs/Marker                [4048c9de2a16f4ae8e0538085ebf1b97]
+             visualization_msgs/MarkerArray           [d155b9ce5188fbaf89745847fd5882d7]
+topics:      /all_cloud_filtered                                                            199 msgs    : sensor_msgs/PointCloud2                 
+             /angular_gravity                                                               193 msgs    : std_msgs/Float32                        
+             /base_waypoints                                                                191 msgs    : autoware_msgs/Lane                      
+             /based/lane_waypoints_raw                                                        1 msg     : autoware_msgs/LaneArray                 
+             /brake_cmd                                                                       1 msg     : autoware_msgs/BrakeCmd                  
+             /change_flag                                                                   205 msgs    : std_msgs/Int32                          
+             /closest_waypoint                                                              192 msgs    : std_msgs/Int32                          
+             /cluster_centroids                                                             203 msgs    : autoware_msgs/Centroids                 
+             /config/lane_select                                                              1 msg     : autoware_config_msgs/ConfigLaneSelect   
+             /config/ndt                                                                      1 msg     : autoware_config_msgs/ConfigNDT          
+             /config/velocity_set                                                             1 msg     : autoware_config_msgs/ConfigVelocitySet  
+             /ctrl_cmd                                                                      191 msgs    : autoware_msgs/ControlCommandStamped     
+             /ctrl_cmd/autonomous                                                           201 msgs    : autoware_msgs/ControlCommandStamped     
+             /current_difficulty                                                            195 msgs    : std_msgs/Int8                           
+             /current_indicator                                                             192 msgs    : std_msgs/String                         
+             /current_lane_id                                                               194 msgs    : std_msgs/Int32                          
+             /current_pose                                                                  204 msgs    : geometry_msgs/PoseStamped               
+             /current_velocity                                                              199 msgs    : geometry_msgs/TwistStamped              
+             /detection/lidar_detector/cloud_clusters                                       205 msgs    : autoware_msgs/CloudClusterArray         
+             /detection/lidar_detector/objects                                              195 msgs    : autoware_msgs/DetectedObjectArray       
+             /detection_range                                                               198 msgs    : visualization_msgs/MarkerArray          
+             /deviation_of_current_position                                                 197 msgs    : std_msgs/Float32                        
+             /diagnostics                                                                   136 msgs    : diagnostic_msgs/DiagnosticArray          (7 connections)
+             /estimate_twist                                                                203 msgs    : geometry_msgs/TwistStamped              
+             /estimated_vel                                                                 192 msgs    : geometry_msgs/Vector3Stamped            
+             /estimated_vel_kmph                                                            205 msgs    : std_msgs/Float32                        
+             /estimated_vel_mps                                                             205 msgs    : std_msgs/Float32                        
+             /filtered_points                                                               195 msgs    : sensor_msgs/PointCloud2                 
+             /final_waypoints                                                               197 msgs    : autoware_msgs/Lane                      
+             /fix                                                                           298 msgs    : sensor_msgs/NavSatFix                   
+             /flir_camera/image_raw                                                          99 msgs    : sensor_msgs/Image                       
+             /flir_camera/image_raw/compressed                                              101 msgs    : sensor_msgs/CompressedImage             
+             /flir_camera/image_raw/compressed/parameter_descriptions                         1 msg     : dynamic_reconfigure/ConfigDescription   
+             /flir_camera/image_raw/compressed/parameter_updates                              1 msg     : dynamic_reconfigure/Config              
+             /flir_camera/image_raw/compressedDepth/parameter_descriptions                    1 msg     : dynamic_reconfigure/ConfigDescription   
+             /flir_camera/image_raw/compressedDepth/parameter_updates                         1 msg     : dynamic_reconfigure/Config              
+             /flir_camera/image_raw/theora                                                  102 msgs    : theora_image_transport/Packet           
+             /flir_camera/image_raw/theora/parameter_descriptions                             1 msg     : dynamic_reconfigure/ConfigDescription   
+             /global_waypoints_mark                                                           1 msg     : visualization_msgs/MarkerArray          
+             /gnss_pose                                                                     198 msgs    : geometry_msgs/PoseStamped               
+             /gnss_velTwist                                                                 301 msgs    : geometry_msgs/TwistStamped              
+             /ground_filter/points_no_ground                                                197 msgs    : sensor_msgs/PointCloud2                 
+             /ground_filter_back/node_status                                                208 msgs    : autoware_system_msgs/NodeStatus         
+             /ground_filter_front/node_status                                               212 msgs    : autoware_system_msgs/NodeStatus         
+             /imu_raw                                                                       295 msgs    : sensor_msgs/Imu                         
+             /last_good_gnss                                                                249 msgs    : geometry_msgs/PoseStamped               
+             /last_good_ndt                                                                 257 msgs    : geometry_msgs/PoseStamped               
+             /lidar_back/lidar_back_nodelet_manager/bond                                    125 msgs    : bond/Status                              (4 connections)
+             /lidar_back/lidar_back_nodelet_manager_driver/parameter_descriptions             1 msg     : dynamic_reconfigure/ConfigDescription   
+             /lidar_back/lidar_back_nodelet_manager_driver/parameter_updates                  1 msg     : dynamic_reconfigure/Config              
+             /lidar_back/lidar_back_nodelet_manager_laserscan/parameter_descriptions          1 msg     : dynamic_reconfigure/ConfigDescription   
+             /lidar_back/lidar_back_nodelet_manager_laserscan/parameter_updates               1 msg     : dynamic_reconfigure/Config              
+             /lidar_back/lidar_back_nodelet_manager_transform/parameter_descriptions          1 msg     : dynamic_reconfigure/ConfigDescription   
+             /lidar_back/lidar_back_nodelet_manager_transform/parameter_updates               1 msg     : dynamic_reconfigure/Config              
+             /lidar_back/points_ground                                                      199 msgs    : sensor_msgs/PointCloud2                 
+             /lidar_back/points_no_ground                                                   209 msgs    : sensor_msgs/PointCloud2                 
+             /lidar_back/scan                                                               204 msgs    : sensor_msgs/LaserScan                   
+             /lidar_back/velodyne_packets                                                   207 msgs    : velodyne_msgs/VelodyneScan              
+             /lidar_back/velodyne_points                                                    196 msgs    : sensor_msgs/PointCloud2                 
+             /lidar_buttom/cropped_points                                                   197 msgs    : sensor_msgs/PointCloud2                 
+             /lidar_buttom/filtered_points_ground                                           207 msgs    : sensor_msgs/PointCloud2                 
+             /lidar_buttom/points_no_ground                                                 201 msgs    : sensor_msgs/PointCloud2                 
+             /lidar_buttom/points_no_ground/passthrough                                     202 msgs    : sensor_msgs/PointCloud2                 
+             /lidar_buttom/rslidar_points                                                   199 msgs    : sensor_msgs/PointCloud2                 
+             /lidar_front/lidar_front_nodelet_manager/bond                                  120 msgs    : bond/Status                              (4 connections)
+             /lidar_front/lidar_front_nodelet_manager_driver/parameter_descriptions           1 msg     : dynamic_reconfigure/ConfigDescription   
+             /lidar_front/lidar_front_nodelet_manager_driver/parameter_updates                1 msg     : dynamic_reconfigure/Config              
+             /lidar_front/lidar_front_nodelet_manager_laserscan/parameter_descriptions        1 msg     : dynamic_reconfigure/ConfigDescription   
+             /lidar_front/lidar_front_nodelet_manager_laserscan/parameter_updates             1 msg     : dynamic_reconfigure/Config              
+             /lidar_front/lidar_front_nodelet_manager_transform/parameter_descriptions        1 msg     : dynamic_reconfigure/ConfigDescription   
+             /lidar_front/points_ground                                                     201 msgs    : sensor_msgs/PointCloud2                 
+             /lidar_front/points_no_ground                                                  202 msgs    : sensor_msgs/PointCloud2                 
+             /lidar_front/scan                                                              207 msgs    : sensor_msgs/LaserScan                   
+             /lidar_front/velodyne_packets                                                  198 msgs    : velodyne_msgs/VelodyneScan              
+             /lidar_front/velodyne_points                                                   199 msgs    : sensor_msgs/PointCloud2                 
+             /lidar_left/filtered_points_ground                                             208 msgs    : sensor_msgs/PointCloud2                 
+             /lidar_left/points_no_ground                                                   204 msgs    : sensor_msgs/PointCloud2                 
+             /lidar_left/points_no_ground/outlier                                           196 msgs    : sensor_msgs/PointCloud2                 
+             /lidar_left/points_no_ground/passthrough                                       200 msgs    : sensor_msgs/PointCloud2                 
+             /lidar_left/rslidar_points                                                     202 msgs    : sensor_msgs/PointCloud2                 
+             /lidar_right/cropped_points                                                    200 msgs    : sensor_msgs/PointCloud2                 
+             /lidar_right/filtered_points_ground                                            208 msgs    : sensor_msgs/PointCloud2                 
+             /lidar_right/points_no_ground                                                  210 msgs    : sensor_msgs/PointCloud2                 
+             /lidar_right/points_no_ground/outlier                                          199 msgs    : sensor_msgs/PointCloud2                 
+             /lidar_right/points_no_ground/passthrough                                      205 msgs    : sensor_msgs/PointCloud2                 
+             /lidar_right/rslidar_points                                                    210 msgs    : sensor_msgs/PointCloud2                 
+             /lidar_top/points_raw                                                          202 msgs    : sensor_msgs/PointCloud2                 
+             /local_waypoints_mark                                                          211 msgs    : visualization_msgs/MarkerArray          
+             /localizer_pose                                                                197 msgs    : geometry_msgs/PoseStamped               
+             /metro_mode                                                                      1 msg     : std_msgs/Bool                           
+             /ndt_pose                                                                      194 msgs    : geometry_msgs/PoseStamped               
+             /ndt_reliability                                                               194 msgs    : std_msgs/Float32                        
+             /ndt_stat                                                                      203 msgs    : autoware_msgs/NDTStat                   
+             /next_target_mark                                                              192 msgs    : visualization_msgs/Marker               
+             /next_waypoint_mark                                                            203 msgs    : visualization_msgs/Marker               
+             /nmea_sentence                                                                 105 msgs    : nmea_msgs/Sentence                      
+             /node_status                                                                   420 msgs    : autoware_system_msgs/NodeStatus          (2 connections)
+             /obstacle                                                                       59 msgs    : visualization_msgs/Marker               
+             /obstacle_waypoint                                                             203 msgs    : std_msgs/Int32                          
+             /pmap_stat                                                                       1 msg     : std_msgs/Bool                           
+             /points_cluster                                                                196 msgs    : sensor_msgs/PointCloud2                 
+             /points_downsampler_info                                                       196 msgs    : points_downsampler/PointsDownsamplerInfo
+             /points_ground                                                                 196 msgs    : sensor_msgs/PointCloud2                 
+             /points_image                                                                  203 msgs    : autoware_msgs/PointsImage               
+             /points_lanes                                                                  200 msgs    : sensor_msgs/PointCloud2                 
+             /points_raw                                                                    197 msgs    : sensor_msgs/PointCloud2                 
+             /predict_pose                                                                  194 msgs    : geometry_msgs/PoseStamped               
+             /predict_pose_imu                                                              192 msgs    : geometry_msgs/PoseStamped               
+             /predict_pose_imu_odom                                                         200 msgs    : geometry_msgs/PoseStamped               
+             /predict_pose_odom                                                             195 msgs    : geometry_msgs/PoseStamped               
+             /projection_matrix                                                               5 msgs    : autoware_msgs/ProjectionMatrix          
+             /pylon_camera_front/camera_info                                                 23 msgs    : sensor_msgs/CameraInfo                  
+             /pylon_camera_front/grab_images_raw/status                                     104 msgs    : actionlib_msgs/GoalStatusArray          
+             /pylon_camera_front/grab_images_rect/status                                    101 msgs    : actionlib_msgs/GoalStatusArray          
+             /pylon_camera_front/image_raw                                                   23 msgs    : sensor_msgs/Image                       
+             /pylon_camera_front/image_raw/compressed                                        24 msgs    : sensor_msgs/CompressedImage             
+             /pylon_camera_front/image_raw/compressed/parameter_descriptions                  1 msg     : dynamic_reconfigure/ConfigDescription   
+             /pylon_camera_front/image_raw/compressed/parameter_updates                       1 msg     : dynamic_reconfigure/Config              
+             /pylon_camera_front/image_raw/compressedDepth/parameter_descriptions             1 msg     : dynamic_reconfigure/ConfigDescription   
+             /pylon_camera_front/image_raw/compressedDepth/parameter_updates                  1 msg     : dynamic_reconfigure/Config              
+             /pylon_camera_front/image_raw/theora                                            26 msgs    : theora_image_transport/Packet           
+             /pylon_camera_front/image_raw/theora/parameter_descriptions                      1 msg     : dynamic_reconfigure/ConfigDescription   
+             /pylon_camera_front/image_raw/theora/parameter_updates                           1 msg     : dynamic_reconfigure/Config              
+             /pylon_camera_front/image_rect                                                  24 msgs    : sensor_msgs/Image                       
+             /pylon_camera_front/image_rect/compressed                                       23 msgs    : sensor_msgs/CompressedImage             
+             /pylon_camera_front/image_rect/compressed/parameter_descriptions                 1 msg     : dynamic_reconfigure/ConfigDescription   
+             /pylon_camera_front/image_rect/compressed/parameter_updates                      1 msg     : dynamic_reconfigure/Config              
+             /pylon_camera_front/image_rect/compressedDepth/parameter_descriptions            1 msg     : dynamic_reconfigure/ConfigDescription   
+             /pylon_camera_front/image_rect/compressedDepth/parameter_updates                 1 msg     : dynamic_reconfigure/Config              
+             /pylon_camera_front/image_rect/theora                                           25 msgs    : theora_image_transport/Packet           
+             /pylon_camera_front/image_rect/theora/parameter_descriptions                     1 msg     : dynamic_reconfigure/ConfigDescription   
+             /pylon_camera_front/image_rect/theora/parameter_updates                          1 msg     : dynamic_reconfigure/Config              
+             /pylon_camera_left/camera_info                                                  22 msgs    : sensor_msgs/CameraInfo                  
+             /pylon_camera_left/grab_images_raw/status                                      103 msgs    : actionlib_msgs/GoalStatusArray          
+             /pylon_camera_left/grab_images_rect/status                                     100 msgs    : actionlib_msgs/GoalStatusArray          
+             /pylon_camera_left/image_raw                                                    23 msgs    : sensor_msgs/Image                       
+             /pylon_camera_left/image_raw/compressed                                         22 msgs    : sensor_msgs/CompressedImage             
+             /pylon_camera_left/image_raw/compressed/parameter_descriptions                   1 msg     : dynamic_reconfigure/ConfigDescription   
+             /pylon_camera_left/image_raw/compressed/parameter_updates                        1 msg     : dynamic_reconfigure/Config              
+             /pylon_camera_left/image_raw/compressedDepth/parameter_descriptions              1 msg     : dynamic_reconfigure/ConfigDescription   
+             /pylon_camera_left/image_raw/compressedDepth/parameter_updates                   1 msg     : dynamic_reconfigure/Config              
+             /pylon_camera_left/image_raw/theora                                             25 msgs    : theora_image_transport/Packet           
+             /pylon_camera_left/image_raw/theora/parameter_descriptions                       1 msg     : dynamic_reconfigure/ConfigDescription   
+             /pylon_camera_left/image_raw/theora/parameter_updates                            1 msg     : dynamic_reconfigure/Config              
+             /pylon_camera_left/image_rect                                                   23 msgs    : sensor_msgs/Image                       
+             /pylon_camera_left/image_rect/compressed                                        22 msgs    : sensor_msgs/CompressedImage             
+             /pylon_camera_left/image_rect/compressed/parameter_descriptions                  1 msg     : dynamic_reconfigure/ConfigDescription   
+             /pylon_camera_left/image_rect/compressed/parameter_updates                       1 msg     : dynamic_reconfigure/Config              
+             /pylon_camera_left/image_rect/compressedDepth/parameter_descriptions             1 msg     : dynamic_reconfigure/ConfigDescription   
+             /pylon_camera_left/image_rect/compressedDepth/parameter_updates                  1 msg     : dynamic_reconfigure/Config              
+             /pylon_camera_left/image_rect/theora                                            25 msgs    : theora_image_transport/Packet           
+             /pylon_camera_left/image_rect/theora/parameter_descriptions                      1 msg     : dynamic_reconfigure/ConfigDescription   
+             /pylon_camera_left/image_rect/theora/parameter_updates                           1 msg     : dynamic_reconfigure/Config              
+             /pylon_camera_right/camera_info                                                 25 msgs    : sensor_msgs/CameraInfo                  
+             /pylon_camera_right/grab_images_raw/status                                     101 msgs    : actionlib_msgs/GoalStatusArray          
+             /pylon_camera_right/grab_images_rect/status                                    100 msgs    : actionlib_msgs/GoalStatusArray          
+             /pylon_camera_right/image_raw                                                   22 msgs    : sensor_msgs/Image                       
+             /pylon_camera_right/image_raw/compressed                                        24 msgs    : sensor_msgs/CompressedImage             
+             /pylon_camera_right/image_raw/compressed/parameter_descriptions                  1 msg     : dynamic_reconfigure/ConfigDescription   
+             /pylon_camera_right/image_raw/compressed/parameter_updates                       1 msg     : dynamic_reconfigure/Config              
+             /pylon_camera_right/image_raw/compressedDepth/parameter_descriptions             1 msg     : dynamic_reconfigure/ConfigDescription   
+             /pylon_camera_right/image_raw/compressedDepth/parameter_updates                  1 msg     : dynamic_reconfigure/Config              
+             /pylon_camera_right/image_raw/theora                                            24 msgs    : theora_image_transport/Packet           
+             /pylon_camera_right/image_raw/theora/parameter_descriptions                      1 msg     : dynamic_reconfigure/ConfigDescription   
+             /pylon_camera_right/image_raw/theora/parameter_updates                           1 msg     : dynamic_reconfigure/Config              
+             /pylon_camera_right/image_rect                                                  24 msgs    : sensor_msgs/Image                       
+             /pylon_camera_right/image_rect/compressed                                       24 msgs    : sensor_msgs/CompressedImage             
+             /pylon_camera_right/image_rect/compressed/parameter_updates                      1 msg     : dynamic_reconfigure/Config              
+             /pylon_camera_right/image_rect/compressedDepth/parameter_descriptions            1 msg     : dynamic_reconfigure/ConfigDescription   
+             /pylon_camera_right/image_rect/compressedDepth/parameter_updates                 1 msg     : dynamic_reconfigure/Config              
+             /pylon_camera_right/image_rect/theora                                           24 msgs    : theora_image_transport/Packet           
+             /pylon_camera_right/image_rect/theora/parameter_descriptions                     1 msg     : dynamic_reconfigure/ConfigDescription   
+             /pylon_camera_right/image_rect/theora/parameter_updates                          1 msg     : dynamic_reconfigure/Config              
+             /rosout                                                                       3229 msgs    : rosgraph_msgs/Log                        (20 connections)
+             /rosout_agg                                                                   3107 msgs    : rosgraph_msgs/Log                       
+             /safety_waypoints                                                              210 msgs    : autoware_msgs/Lane                      
+             /search_circle_mark                                                            190 msgs    : visualization_msgs/Marker               
+             /steer_cmd                                                                       1 msg     : autoware_msgs/SteerCmd                  
+             /stopline_waypoint                                                             205 msgs    : std_msgs/Int32                          
+             /tf                                                                            209 msgs    : tf2_msgs/TFMessage                       (2 connections)
+             /tf_static                                                                       3 msgs    : tf2_msgs/TFMessage                       (3 connections)
+             /time_ndt_matching                                                             195 msgs    : std_msgs/Float32                        
+             /traffic_waypoints_array                                                         1 msg     : autoware_msgs/LaneArray                 
+             /trajectory_circle_mark                                                        201 msgs    : visualization_msgs/Marker               
+             /twist_cmd                                                                       1 msg     : geometry_msgs/TwistStamped              
+             /twist_raw                                                                     191 msgs    : geometry_msgs/TwistStamped              
+             /vector_map                                                                      1 msg     : visualization_msgs/MarkerArray          
+             /vector_map_info/area                                                            1 msg     : vector_map_msgs/AreaArray               
+             /vector_map_info/cross_walk                                                      1 msg     : vector_map_msgs/CrossWalkArray          
+             /vector_map_info/curb                                                            1 msg     : vector_map_msgs/CurbArray               
+             /vector_map_info/lane                                                            1 msg     : vector_map_msgs/LaneArray               
+             /vector_map_info/line                                                            1 msg     : vector_map_msgs/LineArray               
+             /vector_map_info/node                                                            1 msg     : vector_map_msgs/NodeArray               
+             /vector_map_info/point                                                           1 msg     : vector_map_msgs/PointArray              
+             /vector_map_info/pole                                                            1 msg     : vector_map_msgs/PoleArray               
+             /vector_map_info/road_edge                                                       1 msg     : vector_map_msgs/RoadEdgeArray           
+             /vector_map_info/road_pole                                                       1 msg     : vector_map_msgs/RoadPoleArray           
+             /vector_map_info/signal                                                          1 msg     : vector_map_msgs/SignalArray             
+             /vector_map_info/utility_pole                                                    1 msg     : vector_map_msgs/UtilityPoleArray        
+             /vector_map_info/white_line                                                      1 msg     : vector_map_msgs/WhiteLineArray          
+             /vehicle_controller/lights/brake_light                                          11 msgs    : std_msgs/Bool                           
+             /vehicle_controller/lights/turning                                               1 msg     : iseauto_msgs/TurningLights              
+             /vehicle_data                                                                 1985 msgs    : iseauto_msgs/UInt8ArrayStamped          
+             /vehicle_decoder/battery_percentage                                            198 msgs    : std_msgs/Float32                        
+             /vehicle_decoder/door_status                                                   191 msgs    : std_msgs/Int8                           
+             /vehicle_decoder/steering_wheel/degrees                                       1994 msgs    : std_msgs/Float32                        
+             /vehicle_decoder/velocity                                                     1055 msgs    : std_msgs/Float32                        
+             /vehicle_decoder/wheel_angle/degrees                                          1060 msgs    : std_msgs/Float32                        
+             /vehicle_decoder/wheel_angle/radians                                           994 msgs    : std_msgs/Float32                        
+             /vmap_stat                                                                       1 msg     : std_msgs/Bool                           
+             /waypoints                                                                     214 msgs    : autoware_msgs/Lane                      
+             /zed2/zed_node/left_raw/camera_info                                              4 msgs    : sensor_msgs/CameraInfo                  
+             /zed_node/atm_press                                                            487 msgs    : sensor_msgs/FluidPressure               
+             /zed_node/confidence/confidence_map                                              3 msgs    : sensor_msgs/Image                       
+             /zed_node/depth/camera_info                                                      3 msgs    : sensor_msgs/CameraInfo                  
+             /zed_node/depth/depth_registered                                                 3 msgs    : sensor_msgs/Image                       
+             /zed_node/depth/depth_registered/compressed/parameter_descriptions               1 msg     : dynamic_reconfigure/ConfigDescription   
+             /zed_node/depth/depth_registered/compressed/parameter_updates                    1 msg     : dynamic_reconfigure/Config              
+             /zed_node/depth/depth_registered/compressedDepth                                 3 msgs    : sensor_msgs/CompressedImage             
+             /zed_node/depth/depth_registered/compressedDepth/parameter_descriptions          1 msg     : dynamic_reconfigure/ConfigDescription   
+             /zed_node/depth/depth_registered/compressedDepth/parameter_updates               1 msg     : dynamic_reconfigure/Config              
+             /zed_node/depth/depth_registered/theora                                          3 msgs    : theora_image_transport/Packet           
+             /zed_node/depth/depth_registered/theora/parameter_descriptions                   1 msg     : dynamic_reconfigure/ConfigDescription   
+             /zed_node/disparity/disparity_image                                              3 msgs    : stereo_msgs/DisparityImage              
+             /zed_node/imu/data                                                            6722 msgs    : sensor_msgs/Imu                         
+             /zed_node/imu/data_raw                                                        6722 msgs    : sensor_msgs/Imu                         
+             /zed_node/imu/mag                                                              983 msgs    : sensor_msgs/MagneticField               
+             /zed_node/left/camera_info                                                       8 msgs    : sensor_msgs/CameraInfo                  
+             /zed_node/left/image_rect_color                                                  4 msgs    : sensor_msgs/Image                       
+             /zed_node/left/image_rect_color/compressed                                       5 msgs    : sensor_msgs/CompressedImage             
+             /zed_node/left/image_rect_color/compressed/parameter_descriptions                1 msg     : dynamic_reconfigure/ConfigDescription   
+             /zed_node/left/image_rect_color/compressed/parameter_updates                     1 msg     : dynamic_reconfigure/Config              
+             /zed_node/left/image_rect_color/compressedDepth/parameter_descriptions           1 msg     : dynamic_reconfigure/ConfigDescription   
+             /zed_node/left/image_rect_color/compressedDepth/parameter_updates                1 msg     : dynamic_reconfigure/Config              
+             /zed_node/left/image_rect_color/theora                                           8 msgs    : theora_image_transport/Packet           
+             /zed_node/left/image_rect_color/theora/parameter_descriptions                    1 msg     : dynamic_reconfigure/ConfigDescription   
+             /zed_node/left/image_rect_color/theora/parameter_updates                         1 msg     : dynamic_reconfigure/Config              
+             /zed_node/left/image_rect_gray                                                   4 msgs    : sensor_msgs/Image                       
+             /zed_node/left/image_rect_gray/compressed                                        4 msgs    : sensor_msgs/CompressedImage             
+             /zed_node/left/image_rect_gray/compressed/parameter_descriptions                 1 msg     : dynamic_reconfigure/ConfigDescription   
+             /zed_node/left/image_rect_gray/compressedDepth/parameter_descriptions            1 msg     : dynamic_reconfigure/ConfigDescription   
+             /zed_node/left/image_rect_gray/compressedDepth/parameter_updates                 1 msg     : dynamic_reconfigure/Config              
+             /zed_node/left/image_rect_gray/theora                                            7 msgs    : theora_image_transport/Packet           
+             /zed_node/left/image_rect_gray/theora/parameter_descriptions                     1 msg     : dynamic_reconfigure/ConfigDescription   
+             /zed_node/left_cam_imu_transform                                                 1 msg     : geometry_msgs/Transform                 
+             /zed_node/left_raw/camera_info                                                  11 msgs    : sensor_msgs/CameraInfo                  
+             /zed_node/left_raw/image_raw_color                                               5 msgs    : sensor_msgs/Image                       
+             /zed_node/left_raw/image_raw_color/compressed                                    4 msgs    : sensor_msgs/CompressedImage             
+             /zed_node/left_raw/image_raw_color/compressed/parameter_descriptions             1 msg     : dynamic_reconfigure/ConfigDescription   
+             /zed_node/left_raw/image_raw_color/compressedDepth/parameter_descriptions        1 msg     : dynamic_reconfigure/ConfigDescription   
+             /zed_node/left_raw/image_raw_color/compressedDepth/parameter_updates             1 msg     : dynamic_reconfigure/Config              
+             /zed_node/left_raw/image_raw_color/theora                                        7 msgs    : theora_image_transport/Packet           
+             /zed_node/left_raw/image_raw_color/theora/parameter_descriptions                 1 msg     : dynamic_reconfigure/ConfigDescription   
+             /zed_node/left_raw/image_raw_color/theora/parameter_updates                      1 msg     : dynamic_reconfigure/Config              
+             /zed_node/left_raw/image_raw_gray                                                6 msgs    : sensor_msgs/Image                       
+             /zed_node/left_raw/image_raw_gray/compressed                                     6 msgs    : sensor_msgs/CompressedImage             
+             /zed_node/left_raw/image_raw_gray/compressed/parameter_updates                   1 msg     : dynamic_reconfigure/Config              
+             /zed_node/left_raw/image_raw_gray/compressedDepth/parameter_descriptions         1 msg     : dynamic_reconfigure/ConfigDescription   
+             /zed_node/left_raw/image_raw_gray/compressedDepth/parameter_updates              1 msg     : dynamic_reconfigure/Config              
+             /zed_node/left_raw/image_raw_gray/theora                                         7 msgs    : theora_image_transport/Packet           
+             /zed_node/left_raw/image_raw_gray/theora/parameter_descriptions                  1 msg     : dynamic_reconfigure/ConfigDescription   
+             /zed_node/left_raw/image_raw_gray/theora/parameter_updates                       1 msg     : dynamic_reconfigure/Config              
+             /zed_node/odom                                                                  32 msgs    : nav_msgs/Odometry                       
+             /zed_node/parameter_descriptions                                                 1 msg     : dynamic_reconfigure/ConfigDescription   
+             /zed_node/parameter_updates                                                      1 msg     : dynamic_reconfigure/Config              
+             /zed_node/path_map                                                              40 msgs    : nav_msgs/Path                           
+             /zed_node/path_odom                                                             41 msgs    : nav_msgs/Path                           
+             /zed_node/point_cloud/cloud_registered                                          32 msgs    : sensor_msgs/PointCloud2                 
+             /zed_node/pose                                                                  32 msgs    : geometry_msgs/PoseStamped               
+             /zed_node/pose_with_covariance                                                  32 msgs    : geometry_msgs/PoseWithCovarianceStamped 
+             /zed_node/rgb/camera_info                                                       11 msgs    : sensor_msgs/CameraInfo                  
+             /zed_node/rgb/image_rect_color                                                   4 msgs    : sensor_msgs/Image                       
+             /zed_node/rgb/image_rect_color/compressed                                        4 msgs    : sensor_msgs/CompressedImage             
+             /zed_node/rgb/image_rect_color/compressed/parameter_descriptions                 1 msg     : dynamic_reconfigure/ConfigDescription   
+             /zed_node/rgb/image_rect_color/compressed/parameter_updates                      1 msg     : dynamic_reconfigure/Config              
+             /zed_node/rgb/image_rect_color/compressedDepth/parameter_descriptions            1 msg     : dynamic_reconfigure/ConfigDescription   
+             /zed_node/rgb/image_rect_color/compressedDepth/parameter_updates                 1 msg     : dynamic_reconfigure/Config              
+             /zed_node/rgb/image_rect_color/theora                                            7 msgs    : theora_image_transport/Packet           
+             /zed_node/rgb/image_rect_color/theora/parameter_descriptions                     1 msg     : dynamic_reconfigure/ConfigDescription   
+             /zed_node/rgb/image_rect_color/theora/parameter_updates                          1 msg     : dynamic_reconfigure/Config              
+             /zed_node/rgb/image_rect_gray                                                    5 msgs    : sensor_msgs/Image                       
+             /zed_node/rgb/image_rect_gray/compressed                                         4 msgs    : sensor_msgs/CompressedImage             
+             /zed_node/rgb/image_rect_gray/compressed/parameter_descriptions                  1 msg     : dynamic_reconfigure/ConfigDescription   
+             /zed_node/rgb/image_rect_gray/compressed/parameter_updates                       1 msg     : dynamic_reconfigure/Config              
+             /zed_node/rgb/image_rect_gray/compressedDepth/parameter_descriptions             1 msg     : dynamic_reconfigure/ConfigDescription   
+             /zed_node/rgb/image_rect_gray/compressedDepth/parameter_updates                  1 msg     : dynamic_reconfigure/Config              
+             /zed_node/rgb/image_rect_gray/theora                                             9 msgs    : theora_image_transport/Packet           
+             /zed_node/rgb/image_rect_gray/theora/parameter_descriptions                      1 msg     : dynamic_reconfigure/ConfigDescription   
+             /zed_node/rgb/image_rect_gray/theora/parameter_updates                           1 msg     : dynamic_reconfigure/Config              
+             /zed_node/rgb_raw/camera_info                                                    8 msgs    : sensor_msgs/CameraInfo                  
+             /zed_node/rgb_raw/image_raw_color                                                5 msgs    : sensor_msgs/Image                       
+             /zed_node/rgb_raw/image_raw_color/compressed                                     4 msgs    : sensor_msgs/CompressedImage             
+             /zed_node/rgb_raw/image_raw_color/compressed/parameter_descriptions              1 msg     : dynamic_reconfigure/ConfigDescription   
+             /zed_node/rgb_raw/image_raw_color/compressed/parameter_updates                   1 msg     : dynamic_reconfigure/Config              
+             /zed_node/rgb_raw/image_raw_color/compressedDepth/parameter_descriptions         1 msg     : dynamic_reconfigure/ConfigDescription   
+             /zed_node/rgb_raw/image_raw_color/compressedDepth/parameter_updates              1 msg     : dynamic_reconfigure/Config              
+             /zed_node/rgb_raw/image_raw_color/theora                                         8 msgs    : theora_image_transport/Packet           
+             /zed_node/rgb_raw/image_raw_color/theora/parameter_descriptions                  1 msg     : dynamic_reconfigure/ConfigDescription   
+             /zed_node/rgb_raw/image_raw_color/theora/parameter_updates                       1 msg     : dynamic_reconfigure/Config              
+             /zed_node/rgb_raw/image_raw_gray                                                 4 msgs    : sensor_msgs/Image                       
+             /zed_node/rgb_raw/image_raw_gray/compressed                                      4 msgs    : sensor_msgs/CompressedImage             
+             /zed_node/rgb_raw/image_raw_gray/compressed/parameter_descriptions               1 msg     : dynamic_reconfigure/ConfigDescription   
+             /zed_node/rgb_raw/image_raw_gray/compressed/parameter_updates                    1 msg     : dynamic_reconfigure/Config              
+             /zed_node/rgb_raw/image_raw_gray/compressedDepth/parameter_descriptions          1 msg     : dynamic_reconfigure/ConfigDescription   
+             /zed_node/rgb_raw/image_raw_gray/compressedDepth/parameter_updates               1 msg     : dynamic_reconfigure/Config              
+             /zed_node/rgb_raw/image_raw_gray/theora                                          7 msgs    : theora_image_transport/Packet           
+             /zed_node/rgb_raw/image_raw_gray/theora/parameter_descriptions                   1 msg     : dynamic_reconfigure/ConfigDescription   
+             /zed_node/rgb_raw/image_raw_gray/theora/parameter_updates                        1 msg     : dynamic_reconfigure/Config              
+             /zed_node/right/camera_info                                                      8 msgs    : sensor_msgs/CameraInfo                  
+             /zed_node/right/image_rect_color                                                 4 msgs    : sensor_msgs/Image                       
+             /zed_node/right/image_rect_color/compressed                                      4 msgs    : sensor_msgs/CompressedImage             
+             /zed_node/right/image_rect_color/compressed/parameter_descriptions               1 msg     : dynamic_reconfigure/ConfigDescription   
+             /zed_node/right/image_rect_color/compressedDepth/parameter_descriptions          1 msg     : dynamic_reconfigure/ConfigDescription   
+             /zed_node/right/image_rect_color/compressedDepth/parameter_updates               1 msg     : dynamic_reconfigure/Config              
+             /zed_node/right/image_rect_color/theora                                          7 msgs    : theora_image_transport/Packet           
+             /zed_node/right/image_rect_color/theora/parameter_descriptions                   1 msg     : dynamic_reconfigure/ConfigDescription   
+             /zed_node/right/image_rect_color/theora/parameter_updates                        1 msg     : dynamic_reconfigure/Config              
+             /zed_node/right/image_rect_gray                                                  4 msgs    : sensor_msgs/Image                       
+             /zed_node/right/image_rect_gray/compressed                                       4 msgs    : sensor_msgs/CompressedImage             
+             /zed_node/right/image_rect_gray/compressed/parameter_descriptions                1 msg     : dynamic_reconfigure/ConfigDescription   
+             /zed_node/right/image_rect_gray/compressedDepth/parameter_descriptions           1 msg     : dynamic_reconfigure/ConfigDescription   
+             /zed_node/right/image_rect_gray/compressedDepth/parameter_updates                1 msg     : dynamic_reconfigure/Config              
+             /zed_node/right/image_rect_gray/theora                                           7 msgs    : theora_image_transport/Packet           
+             /zed_node/right/image_rect_gray/theora/parameter_descriptions                    1 msg     : dynamic_reconfigure/ConfigDescription   
+             /zed_node/right/image_rect_gray/theora/parameter_updates                         1 msg     : dynamic_reconfigure/Config              
+             /zed_node/right_raw/camera_info                                                  9 msgs    : sensor_msgs/CameraInfo                  
+             /zed_node/right_raw/image_raw_color                                              5 msgs    : sensor_msgs/Image                       
+             /zed_node/right_raw/image_raw_color/compressed                                   5 msgs    : sensor_msgs/CompressedImage             
+             /zed_node/right_raw/image_raw_color/compressed/parameter_descriptions            1 msg     : dynamic_reconfigure/ConfigDescription   
+             /zed_node/right_raw/image_raw_color/compressed/parameter_updates                 1 msg     : dynamic_reconfigure/Config              
+             /zed_node/right_raw/image_raw_color/compressedDepth/parameter_descriptions       1 msg     : dynamic_reconfigure/ConfigDescription   
+             /zed_node/right_raw/image_raw_color/compressedDepth/parameter_updates            1 msg     : dynamic_reconfigure/Config              
+             /zed_node/right_raw/image_raw_color/theora                                       8 msgs    : theora_image_transport/Packet           
+             /zed_node/right_raw/image_raw_color/theora/parameter_descriptions                1 msg     : dynamic_reconfigure/ConfigDescription   
+             /zed_node/right_raw/image_raw_color/theora/parameter_updates                     1 msg     : dynamic_reconfigure/Config              
+             /zed_node/right_raw/image_raw_gray                                               4 msgs    : sensor_msgs/Image                       
+             /zed_node/right_raw/image_raw_gray/compressed                                    4 msgs    : sensor_msgs/CompressedImage             
+             /zed_node/right_raw/image_raw_gray/compressed/parameter_descriptions             1 msg     : dynamic_reconfigure/ConfigDescription   
+             /zed_node/right_raw/image_raw_gray/compressed/parameter_updates                  1 msg     : dynamic_reconfigure/Config              
+             /zed_node/right_raw/image_raw_gray/compressedDepth/parameter_descriptions        1 msg     : dynamic_reconfigure/ConfigDescription   
+             /zed_node/right_raw/image_raw_gray/compressedDepth/parameter_updates             1 msg     : dynamic_reconfigure/Config              
+             /zed_node/right_raw/image_raw_gray/theora                                        7 msgs    : theora_image_transport/Packet           
+             /zed_node/right_raw/image_raw_gray/theora/parameter_descriptions                 1 msg     : dynamic_reconfigure/ConfigDescription   
+             /zed_node/stereo/image_rect_color                                                4 msgs    : sensor_msgs/Image                       
+             /zed_node/stereo/image_rect_color/compressed                                     4 msgs    : sensor_msgs/CompressedImage             
+             /zed_node/stereo/image_rect_color/compressed/parameter_descriptions              1 msg     : dynamic_reconfigure/ConfigDescription   
+             /zed_node/stereo/image_rect_color/compressed/parameter_updates                   1 msg     : dynamic_reconfigure/Config              
+             /zed_node/stereo/image_rect_color/compressedDepth/parameter_descriptions         1 msg     : dynamic_reconfigure/ConfigDescription   
+             /zed_node/stereo/image_rect_color/compressedDepth/parameter_updates              1 msg     : dynamic_reconfigure/Config              
+             /zed_node/stereo/image_rect_color/theora                                         8 msgs    : theora_image_transport/Packet           
+             /zed_node/stereo/image_rect_color/theora/parameter_descriptions                  1 msg     : dynamic_reconfigure/ConfigDescription   
+             /zed_node/stereo/image_rect_color/theora/parameter_updates                       1 msg     : dynamic_reconfigure/Config              
+             /zed_node/stereo_raw/image_raw_color                                             4 msgs    : sensor_msgs/Image                       
+             /zed_node/stereo_raw/image_raw_color/compressed                                  4 msgs    : sensor_msgs/CompressedImage             
+             /zed_node/stereo_raw/image_raw_color/compressed/parameter_descriptions           1 msg     : dynamic_reconfigure/ConfigDescription   
+             /zed_node/stereo_raw/image_raw_color/compressed/parameter_updates                1 msg     : dynamic_reconfigure/Config              
+             /zed_node/stereo_raw/image_raw_color/compressedDepth/parameter_descriptions      1 msg     : dynamic_reconfigure/ConfigDescription   
+             /zed_node/stereo_raw/image_raw_color/theora                                      7 msgs    : theora_image_transport/Packet           
+             /zed_node/stereo_raw/image_raw_color/theora/parameter_descriptions               1 msg     : dynamic_reconfigure/ConfigDescription   
+             /zed_node/stereo_raw/image_raw_color/theora/parameter_updates                    1 msg     : dynamic_reconfigure/Config              
+             /zed_node/temperature/imu                                                     6955 msgs    : sensor_msgs/Temperature                 
+             /zed_node/temperature/left                                                     507 msgs    : sensor_msgs/Temperature                 
+             /zed_node/temperature/right                                                    510 msgs    : sensor_msgs/Temperature
