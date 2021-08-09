@@ -1,3 +1,4 @@
-# Master 2020 Spring thesis
+# Masters 2021 Spring thesis
 
-Updates coming soon
+See protocol testbed for the thesis project.
+Catkin ws is a ROS read test from ISEauto.
