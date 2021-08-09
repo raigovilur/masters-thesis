@@ -1,4 +1,6 @@
 # Masters 2021 Spring thesis
 
-See protocol testbed for the thesis project.
+See Solution/protocol testbed for the thesis project.
 Catkin ws is a ROS read test from ISEauto.
+
+Test_Result files have raw output from running the protocol testbed.
