@@ -4,13 +4,14 @@
 Run either the protocol_testbed_client or protocol_testbed_server with the argument --help to see all arguments.
 
 ## Dependencies
+CMake
 OpenSSL 1.1.x  
 Facebook implementation of IETF QUIC (MVFST) https://github.com/facebookincubator/mvfst  
 Add MVFST cmake directory to CMAKE_MODULE_PATH  
 BOOST
 
 ## Compiling
-Clone and build MVFST.
+Clone and build MVFST. Project has been compiled and tested on X64 and ARM64 architectures.
 If dependencies have been resolved, run the cmake generator. Add the required dependencies to CMAKE_MODULE_PATH and CMAKE_PREFIX_PATH (MVFST and dependencies, <MVFST_REPO_DIR>/cmake, MVFST, FMT, FIZZ, FOLLY cmake directories from the MVFST repo build directory.
 
 ## Testing
