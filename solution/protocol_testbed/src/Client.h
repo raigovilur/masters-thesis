@@ -27,7 +27,6 @@ private:
     std::chrono::duration<double> _elapsedHashSeconds{};
     std::streampos _fileSize = 0;
     uint _connectionDrops = 0;
-
 };
 
 
