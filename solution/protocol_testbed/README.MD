@@ -1,13 +1,17 @@
 # Protocol implementations
 
 ## Use
-See ClientMain.cpp. To change implementation, change the Protocol::ProtocolType enum to your desired protocol.
-File sent is currently hard-coded in ClientMain.cpp
+Run either the protocol_testbed_client or protocol_testbed_server with the argument --help to see all arguments.
 
 ## Dependencies
 OpenSSL 1.1.x  
 Facebook implementation of IETF QUIC (MVFST) https://github.com/facebookincubator/mvfst  
-Add MVFST CMake dir to CMAKE_MODULE_PATH  
+Add MVFST cmake directory to CMAKE_MODULE_PATH  
+BOOST
+
+## Compiling
+Clone and build MVFST.
+If dependencies have been resolved, run the cmake generator. Add the required dependencies to CMAKE_MODULE_PATH and CMAKE_PREFIX_PATH (MVFST and dependencies, <MVFST_REPO_DIR>/cmake, MVFST, FMT, FIZZ, FOLLY cmake directories from the MVFST repo build directory.
 
 ## Testing
 ### Client testing
@@ -20,14 +24,24 @@ Generate a certificate
 And then run  
 `openssl s_server -dtls -accept 12345 -key key.pem -cert cert.pem` 
 
+# Supported network protocols
+Currently the testbed supports  
+QUIC (--protocol QUIC)  
+TLS 1.3 (--protocol TLS)  
+DTLS 1.2 (--protocol DTLS)  
+TCP (--protocol TCP)  
+UDP (--protocol UDP)  
 
-# Protocol
+# Transfer statistics
+Transfer statistics are printed to std out. Use unix command line to direct the output to a file if needed.
+
+# File sending protocol
 The application level protocol (sitting on top of all the network protocols) is intentionally kept simple.
 In essence the system is made for sending one large file per connection.
 Since connection start and end are only a tiny part of the total file sending time, it doesn't have a big effect on the overall
 transmission time.  
 The total package is:  
-| Protocol ID (2 bytes) | Protocol version (2 bytes) | checksum for the file (64 bytes) | file size (64 bytes) | file name (1024 bytes, enough for 256 UTF-8 characters and the ending 0 bytes) | file itself... |
+| Protocol ID (2 bytes) | Protocol version (2 bytes) | checksum for the file (32 bytes) | file size (8 bytes) | file name (1024 bytes, enough for 256 UTF-8 characters and the ending 0 bytes) | file itself... |
 |---|---|---|---|---|---|
 |   |   |   |   |   |   |
 
