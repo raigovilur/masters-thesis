@@ -55,3 +55,6 @@ Version Field is fixed at 0x01.
 Checksum for the file contains a hash calculated from the entire file (on disk). It's calculated with SHA-256.  
 File size is the byte size expected. 64 Bytes is the current largest file size supported by common Linux file systems and is more than enough for the foreseeable future.  
 File name is UTF-8 encoded and will fit 255 UTF-8 characters and trailing four 0 bytes. It can fit more with certain character combinations, but it's not guaranteed to fit. 255 was chosen, because it's the file name length limit on Linux platforms.
+
+# Source code organisation
+Client code main file is ClientMain.cpp and all client protocol implementation and interface source files are at src/protocol. The server program entry is ServerMain.cpp and server protocol interface and implementation files are located at src/ServerProtocol. The src/appProto folder has code that is used by both the server and the client (header files only). src/dtlsCookieVault folder has the cookieVault component that is used in the DTLS server cookie validation process.
