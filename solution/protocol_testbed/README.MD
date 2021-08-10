@@ -1,7 +1,18 @@
-# Protocol implementations
+# Protocol testbed
+The protocol testbed is a client and a server application that can send a file via different protocols. These applications were deveolped as part of a Masters' thesis to evaluate QUIC, TLS 1.3 and DTLS 1.2 for use on autonomous vehicle telematics. 
+
+# Supported network protocols
+Currently the testbed supports  
+QUIC (--protocol QUIC)  
+TLS 1.3 (--protocol TLS)  
+DTLS 1.2 (--protocol DTLS)  
+TCP (--protocol TCP)  
+UDP (--protocol UDP)  
 
 ## Use
 Run either the protocol_testbed_client or protocol_testbed_server with the argument --help to see all arguments.
+
+Run the server, then the client and the client will send the file specified by the --file argument to the server via the protocol specified by --protocol.
 
 ## Dependencies
 CMake
@@ -25,13 +36,6 @@ Generate a certificate
 And then run  
 `openssl s_server -dtls -accept 12345 -key key.pem -cert cert.pem` 
 
-# Supported network protocols
-Currently the testbed supports  
-QUIC (--protocol QUIC)  
-TLS 1.3 (--protocol TLS)  
-DTLS 1.2 (--protocol DTLS)  
-TCP (--protocol TCP)  
-UDP (--protocol UDP)  
 
 # Transfer statistics
 Transfer statistics are printed to std out. Use unix command line to direct the output to a file if needed.
