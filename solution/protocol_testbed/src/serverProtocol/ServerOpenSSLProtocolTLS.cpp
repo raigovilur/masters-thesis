@@ -130,7 +130,7 @@ ServerProto::ServerOpenSSLProtocolTLS::~ServerOpenSSLProtocolTLS() {
 }
 
 bool ServerProto::ServerOpenSSLProtocolTLS::serviceConnection(const sockaddr_in* addr, SSL* ssl) {
-    unsigned char buf[1024] = {0};
+    unsigned char buf[1024] = {0}; //1024Byte
     int sd = 0, bytes = 0;
     if (SSL_accept(ssl) <= 0)     /* do SSL-protocol accept */
         ERR_print_errors_fp(stderr);

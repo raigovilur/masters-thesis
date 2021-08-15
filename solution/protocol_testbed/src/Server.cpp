@@ -51,11 +51,13 @@ bool Server::consumeInternal(const std::string& client, const unsigned char *byt
     {
         // No header has been received
         if (packetLength >= ISE_HEADER_SIZE) {
+            //headerSize <= bufferSize
             auto headerBytes = std::vector<unsigned char>(bytes, bytes + ISE_HEADER_SIZE);
             _clientHeaders.emplace(std::pair<std::string,ClientData>(client, headerBytes));
             numberOfBytesProcessed = ISE_HEADER_SIZE;
             processHeader(_clientHeaders.at(client));
         } else {
+            //headerSize > bufferSize
             auto headerBytes = std::vector<unsigned char>(bytes, bytes + packetLength);
             _clientHeaders.emplace(std::pair<std::string, ClientData>(client, headerBytes));
             // We need more bytes to complete the header, further processing not necessary

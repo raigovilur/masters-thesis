@@ -268,7 +268,7 @@ ServerProto::ServerOpenSSLProtocolDTLS::~ServerOpenSSLProtocolDTLS() {
 bool ServerProto::ServerOpenSSLProtocolDTLS::serviceConnection(int clientFd, const sockaddr_in* addr, SSL* ssl) {
     SSL_accept(ssl);
 
-    unsigned char buf[1000000] = {0};
+    unsigned char buf[1000000] = {0}; //1MB
     int sd = 0, readBytes = 0;
     if (SSL_accept(ssl) <= 0)     /* do SSL-protocol accept */
         ERR_print_errors_fp(stderr);

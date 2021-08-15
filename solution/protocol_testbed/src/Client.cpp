@@ -58,7 +58,8 @@ void Client::send(const std::string& path, size_t bufferSize, uint retryCount) {
 
     _elapsedHashSeconds = std::chrono::system_clock::now() - startTime;
     std::ifstream fileStream(path, std::fstream::binary | std::fstream::in);
-
+    
+    //get length of file
     fileStream.seekg(0, std::ios::end);
     _fileSize = fileStream.tellg();
     fileStream.seekg(0, std::ios::beg);
@@ -87,7 +88,7 @@ void Client::send(const std::string& path, size_t bufferSize, uint retryCount) {
 
     delete[] hash;
 
-    uint buffersNeeded = _fileSize / bufferSize;
+    uint buffersNeeded = _fileSize / bufferSize; //numOfBuffer
     uint lastPacketSize = _fileSize % bufferSize;
     std::unique_ptr<char[]> buffer(new char[bufferSize]);
 
@@ -109,9 +110,9 @@ void Client::send(const std::string& path, size_t bufferSize, uint retryCount) {
         return;
     }
 
-    std::cout << "Sending file" << std::endl;
-    double oneBufferPercentage = 1.0/(buffersNeeded) * 100;
-    int buffersNeededForOnePercent = (int) (2.0 / oneBufferPercentage);
+    std::cout << "buffersNeeded: " << buffersNeeded << std::endl;
+    double oneBufferPercentage = 1.0/(buffersNeeded) * 100; //e.g. buffersNeeded = 8000000 -> 0.0000124
+    int buffersNeededForOnePercent = (int) (1.0 / oneBufferPercentage); //161290
     if (buffersNeededForOnePercent <= 0) {
         buffersNeededForOnePercent = 1;
     }
