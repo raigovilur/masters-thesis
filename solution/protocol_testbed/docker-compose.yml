@@ -1,0 +1,36 @@
+version: "3.9"
+   
+services:
+  client:
+    image: camsenec/protocol_testbed:${TAG}
+    stdin_open: true 
+    tty: true
+    volumes:
+      - ./out:/app/out
+    environment:
+      - PROTOCOL_TESTBED_ADDRESS=192.168.0.208 
+      - PROTOCOL_TESTBED_PORT=8100
+      - PROTOCOL_TESTBED_STPORT=8101
+      - PROTOCOL_TESTBED_BUFSIZE=10000
+      - PROTOCOL_TESTBED_UDP_TARGET=30
+      - PROTOCOL_TESTBED_STPORTBW=30M
+      #- PROTOCOL_TESTBED_FILE=somefile
+    
+  server:
+    image: camsenec/protocol_testbed:${TAG}
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./out:/app/out
+    ports:
+      - 8100:8100
+      - 8101:8101
+      - 8100:8100/udp
+      - 8101:8101/udp
+    environment:
+      - PROTOCOL_TESTBED_ADDRESS=192.168.0.208 
+      - PROTOCOL_TESTBED_PORT=8100
+      #- PROTOCOL_TESTBED_FILE=somefile
+
+
+
