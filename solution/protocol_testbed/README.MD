@@ -15,11 +15,11 @@ Run either the protocol_testbed_client or protocol_testbed_server with the argum
 Run the server, then the client and the client will send the file specified by the --file argument to the server via the protocol specified by --protocol.
 
 ### Run on Docker
-**NOTE:** The docker image specified in the docker compose file is stored in a private repository. Before running the docker containers, request a token to access the image. Just send me an email (`deepsky2221@gmail.com`). After receiving the toekn, login to docker registory with
+#### Build
+**Note:** Docker image is available on DockerHub repository, but currently it is configured as private. So, Build the image on your local environment.
 ```
-docker login --username <your_username>
+docker build -t camsenec/protocol_testbed:`cat .env | grep TAG | cut -d "=" -f2` .
 ```
-and enter the token to the prompt.
 
 #### Server
 ```
