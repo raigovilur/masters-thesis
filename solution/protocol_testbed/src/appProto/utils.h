@@ -5,6 +5,8 @@
 #include <fstream>
 #include <string>
 
+#include "ProtocolType.h"
+
 namespace Utils {
     inline bool compareBytes(const std::vector<unsigned char>& vector, size_t from, size_t rangeLength, const std::vector<unsigned char>& target) {
 
@@ -88,6 +90,27 @@ namespace Utils {
         }
         return output;
     }
+
+        
+    inline std::string getProtocolName(Protocol::ProtocolType type) {
+
+        switch (type) {
+            case Protocol::OpenSSL_DTLS1_2:
+                return "DTLSv1.2";
+            case Protocol::OpenSSL_TLS:
+                return "TLSv1.3";
+            case Protocol::MVFST_QUIC:
+                return "QUIC";
+            case Protocol::TCP:
+                return "TCP";
+            case Protocol::UDP:
+                return "UDP";
+            default:
+                std::cerr << "Invalid protocol specified: " << std::endl;
+                return "";
+        }
+    }
+
 }
 
 #endif //PROTOCOL_TESTBED_UTILS_H
