@@ -3,13 +3,13 @@ FROM ubuntu:20.04
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Europe/Tallinn
 
-COPY lib.tar.gz /usr/local/lib
-COPY include.tar.gz /usr/local/include
+COPY docker/lib.tar.gz /usr/local/lib
+COPY docker/include.tar.gz /usr/local/include
 
 COPY . /app
 WORKDIR /app
 
-RUN mkdir file 
+RUN mkdir file && mkdir out
 
 RUN apt -y update && \
     apt install -y software-properties-common lsb-release wget && \
@@ -46,13 +46,6 @@ RUN apt -y install  \
       libunwind-dev             \
       iputils-ping
 
-#RUN cd /opt/ && wget https://github.com/Kitware/CMake/releases/download/v3.21.1/cmake-3.21.1.tar.gz && \
-#    tar xvzf cmake-3.21.1.tar.gz && \
-#    cd cmake-3.21.1 && \
-#    mkdir build_ && cd build_ && \
-#    cmake .. && \
-#    make  && make install && \
-#    apt remove -y cmake
 
 RUN apt -y install \ 
       nmap                      \
@@ -61,10 +54,12 @@ RUN apt -y install \
 
 RUN wget https://raw.githubusercontent.com/facebookincubator/fizz/master/build/fbcode_builder/CMake/FindSodium.cmake -O /usr/share/cmake-3.21/Modules/FindSodium.cmake
 
-RUN cd /usr/local/lib && tar xvzf /usr/local/lib/lib.tar.gz 
-RUN cd /usr/local/include && tar xvzf /usr/local/include/include.tar.gz
+RUN cd /usr/local/lib && tar xvzf /usr/local/lib/lib.tar.gz && rm /usr/local/lib/lib.tar.gz
+RUN cd /usr/local/include && tar xvzf /usr/local/include/include.tar.gz && rm /usr/local/include/include.tar.gz
 
 RUN cd /app && \
     mkdir build_ && cd build_ && \
     cmake .. && \
     make
+
+RUN chmod 755 run.sh
