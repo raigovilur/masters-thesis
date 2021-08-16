@@ -24,7 +24,7 @@ and enter the token to the prompt.
 #### Server
 ```
 docker-compose down
-docker-compose --service-ports --rm server
+docker-compose run --service-ports --rm server
 ```
 
 In Docker Container
@@ -35,7 +35,7 @@ In Docker Container
 #### Client
 ```
 docker-compose down
-docker-compose --rm client
+docker-compose run --rm client
 ```
 
 In Docker Container
