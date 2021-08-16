@@ -16,7 +16,7 @@ Run the server, then the client and the client will send the file specified by t
 
 ### Run on Docker
 #### Build
-**Note:** Docker image is available on DockerHub repository, but currently it is configured as private. So, Build the image on your local environment.
+**Note:** Docker image is available at DockerHub repository, but currently it is configured as private. So, Build the image on your local environment.
 ```
 docker build -t camsenec/protocol_testbed:`cat .env | grep TAG | cut -d "=" -f2` .
 ```
