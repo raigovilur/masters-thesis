@@ -40,11 +40,11 @@ docker-compose run --rm client
 
 In Docker Container
 ```
-./run.sh server [TLS|DTLS|QUIC]
+./run.sh client [TLS|DTLS|QUIC]
 ```
 
 #### Configuration
-Set IP Address of the server to `PROTOCOL_TESTBED_ADDRESS` in `docker-compose.yml`.
+Set the server's host ip address to `PROTOCOL_TESTBED_ADDRESS` in `docker-compose.yml`.
 
 #### Test Results Handling
 Test results are stored in `out` directory.
