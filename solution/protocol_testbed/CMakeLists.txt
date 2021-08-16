@@ -36,6 +36,7 @@ add_executable(protocol_testbed_client
         src/appProto/FileSendHeader.h
         src/dtlsCookieVault/ck_secrets_vault.c
         src/dtlsCookieVault/ck_secrets_vault.h
+        src/util/CSVWriter.h
         #src/protocol/MvfstProtocolQUIC2.cpp
         #src/protocol/MvfstProtocolQUIC2.h
         src/protocol/OSProtocolTCP.cpp src/protocol/OSProtocolTCP.h src/protocol/OSProtocolUDP.cpp src/protocol/OSProtocolUDP.h)
@@ -65,6 +66,7 @@ add_executable(protocol_testbed_server
         src/Server.h
         src/dtlsCookieVault/ck_secrets_vault.c
         src/dtlsCookieVault/ck_secrets_vault.h
+        src/util/CSVWriter.h
         src/serverProtocol/ServerOpenSSLProtocolTLS.cpp
         src/serverProtocol/ServerOpenSSLProtocolTLS.h
         src/serverProtocol/ServerOpenSSLProtocolDTLS.cpp
