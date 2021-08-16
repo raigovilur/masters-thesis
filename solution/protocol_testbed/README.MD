@@ -14,6 +14,42 @@ Run either the protocol_testbed_client or protocol_testbed_server with the argum
 
 Run the server, then the client and the client will send the file specified by the --file argument to the server via the protocol specified by --protocol.
 
+### Run on Docker
+**NOTE:** The docker image specified in the docker compose file is stored in a private repository. Before running the docker containers, request a token to access the image. Just send me an email (`deepsky2221@gmail.com`). After receiving the toekn, login to docker registory with
+```
+docker login --username <your_username>
+```
+and enter the token to the prompt.
+
+#### Server
+```
+docker-compose down
+docker-compose --service-ports --rm server
+```
+
+In Docker Container
+```
+./run.sh server [TLS|DTLS|QUIC]
+```
+
+#### Client
+```
+docker-compose down
+docker-compose --rm client
+```
+
+In Docker Container
+```
+./run.sh server [TLS|DTLS|QUIC]
+```
+
+#### Configuration
+Set IP Address of the server to `PROTOCOL_TESTBED_ADDRESS` in `docker-compose.yml`.
+
+#### Test Results Handling
+Test results are stored in `out` directory.
+
+
 ## Dependencies
 CMake
 OpenSSL 1.1.x  
