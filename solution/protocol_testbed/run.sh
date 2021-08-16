@@ -21,7 +21,7 @@ dtls_run() {
       openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365
     fi
     
-    if [ $(eval ps aux | grep iperf3 | grep -v grep | wc -l) -gt 1 ] ; then
+    if [ $(eval ps aux | grep iperf3 | grep -v grep | wc -l) -lt 1 ] ; then
       iperf3 -s -p $PROTOCOL_TESTBED_STPORT &
     fi
 
@@ -53,7 +53,7 @@ run() {
       openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365
     fi
 
-    if [ $(eval ps aux | grep iperf3 | grep -v grep | wc -l) -gt 1 ] ; then
+    if [ $(eval ps aux | grep iperf3 | grep -v grep | wc -l) -lt 1 ] ; then
       iperf3 -s -p $PROTOCOL_TESTBED_STPORT &
     fi
 

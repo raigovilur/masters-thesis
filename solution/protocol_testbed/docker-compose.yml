@@ -30,6 +30,7 @@ services:
     environment:
       - PROTOCOL_TESTBED_ADDRESS=192.168.0.208 
       - PROTOCOL_TESTBED_PORT=8100
+      - PROTOCOL_TESTBED_STPORT=8101
       #- PROTOCOL_TESTBED_FILE=somefile
 
 
