@@ -251,6 +251,7 @@ bool Protocol::OpenSSLProtocolDTLS::send(const char *buffer, size_t bufferSize, 
 }
 
 bool Protocol::OpenSSLProtocolDTLS::closeProtocol() {
+    sleep(10);
     cleanUp();
     return true;
 }

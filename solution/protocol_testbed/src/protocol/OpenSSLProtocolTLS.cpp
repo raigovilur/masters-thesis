@@ -108,6 +108,7 @@ bool Protocol::OpenSSLProtocolTLS::send(const char *buffer, size_t bufferSize, b
 }
 
 bool Protocol::OpenSSLProtocolTLS::closeProtocol() {
+    sleep(10);
     return cleanUp();
 }
 
