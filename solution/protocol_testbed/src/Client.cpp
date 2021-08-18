@@ -121,9 +121,6 @@ void Client::send(const std::string& path, size_t bufferSize, uint retryCount) {
     }
 
     auto intermediateTimeStamp = std::chrono::system_clock::now();
-     
-    Utils::CSVWriter throughputRecordCSV(",");
-
     // Sending full buffer amounts
     for (uint i = 0; i < buffersNeeded; ++i) {
         fileStream.read(buffer.get(), bufferSize);
@@ -136,7 +133,6 @@ void Client::send(const std::string& path, size_t bufferSize, uint retryCount) {
             std::cout << "    Sent " << bytesSent << " bytes over "
                 <<  elapsedSeconds/1000.0 << " seconds." << std::endl;
             std::cout << "    Speed is " << ((double) bytesSent) / elapsedSeconds / 1000 * 8 << " mb/s." << std::endl;
-            throughputRecordCSV.newRow() << (i + 1) * oneBufferPercentage <<  ((double) bytesSent) / elapsedSeconds / 1000 * 8;
             intermediateTimeStamp = std::chrono::system_clock::now();
         }
         if (!sendWithRetries(buffer.get(), bufferSize, retryCount, protocol,
@@ -158,8 +154,6 @@ void Client::send(const std::string& path, size_t bufferSize, uint retryCount) {
 
     protocol->closeProtocol();
     _elapsedSeconds = std::chrono::system_clock::now() - startTime;
-    std::string throughputRecordFileName = std::string("../out") + std::string("/") + Utils::getProtocolName(_type) + std::string(".csv");
-    throughputRecordCSV.writeToFile(throughputRecordFileName, false);
     std::cout << "File sent" << std::endl;
     fileStream.close();
 }

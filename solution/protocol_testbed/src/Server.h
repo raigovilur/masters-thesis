@@ -13,6 +13,9 @@
 #include <iostream>
 #include <thread>
 
+//#include "util/CSVWriter.h"
+//#include "util/Timer.h"
+
 class Server : public ServerProto::ServerReceiveCallback {
 private:
     class ClientData {
@@ -31,6 +34,7 @@ private:
         uint64_t lastPercentageFileSize = 0;
         std::chrono::time_point<std::chrono::system_clock> startTime;
         std::chrono::time_point<std::chrono::system_clock> lastPercentStartTime;
+        //Utils::CSVWriter throughputRecordCSV = Utils::CSVWriter(",");
 
         bool fileReceived() const {
             assert(receivedFileSize <= fileSize); // We should never receive more than the file size
@@ -44,14 +48,19 @@ private:
             auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(currentTime - lastPercentStartTime);
             if (currentPercentage > percentageReceived || duration.count() > 60000) {
                 uint64_t sentBytes = receivedFileSize - lastPercentageFileSize;
-
                 std::cout << "File transfer: " << currentPercentage << "% (Total: "<< receivedFileSize << " received out of " << fileSize << " bytes. " <<"). Sent " << sentBytes << " over " << duration.count() << " milliseconds" << std::endl;
                 std::cout << "    Speed is " << ((double) sentBytes) / duration.count() / 1000 * 8 << " mb/s." << std::endl;
+                /*
+                throughputRecordCSV.newRow() << currentPercentage << ((double) sentBytes) / duration.count() / 1000 * 8;
+                if (currentPercentage >= 99) {
+                    std::string throughputRecordFileName = std::string("./out") + std::string("/") + Utils::getCurrentDateTime() + std::string("/") + std::string("performance.csv");
+                    throughputRecordCSV.writeToFile(throughputRecordFileName, false);
+                }
+                */
                 percentageReceived = currentPercentage;
                 lastPercentageFileSize = receivedFileSize;
                 lastPercentStartTime = currentTime;
             }
-
         }
     };
 
