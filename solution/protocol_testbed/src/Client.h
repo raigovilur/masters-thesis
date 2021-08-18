@@ -6,12 +6,14 @@
 #include "appProto/ProtocolType.h"
 #include <chrono>
 
+#include "util/TimeRecorder.h"
+
 class Client {
 public:
     Client(Protocol::ProtocolType type, std::string address, uint port, Protocol::Options options);
     ~Client();
 
-    void send(const std::string& path, size_t bufferSize, uint retryCount);
+    void send(const std::string& path, size_t bufferSize, uint retryCount, Utils::TimeRecorder *timeRecorder);
     void printStatistics() const;
     void runSpeedTest(uint port, const std::string& bandwidth) const;
 

@@ -12,7 +12,6 @@
 
 #include "appProto/FileSendHeader.h"
 #include "protocol/ProtocolFactory.h"
-#include "util/CSVWriter.h"
 
 Client::Client(Protocol::ProtocolType type, std::string address, uint port, Protocol::Options options)
     : _type(type)
@@ -37,18 +36,20 @@ void Client::runSpeedTest(uint port, const std::string& bandwidth) const {
 }
 
 
-void Client::send(const std::string& path, size_t bufferSize, uint retryCount) {
+void Client::send(const std::string& path, size_t bufferSize, uint retryCount, Utils::TimeRecorder *timeRecorder) {
 
     auto* hash = new char[SHA256_DIGEST_LENGTH] {0};
 
     auto startTime = std::chrono::system_clock::now();
 
     std::cout << "Calculating checksum ..." << std::endl;
-
+    
+    timeRecorder->writeInfoWithTime("Calcunating checksum");
     if (!Utils::calculateSha256(path, (unsigned char*) hash)) {
         std::cout << "Unable to calculate hash for file: " << path << std::endl;
         return;
     }
+    timeRecorder->writeInfoWithTime("Checksum calculated");
     std::stringstream hashHexStrStream;
     hashHexStrStream << std::hex;
 
@@ -97,14 +98,17 @@ void Client::send(const std::string& path, size_t bufferSize, uint retryCount) {
 
     Protocol::ProtocolPtr protocol = Protocol::ProtocolFactory::getInstance(_type);
     startTime = std::chrono::system_clock::now();
+    timeRecorder->writeInfoWithTime("Connecting");
     if (!protocol->openProtocol(_address, _port, _options)) {
         protocol->closeProtocol();
         return;
     }
+    timeRecorder->writeInfoWithTime("Connected");
     std::cout << "Connection established. Time taken: "
     << std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now() - startTime).count() << " milliseconds" << std::endl;
     std::cout << "Sending header" << std::endl;
     // Sending header
+    timeRecorder->writeInfoWithTime("Sending header");
     if (!sendWithRetries(header.get(), ISE_HEADER_SIZE, retryCount, protocol,
                          buffersNeeded == 0 && lastPacketSize == 0)) {
         std::cout << "Client: Connection failed" << std::endl;
@@ -112,6 +116,7 @@ void Client::send(const std::string& path, size_t bufferSize, uint retryCount) {
         _elapsedSeconds = std::chrono::system_clock::now() - startTime;
         return;
     }
+    timeRecorder->writeInfoWithTime("Header sent");
 
     std::cout << "buffersNeeded: " << buffersNeeded << std::endl;
     double oneBufferPercentage = 1.0/(buffersNeeded) * 100; //e.g. buffersNeeded = 8000000 -> 0.0000124
@@ -128,6 +133,8 @@ void Client::send(const std::string& path, size_t bufferSize, uint retryCount) {
             if (_type == Protocol::MVFST_QUIC)
                 protocol->isAllSent(); //If there's items that haven't been sent to the server yet, wait here.
             std::cout << "Sending file: " << (double)((i + 1) * oneBufferPercentage) << "%" << std::endl;
+        
+            timeRecorder->writeInfoWithTime(std::to_string((double)((i + 1) * oneBufferPercentage)) + "% " +  "file sent");
             uint elapsedSeconds = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now() - intermediateTimeStamp).count();
             uint bytesSent = buffersNeededForOnePercent * bufferSize;
             std::cout << "    Sent " << bytesSent << " bytes over "
@@ -149,6 +156,8 @@ void Client::send(const std::string& path, size_t bufferSize, uint retryCount) {
         fileStream.read(buffer.get(), lastPacketSize);
         sendWithRetries(buffer.get(), lastPacketSize, retryCount, protocol, true);
     }
+
+    timeRecorder->writeInfoWithTime("File sent");
 
     protocol->isAllSent();
 

@@ -119,9 +119,14 @@ int main(int argc, char *argv[]) {
 
     Client client(protocolType, dest, port, options);
 
+    Utils::TimeRecorder timeRecorder{"./out/current/time.csv"};
+
     client.runSpeedTest(stport, stportBandwidth);
-    client.send(filePath, bufferSize, 5);
+
+    timeRecorder.writeInfoWithTime("Program start");
+    client.send(filePath, bufferSize, 5, &timeRecorder);
     client.runSpeedTest(stport, stportBandwidth);
+    timeRecorder.writeToFile();
 
     client.printStatistics();
 

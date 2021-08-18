@@ -15,7 +15,7 @@ namespace Utils {
         }
 
         public:
-            CSVWriter(const std::string& seperator)
+            explicit CSVWriter(const std::string& seperator)
                 : _firstRow(true)
                 , _seperator(seperator)
                 ,_valueCount(0) {
