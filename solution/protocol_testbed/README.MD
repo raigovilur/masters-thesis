@@ -14,6 +14,42 @@ Run either the protocol_testbed_client or protocol_testbed_server with the argum
 
 Run the server, then the client and the client will send the file specified by the --file argument to the server via the protocol specified by --protocol.
 
+### Run on Docker
+#### Build
+**Note:** Docker image is available at DockerHub repository, but currently it is configured as private. So, Build the image on your local environment.
+```
+docker build -t camsenec/protocol_testbed:`cat .env | grep TAG | cut -d "=" -f2` .
+```
+
+#### Server
+```
+docker-compose down
+docker-compose run --service-ports --rm server
+```
+
+In Docker Container
+```
+./run.sh server [TLS|DTLS|QUIC]
+```
+
+#### Client
+```
+docker-compose down
+docker-compose run --rm client
+```
+
+In Docker Container
+```
+./run.sh client [TLS|DTLS|QUIC]
+```
+
+#### Configuration
+Set the server's host ip address to `PROTOCOL_TESTBED_ADDRESS` in `docker-compose.yml`.
+
+#### Test Results Handling
+Test results are stored in `out` directory.
+
+
 ## Dependencies
 CMake
 OpenSSL 1.1.x  
