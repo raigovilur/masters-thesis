@@ -9,7 +9,7 @@ COPY docker/include.tar.gz /usr/local/include
 COPY . /app
 WORKDIR /app
 
-RUN mkdir file && mkdir out
+RUN mkdir file && mkdir out && mkdir out/server
 
 RUN apt -y update && \
     apt install -y software-properties-common lsb-release wget && \
