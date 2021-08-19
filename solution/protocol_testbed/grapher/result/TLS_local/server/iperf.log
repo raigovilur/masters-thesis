@@ -1,0 +1,83 @@
+-----------------------------------------------------------
+Server listening on 8101
+-----------------------------------------------------------
+Accepted connection from 172.19.0.1, port 62564
+[  5] local 172.19.0.2 port 8101 connected to 172.19.0.1 port 62568
+[ ID] Interval           Transfer     Bitrate
+[  5]   0.00-1.00   sec  9.52 MBytes  79.8 Mbits/sec                  
+[  5]   1.00-2.00   sec  9.42 MBytes  79.1 Mbits/sec                  
+[  5]   2.00-3.00   sec  10.3 MBytes  86.5 Mbits/sec                  
+[  5]   3.00-4.00   sec  9.75 MBytes  81.8 Mbits/sec                  
+[  5]   4.00-5.00   sec  10.2 MBytes  85.2 Mbits/sec                  
+[  5]   5.00-6.00   sec  10.6 MBytes  89.1 Mbits/sec                  
+[  5]   6.00-7.00   sec  10.2 MBytes  85.2 Mbits/sec                  
+[  5]   7.00-8.00   sec  11.0 MBytes  92.3 Mbits/sec                  
+[  5]   8.00-9.00   sec  9.44 MBytes  79.2 Mbits/sec                  
+[  5]   9.00-10.00  sec  10.1 MBytes  85.0 Mbits/sec                  
+[  5]  10.00-10.01  sec  96.0 KBytes  62.7 Mbits/sec                  
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate
+[  5]   0.00-10.01  sec   101 MBytes  84.3 Mbits/sec                  receiver
+-----------------------------------------------------------
+Server listening on 8101
+-----------------------------------------------------------
+Accepted connection from 172.19.0.1, port 62572
+[  5] local 172.19.0.2 port 8101 connected to 172.19.0.1 port 62957
+[ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total Datagrams
+[  5]   0.00-1.00   sec  3.63 MBytes  30.4 Mbits/sec  0.514 ms  320/4127 (7.8%)  
+[  5]   1.00-2.00   sec  3.64 MBytes  30.4 Mbits/sec  0.635 ms  1079/4895 (22%)  
+[  5]   2.00-3.00   sec  3.88 MBytes  32.7 Mbits/sec  0.238 ms  781/4848 (16%)  
+[  5]   3.00-4.00   sec  2.56 MBytes  21.5 Mbits/sec  0.622 ms  2126/4809 (44%)  
+[  5]   4.00-5.00   sec   216 KBytes  1.76 Mbits/sec  0.335 ms  116/337 (34%)  
+[  5]   5.00-6.00   sec  3.54 MBytes  29.8 Mbits/sec  0.704 ms  6131/9842 (62%)  
+[  5]   6.00-7.00   sec  3.82 MBytes  32.0 Mbits/sec  0.656 ms  1097/5099 (22%)  
+[  5]   7.00-8.00   sec  3.41 MBytes  28.7 Mbits/sec  1.096 ms  1313/4892 (27%)  
+[  5]   8.00-9.00   sec  3.44 MBytes  28.9 Mbits/sec  0.558 ms  1250/4857 (26%)  
+[  5]   9.00-10.00  sec  3.68 MBytes  30.8 Mbits/sec  0.486 ms  1259/5115 (25%)  
+[  5]  10.00-10.02  sec  85.9 KBytes  36.4 Mbits/sec  0.390 ms  0/88 (0%)  
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total Datagrams
+[  5]   0.00-10.02  sec  31.9 MBytes  26.7 Mbits/sec  0.390 ms  15472/48909 (32%)  receiver
+-----------------------------------------------------------
+Server listening on 8101
+-----------------------------------------------------------
+Accepted connection from 172.19.0.1, port 62580
+[  5] local 172.19.0.2 port 8101 connected to 172.19.0.1 port 62584
+[ ID] Interval           Transfer     Bitrate
+[  5]   0.00-1.00   sec  8.29 MBytes  69.5 Mbits/sec                  
+[  5]   1.00-2.00   sec  7.78 MBytes  65.3 Mbits/sec                  
+[  5]   2.00-3.00   sec  7.72 MBytes  64.8 Mbits/sec                  
+[  5]   3.00-4.00   sec  7.91 MBytes  66.3 Mbits/sec                  
+[  5]   4.00-5.00   sec  7.06 MBytes  59.2 Mbits/sec                  
+[  5]   5.00-6.00   sec  7.34 MBytes  61.6 Mbits/sec                  
+[  5]   6.00-7.00   sec  7.81 MBytes  65.5 Mbits/sec                  
+[  5]   7.00-8.00   sec  6.94 MBytes  58.2 Mbits/sec                  
+[  5]   8.00-9.00   sec  6.75 MBytes  56.6 Mbits/sec                  
+[  5]   9.00-10.00  sec  6.88 MBytes  57.7 Mbits/sec                  
+[  5]  10.00-10.03  sec   128 KBytes  35.5 Mbits/sec                  
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate
+[  5]   0.00-10.03  sec  74.6 MBytes  62.4 Mbits/sec                  receiver
+-----------------------------------------------------------
+Server listening on 8101
+-----------------------------------------------------------
+Accepted connection from 172.19.0.1, port 62588
+[  5] local 172.19.0.2 port 8101 connected to 172.19.0.1 port 62866
+[ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total Datagrams
+[  5]   0.00-1.00   sec  2.38 MBytes  20.0 Mbits/sec  0.950 ms  1423/3919 (36%)  
+[  5]   1.00-2.00   sec  2.74 MBytes  22.9 Mbits/sec  0.649 ms  1810/4679 (39%)  
+[  5]   2.00-3.00   sec  2.38 MBytes  20.0 Mbits/sec  0.483 ms  2428/4919 (49%)  
+[  5]   3.00-4.00   sec  2.44 MBytes  20.4 Mbits/sec  1.459 ms  2543/5098 (50%)  
+[  5]   4.00-5.00   sec  2.27 MBytes  19.0 Mbits/sec  1.925 ms  2493/4871 (51%)  
+[  5]   5.00-6.00   sec  2.31 MBytes  19.4 Mbits/sec  0.463 ms  2700/5126 (53%)  
+[  5]   6.00-7.01   sec  2.44 MBytes  20.4 Mbits/sec  0.762 ms  2231/4794 (47%)  
+[  5]   7.01-8.00   sec  2.87 MBytes  24.2 Mbits/sec  0.310 ms  2560/5573 (46%)  
+[  5]   8.00-9.01   sec  2.84 MBytes  23.7 Mbits/sec  1.158 ms  1927/4909 (39%)  
+[  5]   9.01-10.00  sec  2.59 MBytes  21.9 Mbits/sec  1.103 ms  1915/4630 (41%)  
+[  5]  10.00-10.03  sec  68.4 KBytes  18.6 Mbits/sec  1.097 ms  102/172 (59%)  
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total Datagrams
+[  5]   0.00-10.03  sec  25.3 MBytes  21.2 Mbits/sec  1.097 ms  22132/48690 (45%)  receiver
+-----------------------------------------------------------
+Server listening on 8101
+-----------------------------------------------------------

@@ -1,0 +1,207 @@
+Listen address was not set. Defaulting to 0.0.0.0
+Server is starting.
+Connection: 172.19.0.1:63302
+Expected file size: 8911847424
+File transfer: 1% (Total: 89119216 received out of 8911847424 bytes. ). Sent 89119216 over 10393 milliseconds
+    Speed is 68.5994 mb/s.
+File transfer: 2% (Total: 178237168 received out of 8911847424 bytes. ). Sent 89117952 over 10478 milliseconds
+    Speed is 68.042 mb/s.
+File transfer: 3% (Total: 267356144 received out of 8911847424 bytes. ). Sent 89118976 over 9795 milliseconds
+    Speed is 72.7873 mb/s.
+File transfer: 4% (Total: 356474096 received out of 8911847424 bytes. ). Sent 89117952 over 10584 milliseconds
+    Speed is 67.3605 mb/s.
+File transfer: 5% (Total: 445593072 received out of 8911847424 bytes. ). Sent 89118976 over 9567 milliseconds
+    Speed is 74.522 mb/s.
+File transfer: 6% (Total: 534711024 received out of 8911847424 bytes. ). Sent 89117952 over 9993 milliseconds
+    Speed is 71.3443 mb/s.
+File transfer: 7% (Total: 623830000 received out of 8911847424 bytes. ). Sent 89118976 over 11204 milliseconds
+    Speed is 63.6337 mb/s.
+File transfer: 8% (Total: 712948192 received out of 8911847424 bytes. ). Sent 89118192 over 10064 milliseconds
+    Speed is 70.8412 mb/s.
+File transfer: 9% (Total: 802067168 received out of 8911847424 bytes. ). Sent 89118976 over 10019 milliseconds
+    Speed is 71.16 mb/s.
+File transfer: 10% (Total: 891185120 received out of 8911847424 bytes. ). Sent 89117952 over 9683 milliseconds
+    Speed is 73.6284 mb/s.
+File transfer: 11% (Total: 980304096 received out of 8911847424 bytes. ). Sent 89118976 over 10403 milliseconds
+    Speed is 68.5333 mb/s.
+File transfer: 12% (Total: 1069422048 received out of 8911847424 bytes. ). Sent 89117952 over 9980 milliseconds
+    Speed is 71.4372 mb/s.
+File transfer: 13% (Total: 1158541024 received out of 8911847424 bytes. ). Sent 89118976 over 10204 milliseconds
+    Speed is 69.8698 mb/s.
+File transfer: 14% (Total: 1247659216 received out of 8911847424 bytes. ). Sent 89118192 over 10918 milliseconds
+    Speed is 65.3 mb/s.
+File transfer: 15% (Total: 1336777168 received out of 8911847424 bytes. ). Sent 89117952 over 10072 milliseconds
+    Speed is 70.7847 mb/s.
+File transfer: 16% (Total: 1425896144 received out of 8911847424 bytes. ). Sent 89118976 over 9696 milliseconds
+    Speed is 73.5305 mb/s.
+File transfer: 17% (Total: 1515014096 received out of 8911847424 bytes. ). Sent 89117952 over 9712 milliseconds
+    Speed is 73.4085 mb/s.
+File transfer: 18% (Total: 1604133072 received out of 8911847424 bytes. ). Sent 89118976 over 10194 milliseconds
+    Speed is 69.9384 mb/s.
+File transfer: 19% (Total: 1693251024 received out of 8911847424 bytes. ). Sent 89117952 over 10990 milliseconds
+    Speed is 64.872 mb/s.
+File transfer: 20% (Total: 1782370000 received out of 8911847424 bytes. ). Sent 89118976 over 10160 milliseconds
+    Speed is 70.1724 mb/s.
+File transfer: 21% (Total: 1871488192 received out of 8911847424 bytes. ). Sent 89118192 over 10129 milliseconds
+    Speed is 70.3866 mb/s.
+File transfer: 22% (Total: 1960607168 received out of 8911847424 bytes. ). Sent 89118976 over 10795 milliseconds
+    Speed is 66.0446 mb/s.
+File transfer: 23% (Total: 2049725120 received out of 8911847424 bytes. ). Sent 89117952 over 10140 milliseconds
+    Speed is 70.31 mb/s.
+File transfer: 24% (Total: 2138844096 received out of 8911847424 bytes. ). Sent 89118976 over 9831 milliseconds
+    Speed is 72.5208 mb/s.
+File transfer: 25% (Total: 2227962048 received out of 8911847424 bytes. ). Sent 89117952 over 9661 milliseconds
+    Speed is 73.796 mb/s.
+File transfer: 26% (Total: 2317081024 received out of 8911847424 bytes. ). Sent 89118976 over 9936 milliseconds
+    Speed is 71.7544 mb/s.
+File transfer: 27% (Total: 2406199216 received out of 8911847424 bytes. ). Sent 89118192 over 10024 milliseconds
+    Speed is 71.1239 mb/s.
+File transfer: 28% (Total: 2495318192 received out of 8911847424 bytes. ). Sent 89118976 over 9422 milliseconds
+    Speed is 75.6688 mb/s.
+File transfer: 29% (Total: 2584436144 received out of 8911847424 bytes. ). Sent 89117952 over 9978 milliseconds
+    Speed is 71.4516 mb/s.
+File transfer: 30% (Total: 2673555120 received out of 8911847424 bytes. ). Sent 89118976 over 9845 milliseconds
+    Speed is 72.4177 mb/s.
+File transfer: 31% (Total: 2762673072 received out of 8911847424 bytes. ). Sent 89117952 over 9645 milliseconds
+    Speed is 73.9185 mb/s.
+File transfer: 32% (Total: 2851792048 received out of 8911847424 bytes. ). Sent 89118976 over 10293 milliseconds
+    Speed is 69.2657 mb/s.
+File transfer: 33% (Total: 2940910000 received out of 8911847424 bytes. ). Sent 89117952 over 9889 milliseconds
+    Speed is 72.0946 mb/s.
+File transfer: 34% (Total: 3030028192 received out of 8911847424 bytes. ). Sent 89118192 over 9690 milliseconds
+    Speed is 73.5754 mb/s.
+File transfer: 35% (Total: 3119147168 received out of 8911847424 bytes. ). Sent 89118976 over 9843 milliseconds
+    Speed is 72.4324 mb/s.
+File transfer: 36% (Total: 3208265120 received out of 8911847424 bytes. ). Sent 89117952 over 10035 milliseconds
+    Speed is 71.0457 mb/s.
+File transfer: 37% (Total: 3297384096 received out of 8911847424 bytes. ). Sent 89118976 over 10118 milliseconds
+    Speed is 70.4637 mb/s.
+File transfer: 38% (Total: 3386502048 received out of 8911847424 bytes. ). Sent 89117952 over 9731 milliseconds
+    Speed is 73.2652 mb/s.
+File transfer: 39% (Total: 3475621024 received out of 8911847424 bytes. ). Sent 89118976 over 9824 milliseconds
+    Speed is 72.5725 mb/s.
+File transfer: 40% (Total: 3564739216 received out of 8911847424 bytes. ). Sent 89118192 over 10227 milliseconds
+    Speed is 69.7121 mb/s.
+File transfer: 41% (Total: 3653858192 received out of 8911847424 bytes. ). Sent 89118976 over 10133 milliseconds
+    Speed is 70.3594 mb/s.
+File transfer: 42% (Total: 3742976144 received out of 8911847424 bytes. ). Sent 89117952 over 10087 milliseconds
+    Speed is 70.6795 mb/s.
+File transfer: 43% (Total: 3832095120 received out of 8911847424 bytes. ). Sent 89118976 over 10193 milliseconds
+    Speed is 69.9452 mb/s.
+File transfer: 44% (Total: 3921213072 received out of 8911847424 bytes. ). Sent 89117952 over 9930 milliseconds
+    Speed is 71.7969 mb/s.
+File transfer: 45% (Total: 4010332048 received out of 8911847424 bytes. ). Sent 89118976 over 10009 milliseconds
+    Speed is 71.2311 mb/s.
+File transfer: 46% (Total: 4099450000 received out of 8911847424 bytes. ). Sent 89117952 over 10211 milliseconds
+    Speed is 69.8211 mb/s.
+File transfer: 47% (Total: 4188569216 received out of 8911847424 bytes. ). Sent 89119216 over 10110 milliseconds
+    Speed is 70.5197 mb/s.
+File transfer: 48% (Total: 4277687168 received out of 8911847424 bytes. ). Sent 89117952 over 10036 milliseconds
+    Speed is 71.0386 mb/s.
+File transfer: 49% (Total: 4366806144 received out of 8911847424 bytes. ). Sent 89118976 over 9930 milliseconds
+    Speed is 71.7978 mb/s.
+File transfer: 50% (Total: 4455924096 received out of 8911847424 bytes. ). Sent 89117952 over 9927 milliseconds
+    Speed is 71.8186 mb/s.
+File transfer: 51% (Total: 4545043072 received out of 8911847424 bytes. ). Sent 89118976 over 9993 milliseconds
+    Speed is 71.3451 mb/s.
+File transfer: 52% (Total: 4634161024 received out of 8911847424 bytes. ). Sent 89117952 over 9931 milliseconds
+    Speed is 71.7897 mb/s.
+File transfer: 53% (Total: 4723279216 received out of 8911847424 bytes. ). Sent 89118192 over 10041 milliseconds
+    Speed is 71.0034 mb/s.
+File transfer: 54% (Total: 4812398192 received out of 8911847424 bytes. ). Sent 89118976 over 9835 milliseconds
+    Speed is 72.4913 mb/s.
+File transfer: 55% (Total: 4901516144 received out of 8911847424 bytes. ). Sent 89117952 over 9727 milliseconds
+    Speed is 73.2953 mb/s.
+File transfer: 56% (Total: 4990635120 received out of 8911847424 bytes. ). Sent 89118976 over 10322 milliseconds
+    Speed is 69.0711 mb/s.
+File transfer: 57% (Total: 5079753072 received out of 8911847424 bytes. ). Sent 89117952 over 9929 milliseconds
+    Speed is 71.8042 mb/s.
+File transfer: 58% (Total: 5168872048 received out of 8911847424 bytes. ). Sent 89118976 over 10047 milliseconds
+    Speed is 70.9617 mb/s.
+File transfer: 59% (Total: 5257990000 received out of 8911847424 bytes. ). Sent 89117952 over 9572 milliseconds
+    Speed is 74.4822 mb/s.
+File transfer: 60% (Total: 5347109216 received out of 8911847424 bytes. ). Sent 89119216 over 9814 milliseconds
+    Speed is 72.6466 mb/s.
+File transfer: 61% (Total: 5436227168 received out of 8911847424 bytes. ). Sent 89117952 over 9891 milliseconds
+    Speed is 72.08 mb/s.
+File transfer: 62% (Total: 5525346144 received out of 8911847424 bytes. ). Sent 89118976 over 9823 milliseconds
+    Speed is 72.5798 mb/s.
+File transfer: 63% (Total: 5614464096 received out of 8911847424 bytes. ). Sent 89117952 over 9651 milliseconds
+    Speed is 73.8725 mb/s.
+File transfer: 64% (Total: 5703583072 received out of 8911847424 bytes. ). Sent 89118976 over 10022 milliseconds
+    Speed is 71.1387 mb/s.
+File transfer: 65% (Total: 5792701024 received out of 8911847424 bytes. ). Sent 89117952 over 10142 milliseconds
+    Speed is 70.2962 mb/s.
+File transfer: 66% (Total: 5881820000 received out of 8911847424 bytes. ). Sent 89118976 over 9973 milliseconds
+    Speed is 71.4882 mb/s.
+File transfer: 67% (Total: 5970938192 received out of 8911847424 bytes. ). Sent 89118192 over 10110 milliseconds
+    Speed is 70.5188 mb/s.
+File transfer: 68% (Total: 6060057168 received out of 8911847424 bytes. ). Sent 89118976 over 10089 milliseconds
+    Speed is 70.6663 mb/s.
+File transfer: 69% (Total: 6149175120 received out of 8911847424 bytes. ). Sent 89117952 over 9862 milliseconds
+    Speed is 72.292 mb/s.
+File transfer: 70% (Total: 6238294096 received out of 8911847424 bytes. ). Sent 89118976 over 9923 milliseconds
+    Speed is 71.8484 mb/s.
+File transfer: 71% (Total: 6327412048 received out of 8911847424 bytes. ). Sent 89117952 over 9967 milliseconds
+    Speed is 71.5304 mb/s.
+File transfer: 72% (Total: 6416531024 received out of 8911847424 bytes. ). Sent 89118976 over 9910 milliseconds
+    Speed is 71.9427 mb/s.
+File transfer: 73% (Total: 6505649216 received out of 8911847424 bytes. ). Sent 89118192 over 10013 milliseconds
+    Speed is 71.202 mb/s.
+File transfer: 74% (Total: 6594767168 received out of 8911847424 bytes. ). Sent 89117952 over 9824 milliseconds
+    Speed is 72.5716 mb/s.
+File transfer: 75% (Total: 6683886144 received out of 8911847424 bytes. ). Sent 89118976 over 9889 milliseconds
+    Speed is 72.0954 mb/s.
+File transfer: 76% (Total: 6773004096 received out of 8911847424 bytes. ). Sent 89117952 over 10095 milliseconds
+    Speed is 70.6234 mb/s.
+File transfer: 77% (Total: 6862123072 received out of 8911847424 bytes. ). Sent 89118976 over 11021 milliseconds
+    Speed is 64.6903 mb/s.
+File transfer: 78% (Total: 6951241024 received out of 8911847424 bytes. ). Sent 89117952 over 11594 milliseconds
+    Speed is 61.4925 mb/s.
+File transfer: 79% (Total: 7040360000 received out of 8911847424 bytes. ). Sent 89118976 over 11987 milliseconds
+    Speed is 59.4771 mb/s.
+File transfer: 80% (Total: 7129478192 received out of 8911847424 bytes. ). Sent 89118192 over 10550 milliseconds
+    Speed is 67.5778 mb/s.
+File transfer: 81% (Total: 7218597168 received out of 8911847424 bytes. ). Sent 89118976 over 9989 milliseconds
+    Speed is 71.3737 mb/s.
+File transfer: 82% (Total: 7307715120 received out of 8911847424 bytes. ). Sent 89117952 over 9989 milliseconds
+    Speed is 71.3729 mb/s.
+File transfer: 83% (Total: 7396834096 received out of 8911847424 bytes. ). Sent 89118976 over 9996 milliseconds
+    Speed is 71.3237 mb/s.
+File transfer: 84% (Total: 7485952048 received out of 8911847424 bytes. ). Sent 89117952 over 10129 milliseconds
+    Speed is 70.3864 mb/s.
+File transfer: 85% (Total: 7575071024 received out of 8911847424 bytes. ). Sent 89118976 over 11157 milliseconds
+    Speed is 63.9017 mb/s.
+File transfer: 86% (Total: 7664189216 received out of 8911847424 bytes. ). Sent 89118192 over 10645 milliseconds
+    Speed is 66.9747 mb/s.
+File transfer: 87% (Total: 7753308192 received out of 8911847424 bytes. ). Sent 89118976 over 10057 milliseconds
+    Speed is 70.8911 mb/s.
+File transfer: 88% (Total: 7842426144 received out of 8911847424 bytes. ). Sent 89117952 over 9904 milliseconds
+    Speed is 71.9854 mb/s.
+File transfer: 89% (Total: 7931545120 received out of 8911847424 bytes. ). Sent 89118976 over 9936 milliseconds
+    Speed is 71.7544 mb/s.
+File transfer: 90% (Total: 8020663072 received out of 8911847424 bytes. ). Sent 89117952 over 9954 milliseconds
+    Speed is 71.6238 mb/s.
+File transfer: 91% (Total: 8109782048 received out of 8911847424 bytes. ). Sent 89118976 over 10444 milliseconds
+    Speed is 68.2642 mb/s.
+File transfer: 92% (Total: 8198900000 received out of 8911847424 bytes. ). Sent 89117952 over 9526 milliseconds
+    Speed is 74.8419 mb/s.
+File transfer: 93% (Total: 8288018192 received out of 8911847424 bytes. ). Sent 89118192 over 9756 milliseconds
+    Speed is 73.0776 mb/s.
+File transfer: 94% (Total: 8377137168 received out of 8911847424 bytes. ). Sent 89118976 over 9582 milliseconds
+    Speed is 74.4053 mb/s.
+File transfer: 95% (Total: 8466255120 received out of 8911847424 bytes. ). Sent 89117952 over 9837 milliseconds
+    Speed is 72.4757 mb/s.
+File transfer: 96% (Total: 8555374096 received out of 8911847424 bytes. ). Sent 89118976 over 10202 milliseconds
+    Speed is 69.8835 mb/s.
+File transfer: 97% (Total: 8644492048 received out of 8911847424 bytes. ). Sent 89117952 over 9636 milliseconds
+    Speed is 73.9875 mb/s.
+File transfer: 98% (Total: 8733611024 received out of 8911847424 bytes. ). Sent 89118976 over 11511 milliseconds
+    Speed is 61.9366 mb/s.
+File transfer: 99% (Total: 8822729216 received out of 8911847424 bytes. ). Sent 89118192 over 10609 milliseconds
+    Speed is 67.202 mb/s.
+File transfer: 100% (Total: 8911847424 received out of 8911847424 bytes. ). Sent 89118208 over 11905 milliseconds
+    Speed is 59.8862 mb/s.
+Calculating checksum ...
+Checksum calculated: ffffffc0ffffff94ffffffeb667e544240ffffffd7ffffffac3affffff8d7408ffffffedffffffa0ffffffe8ffffff9046fffffffeffffffc1ffffff8affffffcdffffffd129fffffffaffffffb568ffffffd3ffffffcfffffffd6ffffffe6
+Checksums match.
