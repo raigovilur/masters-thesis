@@ -1,8 +1,8 @@
 # Results
 ## TODO
-- [x] TLS_insitu
-- [ ] DTLS_insitu
-- [ ] QUIC_insitu
+- [x] TLS_local
+- [ ] DTLS_local
+- [ ] QUIC_local
 - [ ] TLS_vehicle
 - [ ] DTLS_vehicle
 - [ ] QUIC_vehicle
