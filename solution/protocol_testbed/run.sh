@@ -223,16 +223,15 @@ if [ $log_enabled == 1 -o $top_enabled == 1 ] ; then
     outdir=`realpath $outbasedir/$current`
     logfile=$outdir/$protocol
   else
-    outdir=$outbasedir/$(eval date +"%Y-%m-%d-%H:%M:%S")
-    mkdir $outdir
-    outdir=`realpath $outdir`
-    if [ -e "$outbasedir/current" ] ; then
-      rm $outbasedir/current
+    outdir=$(eval date +"%Y-%m-%d-%H:%M:%S")
+    mkdir $outbasedir/$outdir
+    if [ -e "$outbasedir/$current" ] ; then
+      rm $outbasedir/$current
     fi
-    ln -s $outdir $outbasedir/current
+    ln -s $outdir $outbasedir/$current
+    outdir=`realpath $outbasedir/$outdir`
     logfile=$outdir/$protocol
     iperf_logfile=$outdir/iperf.log
-    touch logfile
   fi
 fi
 
@@ -246,7 +245,6 @@ if [ $log_enabled == 1 ] ; then
     dtls_run_with_log
   else
     run_with_log
-    fi
   fi
 else
   if [ $protocol == "DTLS" ] ; then
