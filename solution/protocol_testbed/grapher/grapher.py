@@ -238,6 +238,81 @@ def generate_throughput_graph(throughput_logfile_name):
     if DEBUG:
         print(throughput_df)
 
+def generate_throughput_sorted_graph(throughput_logfile_name):
+    throughput_logfile = open(throughput_logfile_name, "r")
+    throughput_data = []
+
+    data = ['']*2
+    for line in throughput_logfile:
+        line = line.rstrip("\n")
+        line = line.lstrip()
+
+        if re.search("^File transfer", line):
+
+            row = re.split("\s+", line)
+            data[0] = int(row[2].strip("%"))
+
+        if re.search("^Speed", line):
+            line = line.rstrip("\n")
+            line = line.lstrip()
+
+            row = re.split("\s+", line)
+            data[1] = float(row[2])
+
+            throughput_data.append(data)
+            data = ['']*2
+    
+    throughput_logfile.close()
+
+    throughput_df = pd.DataFrame(throughput_data, columns = ["transferred", "throughput"])
+    throughput_df = throughput_df.sort_values(by='throughput', ascending=True)
+    throughput_df["rate"] = 0
+
+    for i in range(len(throughput_df)):
+        throughput_df.iloc[i, 2] =  (float(i + 1) / len(throughput_df)) * 100
+    
+    if DEBUG:
+        print(throughput_df)
+    
+    throughput_fig = px.line(throughput_df, x="rate", y="throughput")
+
+    [x_min, x_max] = [0, 100]
+    [y_min, y_max] = [math.floor(min(throughput_df["throughput"])), math.ceil(max(throughput_df["throughput"]))]
+    if y_min % 2 != 0:
+        y_min = y_min - 1
+    if y_max % 2 != 0:
+        y_max = y_max + 1
+
+    throughput_fig.update_layout(
+        xaxis = dict(
+            title = "Percentage of received file (%)",
+            range = [x_min, x_max],
+            dtick = 10
+        ),
+        yaxis = dict(
+            title = "Throughput (Mb/s)",
+            range = [y_min, y_max],
+            dtick = 2
+        ),
+        font=dict(
+            family = "Times New Roman",
+            size=36,
+        ),
+    )
+    throughput_fig.update_traces(
+        mode="lines+markers",
+        marker=dict(
+            size=10,
+        ),
+        line=dict(
+            width=4,
+        )
+    )
+    throughput_fig.show()
+
+    if DEBUG:
+        print(throughput_df)
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Grapher for protocol tested')
@@ -259,6 +334,7 @@ if __name__ == "__main__":
     generate_cpu_usage_graph(top_logfile_name, time_data)
     generate_power_consumption_graph(power_logfile_name, time_data)
     generate_throughput_graph(throughput_logfile_name)
+    generate_throughput_sorted_graph(throughput_logfile_name)
 
 
 
