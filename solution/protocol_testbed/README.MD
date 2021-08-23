@@ -60,7 +60,7 @@ Options:
 ```
 ./run.sh -p -c -o client TLS|DTLS|QUIC
 ```
-**Note**: Running powertop/powerstat is prompted by the program when you enable p option.
+**Note**: To run powerstat is prompted by the program when you enable p option.
 
 #### Server
 ```
