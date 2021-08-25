@@ -47,6 +47,7 @@ bool Server::consumeInternal(const std::string& client, const unsigned char *byt
 
     // FIRST BYTES are header
     size_t numberOfBytesProcessed = 0; // Amount we have consumed already from the packet
+    /*
     if (_clientHeaders.find(client) == _clientHeaders.end())
     {
         // No header has been received
@@ -93,6 +94,7 @@ bool Server::consumeInternal(const std::string& client, const unsigned char *byt
         // Sanity check
         assert(false && "Header should be processed by this time");
     }
+    */
 
     size_t bytesToProcess = packetLength - numberOfBytesProcessed;
 

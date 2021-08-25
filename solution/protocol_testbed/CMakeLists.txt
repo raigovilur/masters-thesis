@@ -38,6 +38,7 @@ add_executable(protocol_testbed_client
         src/dtlsCookieVault/ck_secrets_vault.h
         src/util/CSVWriter.h
         src/util/TimeRecorder.h
+        src/util/CSV.h
         #src/protocol/MvfstProtocolQUIC2.cpp
         #src/protocol/MvfstProtocolQUIC2.h
         src/protocol/OSProtocolTCP.cpp src/protocol/OSProtocolTCP.h src/protocol/OSProtocolUDP.cpp src/protocol/OSProtocolUDP.h)

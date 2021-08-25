@@ -204,14 +204,7 @@ case $mode in
     ;;
   esac
 
-if [ -z "$PROTOCOL_TESTBED_FILE" ] ; then
-  filepath="./file/test.txt"
-  truncate -s 8499M $filepath
-  truncate -s 300M "./file/test_small.txt"
-fi
-
-# TEMPORARY
-filepath="./file/test_small.txt"
+filepath="./file/vehicle_velocity.csv"
 
 if [ $log_enabled == 1 -o $top_enabled == 1 ] ; then
   if [ $powerstat_enabled == 1 ] ; then

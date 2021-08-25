@@ -2,7 +2,7 @@ version: "3.9"
    
 services:
   client:
-    image: camsenec/protocol_testbed:${TAG}
+    image: camsenec/protocol_testbed_packet:${TAG}
     stdin_open: true 
     tty: true
     volumes:
@@ -17,7 +17,7 @@ services:
       #- PROTOCOL_TESTBED_FILE=somefile
     
   server:
-    image: camsenec/protocol_testbed:${TAG}
+    image: camsenec/protocol_testbed_packet:${TAG}
     stdin_open: true
     tty: true
     volumes:
