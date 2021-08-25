@@ -8,7 +8,7 @@ services:
     volumes:
       - ./out:/app/out
     environment:
-      - PROTOCOL_TESTBED_ADDRESS=13.53.194.140
+      - PROTOCOL_TESTBED_ADDRESS=16.170.140.181
       - PROTOCOL_TESTBED_PORT=8100
       - PROTOCOL_TESTBED_STPORT=8101
       - PROTOCOL_TESTBED_BUFSIZE=10000

@@ -40,7 +40,8 @@ dtls_run() {
       --buffer-size $PROTOCOL_TESTBED_BUFSIZE \
       --udpTarget $PROTOCOL_TESTBED_UDP_TARGET \
       --stportBW $PROTOCOL_TESTBED_STPORTBW \
-      --file $filepath
+      --file $filepath \
+      --cipher $cipher
     ;;
   "server")
     if [ ! -e "cert.pem" -o ! -e "key.pem" ] ; then
@@ -54,7 +55,9 @@ dtls_run() {
       --port $PROTOCOL_TESTBED_PORT \
       --cert ./cert.pem \
       --pkey ./key.pem \
-      --path $filepath
+      --path $filepath \
+      --cipher $cipher
+
     ;;
   *)
     print_usage
@@ -72,7 +75,8 @@ run() {
       --port $PROTOCOL_TESTBED_PORT \
       --stport $PROTOCOL_TESTBED_STPORT \
       --buffer-size $PROTOCOL_TESTBED_BUFSIZE \
-      --file $filepath
+      --file $filepath \ 
+      --cipher $cipher
       ;;
   "server")
     if [ ! -e "cert.pem" -o ! -e "key.pem" ] ; then
@@ -86,7 +90,8 @@ run() {
       --port $PROTOCOL_TESTBED_PORT \
       --cert ./cert.pem \
       --pkey ./key.pem \
-      --path $filepath
+      --path $filepath \ 
+      --cipher $cipher
       ;;
   *)
     print_usage
@@ -105,7 +110,7 @@ dtls_run_with_log() {
       --buffer-size $PROTOCOL_TESTBED_BUFSIZE \
       --udpTarget $PROTOCOL_TESTBED_UDP_TARGET \
       --stportBW $PROTOCOL_TESTBED_STPORTBW \
-      --file $filepath >$logfile
+      --file $filepath --cipher $cipher >$logfile
     ;;
   "server")
     if [ ! -e "cert.pem" -o ! -e "key.pem" ] ; then
@@ -119,7 +124,7 @@ dtls_run_with_log() {
       --port $PROTOCOL_TESTBED_PORT \
       --cert ./cert.pem \
       --pkey ./key.pem \
-      --path $filepath >$logfile
+      --path $filepath --cipher $cipher >$logfile
     ;;
   *)
     print_usage
@@ -137,7 +142,7 @@ run_with_log() {
       --port $PROTOCOL_TESTBED_PORT \
       --stport $PROTOCOL_TESTBED_STPORT \
       --buffer-size $PROTOCOL_TESTBED_BUFSIZE \
-      --file $filepath >$logfile
+      --file $filepath --cipher $cipher >$logfile
       ;;
   "server")
     if [ ! -e "cert.pem" -o ! -e "key.pem" ] ; then
@@ -151,7 +156,7 @@ run_with_log() {
       --port $PROTOCOL_TESTBED_PORT \
       --cert ./cert.pem \
       --pkey ./key.pem \
-      --path $filepath >$logfile
+      --path $filepath --cipher $cipher >$logfile
       ;;
   *)
     print_usage
@@ -188,7 +193,7 @@ done
 shift `expr $OPTIND - 1`
 
 
-if [ $# -lt 2 ] ; then
+if [ $# -lt 3 ] ; then
   print_usage
   exit 1
 fi

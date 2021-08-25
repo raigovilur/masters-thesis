@@ -32,6 +32,7 @@ int main(int argc, char *argv[]) {
 
                 ("buffer-size", po::value<unsigned>(), "Set file reading buffer size")
                 ("file", po::value<std::string>(), "Set path to file for transfer")
+                ("cipher", po::value<uint>(), "Set cipher")
                 ;
 
         po::variables_map vm;

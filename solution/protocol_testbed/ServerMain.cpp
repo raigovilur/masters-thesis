@@ -36,6 +36,7 @@ int main(int argc, char *argv[]) {
                 ("path", po::value<std::string>(), "Set destination base path")
                 ("pkey", po::value<std::string>(), "Private key path")
                 ("cert", po::value<std::string>(), "Certificate path")
+                ("cipher", po::value<uint>(), "Set cipher")
                 ;
 
         po::variables_map vm;
