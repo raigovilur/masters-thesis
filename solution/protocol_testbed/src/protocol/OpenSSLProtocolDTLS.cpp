@@ -30,7 +30,7 @@
 #define PACKET_SIZE_LEN 2
 #define SEQ_NO_LEN 4
 
-bool Protocol::OpenSSLProtocolDTLS::openProtocol(std::string address, uint port, Options options) {
+bool Protocol::OpenSSLProtocolDTLS::openProtocol(std::string address, uint port, uint cipher, Options options) {
     _options = options;
     SSL_load_error_strings();
     ERR_load_crypto_strings();
@@ -75,8 +75,36 @@ bool Protocol::OpenSSLProtocolDTLS::openProtocol(std::string address, uint port,
         return false;
     }
     SSL_CTX_set_options(ctx, SSL_OP_NO_DTLSv1); // We are only interested in DTLS 1.2
-    //SSL_CTX_set_ciphersuites(ctx, "TLS_CHACHA20_POLY1305_SHA256");
-    //SSL_CTX_set_ciphersuites(ctx, "TLS_CHACHA20_POLY1305_SHA256");
+    
+    switch(cipher){
+        case 1:
+            SSL_CTX_set_ciphersuites(ctx, "TLS_AES_128_GCM_SHA256");
+            std::cout << "TLS_AES_128_GCM_SHA256" << std::endl;
+            break;
+        
+        case 2:
+            SSL_CTX_set_ciphersuites(ctx, "TLS_AES_256_GCM_SHA256");
+            std::cout << "TLS_AES_256_GCM_SHA256" << std::endl;
+            break;
+        
+        case 3:
+            SSL_CTX_set_ciphersuites(ctx, "TLS_AES_128_CCM_SHA256");
+            std::cout << "TLS_AES_128_CCM_SHA256" << std::endl;
+            break;
+        
+        case 4:
+            SSL_CTX_set_ciphersuites(ctx, "TLS_AES_128_CCM_8_SHA256");
+            std::cout << "TLS_AES_128_CCM_8_SHA256" << std::endl;
+            break;
+        
+        case 5:
+            SSL_CTX_set_ciphersuites(ctx, "TLS_CHACHA20_POLY1305_SHA256");
+            std::cout << "TLS_CHACHA20_POLY1305_SHA256" << std::endl;
+            break;
+        default:
+            std::cout << "Unknown ciphersuites" << std::endl;
+            exit(1);
+    }
     _ssl = SSL_new(ctx);
 
 

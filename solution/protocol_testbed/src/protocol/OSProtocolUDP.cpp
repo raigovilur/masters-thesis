@@ -6,7 +6,7 @@
 #include <thread>
 #include "OSProtocolUDP.h"
 
-bool Protocol::OSProtocolUDP::openProtocol(std::string address, uint port, Protocol::Options options) {
+bool Protocol::OSProtocolUDP::openProtocol(std::string address, uint port, uint cipher, Protocol::Options options) {
     _options = options;
     _socket = socket(AF_INET, SOCK_DGRAM, 0);
     memset(&saiServerAddress, 0, sizeof(saiServerAddress));

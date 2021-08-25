@@ -125,7 +125,7 @@ public:
         _connected = false;
     }
 
-    void start() {
+    void start(uint cipher) {
         auto evb = _networkThread.getEventBase();
         folly::SocketAddress addr(host_.c_str(), port_);
 
@@ -133,7 +133,36 @@ public:
             auto sock = std::make_unique<folly::AsyncUDPSocket>(evb);
             sock->setRcvBuf(100000);
             auto fizzClientContext = std::make_shared<fizz::client::FizzClientContext>();
-            fizzClientContext->setSupportedCiphers({fizz::CipherSuite::TLS_CHACHA20_POLY1305_SHA256});
+            switch(cipher){
+                case 1:
+                    fizzClientContext->setSupportedCiphers({fizz::CipherSuite::TLS_AES_128_GCM_SHA256});
+                    std::cout << "TLS_AES_128_GCM_SHA256" << std::endl;
+                    break;
+                
+                case 2:
+                    fizzClientContext->setSupportedCiphers({fizz::CipherSuite::TLS_AES_256_GCM_SHA384});
+                    std::cout << "TLS_AES_256_GCM_SHA256" << std::endl;
+                    break;
+                
+                case 3:
+                    //fizzClientContext->setSupportedCiphers({fizz::CipherSuite::TLS_AES_128_CCM_SHA256});
+                    std::cout << "TLS_AES_128_CCM_SHA256 is not available" << std::endl;
+                    exit(1);
+
+                case 4: 
+                    //fizzClientContext->setSupportedCiphers({fizz::CipherSuite::TLS_AES_128_CCM_8_SHA256});
+                    std::cout << "TLS_AES_128_CCM_8_SHA256is not available" << std::endl;
+                    exit(1);
+                
+                case 5:
+                    fizzClientContext->setSupportedCiphers({fizz::CipherSuite::TLS_CHACHA20_POLY1305_SHA256});
+                    std::cout << "TLS_CHACHA20_POLY1305_SHA256" << std::endl;
+                    break;
+                    
+                default:
+                    std::cout << "Unknown ciphersuites" << std::endl;
+                    exit(1);
+            }
             auto fizzClientQuicHandshakeContext =
                     FizzClientQuicHandshakeContext::Builder()
                             .setCertificateVerifier(std::make_shared<ClientsideCertificateVerifier>())
@@ -258,7 +287,7 @@ private:
     bool _connected = false;
 };
 
-bool Protocol::MvfstProtocolQUIC::openProtocol(std::string address, uint port, Options options) {
+bool Protocol::MvfstProtocolQUIC::openProtocol(std::string address, uint port, uint cipher, Options options) {
     _options = options;
     static bool isGoogleLoggingOpened = false;
     if (!isGoogleLoggingOpened)
@@ -272,7 +301,7 @@ bool Protocol::MvfstProtocolQUIC::openProtocol(std::string address, uint port, O
 
     LOG(INFO) << "Starting MVFST";
     _mvfst = new MvFstConnector(address, port);
-    _mvfst->start();
+    _mvfst->start(cipher);
     return _mvfst->isConnected();
 }
 

@@ -8,7 +8,7 @@
 #include "OSProtocolTCP.h"
 #include <unistd.h>
 
-bool Protocol::OSProtocolTCP::openProtocol(std::string address, uint port, Protocol::Options) {
+bool Protocol::OSProtocolTCP::openProtocol(std::string address, uint port, uint cipher, Protocol::Options) {
 
     _socket = socket(AF_INET, SOCK_STREAM, 0);
     sockaddr_in saiServerAddress{};

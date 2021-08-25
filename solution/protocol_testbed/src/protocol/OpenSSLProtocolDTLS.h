@@ -11,7 +11,7 @@ namespace Protocol {
 
     class OpenSSLProtocolDTLS : public ProtocolInterface {
     public:
-        bool openProtocol(std::string address, uint port, Options) override;
+        bool openProtocol(std::string address, uint port, uint cipher, Options) override;
         bool openProtocolServer(uint port) override;
         bool send(const char *buffer, size_t bufferSize, bool eof) override;
         bool closeProtocol() override;

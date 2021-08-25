@@ -10,7 +10,7 @@ namespace ServerProto {
     public:
         ~ServerOpenSSLProtocolDTLS();
 
-        [[noreturn]] bool serverListen(const std::string &address, ushort port) override;
+        [[noreturn]] bool serverListen(const std::string &address, ushort port, uint cipher) override;
 
         bool setCertificate(const char *certificate, size_t len) override;
 

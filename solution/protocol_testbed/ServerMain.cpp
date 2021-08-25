@@ -24,6 +24,7 @@ int main(int argc, char *argv[]) {
     std::string filePath;
     std::string pkeyPath;
     std::string certPath;
+    uint cipher;
 
     try {
         po::options_description desc("Allowed options");
@@ -101,6 +102,13 @@ int main(int argc, char *argv[]) {
             std::cout << "File path was not set. Defaulting to local directory" << std::endl;
             filePath = "";
         }
+
+        if (vm.count("cipher")) {
+            cipher = vm["cipher"].as<uint>();
+        } else {
+            std::cerr << "Cipher was not set." << std::endl;
+            return -1;
+        }
     }
     catch(std::exception& e) {
         std::cerr << "error: " << e.what() << std::endl;
@@ -120,6 +128,6 @@ int main(int argc, char *argv[]) {
 
     Server server;
     server.readCertificate(pkeyPath, certPath);
-    server.start(protocolType, listenAddress, port);
+    server.start(protocolType, listenAddress, port, cipher);
 
 }

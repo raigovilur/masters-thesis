@@ -8,7 +8,7 @@ namespace ServerProto {
     public:
         ~ServerOSProtocolUDP();
 
-        bool serverListen(const std::string &address, ushort port) override;
+        bool serverListen(const std::string &address, ushort port, uint cipher) override;
 
         bool setCertificate(const char *certificate, size_t len) override;
 

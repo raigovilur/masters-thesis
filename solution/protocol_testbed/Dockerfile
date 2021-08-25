@@ -44,7 +44,9 @@ RUN apt -y install  \
       libsodium-dev             \
       libbz2-dev                \
       libunwind-dev             \
-      iputils-ping
+      iputils-ping              \
+      ntpdate                   \
+      ntp
 
 
 RUN apt -y install \ 

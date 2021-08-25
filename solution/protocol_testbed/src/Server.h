@@ -59,7 +59,7 @@ private:
     };
 
 public:
-    bool start(Protocol::ProtocolType type, const std::string& listenAddress, ushort port);
+    bool start(Protocol::ProtocolType type, const std::string& listenAddress, ushort port, uint cipher);
     bool readCertificate(const std::string& privKeyPath, const std::string& certPath);
 
     bool consume(std::string client, const unsigned char *bytes, size_t packetLength) override;

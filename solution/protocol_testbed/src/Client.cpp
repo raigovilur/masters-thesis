@@ -41,7 +41,7 @@ void Client::runSpeedTest(uint port, const std::string& bandwidth) const {
 }
 
 
-void Client::send(const std::string& path, size_t bufferSize, uint retryCount, Utils::TimeRecorder *timeRecorder) {
+void Client::send(const std::string& path, size_t bufferSize, uint retryCount, Utils::TimeRecorder *timeRecorder, uint cipher) {
 
     auto* hash = new char[SHA256_DIGEST_LENGTH] {0};
 
@@ -74,7 +74,7 @@ void Client::send(const std::string& path, size_t bufferSize, uint retryCount, U
     Protocol::ProtocolPtr protocol = Protocol::ProtocolFactory::getInstance(_type);
     startTime = std::chrono::high_resolution_clock::now();
     timeRecorder->writeInfoWithTime("Connecting");
-    if (!protocol->openProtocol(_address, _port, _options)) {
+    if (!protocol->openProtocol(_address, _port, cipher, _options)) {
         protocol->closeProtocol();
         return;
     }
@@ -83,7 +83,7 @@ void Client::send(const std::string& path, size_t bufferSize, uint retryCount, U
     << std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now() - startTime).count() << " milliseconds" << std::endl;
 
      if (!sendWithRetries(header.get(), ISE_HEADER_SIZE, retryCount, protocol,
-                         false)) {
+                         false, cipher)) {
         std::cout << "Client: Connection failed" << std::endl;
         protocol->closeProtocol();
         _elapsedSeconds = std::chrono::high_resolution_clock::now() - startTime;
@@ -146,7 +146,7 @@ void Client::send(const std::string& path, size_t bufferSize, uint retryCount, U
             intermediateTimeStamp = std::chrono::high_resolution_clock::now();
         }
         if (!sendWithRetries(buffer, bufferSize, retryCount, protocol,
-                             i == numOfRecords)) {
+                             i == numOfRecords, cipher)) {
             std::cout << "Client: Connection failed" << std::endl;
             protocol->closeProtocol();
             _elapsedSeconds = std::chrono::high_resolution_clock::now() - startTime;
@@ -164,7 +164,7 @@ void Client::send(const std::string& path, size_t bufferSize, uint retryCount, U
     fileStream.close();
 }
 
-bool Client::sendWithRetries(const char *buffer, size_t bufferSize, uint retryCount, Protocol::ProtocolPtr& protocol, bool eof) {
+bool Client::sendWithRetries(const char *buffer, size_t bufferSize, uint retryCount, Protocol::ProtocolPtr& protocol, bool eof, uint cipher) {
     for (uint retry = 0; retry < retryCount; ++retry) {
         if (protocol->send(buffer, bufferSize, eof)) {
             return true;
@@ -173,7 +173,7 @@ bool Client::sendWithRetries(const char *buffer, size_t bufferSize, uint retryCo
             {
                 std::cout << "Connection dropped, retrying: (" << retry + 1 << ")"  << std::endl;
                 protocol->closeProtocol();
-                protocol->openProtocol(_address, _port, _options);
+                protocol->openProtocol(_address, _port, cipher, _options);
                 ++_connectionDrops;
             }
         }

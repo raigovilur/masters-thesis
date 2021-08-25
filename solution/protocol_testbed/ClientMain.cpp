@@ -17,6 +17,7 @@ int main(int argc, char *argv[]) {
     unsigned bufferSize = 1024;
     unsigned udpTarget = 30;
     std::string filePath;
+    uint cipher;
 
     try {
         po::options_description desc("Allowed options");
@@ -104,6 +105,13 @@ int main(int argc, char *argv[]) {
             std::cerr << "File path was not set." << std::endl;
             return -1;
         }
+
+        if (vm.count("cipher")) {
+            cipher = vm["cipher"].as<uint>();
+        } else {
+            std::cerr << "Cipher was not set." << std::endl;
+            return -1;
+        }
     }
     catch(std::exception& e) {
         std::cerr << "error: " << e.what() << std::endl;
@@ -124,7 +132,7 @@ int main(int argc, char *argv[]) {
     client.runSpeedTest(stport, stportBandwidth);
 
     timeRecorder.writeInfoWithTime("Program start");
-    client.send(filePath, bufferSize, 5, &timeRecorder);
+    client.send(filePath, bufferSize, 5, &timeRecorder, cipher);
     client.runSpeedTest(stport, stportBandwidth);
     timeRecorder.writeToFile();
 

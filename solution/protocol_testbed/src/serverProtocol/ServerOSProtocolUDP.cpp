@@ -10,7 +10,7 @@ ServerProto::ServerOSProtocolUDP::~ServerOSProtocolUDP() {
 
 }
 
-bool ServerProto::ServerOSProtocolUDP::serverListen(const std::string &address, ushort port) {
+bool ServerProto::ServerOSProtocolUDP::serverListen(const std::string &address, ushort port, uint cipher) {
     _socket = socket(AF_INET, SOCK_DGRAM, 0);
     struct sockaddr_in addr;
     bzero(&addr, sizeof(addr));

@@ -13,12 +13,12 @@ public:
     Client(Protocol::ProtocolType type, std::string address, uint port, Protocol::Options options);
     ~Client();
 
-    void send(const std::string& path, size_t bufferSize, uint retryCount, Utils::TimeRecorder *timeRecorder);
+    void send(const std::string& path, size_t bufferSize, uint retryCount, Utils::TimeRecorder *timeRecorder, uint cipher);
     void printStatistics() const;
     void runSpeedTest(uint port, const std::string& bandwidth) const;
 
 private:
-    bool sendWithRetries(const char* buffer, size_t bufferSize, uint retryCount, Protocol::ProtocolPtr& protocol, bool eof);
+    bool sendWithRetries(const char* buffer, size_t bufferSize, uint retryCount, Protocol::ProtocolPtr& protocol, bool eof, uint cipher);
 
     Protocol::ProtocolType _type;
     std::string _address;

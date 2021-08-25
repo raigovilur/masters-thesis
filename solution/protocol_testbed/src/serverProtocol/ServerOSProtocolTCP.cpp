@@ -6,7 +6,7 @@
 #include <sys/unistd.h>
 #include "ServerOSProtocolTCP.h"
 
-bool ServerProto::ServerOSProtocolTCP::serverListen(const std::string &address, ushort port) {
+bool ServerProto::ServerOSProtocolTCP::serverListen(const std::string &address, ushort port, uint cipher) {
     _socket = socket(AF_INET, SOCK_STREAM, 0);
     struct sockaddr_in addr;
     bzero(&addr, sizeof(addr));

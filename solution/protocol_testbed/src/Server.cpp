@@ -26,6 +26,7 @@ bool Server::processDataStream(ClientData& client, const unsigned char *bytes, s
     long now = epoch.count();
     auto latency = now - long(j["timestamp"]);
     std::cout << "Id: " << j["id"] << " Latency: " << latency/1000.0 << " milliseconds" << std::endl;
+    std::cout << s << std::endl;
 
     //TODO : Write to Database or cache
     /*
@@ -74,7 +75,7 @@ bool Server::consumeInternal(const std::string& client, const unsigned char *byt
     return true;
 }
 
-bool Server::start(Protocol::ProtocolType type, const std::string& listenAddress, ushort port) {
+bool Server::start(Protocol::ProtocolType type, const std::string& listenAddress, ushort port, uint cipher) {
     ServerProto::ServerPtr server = ServerProto::ServerProtocolFactory::getInstance(type);
 
     server->setCallback(this);
@@ -83,7 +84,7 @@ bool Server::start(Protocol::ProtocolType type, const std::string& listenAddress
 
     std::cout << "Server is starting." << std::endl;
 
-    server->serverListen(listenAddress, port);
+    server->serverListen(listenAddress, port, cipher);
 
 
     return true;

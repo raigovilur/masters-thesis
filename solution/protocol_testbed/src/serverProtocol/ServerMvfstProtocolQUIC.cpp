@@ -264,7 +264,7 @@ namespace quic {
     };
 }
 
-bool ServerProto::ServerMvfstProtocolQUIC::serverListen(const std::string &address, ushort port) {
+bool ServerProto::ServerMvfstProtocolQUIC::serverListen(const std::string &address, ushort port, uint cipher) {
     quic::MvFstServer server(_callback, _certificate, _certLen, _privKey, _privKeyLen, address, port);
 
     server.start();

@@ -44,7 +44,7 @@ namespace {
 }
 
 
-bool ServerProto::ServerOpenSSLProtocolTLS::serverListen(const std::string &address, ushort port) {
+bool ServerProto::ServerOpenSSLProtocolTLS::serverListen(const std::string &address, ushort port, uint cipher) {
     SSL_CTX *ctx;
 
     SSL_library_init();
@@ -53,6 +53,37 @@ bool ServerProto::ServerOpenSSLProtocolTLS::serverListen(const std::string &addr
     const SSL_METHOD* method = TLS_server_method();
     ctx = SSL_CTX_new(method);
     SSL_CTX_set_options(ctx, SSL_OP_NO_TLSv1_1 | SSL_OP_NO_TLSv1_2); // We are only interested in TLS1.3
+    
+     switch(cipher){
+        case 1:
+            SSL_CTX_set_ciphersuites(ctx, "TLS_AES_128_GCM_SHA256");
+            std::cout << "TLS_AES_128_GCM_SHA256" << std::endl;
+            break;
+        
+        case 2:
+            SSL_CTX_set_ciphersuites(ctx, "TLS_AES_256_GCM_SHA256");
+            std::cout << "TLS_AES_256_GCM_SHA256" << std::endl;
+            break;
+        
+        case 3:
+            SSL_CTX_set_ciphersuites(ctx, "TLS_AES_128_CCM_SHA256");
+            std::cout << "TLS_AES_128_CCM_SHA256" << std::endl;
+            break;
+        
+        case 4:
+            SSL_CTX_set_ciphersuites(ctx, "TLS_AES_128_CCM_8_SHA256");
+            std::cout << "TLS_AES_128_CCM_8_SHA256" << std::endl;
+            break;
+        
+        case 5:
+            SSL_CTX_set_ciphersuites(ctx, "TLS_CHACHA20_POLY1305_SHA256");
+            std::cout << "TLS_CHACHA20_POLY1305_SHA256" << std::endl;
+            break;
+        default:
+            std::cout << "Unknown ciphersuites" << std::endl;
+            exit(1);
+    }
+
     if ( ctx == NULL )
     {
         ERR_print_errors_fp(stderr);

@@ -3,7 +3,12 @@
 current=current
 
 print_usage() {
-  echo "Usage: $0 [OPTIONS] client|server TLS|DTLS|QUIC"
+  echo "Usage: $0 [OPTIONS] client|server TLS|DTLS|QUIC 1|2|3|4|5 (cipher)"
+  echo "1 - TLS_AES_128_GCM_SHA256 (TLS, DTLS, QUIC)"
+  echo "2 - TLS_AES_256_GCM_SHA256 (TLS, DTLS, QUIC)"
+  echo "3 - TLS_AES_128_CCM_SHA256 (TLS, DTLS)"
+  echo "4 - TLS_AES_128_CCM_8_SHA256 (TLS, DTLS)"
+  echo "5 - TLS_CHACHA20_POLY1305_SHA256 (TLS, DTLS, QUIC)"
 }
 
 print_usage_help() {
@@ -190,6 +195,7 @@ fi
 
 mode=$1
 protocol=$2
+cipher=$3
 
 case $mode in
   "client")
@@ -227,6 +233,7 @@ if [ $log_enabled == 1 -o $top_enabled == 1 ] ; then
     iperf_logfile=$outdir/iperf.log
   fi
 fi
+
 
 if [ $top_enabled == 1 ] ; then
   kill_top
