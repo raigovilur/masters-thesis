@@ -10,7 +10,25 @@
 #include "appProto/utils.h"
 #include <thread>
 
+#include<nlohmann/json.hpp>
+
 bool Server::processDataStream(ClientData& client, const unsigned char *bytes, size_t processStart, size_t packetLength) {
+    std::string s(bytes, bytes + packetLength);
+    nlohmann::json j;
+    try {
+        j = nlohmann::json::parse(s);
+    } catch (std::exception &ex) {
+        std::cout << "JSON Parse Error" << std::endl;
+        return true;
+    }
+
+    auto epoch = std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::high_resolution_clock::now().time_since_epoch());
+    long now = epoch.count();
+    auto latency = now - long(j["timestamp"]);
+    std::cout << "Id: " << j["id"] << " Latency: " << latency/1000.0 << " milliseconds" << std::endl;
+
+    //TODO : Write to Database or cache
+    /*
     if (client.outputStream == nullptr)
     {
         client.outputStream = std::make_unique<std::ofstream>(client.fileName, std::ios::binary);
@@ -22,19 +40,14 @@ bool Server::processDataStream(ClientData& client, const unsigned char *bytes, s
     }
 
     size_t bytesToRead = packetLength - processStart;
-
-    // We don't want to read more than we should
-    if (bytesToRead > client.fileSize-client.receivedFileSize) {
-        bytesToRead = client.fileSize-client.receivedFileSize;
-    }
-
     client.outputStream->write((char*) (bytes + processStart), bytesToRead);
-    client.receivedFileSize += bytesToRead;
+    */
 
-    client.printPercentageStatsIfFullPercent();
-    if (client.fileReceived()) {
-        client.outputStream->close();
-    }
+    size_t bytesToRead = packetLength - processStart;
+    client.receivedBytes += bytesToRead;
+    client.receivedNumOfRecords += 1;
+    //client.printPercentageStatsIfFullPercent();
+
     return true;
 }
 bool Server::consume(std::string client, const unsigned char *bytes, size_t packetLength) {
@@ -42,99 +55,19 @@ bool Server::consume(std::string client, const unsigned char *bytes, size_t pack
 }
 
 bool Server::consumeInternal(const std::string& client, const unsigned char *bytes, size_t packetLength) {
-    // This is just for debugging
-    //std::cout << std::string((char*) bytes, packetLength) << std::endl;
-
     // FIRST BYTES are header
     size_t numberOfBytesProcessed = 0; // Amount we have consumed already from the packet
-    /*
-    if (_clientHeaders.find(client) == _clientHeaders.end())
-    {
-        // No header has been received
-        if (packetLength >= ISE_HEADER_SIZE) {
-            //headerSize <= bufferSize
-            auto headerBytes = std::vector<unsigned char>(bytes, bytes + ISE_HEADER_SIZE);
-            _clientHeaders.emplace(std::pair<std::string,ClientData>(client, headerBytes));
-            numberOfBytesProcessed = ISE_HEADER_SIZE;
-            processHeader(_clientHeaders.at(client));
-        } else {
-            //headerSize > bufferSize
-            auto headerBytes = std::vector<unsigned char>(bytes, bytes + packetLength);
-            _clientHeaders.emplace(std::pair<std::string, ClientData>(client, headerBytes));
-            // We need more bytes to complete the header, further processing not necessary
-            return true;
-        }
-    } else if (!_clientHeaders.at(client).headerProcessed) {
-        // some header has been received
-        size_t bytesNeeded = ISE_HEADER_SIZE - _clientHeaders.at(client).header.size();
-        if (bytesNeeded < 0) {
-            // Sanity check:
-            std::cout << "Error: saved header needs negative bytes" << std::endl;
-        } else if (bytesNeeded > 0){
-            // Some more bytes are needed
-            if (packetLength < bytesNeeded) {
-                std::copy(bytes, bytes + packetLength, std::back_inserter(_clientHeaders.at(client).header));
-                // We need more bytes still, cannot process further
-                return true;
-            } else {
-                numberOfBytesProcessed = bytesNeeded;
-                std::copy(bytes, bytes + packetLength, std::back_inserter(_clientHeaders.at(client).header));
-            }
-        }
-
-        // We have a complete header
+    
+    if (_clientHeaders.find(client) == _clientHeaders.end()){
+        auto headerBytes = std::vector<unsigned char>(bytes, bytes + packetLength);
+        _clientHeaders.emplace(std::pair<std::string, ClientData>(client, headerBytes));
         processHeader(_clientHeaders.at(client));
-    }
-
-    if (numberOfBytesProcessed == packetLength) {
-        // The packet has been consumed entirely
         return true;
     }
-    if (!_clientHeaders.at(client).headerProcessed) {
-        // Sanity check
-        assert(false && "Header should be processed by this time");
-    }
-    */
 
     size_t bytesToProcess = packetLength - numberOfBytesProcessed;
-
+    
     if (!processDataStream(_clientHeaders.at(client), bytes, numberOfBytesProcessed, bytesToProcess)) {
-        _clientHeaders.erase(_clientHeaders.find(client));
-    }
-
-    if (_clientHeaders.at(client).fileReceived()) {
-        // TODO compare checksum and then reply OK.
-        auto* hash = new char[SHA256_DIGEST_LENGTH] {0};
-
-        std::cout << "Calculating checksum ..." << std::endl;
-
-        if (!Utils::calculateSha256(_clientHeaders.at(client).fileName, (unsigned char*) hash)) {
-            std::cout << "Unable to calculate hash for file: " << _clientHeaders.at(client).fileName << std::endl;
-            return false;
-        }
-        std::stringstream hashHexStrStream;
-        hashHexStrStream << std::hex;
-
-        for( int i(0) ; i < SHA256_DIGEST_LENGTH; ++i )
-            hashHexStrStream << std::setw(2) << std::setfill('0') << (int)hash[i];
-
-        std::cout << "Checksum calculated: " << hashHexStrStream.str() << std::endl;
-        auto clientChecksum = _clientHeaders.at(client).checksum;
-
-        if (!Utils::compareBytes(clientChecksum,
-                            0,
-                                 clientChecksum.size(),
-                            std::vector<unsigned char>(hash, hash + SHA256_DIGEST_LENGTH))) {
-            std::stringstream receivedHashHexStrStream;
-            receivedHashHexStrStream << std::hex;
-
-            for( int i(0) ; i < SHA256_DIGEST_LENGTH; ++i )
-                receivedHashHexStrStream << std::setw(2) << std::setfill('0') << (int)clientChecksum[i];
-            std::cerr << "Checksums differ! Received checksum: " << receivedHashHexStrStream.str() << " calculated: "  << hashHexStrStream.str() << std::endl;
-        } else {
-            std::cout << "Checksums match." << std::endl;
-        }
-
         _clientHeaders.erase(_clientHeaders.find(client));
     }
 
@@ -160,21 +93,13 @@ bool Server::processHeader(Server::ClientData& data) {
     assert(!data.headerProcessed);
 
     const std::vector<unsigned char> header = data.header;
-
-    assert(Utils::compareBytes(header, ISE_PROTOCOL_OFFSET, ISE_PROTOCOL_SIZE, {0x00, 0x00}));
-    assert(Utils::compareBytes(header, ISE_PROTOCOL_VERSION_OFFSET, ISE_PROTOCOL_VERSION_SIZE, {0x00, 0x00}));
-
-    data.checksum = std::vector<unsigned char>(header.begin() + ISE_CHECKSUM_OFFSET, header.begin() + ISE_CHECKSUM_OFFSET + ISE_CHECKSUM_SIZE);
-
-    std::string name(header.begin() + ISE_FILE_NAME_OFFSET, header.begin() + ISE_FILE_NAME_OFFSET + ISE_FILE_NAME_SIZE);
-    data.fileName = name;
-
-    data.fileSize = Utils::convertToUint64_t(header, ISE_FILE_SIZE_OFFSET, ISE_FILE_SIZE);
-    std::cout << "Expected file size: " << data.fileSize << std::endl;
-
+    
+    //data.fileName = "sent_packets.log";
+    data.numOfRecords = Utils::convertToUint64_t(header, ISE_FILE_SIZE_OFFSET, ISE_FILE_SIZE);
+    std::cout << "Expected Number of Records: " << data.numOfRecords << std::endl;
     data.headerProcessed = true;
-    data.onePercentBytes = data.fileSize / 100;
-    data.startTime = std::chrono::system_clock::now();
+    data.numOfRecordsForOnePercent = data.numOfRecords / 100;
+    data.startTime = std::chrono::high_resolution_clock::now();
     data.lastPercentStartTime = data.startTime;
 
     return true;

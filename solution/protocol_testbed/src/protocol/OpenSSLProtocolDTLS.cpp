@@ -157,7 +157,8 @@ bool Protocol::OpenSSLProtocolDTLS::send(const char *buffer, size_t bufferSize, 
         = 0.273 ms
     */
     uint millisNeededForTarget = ((double) bufferSize * 8) / 1000 / target; //1024 * 8 / (1000 * 30mb/s) = 1024 * 8(bit) / 30000 kb/s
-
+    
+    /*
     if (!_firstPacket) {
         // do congestion control
         uint millisecondsTakenToGetHere = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now() - _lastSendTimestamp).count();
@@ -169,6 +170,7 @@ bool Protocol::OpenSSLProtocolDTLS::send(const char *buffer, size_t bufferSize, 
     } else {
         _firstPacket = false;
     }
+    */
 
     _lastSendTimestamp = std::chrono::system_clock::now();
 

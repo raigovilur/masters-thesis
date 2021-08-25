@@ -27,38 +27,32 @@ private:
         std::unique_ptr<std::ofstream> outputStream = nullptr;
         std::string fileName;
         std::vector<unsigned char> checksum;
-        uint64_t fileSize = 0;
-        uint64_t receivedFileSize = 0;
-        uint64_t onePercentBytes = 0;
+        uint64_t numOfRecords = 0;
+        uint64_t receivedNumOfRecords = 0;
+        uint64_t receivedBytes = 0;
+        uint64_t numOfRecordsForOnePercent = 0;
         ushort percentageReceived = 0;
-        uint64_t lastPercentageFileSize = 0;
-        std::chrono::time_point<std::chrono::system_clock> startTime;
-        std::chrono::time_point<std::chrono::system_clock> lastPercentStartTime;
+        uint64_t lastPercentageReceivedBytes = 0;
+        std::chrono::time_point<std::chrono::high_resolution_clock> startTime;
+        std::chrono::time_point<std::chrono::high_resolution_clock> lastPercentStartTime;
         //Utils::CSVWriter throughputRecordCSV = Utils::CSVWriter(",");
 
         bool fileReceived() const {
-            assert(receivedFileSize <= fileSize); // We should never receive more than the file size
-            return receivedFileSize >= fileSize;
+            assert(receivedNumOfRecords <= numOfRecords); // We should never receive more than the file size
+            return receivedNumOfRecords >= numOfRecords;
         }
 
         void printPercentageStatsIfFullPercent() {
-            ushort currentPercentage = receivedFileSize / onePercentBytes;
+            ushort currentPercentage = receivedNumOfRecords / numOfRecordsForOnePercent;
             // Print when enough time has passed too (30) seconds!
-            auto currentTime = std::chrono::system_clock::now();
-            auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(currentTime - lastPercentStartTime);
+            auto currentTime = std::chrono::high_resolution_clock::now();
+            auto duration = std::chrono::duration_cast<std::chrono::microseconds>(currentTime - lastPercentStartTime);
             if (currentPercentage > percentageReceived || duration.count() > 60000) {
-                uint64_t sentBytes = receivedFileSize - lastPercentageFileSize;
-                std::cout << "File transfer: " << currentPercentage << "% (Total: "<< receivedFileSize << " received out of " << fileSize << " bytes. " <<"). Sent " << sentBytes << " over " << duration.count() << " milliseconds" << std::endl;
-                std::cout << "    Speed is " << ((double) sentBytes) / duration.count() / 1000 * 8 << " mb/s." << std::endl;
-                /*
-                throughputRecordCSV.newRow() << currentPercentage << ((double) sentBytes) / duration.count() / 1000 * 8;
-                if (currentPercentage >= 99) {
-                    std::string throughputRecordFileName = std::string("./out") + std::string("/") + Utils::getCurrentDateTime() + std::string("/") + std::string("performance.csv");
-                    throughputRecordCSV.writeToFile(throughputRecordFileName, false);
-                }
-                */
+                uint64_t sentBytes = receivedBytes - lastPercentageReceivedBytes;
+                std::cout << "Data transfer: " << currentPercentage << "% (Total: "<< receivedNumOfRecords << " received out of " << numOfRecords << " bytes. " <<"). Sent " << sentBytes << " over " << duration.count()/1000.0 << " milliseconds" << std::endl;
+                std::cout << "    Speed is " << ((double) sentBytes) / duration.count() * 8 << " mb/s." << std::endl;
                 percentageReceived = currentPercentage;
-                lastPercentageFileSize = receivedFileSize;
+                lastPercentageReceivedBytes = receivedNumOfRecords;
                 lastPercentStartTime = currentTime;
             }
         }
