@@ -164,6 +164,17 @@ int verifyCookie(SSL *ssl, const unsigned char *cookie, unsigned int cookie_len)
             SSL_CTX_set_ciphersuites(ctx, "TLS_CHACHA20_POLY1305_SHA256");
             std::cout << "TLS_CHACHA20_POLY1305_SHA256" << std::endl;
             break;
+
+        case 6:
+            SSL_CTX_set_ciphersuites(ctx, "TLS_AES_WITH_AES_128_CBC_SHA");
+            std::cout << "TLS_CHACHA20_POLY1305_SHA256" << std::endl;
+            break;
+        
+        case 7:
+            SSL_CTX_set_ciphersuites(ctx, "TLS_AES_WITH_AES_256_CBC_SHA");
+            std::cout << "TLS_CHACHA20_POLY1305_SHA256" << std::endl;
+            break;
+
         default:
             std::cout << "Unknown ciphersuites" << std::endl;
             exit(1);
