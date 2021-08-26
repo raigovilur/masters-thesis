@@ -27,7 +27,7 @@ synchronize system clock using ntp
 5. decrypt the received record
 6. Read t1 from the record
 7. **Get system clock (t2)**
-8. calculate t2 - t1, that is latency I measured
+8. calculate t2 - t1, that is the latency I measured
 
 
 ### How CPU usage is measured
