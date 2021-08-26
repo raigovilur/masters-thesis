@@ -19,9 +19,9 @@ synchronize system clock using ntp
 ### Latency
 ### At client
 1. Read data from the file
-2. Create record                
-3. **Get system clock and add it to record as timestamp (t1)**
-4. encrypt a record, send it to server
+2. Create a record                
+3. **Get system clock and add it to the record as timestamp (t1)**
+4. encrypt the record, send it to server
 
 ### At server
 5. decrypt the received record
