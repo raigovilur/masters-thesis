@@ -33,8 +33,8 @@ def generate_cpu_usage_graph(top_logfile_name_list, time_data_list, cipher_name_
     x_min, x_max = 1000000, 0
     y_min, y_max = 1000000, 0
     
-    color_idx = 0
-    color = ['blue', 'red', 'orange']
+    #color_idx = 0
+    #color = ['blue', 'red', 'orange']
     for top_logfile_name, time_data, cipher_name in zip(top_logfile_name_list, time_data_list, cipher_name_list):
         try:
             top_logfile = open(top_logfile_name, "r")
@@ -79,9 +79,9 @@ def generate_cpu_usage_graph(top_logfile_name_list, time_data_list, cipher_name_
         for i in range(len(top_df)):
             top_df.iloc[i, 13] =  (float(i + 1) / len(top_df)) * 100
        
-        #top_fig.add_trace(go.Scatter(x=top_df["Rate"], y = top_df["%CPU"], name=cipher_name))
-        top_fig.add_trace(go.Scatter(x=top_df["Rate"], y = top_df["%CPU"], name=cipher_name, line=dict(color=color[color_idx])))
-        color_idx = color_idx + 1
+        top_fig.add_trace(go.Scatter(x=top_df["Rate"], y = top_df["%CPU"], name=cipher_name))
+        #top_fig.add_trace(go.Scatter(x=top_df["Rate"], y = top_df["%CPU"], name=cipher_name, line=dict(color=color[color_idx])))
+        #color_idx = color_idx + 1
 
         x_min, x_max = 0, 101
         y_min, y_max = 0, 100
@@ -296,8 +296,8 @@ def generate_latency_graph(throughput_logfile_name_list, cipher_name_list):
     latency_fig = go.Figure()
     x_min, x_max = 1000000, 0
     y_min, y_max = 1000000, 0
-    color_idx = 0
-    color = ['blue', 'red', 'orange']
+    #color_idx = 0
+    #color = ['blue', 'red', 'orange']
     for latency_logfile_name, cipher_name in zip(latency_logfile_name_list, cipher_name_list):
         latency_logfile = open(latency_logfile_name, "r")
         latency_data = []
@@ -333,9 +333,9 @@ def generate_latency_graph(throughput_logfile_name_list, cipher_name_list):
         for i in range(len(latency_df)):
             latency_df.iloc[i, 2] =  (float(i + 1) / len(latency_df)) * 100
     
-        latency_fig.add_trace(go.Scatter(x=latency_df["rate"], y=latency_df["latency"], name=cipher_name, line=dict(color=color[color_idx])))
-        color_idx = color_idx + 1
-        #latency_fig.add_trace(go.Scatter(x=latency_df["rate"], y=latency_df["latency"], name=cipher_name))
+        #latency_fig.add_trace(go.Scatter(x=latency_df["rate"], y=latency_df["latency"], name=cipher_name, line=dict(color=color[color_idx])))
+        #color_idx = color_idx + 1
+        latency_fig.add_trace(go.Scatter(x=latency_df["rate"], y=latency_df["latency"], name=cipher_name))
 
         x_min, x_max = 0, 101
         y_min, y_max = min(math.floor(min(latency_df["latency"])), y_min) , max(math.ceil(max(latency_df["latency"])), y_max)
@@ -385,16 +385,16 @@ if __name__ == "__main__":
     #protocol_name = "TLS"
 
     # DTLS 
-    #client_dirlist = ['2021-08-26-11_51_52', '2021-08-26-11_55_28', '2021-08-26-11_58_41', '2021-08-26-12_02_17', '2021-08-26-12_05_34']
-    #server_dirlist = ['2021-08-26-11:51:32', '2021-08-26-11:55:12', '2021-08-26-11:58:32', '2021-08-26-12:02:08', '2021-08-26-12:05:24']
-    #cipher_name_list = ["TLS_AES_128_GCM_SHA256", "TLS_AES_256_GCM_SHA256", "TLS_AES_128_CCM_SHA256", "TLS_AES_128_CCM_8_SHA256", "TLS_CHACHA20_POLY1305_SHA256"]
-    #protocol_name = "DTLS"
+    client_dirlist = ['2021-08-26-11_51_52', '2021-08-26-11_55_28', '2021-08-26-11_58_41', '2021-08-26-12_02_17', '2021-08-26-12_05_34', '2021-08-26-18:40:15', '2021-08-26-18:51:19']
+    server_dirlist = ['2021-08-26-11:51:32', '2021-08-26-11:55:12', '2021-08-26-11:58:32', '2021-08-26-12:02:08', '2021-08-26-12:05:24', '2021-08-26-18:39:07', '2021-08-26-18:51:13']
+    cipher_name_list = ["TLS_AES_128_GCM_SHA256", "TLS_AES_256_GCM_SHA256", "TLS_AES_128_CCM_SHA256", "TLS_AES_128_CCM_8_SHA256", "TLS_CHACHA20_POLY1305_SHA256", "TLS_RSA_WITH_AES_128_CBC_SHA", "TLS_RSA_WITH_AES_256_CBC_SHA"]
+    protocol_name = "DTLS"
 
     # QUIC 
-    client_dirlist = ['2021-08-26-12_09_11', '2021-08-26-12_12_43', '2021-08-26-12_16_15']
-    server_dirlist = ['2021-08-26-12:08:52', '2021-08-26-12:12:35', '2021-08-26-12:16:03']
-    cipher_name_list = ["TLS_AES_128_GCM_SHA256", "TLS_AES_256_GCM_SHA256", "TLS_CHACHA20_POLY1305_SHA256"]
-    protocol_name = "QUIC"
+    #client_dirlist = ['2021-08-26-12_09_11', '2021-08-26-12_12_43', '2021-08-26-12_16_15']
+    #server_dirlist = ['2021-08-26-12:08:52', '2021-08-26-12:12:35', '2021-08-26-12:16:03']
+    #cipher_name_list = ["TLS_AES_128_GCM_SHA256", "TLS_AES_256_GCM_SHA256", "TLS_CHACHA20_POLY1305_SHA256"]
+    #protocol_name = "QUIC"
     
 
     time_logfile_name_list, power_logfile_name_list, top_logfile_name_list, latency_logfile_name_list = [], [], [], []
