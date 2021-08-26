@@ -4,7 +4,9 @@ I sent each record represented by each line in a file like the one shown below. 
 
 The records are sent from Iseauto to a server with the interval of 10 milliseconds. 
 In this experiment, I assumed that the records are generated from ros node continuously with the interval of 10 milliseconds.
-The number of record that was sent in this experiment is 10922.
+The number of record that was sent in this experiment is 10923.
+
+Connection is established only before sending the first record to server and is not disconnected  until the last record (10923th record) is sent to server. 
 
 The file used for this experiment is available at https://gpsd-playground.s3.eu-north-1.amazonaws.com/vehicle_velocity.csv.
 
