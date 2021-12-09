@@ -29,7 +29,13 @@ docker-compose run --service-ports --rm server
 
 In Docker Container
 ```
-./run.sh server [TLS|DTLS|QUIC]
+./run.sh server [TLS|DTLS|QUIC] [1|2|3|4|5]
+ 
+ 1 - TLS_AES_128_GCM_SHA256 (TLS, DTLS, QUIC)
+ 2 - TLS_AES_256_GCM_SHA256 (TLS, DTLS, QUIC)
+ 3 - TLS_AES_128_CCM_SHA256 (TLS, DTLS)
+ 4 - TLS_AES_128_CCM_8_SHA256 (TLS, DTLS)
+ 5 - TLS_CHACHA20_POLY1305_SHA256 (TLS, DTLS, QUIC)
 ```
 
 #### Client
@@ -40,7 +46,13 @@ docker-compose run --rm client
 
 In Docker Container
 ```
-./run.sh client [TLS|DTLS|QUIC]
+./run.sh client [TLS|DTLS|QUIC] [1|2|3|4|5]
+
+1 - TLS_AES_128_GCM_SHA256 (TLS, DTLS, QUIC)
+2 - TLS_AES_256_GCM_SHA256 (TLS, DTLS, QUIC)
+3 - TLS_AES_128_CCM_SHA256 (TLS, DTLS)
+4 - TLS_AES_128_CCM_8_SHA256 (TLS, DTLS)
+5 - TLS_CHACHA20_POLY1305_SHA256 (TLS, DTLS, QUIC)
 ```
 
 #### Configuration
